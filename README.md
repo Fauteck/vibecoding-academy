@@ -52,11 +52,11 @@ Konzepte und Spielideen, die als Vorlage dienen können:
 
 ## Handout
 
-Das ausfuehrliche Workshop-Handout behandelt:
+Das ausführliche Workshop-Handout behandelt:
 
 - Was ist Vibecoding und wie funktioniert die Zusammenarbeit mit KI
 - Der iterative Ansatz und Erfolgsfaktoren
-- Hosting-Optionen: GitHub Pages und Docker
+- Hosting: Lokale Entwicklung mit Claude Code, GitHub Pages und Docker
 
 [Handout: Vibecoding & Hosting](https://fauteck.github.io/vibecoding-academy/handout/)
 
