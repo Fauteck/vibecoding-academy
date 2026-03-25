@@ -1,336 +1,420 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vibecoding Academy</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230f0f1a'/%3E%3Ctext x='2' y='23' font-family='monospace' font-size='20' font-weight='bold' fill='%237c3aed'%3E%26lt;%3C/text%3E%3Ctext x='18' y='23' font-family='monospace' font-size='20' font-weight='bold' fill='%2306b6d4'%3E%26gt;%3C/text%3E%3Cpath d='M17 8 L13 17 L18 17 L15 26' stroke='url(%23g)' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23c4b5fd'/%3E%3Cstop offset='1' stop-color='%2306b6d4'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E">
   <meta name="description" content="Vibecoding Academy – KI-gestütztes Web-Coding Workshop: von der Idee bis zum Release">
   <meta property="og:title" content="Vibecoding Academy">
   <meta property="og:description" content="KI-gestütztes Web-Coding – von der Idee bis zum Release">
   <meta property="og:type" content="website">
-  <meta name="theme-color" content="#0f0f1a">
+  <meta name="theme-color" content="#3498db">
+
+  <!-- Bootstrap 5.3.2 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+        crossorigin="anonymous">
+  <!-- Font Awesome 6.4.2 -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+
   <style>
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    /* ── Design Tokens ─────────────────────────────────────── */
+    :root {
+      --primary-color:   #3498db;
+      --secondary-color: #2c3e50;
+      --success-color:   #2ecc71;
+      --danger-color:    #e74c3c;
+      --warning-color:   #f39c12;
+      --info-color:      #3498db;
+      --bg-page:         #f8f9fa;
+      --bg-card:         #ffffff;
+      --text-primary:    #212529;
+      --text-muted:      #6c757d;
+      --border-color:    #e9ecef;
+      --border-radius-card: 10px;
+      --border-radius-kpi:  12px;
     }
 
-    :root {
-      --bg: #0f0f1a;
-      --surface: #1a1a2e;
-      --surface2: #16213e;
-      --accent: #7c3aed;
-      --accent2: #06b6d4;
-      --text: #e2e8f0;
-      --text-muted: #94a3b8;
-      --border: #2d2d4e;
-      --radius: 12px;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      background: var(--bg);
-      color: var(--text);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg-page);
+      color: var(--text-primary);
       min-height: 100vh;
-      line-height: 1.7;
     }
 
-    /* ── Header ───────────────────────────────────────────── */
-    header {
-      background: linear-gradient(135deg, var(--surface2) 0%, var(--surface) 100%);
-      border-bottom: 1px solid var(--border);
-      padding: 3rem 1.5rem 2.5rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
+    /* ── Desktop Navbar ────────────────────────────────────── */
+    .navbar {
+      background: linear-gradient(135deg, #3498db, #2c3e50);
+      position: sticky;
+      top: 0;
+      z-index: 1030;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     }
 
-    header::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 60% 80% at 20% 50%, rgba(124, 58, 237, 0.18) 0%, transparent 70%),
-        radial-gradient(ellipse 60% 80% at 80% 50%, rgba(6, 182, 212, 0.12) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .header-badge {
-      display: inline-block;
-      background: rgba(124, 58, 237, 0.2);
-      border: 1px solid rgba(124, 58, 237, 0.4);
-      color: #c4b5fd;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 0.3rem 0.9rem;
-      border-radius: 999px;
-      margin-bottom: 1.2rem;
-    }
-
-    header h1 {
-      font-size: clamp(2rem, 6vw, 3.5rem);
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      background: linear-gradient(135deg, #c4b5fd 0%, var(--accent2) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 0.6rem;
-    }
-
-    header p.tagline {
-      color: var(--text-muted);
-      font-size: 1.05rem;
-      max-width: 520px;
-      margin: 0 auto;
-    }
-
-    /* ── Main layout ──────────────────────────────────────── */
-    main {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 3rem 1.5rem 4rem;
-    }
-
-    /* ── About card ───────────────────────────────────────── */
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 2rem 2.2rem;
-      margin-bottom: 2.5rem;
-    }
-
-    .card h2 {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: #c4b5fd;
-      margin-bottom: 1.2rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .card h2::before {
-      content: '';
-      display: inline-block;
-      width: 4px;
-      height: 1.2em;
-      background: linear-gradient(180deg, var(--accent), var(--accent2));
-      border-radius: 2px;
-    }
-
-    .card p {
-      color: var(--text-muted);
-      margin-bottom: 1rem;
-    }
-
-    .card p:last-child {
-      margin-bottom: 0;
-    }
-
-    .card a {
-      color: var(--accent2);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(6, 182, 212, 0.35);
-      transition: border-color 0.2s;
-    }
-
-    .card a:hover {
-      border-color: var(--accent2);
-    }
-
-    /* ── Example links ────────────────────────────────────── */
-    .example-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-top: 0.25rem;
-    }
-
-    .example-links a {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      background: rgba(6, 182, 212, 0.08);
-      border: 1px solid rgba(6, 182, 212, 0.25);
-      color: var(--accent2);
-      padding: 0.45rem 0.9rem;
-      border-radius: 8px;
-      font-size: 0.88rem;
-      text-decoration: none;
-      transition: background 0.2s, border-color 0.2s;
-    }
-
-    .example-links a:hover {
-      background: rgba(6, 182, 212, 0.16);
-      border-color: rgba(6, 182, 212, 0.5);
-    }
-
-    .example-links a::before {
-      content: '↗';
-      font-size: 0.8em;
-    }
-
-    /* ── Projects grid ────────────────────────────────────── */
-    .section-title {
+    .navbar-brand {
+      color: #fff !important;
       font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 1.25rem;
+      font-weight: bold;
+    }
+
+    .navbar-link {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 0.875rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .navbar-link:hover,
+    .navbar-link.active {
+      color: #fff;
+      background: rgba(255,255,255,0.15);
+    }
+
+    /* ── Mobile Top Bar ────────────────────────────────────── */
+    .mobile-topbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 56px;
+      background: linear-gradient(135deg, #3498db, #2c3e50);
       display: flex;
       align-items: center;
-      gap: 0.6rem;
+      justify-content: space-between;
+      padding: 0 1rem;
+      z-index: 1030;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     }
 
-    .section-title span.icon {
-      font-size: 1.1em;
+    .mobile-topbar-brand {
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: bold;
     }
 
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 1.1rem;
-    }
-
-    .project-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.4rem 1.5rem;
+    .mobile-topbar-btn {
+      color: rgba(255,255,255,0.85);
+      background: none;
+      border: none;
+      font-size: 1.1rem;
+      padding: 0.4rem;
       text-decoration: none;
-      color: var(--text);
-      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      transition: color 0.2s;
+    }
+
+    .mobile-topbar-btn:hover {
+      color: #fff;
+    }
+
+    /* ── Mobile Bottom Nav ─────────────────────────────────── */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: var(--secondary-color);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      z-index: 1030;
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.15);
+    }
+
+    .bottom-nav-item {
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      align-items: center;
+      gap: 0.15rem;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      font-size: 0.65rem;
+      background: none;
+      border: none;
+      padding: 0.3rem 0.6rem;
+      transition: color 0.2s;
     }
 
-    .project-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(124, 58, 237, 0.15);
+    .bottom-nav-item i {
+      font-size: 1.15rem;
     }
 
-    .project-card .project-icon {
-      font-size: 1.8rem;
-      line-height: 1;
+    .bottom-nav-item:hover,
+    .bottom-nav-item.active {
+      color: #fff;
     }
 
-    .project-card .project-name {
-      font-size: 1rem;
-      font-weight: 600;
+    .bottom-nav-item.active i {
+      color: var(--primary-color);
     }
 
-    .project-card .project-desc {
-      font-size: 0.82rem;
-      color: var(--text-muted);
+    /* ── More Bottom Sheet ─────────────────────────────────── */
+    .more-sheet {
+      border-radius: 16px 16px 0 0 !important;
     }
 
-    /* placeholder / empty state */
+    .more-sheet .offcanvas-header {
+      background: var(--secondary-color);
+      color: #fff;
+      border-radius: 16px 16px 0 0;
+    }
+
+    /* ── Section Header ────────────────────────────────────── */
+    .section-header {
+      border-left: 4px solid var(--primary-color);
+      background: var(--bg-page);
+      padding: 0.75rem 1rem;
+      margin-bottom: 1.25rem;
+      border-radius: 0 6px 6px 0;
+    }
+
+    .section-header h5 {
+      margin: 0;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    /* ── Card Overrides ────────────────────────────────────── */
+    .card {
+      border-radius: var(--border-radius-card);
+      border: 1px solid var(--border-color);
+      background: var(--bg-card);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+
+    .card-header {
+      font-weight: 700;
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    /* ── Footer ────────────────────────────────────────────── */
+    .footer {
+      background: var(--secondary-color);
+      color: rgba(255,255,255,0.7);
+      padding: 1.5rem 1rem;
+    }
+
+    .footer a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer a:hover {
+      color: #fff;
+    }
+
+    /* ── Hero ──────────────────────────────────────────────── */
+    .hero-section {
+      padding: 3rem 1rem 2rem;
+      text-align: center;
+    }
+
+    .hero-section h1 {
+      color: var(--secondary-color);
+      font-weight: 800;
+      font-size: clamp(2rem, 5vw, 3rem);
+    }
+
+    /* ── Projects Empty State ──────────────────────────────── */
     .projects-empty {
-      grid-column: 1 / -1;
+      border: 2px dashed var(--border-color);
+      border-radius: var(--border-radius-card);
       text-align: center;
       padding: 3rem 1rem;
       color: var(--text-muted);
-      border: 2px dashed var(--border);
-      border-radius: var(--radius);
-      font-size: 0.95rem;
     }
 
     .projects-empty strong {
       display: block;
-      font-size: 1.05rem;
-      color: var(--text);
+      color: var(--text-primary);
       margin-bottom: 0.4rem;
     }
 
-    /* ── Footer ───────────────────────────────────────────── */
-    footer {
-      text-align: center;
-      padding: 2rem 1.5rem;
-      border-top: 1px solid var(--border);
-      color: var(--text-muted);
-      font-size: 0.82rem;
+    /* ── Responsive ────────────────────────────────────────── */
+    @media (max-width: 991.98px) {
+      body {
+        padding-top: 56px;
+        padding-bottom: 60px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .btn {
+        min-height: 44px;
+        min-width: 44px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      h2 { font-size: 1.3rem; }
+      h3 { font-size: 1.1rem; }
     }
   </style>
 </head>
 <body>
 
   <!-- ══════════════════════════════════════════════════════ -->
-  <!--  Header                                               -->
+  <!--  Desktop Navbar (>992px)                              -->
   <!-- ══════════════════════════════════════════════════════ -->
-  <header>
-    <div class="header-badge">Workshop</div>
-    <h1>Vibecoding Academy</h1>
-    <p class="tagline">KI-gestütztes Web-Coding – von der Idee bis zum Release</p>
-  </header>
-
-  <!-- ══════════════════════════════════════════════════════ -->
-  <!--  Main                                                 -->
-  <!-- ══════════════════════════════════════════════════════ -->
-  <main>
-
-    <!-- About -->
-    <div class="card">
-      <h2>Über den Workshop</h2>
-      <p>
-        In diesem Workshop können wir uns gerne einmal zum Vibecoding austauschen.
-      </p>
-      <p>
-        Zuletzt hatte ich für die Media-Hub-Weiterentwicklung diese Prototypen mit der KI bauen lassen:
-      </p>
-      <div class="example-links">
-        <a href="https://media.rtl.com/sonstiges/intern/kurzinfo" target="_blank" rel="noopener">
-          media.rtl.com – Kurzinfo
-        </a>
-        <a href="https://mediahub.fauteck.eu/" target="_blank" rel="noopener">
-          mediahub.fauteck.eu
+  <nav class="navbar navbar-expand d-none d-lg-flex">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <i class="fas fa-code me-1"></i> Vibecoding Academy
+      </a>
+      <div class="d-flex align-items-center gap-1">
+        <a class="navbar-link active" href="#ueber">Über uns</a>
+        <a class="navbar-link" href="#projekte">Projekte</a>
+        <a class="navbar-link" href="https://github.com/Fauteck/vibecoding-academy" target="_blank" rel="noopener">
+          <i class="fab fa-github me-1"></i> GitHub
         </a>
       </div>
     </div>
+  </nav>
 
-    <div class="card">
-      <h2>Was wir machen</h2>
-      <p>
-        Auch privat habe ich mir ein paar Web-Anwendungen bauen lassen, sodass ich euch gerne ein bisschen durch den
-        Entstehungsprozess ohne größere eigene Coding Skills mitnehme.
-      </p>
-      <p>
-        Wer dabei sein möchte, kann gerne eine Idee mitbringen, welches kleine Web-UI-Game
-        (Tetris, Minesweeper etc.) oder welche Anwendung (To-Do-Liste, Notizen-App etc.) ihr testweise coden lassen wollt.
-      </p>
-      <p>
-        Das Coding der KI dauert im Zweifel etwas, sodass wir das parallel laufen lassen können – ich werde euch
-        die Ergebnisse im Nachgang als Links zur Verfügung stellen. Anhand der Beispiele spielen wir einmal durch,
-        womit und auf welchem Weg Vibecoding von der Konzepterstellung für einen KI-Dev über den Aufbau der digitalen
-        Infrastruktur bis hin zum Release- und Issue-Management gut funktioniert.
-        Detailfragen ergeben sich dann sicher für den anschließenden Austausch von alleine.
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!--  Mobile Top Bar (<=992px)                             -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="mobile-topbar d-lg-none">
+    <span class="mobile-topbar-brand">
+      <i class="fas fa-code me-1"></i> Vibecoding Academy
+    </span>
+    <a href="https://github.com/Fauteck/vibecoding-academy"
+       class="mobile-topbar-btn" target="_blank" rel="noopener" aria-label="GitHub">
+      <i class="fab fa-github"></i>
+    </a>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!--  Mobile "Mehr" Bottom Sheet                           -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="offcanvas offcanvas-bottom more-sheet" tabindex="-1" id="mobileMoreSheet"
+       style="height: auto; max-height: 80vh;">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title">Vibecoding Academy</h5>
+      <button type="button" class="btn-close btn-close-white"
+              data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body p-0">
+      <div class="list-group list-group-flush">
+        <a href="#ueber" class="list-group-item list-group-item-action" data-bs-dismiss="offcanvas">
+          <i class="fas fa-info-circle me-2"></i> Über den Workshop
+        </a>
+        <a href="#projekte" class="list-group-item list-group-item-action" data-bs-dismiss="offcanvas">
+          <i class="fas fa-rocket me-2"></i> Projekte
+        </a>
+        <a href="https://media.rtl.com/sonstiges/intern/kurzinfo" target="_blank" rel="noopener"
+           class="list-group-item list-group-item-action">
+          <i class="fas fa-external-link-alt me-2"></i> media.rtl.com – Kurzinfo
+        </a>
+        <a href="https://mediahub.fauteck.eu/" target="_blank" rel="noopener"
+           class="list-group-item list-group-item-action">
+          <i class="fas fa-external-link-alt me-2"></i> mediahub.fauteck.eu
+        </a>
+        <a href="https://github.com/Fauteck/vibecoding-academy" target="_blank" rel="noopener"
+           class="list-group-item list-group-item-action">
+          <i class="fab fa-github me-2"></i> GitHub Repository
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!--  Hauptinhalt                                          -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <main class="container-fluid py-3" style="max-width: 900px; margin: 0 auto;">
+
+    <!-- Hero -->
+    <div class="hero-section">
+      <span class="badge bg-primary mb-3">Workshop</span>
+      <h1>Vibecoding Academy</h1>
+      <p class="text-muted mx-auto" style="max-width: 520px;">
+        KI-gestütztes Web-Coding – von der Idee bis zum Release
       </p>
     </div>
 
-    <!-- Projects -->
-    <p class="section-title">
-      <span class="icon">🚀</span> Vibecoding-Ergebnisse
-    </p>
+    <!-- Ueber den Workshop -->
+    <div class="card mb-4" id="ueber">
+      <div class="card-header">
+        <i class="fas fa-info-circle me-2" style="color: var(--primary-color);"></i>Über den Workshop
+      </div>
+      <div class="card-body">
+        <p>
+          In diesem Workshop können wir uns gerne einmal zum Vibecoding austauschen.
+        </p>
+        <p>
+          Zuletzt hatte ich für die Media-Hub-Weiterentwicklung diese Prototypen mit der KI bauen lassen:
+        </p>
+        <div class="d-flex flex-wrap gap-2 mt-2">
+          <a href="https://media.rtl.com/sonstiges/intern/kurzinfo" target="_blank" rel="noopener"
+             class="btn btn-outline-primary btn-sm">
+            <i class="fas fa-external-link-alt me-1"></i> media.rtl.com – Kurzinfo
+          </a>
+          <a href="https://mediahub.fauteck.eu/" target="_blank" rel="noopener"
+             class="btn btn-outline-primary btn-sm">
+            <i class="fas fa-external-link-alt me-1"></i> mediahub.fauteck.eu
+          </a>
+        </div>
+      </div>
+    </div>
 
-    <div class="projects-grid">
+    <!-- Was wir machen -->
+    <div class="card mb-4">
+      <div class="card-header">
+        <i class="fas fa-lightbulb me-2" style="color: var(--primary-color);"></i>Was wir machen
+      </div>
+      <div class="card-body">
+        <p>
+          Auch privat habe ich mir ein paar Web-Anwendungen bauen lassen, sodass ich euch gerne ein bisschen durch den
+          Entstehungsprozess ohne größere eigene Coding Skills mitnehme.
+        </p>
+        <p>
+          Wer dabei sein möchte, kann gerne eine Idee mitbringen, welches kleine Web-UI-Game
+          (Tetris, Minesweeper etc.) oder welche Anwendung (To-Do-Liste, Notizen-App etc.) ihr testweise coden lassen wollt.
+        </p>
+        <p>
+          Das Coding der KI dauert im Zweifel etwas, sodass wir das parallel laufen lassen können – ich werde euch
+          die Ergebnisse im Nachgang als Links zur Verfügung stellen. Anhand der Beispiele spielen wir einmal durch,
+          womit und auf welchem Weg Vibecoding von der Konzepterstellung für einen KI-Dev über den Aufbau der digitalen
+          Infrastruktur bis hin zum Release- und Issue-Management gut funktioniert.
+          Detailfragen ergeben sich dann sicher für den anschließenden Austausch von alleine.
+        </p>
+      </div>
+    </div>
+
+    <!-- Projekte -->
+    <div class="section-header" id="projekte">
+      <h5><i class="fas fa-rocket me-2"></i>Vibecoding-Ergebnisse</h5>
+    </div>
+
+    <div class="row g-3">
       <!--
         Füge hier weitere Projekte als Links hinzu, sobald sie in Unterordnern verfügbar sind.
         Beispiel:
-        <a class="project-card" href="./minesweeper/">
-          <span class="project-icon">💣</span>
-          <span class="project-name">Minesweeper</span>
-          <span class="project-desc">Klassisches Minesweeper-Spiel</span>
-        </a>
+        <div class="col-md-4 col-sm-6">
+          <a class="card text-decoration-none h-100" href="./minesweeper/">
+            <div class="card-body">
+              <div class="fs-2 mb-2">💣</div>
+              <h6 class="card-title">Minesweeper</h6>
+              <p class="card-text text-muted small">Klassisches Minesweeper-Spiel</p>
+            </div>
+          </a>
+        </div>
       -->
-      <div class="projects-empty">
-        <strong>Projekte in Kürze hier verfügbar</strong>
-        Die im Workshop erstellten Web-Apps und Spiele werden hier verlinkt.
+      <div class="col-12">
+        <div class="projects-empty">
+          <strong>Projekte in Kürze hier verfügbar</strong>
+          Die im Workshop erstellten Web-Apps und Spiele werden hier verlinkt.
+        </div>
       </div>
     </div>
 
@@ -339,9 +423,38 @@
   <!-- ══════════════════════════════════════════════════════ -->
   <!--  Footer                                               -->
   <!-- ══════════════════════════════════════════════════════ -->
-  <footer>
-    Vibecoding Academy &middot; <a href="https://github.com/Fauteck/vibecoding-academy" target="_blank" rel="noopener" style="color:inherit;">GitHub</a>
+  <footer class="footer mt-5 text-center">
+    <div class="container">
+      <p class="mb-0">
+        <a href="https://github.com/Fauteck/vibecoding-academy" target="_blank" rel="noopener">
+          <i class="fab fa-github me-1"></i>Vibecoding Academy 2026
+        </a>
+      </p>
+    </div>
   </footer>
 
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!--  Mobile Bottom Navigation (<=992px)                   -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <nav class="bottom-nav d-lg-none">
+    <a class="bottom-nav-item active" href="#ueber">
+      <i class="fas fa-info-circle"></i>
+      <span>Über uns</span>
+    </a>
+    <a class="bottom-nav-item" href="#projekte">
+      <i class="fas fa-rocket"></i>
+      <span>Projekte</span>
+    </a>
+    <button class="bottom-nav-item"
+            data-bs-toggle="offcanvas" data-bs-target="#mobileMoreSheet">
+      <i class="fas fa-bars"></i>
+      <span>Mehr</span>
+    </button>
+  </nav>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+          crossorigin="anonymous"></script>
 </body>
 </html>
