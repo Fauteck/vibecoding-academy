@@ -9,7 +9,7 @@
   <meta property="og:title" content="Vibecoding Academy">
   <meta property="og:description" content="KI-gestütztes Web-Coding – von der Idee bis zum Release">
   <meta property="og:type" content="website">
-  <meta name="theme-color" content="#3498db">
+  <meta name="theme-color" content="#5B8BD6">
 
   <!-- Bootstrap 5.3.2 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
@@ -24,17 +24,17 @@
   <style>
     /* ── Design Tokens ─────────────────────────────────────── */
     :root {
-      --primary-color:   #3498db;
-      --secondary-color: #2c3e50;
-      --success-color:   #2ecc71;
-      --danger-color:    #e74c3c;
-      --warning-color:   #f39c12;
-      --info-color:      #3498db;
-      --bg-page:         #f8f9fa;
-      --bg-card:         #ffffff;
-      --text-primary:    #212529;
-      --text-muted:      #6c757d;
-      --border-color:    #e9ecef;
+      --primary-color:   #5B8BD6;
+      --secondary-color: #3D5A8C;
+      --success-color:   #5CC6A7;
+      --danger-color:    #D46B6B;
+      --warning-color:   #D4A55B;
+      --info-color:      #6BB8D4;
+      --bg-page:         #EEF2F7;
+      --bg-card:         rgba(255, 255, 255, 0.85);
+      --text-primary:    #2D3748;
+      --text-muted:      #7A8599;
+      --border-color:    #D4DCE8;
       --border-radius-card: 10px;
       --border-radius-kpi:  12px;
     }
@@ -54,11 +54,11 @@
 
     /* ── Desktop Navbar ────────────────────────────────────── */
     .navbar {
-      background: linear-gradient(135deg, #3498db, #2c3e50);
+      background: linear-gradient(135deg, #5B8BD6, #3D5A8C);
       position: sticky;
       top: 0;
       z-index: 1030;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
     }
 
     .navbar-brand {
@@ -89,7 +89,7 @@
       left: 0;
       right: 0;
       height: 56px;
-      background: linear-gradient(135deg, #3498db, #2c3e50);
+      background: linear-gradient(135deg, #5B8BD6, #3D5A8C);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -174,7 +174,8 @@
     /* ── Section Header ────────────────────────────────────── */
     .section-header {
       border-left: 4px solid var(--primary-color);
-      background: var(--bg-page);
+      background: rgba(238, 242, 247, 0.85);
+      backdrop-filter: blur(6px);
       padding: 0.75rem 1rem;
       margin-bottom: 1.25rem;
       border-radius: 0 6px 6px 0;
@@ -191,6 +192,7 @@
       border-radius: var(--border-radius-card);
       border: 1px solid var(--border-color);
       background: var(--bg-card);
+      backdrop-filter: blur(8px);
       box-shadow: 0 1px 3px rgba(0,0,0,0.04);
     }
 
@@ -220,9 +222,8 @@
     /* ── Hero ──────────────────────────────────────────────── */
     .hero-section {
       background:
-        linear-gradient(135deg, rgba(15, 23, 42, 0.35) 0%, rgba(30, 58, 95, 0.2) 100%),
-        url('./images/hero-bg.jpg') center/cover no-repeat,
-        linear-gradient(135deg, #6db3f2 0%, #5ecfcf 35%, #7ec8e3 55%, #b8a5e3 100%);
+        linear-gradient(135deg, rgba(61, 90, 140, 0.3) 0%, rgba(91, 139, 214, 0.15) 100%),
+        linear-gradient(135deg, #5B8BD6 0%, #6BB8D4 35%, #7DD4C8 55%, #A89BD4 100%);
       padding: 4rem 1.5rem 3.5rem;
       text-align: center;
       border-radius: 0 0 var(--border-radius-card) var(--border-radius-card);
