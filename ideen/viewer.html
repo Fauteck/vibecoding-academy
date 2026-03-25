@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Idee - Vibecoding Academy</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #f5f7fa; padding-top: 48px; color: #222; }
+    .va-topbar { position: fixed; top: 0; left: 0; right: 0; height: 48px; background: linear-gradient(135deg, #3498db, #2c3e50); display: flex; align-items: center; padding: 0 1rem; z-index: 9999; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+    .va-topbar a { color: #fff; text-decoration: none; font-family: 'Segoe UI', system-ui, sans-serif; font-size: 0.95rem; font-weight: bold; display: flex; align-items: center; gap: 0.5rem; transition: opacity 0.2s; }
+    .va-topbar a:hover { opacity: 0.85; }
+    #content { max-width: 800px; margin: 2rem auto; padding: 2rem; background: #fff; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); line-height: 1.7; }
+    #content h1 { font-size: 1.8rem; margin-bottom: 1rem; color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 0.5rem; }
+    #content h2 { font-size: 1.4rem; margin-top: 1.8rem; margin-bottom: 0.6rem; color: #34495e; }
+    #content h3 { font-size: 1.15rem; margin-top: 1.4rem; margin-bottom: 0.5rem; color: #34495e; }
+    #content p { margin-bottom: 0.8rem; }
+    #content ul, #content ol { margin-bottom: 0.8rem; padding-left: 1.5rem; }
+    #content li { margin-bottom: 0.3rem; }
+    #content code { background: #f0f2f5; padding: 0.15rem 0.4rem; border-radius: 3px; font-size: 0.9em; font-family: 'Consolas', 'Monaco', monospace; }
+    #content pre { background: #1e1e2e; color: #cdd6f4; padding: 1rem; border-radius: 6px; overflow-x: auto; margin-bottom: 1rem; }
+    #content pre code { background: none; padding: 0; color: inherit; font-size: 0.85rem; }
+    #content strong { color: #2c3e50; }
+    #content table { border-collapse: collapse; width: 100%; margin-bottom: 1rem; }
+    #content th, #content td { border: 1px solid #ddd; padding: 0.5rem 0.75rem; text-align: left; }
+    #content th { background: #f0f2f5; font-weight: 600; }
+    #content hr { border: none; border-top: 1px solid #eee; margin: 1.5rem 0; }
+    .loading { text-align: center; padding: 3rem; color: #888; font-size: 1.1rem; }
+    .error { text-align: center; padding: 3rem; color: #e74c3c; }
+    @media (max-width: 600px) {
+      #content { margin: 1rem; padding: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="va-topbar">
+    <a href="../">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      Vibecoding Academy
+    </a>
+  </nav>
+  <div id="content"><div class="loading">Laden...</div></div>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    (function() {
+      var params = new URLSearchParams(window.location.search);
+      var file = params.get('file');
+      var el = document.getElementById('content');
+
+      if (!file || !file.endsWith('.md') || file.includes('..') || file.includes('/')) {
+        el.innerHTML = '<div class="error">Ungültige oder fehlende Datei.</div>';
+        return;
+      }
+
+      fetch(file)
+        .then(function(res) {
+          if (!res.ok) throw new Error('Nicht gefunden');
+          return res.text();
+        })
+        .then(function(text) {
+          el.innerHTML = marked.parse(text);
+          var h1 = el.querySelector('h1');
+          if (h1) document.title = h1.textContent + ' - Vibecoding Academy';
+        })
+        .catch(function() {
+          el.innerHTML = '<div class="error">Die Datei konnte nicht geladen werden.</div>';
+        });
+    })();
+  </script>
+</body>
+</html>
