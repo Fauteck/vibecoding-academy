@@ -49,20 +49,6 @@
       position: relative;
     }
 
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background:
-        url('./images/hero-bg.jpg') center/cover no-repeat,
-        linear-gradient(135deg, #1a1a2e 0%, #16213e 30%, #0f3460 60%, #1a1a2e 100%);
-      opacity: 0.07;
-      z-index: -1;
-      pointer-events: none;
-    }
 
     /* ── Desktop Navbar ────────────────────────────────────── */
     .navbar {
@@ -231,14 +217,34 @@
 
     /* ── Hero ──────────────────────────────────────────────── */
     .hero-section {
-      padding: 3rem 1rem 2rem;
+      background:
+        linear-gradient(135deg, rgba(15, 23, 42, 0.35) 0%, rgba(30, 58, 95, 0.2) 100%),
+        url('./images/hero-bg.jpg') center/cover no-repeat,
+        linear-gradient(135deg, #6db3f2 0%, #5ecfcf 35%, #7ec8e3 55%, #b8a5e3 100%);
+      padding: 4rem 1.5rem 3.5rem;
       text-align: center;
+      border-radius: 0 0 var(--border-radius-card) var(--border-radius-card);
+      margin-bottom: 1.5rem;
     }
 
     .hero-section h1 {
-      color: var(--secondary-color);
+      color: #ffffff;
       font-weight: 800;
       font-size: clamp(2rem, 5vw, 3rem);
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero-section p {
+      color: rgba(255, 255, 255, 0.9);
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+    }
+
+    .hero-section .badge {
+      background-color: rgba(255, 255, 255, 0.2) !important;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #fff;
+      font-weight: 600;
     }
 
     /* ── Projects Empty State ──────────────────────────────── */
@@ -262,6 +268,10 @@
         padding-top: 56px;
         padding-bottom: 60px;
       }
+      .hero-section {
+        padding: 3rem 1rem 2.5rem;
+        border-radius: 0;
+      }
     }
 
     @media (max-width: 768px) {
@@ -274,6 +284,9 @@
     @media (max-width: 576px) {
       h2 { font-size: 1.3rem; }
       h3 { font-size: 1.1rem; }
+      .hero-section {
+        padding: 2.5rem 1rem 2rem;
+      }
     }
   </style>
 </head>
@@ -347,17 +360,19 @@
   <!-- ══════════════════════════════════════════════════════ -->
   <!--  Hauptinhalt                                          -->
   <!-- ══════════════════════════════════════════════════════ -->
-  <main class="container-fluid py-3" style="max-width: 900px; margin: 0 auto;">
-
-    <!-- Hero -->
-    <div class="hero-section">
-      <span class="badge bg-primary mb-3">Workshop</span>
+  <!-- Hero (full-width banner) -->
+  <div class="hero-section">
+    <div style="max-width: 900px; margin: 0 auto;">
+      <span class="badge mb-3">Workshop</span>
       <h1>Vibecoding Academy</h1>
-      <p class="text-muted mx-auto" style="max-width: 520px;">
+      <p class="mx-auto" style="max-width: 520px;">
         Ein Workshop zum Erstellen eigener Web-Projekte mit KI-Unterstützung –
         von der Idee bis zum Release, ganz ohne Programmierkenntnisse.
       </p>
     </div>
+  </div>
+
+  <main class="container-fluid py-3" style="max-width: 900px; margin: 0 auto;">
 
     <!-- Workshop -->
     <div class="card mb-4" id="workshop">
