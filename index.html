@@ -272,8 +272,8 @@
         <i class="fas fa-code me-1"></i> Vibecoding Academy
       </a>
       <div class="d-flex align-items-center gap-1">
-        <a class="navbar-link active" href="#ueber">Über uns</a>
-        <a class="navbar-link" href="#projekte">Projekte</a>
+        <a class="navbar-link active" href="#workshop">Workshop</a>
+        <a class="navbar-link" href="#ergebnisse">Ergebnisse</a>
         <a class="navbar-link" href="#ideen">Ideen</a>
         <a class="navbar-link" href="https://github.com/Fauteck/vibecoding-academy" target="_blank" rel="noopener">
           <i class="fab fa-github me-1"></i> GitHub
@@ -307,22 +307,14 @@
     </div>
     <div class="offcanvas-body p-0">
       <div class="list-group list-group-flush">
-        <a href="#ueber" class="list-group-item list-group-item-action" data-bs-dismiss="offcanvas">
+        <a href="#workshop" class="list-group-item list-group-item-action" data-bs-dismiss="offcanvas">
           <i class="fas fa-info-circle me-2"></i> Über den Workshop
         </a>
-        <a href="#projekte" class="list-group-item list-group-item-action" data-bs-dismiss="offcanvas">
-          <i class="fas fa-rocket me-2"></i> Projekte
+        <a href="#ergebnisse" class="list-group-item list-group-item-action" data-bs-dismiss="offcanvas">
+          <i class="fas fa-rocket me-2"></i> Ergebnisse
         </a>
         <a href="#ideen" class="list-group-item list-group-item-action" data-bs-dismiss="offcanvas">
           <i class="fas fa-lightbulb me-2"></i> Ideen &amp; Konzepte
-        </a>
-        <a href="https://media.rtl.com/sonstiges/intern/kurzinfo" target="_blank" rel="noopener"
-           class="list-group-item list-group-item-action">
-          <i class="fas fa-external-link-alt me-2"></i> media.rtl.com – Kurzinfo
-        </a>
-        <a href="https://mediahub.fauteck.eu/" target="_blank" rel="noopener"
-           class="list-group-item list-group-item-action">
-          <i class="fas fa-external-link-alt me-2"></i> mediahub.fauteck.eu
         </a>
         <a href="https://github.com/Fauteck/vibecoding-academy" target="_blank" rel="noopener"
            class="list-group-item list-group-item-action">
@@ -346,46 +338,38 @@
       </p>
     </div>
 
-    <!-- Ueber den Workshop -->
-    <div class="card mb-4" id="ueber">
+    <!-- Workshop -->
+    <div class="card mb-4" id="workshop">
       <div class="card-header">
-        <i class="fas fa-info-circle me-2" style="color: var(--primary-color);"></i>Über den Workshop
+        <i class="fas fa-info-circle me-2" style="color: var(--primary-color);"></i>Workshop
       </div>
       <div class="card-body">
         <p>
-          In diesem Workshop können wir uns gerne einmal zum Vibecoding austauschen.
+          <strong>Vibecoding</strong> bedeutet: Du beschreibst in natürlicher Sprache, was du haben möchtest –
+          und eine KI schreibt den Code dafür. Programmierkenntnisse brauchst du dafür nicht.
         </p>
         <p>
-          Zuletzt hatte ich für die Media-Hub-Weiterentwicklung diese Prototypen mit der KI bauen lassen:
+          In diesem Workshop spielen wir den kompletten Weg von der Idee bis zur fertigen Web-Anwendung gemeinsam durch.
+          Anhand konkreter Beispiele zeigen wir, wie Vibecoding in der Praxis funktioniert – von der Konzepterstellung
+          über die digitale Infrastruktur bis hin zum Release.
         </p>
-        <div class="d-flex flex-wrap gap-2 mt-2">
-          <a href="https://media.rtl.com/sonstiges/intern/kurzinfo" target="_blank" rel="noopener"
-             class="btn btn-outline-primary btn-sm">
-            <i class="fas fa-external-link-alt me-1"></i> media.rtl.com – Kurzinfo
-          </a>
-          <a href="https://mediahub.fauteck.eu/" target="_blank" rel="noopener"
-             class="btn btn-outline-primary btn-sm">
-            <i class="fas fa-external-link-alt me-1"></i> mediahub.fauteck.eu
-          </a>
-        </div>
-      </div>
-    </div>
 
-    <!-- Was wir machen -->
-    <div class="card mb-4">
-      <div class="card-header">
-        <i class="fas fa-lightbulb me-2" style="color: var(--primary-color);"></i>Was wir machen
-      </div>
-      <div class="card-body">
-        <p>
-          Auch privat habe ich mir ein paar Web-Anwendungen bauen lassen, sodass ich euch gerne ein bisschen durch den
-          Entstehungsprozess ohne größere eigene Coding Skills mitnehme.
+        <!-- Ablauf -->
+        <div class="fw-bold small text-muted mb-1 mt-3">
+          <i class="fas fa-cogs me-1"></i>Ablauf
+        </div>
+        <p class="small">
+          Wir starten mit fertigen Beispiel-Anwendungen und schauen uns an, wie diese entstanden sind.
+          Danach kann jeder selbst eine kleine Anwendung mit der KI umsetzen.
+          Da das Coding der KI etwas dauern kann, lassen wir mehrere Projekte parallel laufen –
+          die Ergebnisse werden im Nachgang als Links bereitgestellt.
         </p>
 
         <!-- Beispiel-Anwendungen -->
-        <div class="rounded-3 p-3 mb-3 mt-3" style="background: var(--bg-page); border: 1px solid var(--border-color);">
+        <div class="rounded-3 p-3 mb-3" style="background: var(--bg-page); border: 1px solid var(--border-color);">
           <div class="fw-bold small text-muted mb-2">
             <i class="fas fa-th-large me-1"></i>Beispiel-Anwendungen
+            <span class="fw-normal text-muted">(nicht verlinkt)</span>
           </div>
           <div class="d-flex flex-wrap gap-2">
             <span class="btn btn-outline-primary btn-sm">
@@ -409,22 +393,28 @@
             <i class="fas fa-hand-point-right me-1"></i>Mitmachen
           </div>
           <p class="mb-0 small">
-            Wer dabei sein möchte, kann gerne eine Idee mitbringen, welches kleine Web-UI-Game
-            (Tetris, Minesweeper etc.) oder welche Anwendung (To-Do-Liste, Notizen-App etc.) ihr testweise coden lassen wollt.
+            Bring gerne eine eigene Idee mit: Welches kleine Web-Game (Tetris, Minesweeper, Snake etc.)
+            oder welche Anwendung (To-Do-Liste, Notizen-App etc.) soll die KI für dich bauen?
           </p>
         </div>
 
-        <!-- Ablauf -->
-        <div class="rounded-3 p-3" style="background: var(--bg-page); border: 1px solid var(--border-color);">
+        <!-- Ergebnisse -->
+        <div class="rounded-3 p-3 mb-3" style="background: var(--bg-page); border: 1px solid var(--border-color);">
           <div class="fw-bold small text-muted mb-1">
-            <i class="fas fa-cogs me-1"></i>Ablauf
+            <i class="fas fa-rocket me-1"></i>Ergebnisse
           </div>
           <p class="mb-0 small">
-            Das Coding der KI dauert im Zweifel etwas, sodass wir das parallel laufen lassen können – ich werde euch
-            die Ergebnisse im Nachgang als Links zur Verfügung stellen. Anhand der Beispiele spielen wir einmal durch,
-            womit und auf welchem Weg Vibecoding von der Konzepterstellung für einen KI-Dev über den Aufbau der digitalen
-            Infrastruktur bis hin zum Release- und Issue-Management gut funktioniert.
-            Detailfragen ergeben sich dann sicher für den anschließenden Austausch von alleine.
+            Fertige Projekte aus dem Workshop findest du im Bereich <a href="#ergebnisse">Ergebnisse</a>.
+          </p>
+        </div>
+
+        <!-- Ideen & Konzepte -->
+        <div class="rounded-3 p-3" style="background: var(--bg-page); border: 1px solid var(--border-color);">
+          <div class="fw-bold small text-muted mb-1">
+            <i class="fas fa-lightbulb me-1"></i>Ideen &amp; Konzepte
+          </div>
+          <p class="mb-0 small">
+            Konzepte und Spielideen, die als Vorlage dienen können, findest du unter <a href="#ideen">Ideen &amp; Konzepte</a>.
           </p>
         </div>
       </div>
@@ -552,11 +542,16 @@
   <!-- ══════════════════════════════════════════════════════ -->
   <footer class="footer mt-5 text-center">
     <div class="container">
-      <p class="mb-0">
+      <p class="mb-1">Niklas Fauteck 2026</p>
+      <p class="mb-1 small">ki [at] fauteck.eu</p>
+      <div class="d-flex justify-content-center gap-3">
         <a href="https://github.com/Fauteck/vibecoding-academy" target="_blank" rel="noopener">
-          <i class="fab fa-github me-1"></i>Vibecoding Academy 2026
+          <i class="fab fa-github me-1"></i>GitHub
         </a>
-      </p>
+        <a href="https://www.linkedin.com/in/fauteck" target="_blank" rel="noopener">
+          <i class="fab fa-linkedin me-1"></i>LinkedIn
+        </a>
+      </div>
     </div>
   </footer>
 
@@ -564,13 +559,13 @@
   <!--  Mobile Bottom Navigation (<=992px)                   -->
   <!-- ══════════════════════════════════════════════════════ -->
   <nav class="bottom-nav d-lg-none">
-    <a class="bottom-nav-item active" href="#ueber">
+    <a class="bottom-nav-item active" href="#workshop">
       <i class="fas fa-info-circle"></i>
-      <span>Über uns</span>
+      <span>Workshop</span>
     </a>
-    <a class="bottom-nav-item" href="#projekte">
+    <a class="bottom-nav-item" href="#ergebnisse">
       <i class="fas fa-rocket"></i>
-      <span>Projekte</span>
+      <span>Ergebnisse</span>
     </a>
     <a class="bottom-nav-item" href="#ideen">
       <i class="fas fa-lightbulb"></i>
