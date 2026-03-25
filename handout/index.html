@@ -64,7 +64,7 @@
   <div id="content">
 
     <h1>Handout: Vibe-Coding Academy</h1>
-    <p class="subtitle">Vibecoding &amp; Hosting -- Wissen kompakt fuer den Workshop</p>
+    <p class="subtitle">Vibecoding &amp; Hosting -- Wissen kompakt für den Workshop</p>
 
     <nav class="toc">
       <div class="toc-title">Inhalt</div>
@@ -76,11 +76,17 @@
         <li><a href="#staerken">Was Vibe-Coding besonders gut kann</a></li>
         <li><a href="#nutzen-projekt">Nutzen im Projektkontext</a></li>
         <li><a href="#grenzen">Was dieser Workshop nicht leisten soll</a></li>
-        <li><a href="#haltung">Gute Haltung fuer den Einstieg</a></li>
+        <li><a href="#haltung">Gute Haltung für den Einstieg</a></li>
         <li><a href="#idee-strukturieren">Praktischer Tipp: Idee erst strukturieren</a></li>
-        <li><a href="#erfolgsfaktoren">Erfolgsfaktoren fuer gutes Vibe-Coding</a></li>
+        <li><a href="#erfolgsfaktoren">Erfolgsfaktoren für gutes Vibe-Coding</a></li>
         <li><a href="#fazit">Fazit</a></li>
-        <li><a href="#hosting">Hosting-Anleitung</a></li>
+        <li><a href="#hosting">Hosting-Anleitung</a>
+          <ol>
+            <li><a href="#hosting-lokal">Lokale Ergebnisse mit Claude Code</a></li>
+            <li><a href="#hosting-github">Für Fortgeschrittene: GitHub Pages</a></li>
+            <li><a href="#hosting-docker">Self-Hosting mit Docker</a></li>
+          </ol>
+        </li>
       </ol>
     </nav>
 
@@ -88,16 +94,16 @@
 
     <h2 id="worum-es-geht">Worum es in diesem Workshop geht</h2>
 
-    <p>Die Vibe-Coding Academy soll zeigen, <strong>was mit KI-gestuetzter Entwicklung heute schon moeglich ist</strong> -- und wie niedrig die Einstiegshuerde dabei sein kann.</p>
+    <p>Die Vibe-Coding Academy soll zeigen, <strong>was mit KI-gestützter Entwicklung heute schon möglich ist</strong> -- und wie niedrig die Einstiegshürde dabei sein kann.</p>
 
-    <p>Es geht <strong>nicht</strong> darum, in kurzer Zeit ein vollstaendig ausgereiftes, produktiv einsetzbares Unternehmens-Tool zu bauen. Stattdessen geht es um:</p>
+    <p>Es geht <strong>nicht</strong> darum, in kurzer Zeit ein vollständig ausgereiftes, produktiv einsetzbares Unternehmens-Tool zu bauen. Stattdessen geht es um:</p>
 
     <ul>
       <li>Neugier und Ausprobieren</li>
-      <li>Kreativitaet bei der Ideenentwicklung</li>
+      <li>Kreativität bei der Ideenentwicklung</li>
       <li>schnelles Prototyping</li>
       <li>iteratives Verbessern</li>
-      <li>ein besseres Verstaendnis dafuer, wie man mit KI zusammenarbeitet</li>
+      <li>ein besseres Verständnis dafür, wie man mit KI zusammenarbeitet</li>
     </ul>
 
     <div class="highlight-box highlight-green">
@@ -110,22 +116,22 @@
 
     <h2 id="was-vibecoding-ausmacht">Was Vibe-Coding ausmacht</h2>
 
-    <p>Vibe-Coding bedeutet, mit einer KI gemeinsam Anwendungen, Prototypen oder Klickdummys zu entwickeln -- oft in natuerlicher Sprache statt ueber klassischen Code von Grund auf.</p>
+    <p>Vibe-Coding bedeutet, mit einer KI gemeinsam Anwendungen, Prototypen oder Klickdummys zu entwickeln -- oft in natürlicher Sprache statt über klassischen Code von Grund auf.</p>
 
-    <p>Der Schluessel ist dabei nicht nur Technik, sondern vor allem:</p>
+    <p>Der Schlüssel ist dabei nicht nur Technik, sondern vor allem:</p>
 
     <ul>
-      <li><strong>Kreativitaet</strong></li>
+      <li><strong>Kreativität</strong></li>
       <li><strong>klare Kommunikation</strong></li>
       <li><strong>Bereitschaft zur Iteration</strong></li>
     </ul>
 
-    <p>Man muss also nicht zwingend selbst programmieren koennen, um etwas zu erschaffen. Hilfreich ist es aber, wenn man:</p>
+    <p>Man muss also nicht zwingend selbst programmieren können, um etwas zu erschaffen. Hilfreich ist es aber, wenn man:</p>
 
     <ul>
       <li>digitale Infrastruktur grob versteht,</li>
       <li>bestehende Logiken nachvollziehen kann,</li>
-      <li>und bei Bedarf einfachen Code zumindest ansatzweise lesen oder pruefen kann.</li>
+      <li>und bei Bedarf einfachen Code zumindest ansatzweise lesen oder prüfen kann.</li>
     </ul>
 
     <h3>Die wichtigste Erkenntnis</h3>
@@ -135,8 +141,8 @@
       <p>Was man allerdings braucht:</p>
       <ul>
         <li>eine Idee,</li>
-        <li>die Faehigkeit, diese Idee zu beschreiben,</li>
-        <li>und die Bereitschaft, der KI Rueckmeldung zu geben.</li>
+        <li>die Fähigkeit, diese Idee zu beschreiben,</li>
+        <li>und die Bereitschaft, der KI Rückmeldung zu geben.</li>
       </ul>
     </div>
 
@@ -151,11 +157,11 @@
     <p>Das bedeutet:</p>
 
     <ul>
-      <li>Anforderungen moeglichst klar formulieren</li>
+      <li>Anforderungen möglichst klar formulieren</li>
       <li>Kontext mitgeben</li>
       <li>Erwartungen konkret benennen</li>
-      <li>Rueckfragen zulassen</li>
-      <li>Ergebnisse pruefen und nachschaerfen</li>
+      <li>Rückfragen zulassen</li>
+      <li>Ergebnisse prüfen und nachschärfen</li>
     </ul>
 
     <p>Je klarer die Aufgabe beschrieben ist, desto besser wird das Ergebnis.</p>
@@ -168,7 +174,7 @@
 
     <h2 id="iterativ">Iterativ statt perfekt von Anfang an</h2>
 
-    <p>Anders als im klassischen Projekt-, Produkt- oder Anforderungsmanagement muss beim Vibe-Coding <strong>nicht jeder Schritt von Anfang an vollstaendig durchpriorisiert und bis ins letzte Detail ausdefiniert</strong> sein.</p>
+    <p>Anders als im klassischen Projekt-, Produkt- oder Anforderungsmanagement muss beim Vibe-Coding <strong>nicht jeder Schritt von Anfang an vollständig durchpriorisiert und bis ins letzte Detail ausdefiniert</strong> sein.</p>
 
     <p>Oft ist es sinnvoller, mit einem ersten Aufschlag zu starten:</p>
 
@@ -176,22 +182,22 @@
       <li>Idee grob beschreiben</li>
       <li>ersten Prototyp oder ersten Entwurf erzeugen lassen</li>
       <li>anschauen, bewerten, testen</li>
-      <li>Rueckmeldung geben</li>
+      <li>Rückmeldung geben</li>
       <li>iterativ verbessern</li>
     </ol>
 
-    <p>Typische Rueckmeldungen an die KI sind zum Beispiel:</p>
+    <p>Typische Rückmeldungen an die KI sind zum Beispiel:</p>
 
     <ul>
       <li>&bdquo;Den Button wollte ich anders haben.&ldquo;</li>
       <li>&bdquo;Das Dropdown soll sich anders verhalten.&ldquo;</li>
       <li>&bdquo;Hier fehlt noch ein Schritt.&ldquo;</li>
       <li>&bdquo;Der Ablauf ist noch nicht intuitiv genug.&ldquo;</li>
-      <li>&bdquo;Bitte ergaenze noch einen alternativen Nutzerpfad.&ldquo;</li>
+      <li>&bdquo;Bitte ergänze noch einen alternativen Nutzerpfad.&ldquo;</li>
     </ul>
 
     <div class="highlight-box highlight-green">
-      <p><strong>Gerade diese iterative Arbeitsweise ist eine der groessten Staerken von Vibe-Coding.</strong></p>
+      <p><strong>Gerade diese iterative Arbeitsweise ist eine der größten Stärken von Vibe-Coding.</strong></p>
     </div>
 
     <hr>
@@ -204,15 +210,15 @@
 
     <ul>
       <li>Ideen schnell sichtbar zu machen</li>
-      <li>theoretische Anforderungen in Prototypen zu uebersetzen</li>
-      <li>Klickdummys fuer Stakeholder zu bauen</li>
+      <li>theoretische Anforderungen in Prototypen zu übersetzen</li>
+      <li>Klickdummys für Stakeholder zu bauen</li>
       <li>erste Funktionsideen erlebbar zu machen</li>
       <li>Anforderungen anschaulich mit anderen abzugleichen</li>
     </ul>
 
-    <p>Ein grosser Vorteil: Dinge, die in einem schriftlichen Konzept oft noch abstrakt bleiben, werden im Prototypen viel greifbarer.</p>
+    <p>Ein großer Vorteil: Dinge, die in einem schriftlichen Konzept oft noch abstrakt bleiben, werden im Prototypen viel greifbarer.</p>
 
-    <p>Zum Beispiel laesst sich oft erst im Ausprobieren wirklich beurteilen:</p>
+    <p>Zum Beispiel lässt sich oft erst im Ausprobieren wirklich beurteilen:</p>
 
     <ul>
       <li>wie sich ein Button verhalten soll,</li>
@@ -232,25 +238,25 @@
     <p>Er kann helfen als:</p>
 
     <ul>
-      <li>Gespraechsgrundlage mit Stakeholdern</li>
-      <li>visuelle Ergaenzung zu Fachkonzepten</li>
-      <li>Diskussionsbasis fuer Anforderungen</li>
-      <li>Anschauungsmaterial fuer Entwicklerinnen und Entwickler</li>
+      <li>Gesprächsgrundlage mit Stakeholdern</li>
+      <li>visuelle Ergänzung zu Fachkonzepten</li>
+      <li>Diskussionsbasis für Anforderungen</li>
+      <li>Anschauungsmaterial für Entwicklerinnen und Entwickler</li>
     </ul>
 
-    <p>So erhalten Entwicklerteams nicht nur ein schriftliches Konzept, sondern auch eine grobe, visuelle Vorstellung davon, <strong>wie ein Feature gedacht ist und wie sich Details verhalten koennten</strong>.</p>
+    <p>So erhalten Entwicklerteams nicht nur ein schriftliches Konzept, sondern auch eine grobe, visuelle Vorstellung davon, <strong>wie ein Feature gedacht ist und wie sich Details verhalten könnten</strong>.</p>
 
-    <p>Das ersetzt keine saubere technische Konzeption -- kann aber das gemeinsame Verstaendnis deutlich verbessern.</p>
+    <p>Das ersetzt keine saubere technische Konzeption -- kann aber das gemeinsame Verständnis deutlich verbessern.</p>
 
     <hr>
 
     <!-- ───────────────────────────────────────────── -->
 
-    <h2 id="grenzen">Was dieser Workshop ausdruecklich nicht leisten soll</h2>
+    <h2 id="grenzen">Was dieser Workshop ausdrücklich nicht leisten soll</h2>
 
-    <p>Der Workshop zielt <strong>nicht</strong> darauf ab, am Ende ein produktionsreifes Tool fuer den Unternehmenseinsatz zu bauen.</p>
+    <p>Der Workshop zielt <strong>nicht</strong> darauf ab, am Ende ein produktionsreifes Tool für den Unternehmenseinsatz zu bauen.</p>
 
-    <p>Denn dafuer muessten zusaetzlich viele weitere Fragen geklaert werden, zum Beispiel:</p>
+    <p>Denn dafür müssten zusätzlich viele weitere Fragen geklärt werden, zum Beispiel:</p>
 
     <ul>
       <li>Datenschutz</li>
@@ -263,28 +269,28 @@
     </ul>
 
     <div class="highlight-box highlight-yellow">
-      <p>Der Fokus des Workshops liegt daher bewusst auf dem <strong>Erkunden von Moeglichkeiten</strong> -- nicht auf der finalen Produktivsetzung.</p>
+      <p>Der Fokus des Workshops liegt daher bewusst auf dem <strong>Erkunden von Möglichkeiten</strong> -- nicht auf der finalen Produktivsetzung.</p>
     </div>
 
     <hr>
 
     <!-- ───────────────────────────────────────────── -->
 
-    <h2 id="haltung">Gute Haltung fuer den Einstieg</h2>
+    <h2 id="haltung">Gute Haltung für den Einstieg</h2>
 
-    <p>Wer mit Vibe-Coding starten moechte, braucht vor allem:</p>
+    <p>Wer mit Vibe-Coding starten möchte, braucht vor allem:</p>
 
     <ul>
       <li>Neugier</li>
       <li>Mut zum Ausprobieren</li>
-      <li>Kreativitaet</li>
-      <li>Offenheit fuer Zwischenschritte</li>
+      <li>Kreativität</li>
+      <li>Offenheit für Zwischenschritte</li>
     </ul>
 
-    <p>Es reicht voellig, mit einer groben Idee zu starten und einfach zu schauen:</p>
+    <p>Es reicht völlig, mit einer groben Idee zu starten und einfach zu schauen:</p>
 
     <div class="highlight-box highlight-blue">
-      <p><strong>&bdquo;Was passiert, wenn ich diese Anforderung mal an eine KI uebergebe?&ldquo;</strong></p>
+      <p><strong>&bdquo;Was passiert, wenn ich diese Anforderung mal an eine KI übergebe?&ldquo;</strong></p>
       <p>Genau daraus entstehen oft die besten Aha-Momente.</p>
     </div>
 
@@ -294,13 +300,13 @@
 
     <h2 id="idee-strukturieren">Praktischer Tipp: Idee erst strukturieren lassen</h2>
 
-    <p>Ein sehr nuetzlicher Ansatz ist, <strong>nicht sofort mit dem Coding zu beginnen</strong>, sondern die Idee zunaechst mit einer KI zu strukturieren.</p>
+    <p>Ein sehr nützlicher Ansatz ist, <strong>nicht sofort mit dem Coding zu beginnen</strong>, sondern die Idee zunächst mit einer KI zu strukturieren.</p>
 
     <p>Zum Beispiel so:</p>
 
     <ul>
       <li>Idee als Sprachnachricht oder freies Brainstorming festhalten</li>
-      <li>einfach 5 bis 10 Minuten &bdquo;drauflos erzaehlen&ldquo;</li>
+      <li>einfach 5 bis 10 Minuten &bdquo;drauflos erzählen&ldquo;</li>
       <li>die KI bitten, daraus ein strukturiertes Konzept zu machen</li>
     </ul>
 
@@ -310,39 +316,39 @@
       <li>Gedanken ordnet</li>
       <li>Anforderungen strukturiert zusammenfasst</li>
       <li>offene Punkte identifiziert</li>
-      <li>Rueckfragen zu Missverstaendnissen stellt</li>
+      <li>Rückfragen zu Missverständnissen stellt</li>
       <li>fehlende Aspekte sichtbar macht</li>
-      <li>eigene Ideen und Ergaenzungen einbringt</li>
+      <li>eigene Ideen und Ergänzungen einbringt</li>
     </ul>
 
-    <p>So entsteht eine deutlich bessere Ausgangsbasis fuer das eigentliche Vibe-Coding.</p>
+    <p>So entsteht eine deutlich bessere Ausgangsbasis für das eigentliche Vibe-Coding.</p>
 
-    <h3>Beispiel fuer einen sinnvollen Prompt an eine KI</h3>
+    <h3>Beispiel für einen sinnvollen Prompt an eine KI</h3>
 
     <blockquote>
-      <p>Ich schildere dir jetzt frei eine Idee fuer ein digitales Tool. Bitte strukturiere meine Gedanken, fasse die Anforderungen uebersichtlich zusammen, markiere offene Punkte und moegliche Missverstaendnisse und stelle mir Rueckfragen. Ergaenze ausserdem eigene Vorschlaege fuer sinnvolle Funktionen oder Aspekte, an die ich vielleicht noch nicht gedacht habe.</p>
+      <p>Ich schildere dir jetzt frei eine Idee für ein digitales Tool. Bitte strukturiere meine Gedanken, fasse die Anforderungen übersichtlich zusammen, markiere offene Punkte und mögliche Missverständnisse und stelle mir Rückfragen. Ergänze außerdem eigene Vorschläge für sinnvolle Funktionen oder Aspekte, an die ich vielleicht noch nicht gedacht habe.</p>
     </blockquote>
 
     <hr>
 
     <!-- ───────────────────────────────────────────── -->
 
-    <h2 id="erfolgsfaktoren">Erfolgsfaktoren fuer gutes Vibe-Coding</h2>
+    <h2 id="erfolgsfaktoren">Erfolgsfaktoren für gutes Vibe-Coding</h2>
 
     <h3>1. Klar formulieren</h3>
-    <p>Beschreibe Ziel, Nutzergruppe, gewuenschten Ablauf und Funktionsumfang moeglichst konkret.</p>
+    <p>Beschreibe Ziel, Nutzergruppe, gewünschten Ablauf und Funktionsumfang möglichst konkret.</p>
 
     <h3>2. Nicht auf Perfektion beim ersten Versuch warten</h3>
-    <p>Ein erster Entwurf darf unvollstaendig sein.</p>
+    <p>Ein erster Entwurf darf unvollständig sein.</p>
 
     <h3>3. Iterativ arbeiten</h3>
-    <p>Gib Feedback, korrigiere, ergaenze, schaerfe nach.</p>
+    <p>Gib Feedback, korrigiere, ergänze, schärfe nach.</p>
 
     <h3>4. Visualisierung nutzen</h3>
     <p>Ein Prototyp zeigt oft besser als ein Text, wie etwas gemeint ist.</p>
 
     <h3>5. Die KI mitdenken lassen</h3>
-    <p>Bitte die KI aktiv um Rueckfragen, Verbesserungsvorschlaege und alternative Ideen.</p>
+    <p>Bitte die KI aktiv um Rückfragen, Verbesserungsvorschläge und alternative Ideen.</p>
 
     <h3>6. Ergebnisse realistisch einordnen</h3>
     <p>Ein guter Prototyp ist noch kein produktionsreifes Produkt.</p>
@@ -353,7 +359,7 @@
 
     <h2 id="fazit">Fazit</h2>
 
-    <p>Vibe-Coding macht Entwicklung zugaenglicher, schneller und kreativer.</p>
+    <p>Vibe-Coding macht Entwicklung zugänglicher, schneller und kreativer.</p>
 
     <p>Es ist besonders wertvoll, um:</p>
 
@@ -361,7 +367,7 @@
       <li>Ideen schnell zu testen,</li>
       <li>Konzepte sichtbar zu machen,</li>
       <li>Anforderungen zu konkretisieren,</li>
-      <li>und mit wenig Einstiegshuerde erste digitale Loesungen zu entwerfen.</li>
+      <li>und mit wenig Einstiegshürde erste digitale Lösungen zu entwerfen.</li>
     </ul>
 
     <p>Wer neugierig ist, klar kommuniziert und bereit ist, iterativ zu arbeiten, kann mit KI erstaunlich weit kommen -- auch ohne klassische Coding-Erfahrung.</p>
@@ -378,74 +384,81 @@
     <!-- ═══════════════════════════════════════════════ -->
 
     <h1 id="hosting">Hosting-Anleitung</h1>
-    <p class="subtitle">Schritt-fuer-Schritt-Anleitung zum Hosten einer statischen Vibecoding-Website.<br>Zielgruppe: Workshop-Teilnehmer ohne Vorkenntnisse.</p>
+    <p class="subtitle">Schritt-für-Schritt-Anleitung: Vom lokalen Ergebnis bis zur eigenen Website.<br>Zielgruppe: Workshop-Teilnehmer ohne Vorkenntnisse.</p>
 
-    <h2>Ueberblick</h2>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Eigenschaft</th>
-          <th>GitHub Pages</th>
-          <th>Docker Container</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Schwierigkeit</td>
-          <td>Sehr einfach</td>
-          <td>Einfach</td>
-        </tr>
-        <tr>
-          <td>Kosten</td>
-          <td>Kostenlos</td>
-          <td>Kostenlos</td>
-        </tr>
-        <tr>
-          <td>Voraussetzung</td>
-          <td>GitHub-Konto</td>
-          <td>Docker installiert</td>
-        </tr>
-        <tr>
-          <td>URL</td>
-          <td><code>https://&lt;user&gt;.github.io/&lt;repo&gt;/</code></td>
-          <td><code>http://localhost:8080</code></td>
-        </tr>
-        <tr>
-          <td>Geeignet fuer</td>
-          <td>Oeffentliche Seiten</td>
-          <td>Lokale Vorschau, Self-Hosting</td>
-        </tr>
-      </tbody>
-    </table>
+    <p>Diese Anleitung zeigt drei Wege, wie du dein Vibe-Coding-Projekt nutzen und zugänglich machen kannst -- vom einfachsten Einstieg bis hin zu fortgeschrittenen Optionen.</p>
 
     <hr>
 
     <!-- ───────────────────────────────────────────── -->
 
-    <h2>Option 1: GitHub Pages</h2>
+    <h2 id="hosting-lokal">Lokale Ergebnisse mit Claude Code</h2>
+
+    <p>Der einfachste Weg, um mit Vibe-Coding loszulegen: <strong>Claude Code liefert dir die fertigen Dateien direkt in einen Ordner auf deinem Computer.</strong></p>
+
+    <p>So funktioniert es:</p>
 
     <ol>
-      <li><strong>Repository erstellen</strong> -- eigenes Repository auf GitHub anlegen oder ein bestehendes forken</li>
-      <li><strong>HTML-Dateien pushen</strong> -- <code>index.html</code> und alle Projektdateien in den <code>main</code>-Branch pushen</li>
-      <li><strong>Pages aktivieren</strong> -- im Repository unter <strong>Settings &gt; Pages</strong> den Branch <code>main</code> und Ordner <code>/ (root)</code> auswaehlen, dann speichern</li>
+      <li><strong>Ordner anlegen</strong> -- erstelle auf deinem Desktop (oder an einem beliebigen Ort) einen neuen Ordner, z.&nbsp;B. <code>mein-projekt</code></li>
+      <li><strong>Claude Code öffnen</strong> -- starte Claude Code und wähle diesen Ordner als Arbeitsverzeichnis</li>
+      <li><strong>Idee beschreiben</strong> -- sage Claude Code, was du bauen möchtest. Die KI erstellt die nötigen Dateien (HTML, CSS, JavaScript) direkt in deinem Ordner</li>
+      <li><strong>Im Browser öffnen</strong> -- öffne die Datei <code>index.html</code> aus deinem Ordner per Doppelklick oder über <em>Datei &gt; Öffnen</em> in deinem Browser</li>
+    </ol>
+
+    <div class="highlight-box highlight-green">
+      <p><strong>Das ist der schnellste Weg, um deine Ergebnisse zu sehen.</strong> Du brauchst keinen Server, kein Konto und keine zusätzliche Software -- nur Claude Code und einen Browser.</p>
+    </div>
+
+    <p>Dein Projekt liegt dabei nur auf deinem eigenen Computer. Wenn du es mit anderen teilen oder im Internet zugänglich machen möchtest, lies weiter.</p>
+
+    <hr>
+
+    <!-- ───────────────────────────────────────────── -->
+
+    <h2 id="hosting-github">Für Fortgeschrittene: GitHub Pages</h2>
+
+    <div class="highlight-box highlight-blue">
+      <p><strong>Was ist GitHub?</strong></p>
+      <p>GitHub ist eine Plattform im Internet, auf der man Code-Projekte speichern und mit anderen teilen kann -- ähnlich wie eine Cloud-Ablage, aber speziell für Quellcode. Du brauchst dafür ein kostenloses Konto unter <a href="https://github.com" target="_blank" rel="noopener">github.com</a>.</p>
+    </div>
+
+    <p>Claude Code kann direkt mit GitHub verbunden werden. So werden deine Dateien nicht nur lokal gespeichert, sondern auch auf GitHub hochgeladen. Für kleine, öffentlich zugängliche Projekte bietet GitHub mit <strong>GitHub Pages</strong> sogar kostenloses Hosting -- deine Seite bekommt eine eigene Internetadresse.</p>
+
+    <h3>Schritt-für-Schritt-Anleitung</h3>
+
+    <ol>
+      <li><strong>GitHub-Konto erstellen</strong> -- registriere dich kostenlos auf <a href="https://github.com" target="_blank" rel="noopener">github.com</a></li>
+      <li><strong>Repository erstellen</strong> -- lege ein neues Projekt (Repository) auf GitHub an</li>
+      <li><strong>Claude Code mit GitHub verbinden</strong> -- Claude Code kann deine Dateien direkt in das Repository hochladen</li>
+      <li><strong>Pages aktivieren</strong> -- im Repository unter <strong>Settings &gt; Pages</strong> den Branch <code>main</code> und Ordner <code>/ (root)</code> auswählen, dann speichern</li>
       <li><strong>Fertig</strong> -- die Seite ist nach ca. 1-2 Minuten unter <code>https://&lt;benutzername&gt;.github.io/&lt;repository-name&gt;/</code> erreichbar</li>
     </ol>
 
     <div class="highlight-box highlight-green">
-      <p>Aenderungen, die auf <code>main</code> gepusht werden, werden automatisch veroeffentlicht.</p>
+      <p>Änderungen, die auf <code>main</code> hochgeladen werden, werden automatisch veröffentlicht.</p>
     </div>
+
+    <h3>Hinweis: Basispfade</h3>
+
+    <p>GitHub Pages liefert die Seite unter einem Unterpfad aus (z.&nbsp;B. <code>/vibecoding-academy/</code>). Wenn du die Seite lokal öffnest, liegt sie dagegen direkt unter <code>/</code>. Relative Links müssen ggf. angepasst werden.</p>
 
     <hr>
 
     <!-- ───────────────────────────────────────────── -->
 
-    <h2>Option 2: Docker Container</h2>
+    <h2 id="hosting-docker">Self-Hosting mit Docker</h2>
+
+    <div class="highlight-box highlight-blue">
+      <p><strong>Was ist Docker?</strong></p>
+      <p>Docker ist ein Werkzeug, das eine Anwendung mitsamt allem, was sie braucht, in einen tragbaren &bdquo;Container&ldquo; verpackt. Stell dir das wie einen kleinen, eigenständigen Mini-Computer vor, der deine Website ausliefert. Du installierst Docker einmal auf deinem Rechner, und danach reicht ein einziger Befehl, um deine Seite zu starten.</p>
+    </div>
+
+    <p>Docker eignet sich, wenn du deine Seite auf einem eigenen Server betreiben oder lokal in einer professionellen Umgebung testen möchtest.</p>
 
     <h3>Voraussetzung</h3>
     <p>Docker muss installiert sein: <a href="https://docs.docker.com/get-docker/" target="_blank" rel="noopener">https://docs.docker.com/get-docker/</a></p>
 
-    <h3>Variante A: Mit Dockerfile (empfohlen fuer eigene Images)</h3>
+    <h3>Variante A: Mit Dockerfile (empfohlen für eigene Images)</h3>
 
     <p><strong>1. Dockerfile im Projektordner erstellen:</strong></p>
 
@@ -458,7 +471,7 @@ EXPOSE 80</code></pre>
     <pre><code>docker build -t vibecoding-academy .
 docker run -d -p 8080:80 vibecoding-academy</code></pre>
 
-    <p><strong>3. Im Browser oeffnen:</strong> <code>http://localhost:8080</code></p>
+    <p><strong>3. Im Browser öffnen:</strong> <code>http://localhost:8080</code></p>
 
     <p><strong>4. Container stoppen:</strong></p>
 
@@ -467,44 +480,15 @@ docker stop &lt;container-id&gt;       # Container stoppen</code></pre>
 
     <h3>Variante B: Ohne Dockerfile (schnelle lokale Vorschau)</h3>
 
-    <p>Im Projektordner ausfuehren:</p>
+    <p>Im Projektordner ausführen:</p>
 
     <pre><code>docker run -d -p 8080:80 -v $(pwd):/usr/share/nginx/html:ro nginx:alpine</code></pre>
 
     <p>Dieser Befehl startet einen nginx-Container und bindet den aktuellen Ordner direkt ein -- ohne etwas zu bauen.</p>
 
-    <hr>
-
     <!-- ───────────────────────────────────────────── -->
 
-    <h2>Hinweis: Basispfade</h2>
-
-    <p>GitHub Pages liefert die Seite unter einem Unterpfad aus (z.&nbsp;B. <code>/vibecoding-academy/</code>), Docker dagegen direkt unter <code>/</code>. Wenn relative Links verwendet werden, muessen diese ggf. angepasst werden.</p>
-
-    <p><strong>Beispiel:</strong></p>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Kontext</th>
-          <th>Pfad zu einer Unterseite</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>GitHub Pages</td>
-          <td><code>/vibecoding-academy/pong/index.html</code></td>
-        </tr>
-        <tr>
-          <td>Docker</td>
-          <td><code>/pong/index.html</code></td>
-        </tr>
-      </tbody>
-    </table>
-
-    <!-- ───────────────────────────────────────────── -->
-
-    <a class="back-link" href="../">&larr; Zurueck zur Startseite</a>
+    <a class="back-link" href="../">&larr; Zurück zur Startseite</a>
 
   </div>
 </body>
