@@ -27,8 +27,14 @@
     #content hr { border: none; border-top: 1px solid #eee; margin: 1.5rem 0; }
     .loading { text-align: center; padding: 3rem; color: #888; font-size: 1.1rem; }
     .error { text-align: center; padding: 3rem; color: #e74c3c; }
+    .idea-nav { max-width: 800px; margin: 1rem auto 2rem; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+    .idea-nav a { display: inline-flex; align-items: center; gap: 0.4rem; color: #3498db; text-decoration: none; font-size: 0.9rem; padding: 0.4rem 0.8rem; border-radius: 6px; border: 1px solid #dde; transition: background 0.2s; }
+    .idea-nav a:hover { background: #eef3f8; }
+    .idea-nav .disabled { pointer-events: none; opacity: 0.3; }
+    .idea-nav .counter { color: #888; font-size: 0.8rem; }
     @media (max-width: 600px) {
       #content { margin: 1rem; padding: 1.2rem; }
+      .idea-nav { padding: 0 1rem; }
     }
   </style>
 </head>
@@ -40,9 +46,22 @@
     </a>
   </nav>
   <div id="content"><div class="loading">Laden...</div></div>
+  <nav id="idea-nav" class="idea-nav" style="display:none;"></nav>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script>
     (function() {
+      var ideas = [
+        { file: 'flappybird.md', title: 'Flappy Bird', emoji: '\uD83D\uDC26' },
+        { file: 'memory.md', title: 'Memory', emoji: '\uD83C\uDCCF' },
+        { file: 'minesweeper.md', title: 'Minesweeper', emoji: '\uD83D\uDCA3' },
+        { file: 'pong.md', title: 'Pong', emoji: '\uD83C\uDFD3' },
+        { file: 'snake.md', title: 'Snake', emoji: '\uD83D\uDC0D' },
+        { file: 'solitaire.md', title: 'Solitär', emoji: '\uD83C\uDCA1' },
+        { file: 'sudoku.md', title: 'Sudoku', emoji: '\uD83D\uDD22' },
+        { file: 'tetris.md', title: 'Tetris', emoji: '\uD83E\uDDF1' },
+        { file: 'tictactoe.md', title: 'Tic-Tac-Toe', emoji: '\u274C' }
+      ];
+
       var params = new URLSearchParams(window.location.search);
       var file = params.get('file');
       var el = document.getElementById('content');
@@ -50,6 +69,29 @@
       if (!file || !file.endsWith('.md') || file.includes('..') || file.includes('/')) {
         el.innerHTML = '<div class="error">Ungültige oder fehlende Datei.</div>';
         return;
+      }
+
+      // Build prev/next navigation
+      var idx = ideas.findIndex(function(i) { return i.file === file; });
+      if (idx !== -1) {
+        var nav = document.getElementById('idea-nav');
+        var prev = idx > 0 ? ideas[idx - 1] : null;
+        var next = idx < ideas.length - 1 ? ideas[idx + 1] : null;
+
+        var html = '';
+        if (prev) {
+          html += '<a href="viewer.html?file=' + prev.file + '">\u2190 ' + prev.emoji + ' ' + prev.title + '</a>';
+        } else {
+          html += '<a class="disabled" href="#">\u2190 Vorherige</a>';
+        }
+        html += '<span class="counter">' + (idx + 1) + ' / ' + ideas.length + '</span>';
+        if (next) {
+          html += '<a href="viewer.html?file=' + next.file + '">' + next.emoji + ' ' + next.title + ' \u2192</a>';
+        } else {
+          html += '<a class="disabled" href="#">Nächste \u2192</a>';
+        }
+        nav.innerHTML = html;
+        nav.style.display = 'flex';
       }
 
       fetch(file)

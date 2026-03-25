@@ -275,7 +275,7 @@
         <a class="navbar-link active" href="#workshop">Workshop</a>
         <a class="navbar-link" href="#ergebnisse">Ergebnisse</a>
         <a class="navbar-link" href="#ideen">Ideen</a>
-        <a class="navbar-link" href="./handout/">Handout</a>
+        <a class="navbar-link" href="./handout/">Handout <i class="fas fa-arrow-up-right-from-square" style="font-size:0.7em; opacity:0.7;"></i></a>
         <a class="navbar-link" href="https://github.com/Fauteck/vibecoding-academy" target="_blank" rel="noopener">
           <i class="fab fa-github me-1"></i> GitHub
         </a>
@@ -318,7 +318,7 @@
           <i class="fas fa-lightbulb me-2"></i> Ideen &amp; Konzepte
         </a>
         <a href="./handout/" class="list-group-item list-group-item-action" data-bs-dismiss="offcanvas">
-          <i class="fas fa-file-alt me-2"></i> Handout
+          <i class="fas fa-file-alt me-2"></i> Handout <i class="fas fa-arrow-up-right-from-square" style="font-size:0.7em; opacity:0.6;"></i>
         </a>
         <a href="https://github.com/Fauteck/vibecoding-academy" target="_blank" rel="noopener"
            class="list-group-item list-group-item-action">
@@ -338,7 +338,8 @@
       <span class="badge bg-primary mb-3">Workshop</span>
       <h1>Vibecoding Academy</h1>
       <p class="text-muted mx-auto" style="max-width: 520px;">
-        KI-gestütztes Web-Coding – von der Idee bis zum Release
+        Ein Workshop zum Erstellen eigener Web-Projekte mit KI-Unterstützung –
+        von der Idee bis zum Release, ganz ohne Programmierkenntnisse.
       </p>
     </div>
 
@@ -376,23 +377,23 @@
             <span class="fw-normal text-muted">(nicht verlinkt)</span>
           </div>
           <div class="d-flex flex-wrap gap-2">
-            <span class="btn btn-outline-primary btn-sm">
+            <span class="badge bg-light text-dark border">
               <i class="fas fa-globe me-1"></i> Website
             </span>
-            <span class="btn btn-outline-primary btn-sm">
+            <span class="badge bg-light text-dark border">
               <i class="fas fa-check-square me-1"></i> To-Do-App
             </span>
-            <span class="btn btn-outline-primary btn-sm">
+            <span class="badge bg-light text-dark border">
               <i class="fas fa-wallet me-1"></i> Finanzüberblick
             </span>
-            <span class="btn btn-outline-primary btn-sm">
+            <span class="badge bg-light text-dark border">
               <i class="fas fa-tachometer-alt me-1"></i> Dashboard
             </span>
           </div>
         </div>
 
         <!-- Mitmachen -->
-        <div class="rounded-3 p-3 mb-3" style="background: #eaf7ee; border: 1px solid #c3e6cb;">
+        <div id="mitmachen" class="rounded-3 p-3 mb-3" style="background: #eaf7ee; border: 1px solid #c3e6cb;">
           <div class="fw-bold small mb-1" style="color: var(--success-color);">
             <i class="fas fa-hand-point-right me-1"></i>Mitmachen
           </div>
@@ -403,7 +404,7 @@
         </div>
 
         <!-- Handout -->
-        <a href="./handout/" class="text-decoration-none d-block">
+        <a id="handout-info" href="./handout/" class="text-decoration-none d-block">
           <div class="rounded-3 p-3 mb-3" style="background: #eaf0f7; border: 1px solid #b8d4e8;">
             <div class="fw-bold small mb-1" style="color: var(--primary-color);">
               <i class="fas fa-file-alt me-1"></i>Handout: Vibecoding &amp; Hosting
@@ -414,31 +415,13 @@
           </div>
         </a>
 
-        <!-- Ergebnisse -->
-        <div class="rounded-3 p-3 mb-3" style="background: var(--bg-page); border: 1px solid var(--border-color);">
-          <div class="fw-bold small text-muted mb-1">
-            <i class="fas fa-rocket me-1"></i>Ergebnisse
-          </div>
-          <p class="mb-0 small">
-            Fertige Projekte aus dem Workshop findest du im Bereich <a href="#ergebnisse">Ergebnisse</a>.
-          </p>
-        </div>
-
-        <!-- Ideen & Konzepte -->
-        <div class="rounded-3 p-3" style="background: var(--bg-page); border: 1px solid var(--border-color);">
-          <div class="fw-bold small text-muted mb-1">
-            <i class="fas fa-lightbulb me-1"></i>Ideen &amp; Konzepte
-          </div>
-          <p class="mb-0 small">
-            Konzepte und Spielideen, die als Vorlage dienen können, findest du unter <a href="#ideen">Ideen &amp; Konzepte</a>.
-          </p>
-        </div>
       </div>
     </div>
 
     <!-- Ergebnisse -->
     <div class="section-header" id="ergebnisse">
       <h5><i class="fas fa-rocket me-2"></i>Ergebnisse</h5>
+      <p class="text-muted small mb-0 mt-1">Fertige Projekte aus dem Workshop zum Ausprobieren</p>
     </div>
 
     <div class="row g-3">
@@ -460,11 +443,21 @@
           </div>
         </a>
       </div>
+      <div class="col-md-4 col-sm-6">
+        <div class="card h-100" style="border: 2px dashed var(--border-color);">
+          <div class="card-body text-center text-muted d-flex flex-column justify-content-center">
+            <div class="fs-1 mb-2">🚀</div>
+            <h6 class="card-title">Dein Projekt?</h6>
+            <p class="card-text small">Erstelle im Workshop dein eigenes Projekt!</p>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Ideen & Konzepte -->
     <div class="section-header mt-4" id="ideen">
       <h5><i class="fas fa-lightbulb me-2"></i>Ideen &amp; Konzepte</h5>
+      <p class="text-muted small mb-0 mt-1">Konzeptvorlagen als Startpunkt für eigene Projekte</p>
     </div>
 
     <div class="row g-3">
@@ -554,6 +547,18 @@
   </main>
 
   <!-- ══════════════════════════════════════════════════════ -->
+  <!--  CTA before Footer                                    -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="text-center py-4 my-4" style="max-width: 900px; margin: 0 auto; padding: 0 1rem;">
+    <div class="rounded-3 p-4" style="background: #eaf7ee; border: 1px solid #c3e6cb;">
+      <h5 class="mb-2" style="color: var(--success-color);">Bereit mitzumachen?</h5>
+      <p class="text-muted mb-3">Bring deine Idee mit und erstelle dein eigenes Projekt im Workshop.</p>
+      <a href="#mitmachen" class="btn btn-success btn-sm">Zum Workshop</a>
+      <a href="./handout/" class="btn btn-outline-primary btn-sm ms-2">Handout lesen</a>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
   <!--  Footer                                               -->
   <!-- ══════════════════════════════════════════════════════ -->
   <footer class="footer mt-5 text-center">
@@ -587,16 +592,43 @@
       <i class="fas fa-lightbulb"></i>
       <span>Ideen</span>
     </a>
-    <button class="bottom-nav-item"
-            data-bs-toggle="offcanvas" data-bs-target="#mobileMoreSheet">
-      <i class="fas fa-bars"></i>
-      <span>Mehr</span>
-    </button>
+    <a class="bottom-nav-item" href="./handout/">
+      <i class="fas fa-file-alt"></i>
+      <span>Handout</span>
+    </a>
   </nav>
 
   <!-- Bootstrap JS Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
           integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
           crossorigin="anonymous"></script>
+
+  <!-- Scroll-Spy: highlight active nav item -->
+  <script>
+    (function () {
+      var sections = document.querySelectorAll('#workshop, #ergebnisse, #ideen');
+      var desktopLinks = document.querySelectorAll('.navbar-link[href^="#"]');
+      var mobileLinks = document.querySelectorAll('.bottom-nav-item[href^="#"]');
+
+      function setActive(id) {
+        desktopLinks.forEach(function (l) {
+          l.classList.toggle('active', l.getAttribute('href') === '#' + id);
+        });
+        mobileLinks.forEach(function (l) {
+          l.classList.toggle('active', l.getAttribute('href') === '#' + id);
+        });
+      }
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            setActive(entry.target.id);
+          }
+        });
+      }, { rootMargin: '-20% 0px -60% 0px' });
+
+      sections.forEach(function (s) { observer.observe(s); });
+    })();
+  </script>
 </body>
 </html>
