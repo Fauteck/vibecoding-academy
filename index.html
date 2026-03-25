@@ -46,6 +46,22 @@
       background: var(--bg-page);
       color: var(--text-primary);
       min-height: 100vh;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        url('./images/hero-bg.jpg') center/cover no-repeat,
+        linear-gradient(135deg, #1a1a2e 0%, #16213e 30%, #0f3460 60%, #1a1a2e 100%);
+      opacity: 0.07;
+      z-index: -1;
+      pointer-events: none;
     }
 
     /* ── Desktop Navbar ────────────────────────────────────── */
@@ -365,13 +381,10 @@
         </div>
         <p class="small">
           Wir starten mit fertigen Beispiel-Anwendungen und schauen uns an, wie diese entstanden sind.
-          Danach kann jeder selbst eine kleine Anwendung mit der KI umsetzen.
-          Da das Coding der KI etwas dauern kann, lassen wir mehrere Projekte parallel laufen –
-          die Ergebnisse werden im Nachgang als Links bereitgestellt.
         </p>
 
         <!-- Beispiel-Anwendungen -->
-        <div class="rounded-3 p-3 mb-3" style="background: var(--bg-page); border: 1px solid var(--border-color);">
+        <div class="mb-3">
           <div class="fw-bold small text-muted mb-2">
             <i class="fas fa-th-large me-1"></i>Beispiel-Anwendungen
             <span class="fw-normal text-muted">(nicht verlinkt)</span>
@@ -392,6 +405,10 @@
           </div>
         </div>
 
+        <p class="small">
+          Danach können wir gemeinsam kleine Anwendungen mit der KI umsetzen.
+        </p>
+
         <!-- Mitmachen -->
         <div id="mitmachen" class="rounded-3 p-3 mb-3" style="background: #eaf7ee; border: 1px solid #c3e6cb;">
           <div class="fw-bold small mb-1" style="color: var(--success-color);">
@@ -403,17 +420,10 @@
           </p>
         </div>
 
-        <!-- Handout -->
-        <a id="handout-info" href="./handout/" class="text-decoration-none d-block">
-          <div class="rounded-3 p-3 mb-3" style="background: #eaf0f7; border: 1px solid #b8d4e8;">
-            <div class="fw-bold small mb-1" style="color: var(--primary-color);">
-              <i class="fas fa-file-alt me-1"></i>Handout: Vibecoding &amp; Hosting
-            </div>
-            <p class="mb-0 small text-muted">
-              Ausfuehrliches Handout zum Workshop: Was ist Vibecoding, wie arbeitet man mit der KI, und wie hostet man seine Projekte (GitHub Pages &amp; Docker).
-            </p>
-          </div>
-        </a>
+        <p class="small text-muted mb-0">
+          Da das Coding der KI etwas dauern kann, lassen wir mehrere Projekte parallel laufen –
+          die Ergebnisse werden im Nachgang als Links bereitgestellt.
+        </p>
 
       </div>
     </div>
@@ -544,19 +554,15 @@
       </div>
     </div>
 
-  </main>
-
-  <!-- ══════════════════════════════════════════════════════ -->
-  <!--  CTA before Footer                                    -->
-  <!-- ══════════════════════════════════════════════════════ -->
-  <div class="text-center py-4 my-4" style="max-width: 900px; margin: 0 auto; padding: 0 1rem;">
-    <div class="rounded-3 p-4" style="background: #eaf7ee; border: 1px solid #c3e6cb;">
-      <h5 class="mb-2" style="color: var(--success-color);">Bereit mitzumachen?</h5>
-      <p class="text-muted mb-3">Bring deine Idee mit und erstelle dein eigenes Projekt im Workshop.</p>
-      <a href="#mitmachen" class="btn btn-success btn-sm">Zum Workshop</a>
-      <a href="./handout/" class="btn btn-outline-primary btn-sm ms-2">Handout lesen</a>
+    <!-- Handout -->
+    <div class="section-header mt-4" id="handout">
+      <h5><i class="fas fa-file-alt me-2"></i>Handout</h5>
+      <p class="text-muted small mb-0 mt-1">
+        <a href="./handout/" class="text-decoration-none">Ausführliches Handout zum Workshop</a> – Was ist Vibecoding, wie arbeitet man mit der KI, und wie hostet man seine Projekte (GitHub Pages &amp; Docker).
+      </p>
     </div>
-  </div>
+
+  </main>
 
   <!-- ══════════════════════════════════════════════════════ -->
   <!--  Footer                                               -->
