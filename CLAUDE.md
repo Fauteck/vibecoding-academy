@@ -256,17 +256,17 @@ Vor `</body>`:
 
 ```css
 :root {
-    --primary-color:   #3498db;   /* Akzentfarbe, Links, Borders */
-    --secondary-color: #2c3e50;   /* Navbar, Footer */
-    --success-color:   #2ecc71;   /* Positive Werte, Erfolg */
-    --danger-color:    #e74c3c;   /* Fehler, Negative Werte */
-    --warning-color:   #f39c12;   /* Warnungen */
-    --info-color:      #3498db;   /* Info-Hinweise */
-    --bg-page:         #f8f9fa;   /* Seitenhintergrund */
-    --bg-card:         #ffffff;   /* Kartenhintergrund */
-    --text-primary:    #212529;   /* Primärer Text */
-    --text-muted:      #6c757d;   /* Gedimmter Text */
-    --border-color:    #e9ecef;   /* Rahmenfarbe */
+    --primary-color:   #5B8BD6;   /* Akzentfarbe, Links, Borders (passend zu content-bg.jpg) */
+    --secondary-color: #3D5A8C;   /* Navbar, Footer */
+    --success-color:   #5CC6A7;   /* Positive Werte, Erfolg (Türkis-Grün) */
+    --danger-color:    #D46B6B;   /* Fehler, Negative Werte */
+    --warning-color:   #D4A55B;   /* Warnungen */
+    --info-color:      #6BB8D4;   /* Info-Hinweise (Cyan/Türkis) */
+    --bg-page:         #EEF2F7;   /* Seitenhintergrund (Blau-Weiß) */
+    --bg-card:         rgba(255, 255, 255, 0.85); /* Kartenhintergrund (halbtransparent) */
+    --text-primary:    #2D3748;   /* Primärer Text */
+    --text-muted:      #7A8599;   /* Gedimmter Text (Blau-Grau) */
+    --border-color:    #D4DCE8;   /* Rahmenfarbe (bläulich) */
     --border-radius-card: 10px;
     --border-radius-kpi:  12px;
 }
@@ -289,7 +289,7 @@ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
 ### Navigation
 
-- **Desktop (> 992 px):** Sticky Navbar mit Gradient (`#3498db` → `#2c3e50`)
+- **Desktop (> 992 px):** Sticky Navbar mit Gradient (`#5B8BD6` → `#3D5A8C`)
 - **Mobil (<= 992 px):** Fixed Top Bar (56 px) + Fixed Bottom Nav (60 px)
 - Body erhält automatisch `padding-top: 56px` und `padding-bottom: 60px` auf Mobilgeräten
 
