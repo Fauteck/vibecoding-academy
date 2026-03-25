@@ -34,7 +34,7 @@ Fertige Projekte aus dem Workshop:
 | Projekt | Beschreibung |
 |---------|-------------|
 | [Pong](https://fauteck.github.io/vibecoding-academy/pong/) | Klassisches Pong-Spiel: Spieler gegen KI |
-| [Gran Thomas Auto 6](https://fauteck.github.io/vibecoding-academy/gta/) | GTA-Parodie im RTL-Sendezentrum |
+| [Grand Thomas Auto 6](https://fauteck.github.io/vibecoding-academy/gta/) | GTA-Parodie im RTL-Sendezentrum |
 
 ## Ideen & Konzepte
 
