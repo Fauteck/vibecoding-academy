@@ -61,8 +61,21 @@
       -webkit-tap-highlight-color: transparent; user-select: none;
     }
     .gta-btn-talk:active { background: rgba(0,61,122,0.5); }
+    .gta-kb-hint {
+      display: none;
+      position: fixed; bottom: 16px; right: 16px;
+      background: rgba(0,0,0,0.65); border: 1px solid rgba(226,0,26,0.3);
+      border-radius: 8px; padding: 10px 14px; z-index: 100;
+      font-family: 'JetBrains Mono', monospace; font-size: 11px;
+      color: rgba(255,255,255,0.6); line-height: 1.7;
+    }
+    .gta-kb-hint kbd {
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 3px; padding: 1px 5px; color: #ffd600; font-family: inherit;
+    }
     @media (hover: hover) and (pointer: fine) {
       .gta-controls { display: none; }
+      .gta-kb-hint { display: block; }
     }
     .gta-intro {
       position: absolute; inset: 0; background: #000;
@@ -180,6 +193,11 @@
           <button class="gta-btn-talk" id="gta-talk-btn">E</button>
         </div>
       </div>
+      <div class="gta-kb-hint" id="gta-kb-hint">
+        <kbd>WASD</kbd> / <kbd>Pfeiltasten</kbd> Bewegen<br>
+        <kbd>E</kbd> / <kbd>Leertaste</kbd> Sprechen<br>
+        <kbd>C</kbd> Kaffee trinken
+      </div>
       <div class="gta-intro" id="gta-intro">
         <div class="gta-intro-flash" id="gta-flash"></div>
         <div class="gta-intro-text" id="gta-i-text1">From the creators of Punkt 12 and Bauer sucht Frau...</div>
@@ -187,7 +205,7 @@
         <div class="gta-intro-logo" id="gta-i-logo">&#9670; Sendezentrum Studios presents &#9670;</div>
         <div class="gta-intro-loader" id="gta-i-loader"><div class="gta-intro-loader-bar" id="gta-i-loader-bar"></div></div>
         <div class="gta-intro-load-text" id="gta-i-load-text">Loading Vice City... Koeln-Deutz</div>
-        <div class="gta-intro-title" id="gta-i-title">GRAN<br>THOMAS<br>AUTO 6</div>
+        <div class="gta-intro-title" id="gta-i-title">GRAND<br>THOMAS<br>AUTO 6</div>
         <div class="gta-intro-subtitle" id="gta-i-subtitle">&#8212; Sendezentrum Edition &#8212;</div>
         <div class="gta-intro-prompt" id="gta-i-prompt">Druecke eine Taste</div>
       </div>
@@ -523,7 +541,7 @@
     ctx.font = `bold ${fontSize}px sans-serif`;
     ctx.textAlign = 'left';
     ctx.textBaseline = 'middle';
-    ctx.fillText('GRAN THOMAS AUTO 6', Math.round(TILE * 0.2), hudH / 2);
+    ctx.fillText('GRAND THOMAS AUTO 6', Math.round(TILE * 0.2), hudH / 2);
     ctx.fillStyle = '#ffd600';
     ctx.textAlign = 'right';
     ctx.fillText('Kaffee: ' + coffee, canvas.width - Math.round(TILE * 0.2), hudH / 2);
