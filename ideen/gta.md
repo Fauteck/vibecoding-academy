@@ -1,0 +1,578 @@
+# Gran Thomas Auto 6
+
+## Beschreibung
+Eine epische GTA-Parodie. Das Spiel startet mit einem absurd uebertriebenem Fake-AAA-Intro im Stil von GTA6 - dramatische Texte, Fake-Ladebalken, cinematische Effekte. Nach dem Intro-Schock wechselt das Spiel in eine GTA1-artige 2D-Draufsicht: Thomas, der Hauptdarsteller, laeuft durch das RTL-Sendezentrum in Koeln. Statt zu schiessen, trinkt er ueberall Kaffee auf Knopfdruck. RTL-Logos und TV-Mitarbeiter ueberall. Willkommen im Sendezentrum.
+
+## Regeln & Mechanik
+- Cinematisches Intro (~12 Sekunden) taeuscht einen AAA-Spielstart vor
+- Nach dem Intro: 2D-Draufsicht im GTA1-Stil, 20x20 Tile-Map (400x400px Canvas)
+- Thomas laeuft durch Flure, Studios, Kantine und Bueros des RTL-Sendezentrums
+- Kaffee trinken auf Knopfdruck (Taste C), 2 Sekunden Cooldown zwischen Kaffees
+- Kaffee-Zaehler im HUD statt Munitionsanzeige
+- Nach 10 Kaffees: Thomas wird schneller (Speed-Boost)
+- 5-7 NPCs stehen in den Fluren und Studios
+- NPCs ansprechen mit Leertaste/E wenn Thomas in der Naehe steht
+- NPCs sagen zufaellige TV-bezogene Sprueche per Sprechblase (3 Sekunden sichtbar)
+- RTL-Logos sind ueberall auf der Map verteilt
+- Kollision mit Waenden und Moebeln verhindert Durchlaufen
+
+## Steuerung
+- **Tastatur:** Pfeiltasten oder WASD fuer Bewegung
+- **Interaktion:** Leertaste oder E zum Ansprechen von NPCs
+- **Kaffee:** Taste C zum Kaffeetrinken
+- **Touch-Buttons:** Steuerkreuz + Kaffee-Button + Interaktions-Button
+- **Intro ueberspringen:** Beliebige Taste oder Tap nach Titelanzeige
+
+## Technische Details
+- **Typ:** HTML5 Canvas + DOM-Overlay fuer Intro
+- **Canvas-Groesse:** 400x400px
+- **Tile-Groesse:** 20px (20x20 Raster)
+- **Empfohlene Fenstergroesse:** 480x640px
+- **Farben:**
+  - RTL-Rot: `#e2001a`
+  - RTL-Blau: `#003d7a`
+  - RTL-Gelb: `#ffd600`
+  - Hintergrund: `#0a0a0a`
+  - Boden/Flur: `#c8c8c8`
+  - Wand: `#404040`
+  - Studio-Boden: `#b0b8c8`
+  - Tuer: `#8B6914`
+  - Kantine: `#d8d0c0`
+  - Moebel: `#505050`
+  - Thomas: `#003d7a` (RTL-Blau)
+  - NPC-Farben: verschiedene gedaempfte Toene
+  - HUD-Hintergrund: `rgba(0,0,0,0.7)`
+  - Sprechblase: `#ffffff` mit `#333333` Text
+
+## CSS
+
+```css
+.gta-game {
+  display: flex; flex-direction: column; align-items: center;
+  background: #0a0a0a; height: 100%; position: relative;
+  overflow: hidden; font-family: 'JetBrains Mono', monospace;
+}
+.gta-header {
+  display: flex; justify-content: space-between; width: 100%;
+  padding: 10px 16px; font-size: 12px; color: #e2001a;
+}
+.gta-coffee-count { color: #ffd600; }
+#gta-canvas {
+  border: 2px solid rgba(226,0,26,0.3); border-radius: 4px;
+  max-width: 95%; aspect-ratio: 1;
+  image-rendering: pixelated;
+}
+.gta-controls {
+  display: flex; align-items: center; justify-content: center;
+  gap: 24px; margin-top: 12px; width: 100%;
+  padding: 0 12px;
+}
+.gta-dpad {
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+}
+.gta-dpad-row { display: flex; gap: 4px; }
+.gta-actions {
+  display: flex; flex-direction: column; gap: 8px;
+}
+.gta-btn {
+  width: 56px; height: 56px; border-radius: 12px;
+  background: rgba(255,255,255,0.08); border: 1.5px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.8); font-size: 20px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  -webkit-tap-highlight-color: transparent; user-select: none;
+}
+.gta-btn:active { background: rgba(226,0,26,0.25); }
+.gta-btn-coffee {
+  width: 56px; height: 56px; border-radius: 12px;
+  background: rgba(139,105,20,0.3); border: 1.5px solid rgba(139,105,20,0.5);
+  color: #ffd600; font-size: 22px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  -webkit-tap-highlight-color: transparent; user-select: none;
+}
+.gta-btn-coffee:active { background: rgba(139,105,20,0.5); }
+.gta-btn-talk {
+  width: 56px; height: 56px; border-radius: 12px;
+  background: rgba(0,61,122,0.3); border: 1.5px solid rgba(0,61,122,0.5);
+  color: #80b0e0; font-size: 14px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'JetBrains Mono', monospace; font-weight: 700;
+  -webkit-tap-highlight-color: transparent; user-select: none;
+}
+.gta-btn-talk:active { background: rgba(0,61,122,0.5); }
+.gta-intro {
+  position: absolute; inset: 0; background: #000;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 10; flex-direction: column;
+}
+.gta-intro-text {
+  color: #ccc; font-size: 13px; text-align: center;
+  opacity: 0; transition: opacity 1s;
+  font-family: 'JetBrains Mono', monospace;
+}
+.gta-intro-text.show { opacity: 1; }
+.gta-intro-text.hide { opacity: 0; }
+.gta-intro-dramatic {
+  color: #fff; font-size: 14px; text-align: center;
+  font-style: italic; opacity: 0; transition: opacity 1.2s;
+  font-family: 'JetBrains Mono', monospace;
+  max-width: 80%; line-height: 1.6;
+}
+.gta-intro-dramatic.show { opacity: 1; }
+.gta-intro-dramatic.hide { opacity: 0; }
+.gta-intro-logo {
+  color: #e2001a; font-size: 11px; text-transform: uppercase;
+  letter-spacing: 4px; opacity: 0; transition: opacity 1s;
+  font-family: 'JetBrains Mono', monospace;
+}
+.gta-intro-logo.show { opacity: 1; }
+.gta-intro-logo.hide { opacity: 0; }
+.gta-intro-loader {
+  width: 200px; height: 6px; background: #222; border-radius: 3px;
+  overflow: hidden; opacity: 0; transition: opacity 0.5s;
+}
+.gta-intro-loader.show { opacity: 1; }
+.gta-intro-loader-bar {
+  width: 0%; height: 100%; border-radius: 3px;
+  background: linear-gradient(90deg, #e2001a, #ffd600);
+  transition: width 1.8s ease-in-out;
+}
+.gta-intro-loader-bar.fill { width: 100%; }
+.gta-intro-load-text {
+  color: #555; font-size: 10px; margin-top: 8px;
+  opacity: 0; transition: opacity 0.5s;
+  font-family: 'JetBrains Mono', monospace;
+}
+.gta-intro-load-text.show { opacity: 1; }
+.gta-intro-title {
+  font-size: 28px; font-weight: 900; text-align: center;
+  color: #fff; opacity: 0; transform: scale(3);
+  transition: opacity 0.4s, transform 0.4s ease-out;
+  font-family: 'JetBrains Mono', monospace;
+  text-shadow: 0 0 20px #e2001a, 0 0 40px #e2001a, 0 0 60px #ffd600;
+  line-height: 1.2;
+}
+.gta-intro-title.show { opacity: 1; transform: scale(1); }
+.gta-intro-subtitle {
+  color: #ffd600; font-size: 12px; margin-top: 8px;
+  opacity: 0; transition: opacity 1s;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 2px;
+}
+.gta-intro-subtitle.show { opacity: 1; }
+.gta-intro-prompt {
+  color: #666; font-size: 11px; margin-top: 24px;
+  opacity: 0; transition: opacity 0.5s;
+  font-family: 'JetBrains Mono', monospace;
+  animation: gta-pulse 1.5s ease-in-out infinite;
+}
+.gta-intro-prompt.show { opacity: 1; }
+@keyframes gta-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+.gta-intro-flash {
+  position: absolute; inset: 0; background: #fff;
+  opacity: 0; pointer-events: none; z-index: 11;
+}
+.gta-intro-flash.flash {
+  animation: gta-flash 0.6s ease-out;
+}
+@keyframes gta-flash {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+.gta-intro.fadeout {
+  opacity: 0; transition: opacity 0.5s;
+  pointer-events: none;
+}
+```
+
+## JavaScript
+
+```javascript
+(function() {
+  const container = document.getElementById('game');
+  container.innerHTML = `
+    <div class="gta-game">
+      <div class="gta-header">
+        <div class="gta-title-hud">GRAN THOMAS AUTO 6</div>
+        <div class="gta-coffee-count">Kaffee: <span id="gta-coffee-val">0</span></div>
+      </div>
+      <canvas id="gta-canvas" width="400" height="400"></canvas>
+      <div class="gta-controls">
+        <div class="gta-dpad">
+          <div class="gta-dpad-row"><button class="gta-btn" data-dir="up">&#9650;</button></div>
+          <div class="gta-dpad-row">
+            <button class="gta-btn" data-dir="left">&#9664;</button>
+            <button class="gta-btn" data-dir="down">&#9660;</button>
+            <button class="gta-btn" data-dir="right">&#9654;</button>
+          </div>
+        </div>
+        <div class="gta-actions">
+          <button class="gta-btn-coffee" id="gta-coffee-btn">&#9749;</button>
+          <button class="gta-btn-talk" id="gta-talk-btn">E</button>
+        </div>
+      </div>
+      <div class="gta-intro" id="gta-intro">
+        <div class="gta-intro-flash" id="gta-flash"></div>
+        <div class="gta-intro-text" id="gta-i-text1">From the creators of Punkt 12 and Bauer sucht Frau...</div>
+        <div class="gta-intro-dramatic" id="gta-i-dramatic">In einer Welt voller Einschaltquoten<br>und Werbepausen...</div>
+        <div class="gta-intro-logo" id="gta-i-logo">&#9670; Sendezentrum Studios presents &#9670;</div>
+        <div class="gta-intro-loader" id="gta-i-loader"><div class="gta-intro-loader-bar" id="gta-i-loader-bar"></div></div>
+        <div class="gta-intro-load-text" id="gta-i-load-text">Loading Vice City... Koeln-Deutz</div>
+        <div class="gta-intro-title" id="gta-i-title">GRAN<br>THOMAS<br>AUTO 6</div>
+        <div class="gta-intro-subtitle" id="gta-i-subtitle">&#8212; Sendezentrum Edition &#8212;</div>
+        <div class="gta-intro-prompt" id="gta-i-prompt">Druecke eine Taste</div>
+      </div>
+    </div>
+  `;
+
+  const canvas = document.getElementById('gta-canvas');
+  const ctx = canvas.getContext('2d');
+  const coffeeEl = document.getElementById('gta-coffee-val');
+  const intro = document.getElementById('gta-intro');
+
+  // --- MAP ---
+  // 0=floor 1=wall 2=studio 3=door 4=cafeteria 5=furniture 6=rtl-logo
+  const MAP = [
+    '11111111111111111111',
+    '12222310000031111111',
+    '12552310000031444441',
+    '12222310060031454541',
+    '11131100000031444441',
+    '10000000000011131111',
+    '10000006000000000001',
+    '10000000000000000001',
+    '11111100000011111101',
+    '15500310000013555101',
+    '15000310060013500101',
+    '15500310000013505101',
+    '11131100000011131101',
+    '10000000000000000001',
+    '10000006000000060001',
+    '10000000000000000001',
+    '11111131111111311111',
+    '12222200001144444441',
+    '12552200601144544441',
+    '11111111111111111111'
+  ];
+
+  const TILE = 20;
+  const COLS = 20;
+  const ROWS = 20;
+
+  const TILE_COLORS = {
+    0: '#c8c8c8', 1: '#404040', 2: '#b0b8c8', 3: '#8B6914',
+    4: '#d8d0c0', 5: '#505050', 6: '#e2001a'
+  };
+  const WALKABLE = new Set([0, 2, 3, 4, 6]);
+
+  function getTile(px, py) {
+    const tx = Math.floor(px / TILE);
+    const ty = Math.floor(py / TILE);
+    if (tx < 0 || tx >= COLS || ty < 0 || ty >= ROWS) return 1;
+    return parseInt(MAP[ty][tx]);
+  }
+
+  function canMove(x, y, w, h) {
+    return WALKABLE.has(getTile(x, y)) &&
+           WALKABLE.has(getTile(x + w - 1, y)) &&
+           WALKABLE.has(getTile(x, y + h - 1)) &&
+           WALKABLE.has(getTile(x + w - 1, y + h - 1));
+  }
+
+  // --- PLAYER ---
+  const SIZE = 12;
+  let player = { x: 140, y: 140 };
+  let speed = 2;
+  let coffee = 0;
+  let coffeeCooldown = 0;
+  let coffeeAnim = 0;
+
+  // --- NPCs ---
+  const npcs = [
+    { x: 3, y: 2, name: 'Mod. Meier', color: '#6a4c93',
+      lines: ['Gleich ist Sendezeit!', 'Hat jemand mein Skript gesehen?', 'Ich brauche MEHR Dramatik!'] },
+    { x: 7, y: 10, name: 'Kamera Schmidt', color: '#1982c4',
+      lines: ['Die Linse ist schmutzig!', 'Steh nicht im Bild!', 'Zoom auf Thomas, JETZT!'] },
+    { x: 15, y: 3, name: 'Helga Kantine', color: '#f4845f',
+      lines: ['Heute gibt es Currywurst!', 'Kaffee ist alle!', 'Thomas, du schon wieder?'] },
+    { x: 14, y: 10, name: 'Praktikant Lukas', color: '#8ac926',
+      lines: ['Ich hole Kaffee...', 'Wo ist die Maske?', 'Bin erst seit gestern hier...'] },
+    { x: 5, y: 17, name: 'Chef-Red.', color: '#ff595e',
+      lines: ['Wir brauchen mehr Quote!', 'Das geht so nicht on air!', 'Wo ist der Teleprompter?!'] },
+    { x: 12, y: 7, name: 'Tontechniker', color: '#7b6d8d',
+      lines: ['Mikro ist an!', 'Bitte Ruhe im Studio!', 'Ich hoer da ein Brummen...'] },
+    { x: 3, y: 14, name: 'Cutter Bernd', color: '#4a7c59',
+      lines: ['Schnitt laeuft...', 'Die Szene ist im Kasten.', 'Wer hat meinen Kaffee genommen?'] }
+  ];
+  let activeBubble = null;
+  let bubbleTimer = 0;
+
+  // --- INPUT ---
+  const keys = {};
+  document.addEventListener('keydown', e => { keys[e.key] = true; });
+  document.addEventListener('keyup', e => { keys[e.key] = false; });
+
+  // Touch controls
+  document.querySelectorAll('.gta-btn').forEach(btn => {
+    const setKey = (d, state) => {
+      if (d === 'up') keys['ArrowUp'] = state;
+      if (d === 'down') keys['ArrowDown'] = state;
+      if (d === 'left') keys['ArrowLeft'] = state;
+      if (d === 'right') keys['ArrowRight'] = state;
+    };
+    btn.addEventListener('touchstart', e => { e.preventDefault(); setKey(btn.dataset.dir, true); });
+    btn.addEventListener('touchend', e => { e.preventDefault(); setKey(btn.dataset.dir, false); });
+    btn.addEventListener('mousedown', e => { setKey(btn.dataset.dir, true); });
+    btn.addEventListener('mouseup', e => { setKey(btn.dataset.dir, false); });
+  });
+
+  document.getElementById('gta-coffee-btn').addEventListener('click', drinkCoffee);
+  document.getElementById('gta-talk-btn').addEventListener('click', interact);
+
+  function drinkCoffee() {
+    if (coffeeCooldown > 0) return;
+    coffee++;
+    coffeeEl.textContent = coffee;
+    coffeeCooldown = 120; // 2s at 60fps
+    coffeeAnim = 60;
+    if (coffee === 10) speed = 3;
+  }
+
+  function interact() {
+    let nearest = null;
+    let minDist = 40;
+    const cx = player.x + SIZE / 2;
+    const cy = player.y + SIZE / 2;
+    npcs.forEach(npc => {
+      const nx = npc.x * TILE + TILE / 2;
+      const ny = npc.y * TILE + TILE / 2;
+      const d = Math.hypot(cx - nx, cy - ny);
+      if (d < minDist) { minDist = d; nearest = npc; }
+    });
+    if (nearest) {
+      activeBubble = {
+        npc: nearest,
+        text: nearest.lines[Math.floor(Math.random() * nearest.lines.length)]
+      };
+      bubbleTimer = 180; // 3s
+    }
+  }
+
+  document.addEventListener('keydown', e => {
+    if (phase !== 'game') return;
+    if (e.key === 'c' || e.key === 'C') drinkCoffee();
+    if (e.key === 'e' || e.key === 'E' || e.key === ' ') { e.preventDefault(); interact(); }
+  });
+
+  // --- DRAWING ---
+  function drawMap() {
+    for (let y = 0; y < ROWS; y++) {
+      for (let x = 0; x < COLS; x++) {
+        const t = parseInt(MAP[y][x]);
+        ctx.fillStyle = TILE_COLORS[t];
+        ctx.fillRect(x * TILE, y * TILE, TILE, TILE);
+        if (t === 6) {
+          ctx.fillStyle = '#fff';
+          ctx.font = 'bold 8px sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText('RTL', x * TILE + TILE / 2, y * TILE + TILE / 2 + 3);
+        }
+        if (t === 0 || t === 2 || t === 4) {
+          ctx.strokeStyle = 'rgba(0,0,0,0.06)';
+          ctx.lineWidth = 0.5;
+          ctx.strokeRect(x * TILE, y * TILE, TILE, TILE);
+        }
+      }
+    }
+  }
+
+  function drawNPCs() {
+    npcs.forEach(npc => {
+      ctx.fillStyle = npc.color;
+      ctx.fillRect(npc.x * TILE + 4, npc.y * TILE + 4, 12, 12);
+      ctx.fillStyle = '#000';
+      ctx.font = '7px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(npc.name, npc.x * TILE + TILE / 2, npc.y * TILE);
+    });
+  }
+
+  function drawPlayer() {
+    ctx.fillStyle = '#003d7a';
+    ctx.fillRect(player.x, player.y, SIZE, SIZE);
+    ctx.fillStyle = '#ffd600';
+    ctx.font = 'bold 7px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('Thomas', player.x + SIZE / 2, player.y - 2);
+  }
+
+  function drawHUD() {
+    ctx.fillStyle = 'rgba(0,0,0,0.7)';
+    ctx.fillRect(0, 0, canvas.width, 16);
+    ctx.fillStyle = '#e2001a';
+    ctx.font = 'bold 9px sans-serif';
+    ctx.textAlign = 'left';
+    ctx.fillText('GRAN THOMAS AUTO 6', 4, 11);
+    ctx.fillStyle = '#ffd600';
+    ctx.textAlign = 'right';
+    ctx.fillText('Kaffee: ' + coffee, canvas.width - 4, 11);
+    if (coffee >= 10) {
+      ctx.fillStyle = '#4ade80';
+      ctx.fillText('KOFFEIN-BOOST!', canvas.width - 80, 11);
+    }
+  }
+
+  function drawBubble() {
+    if (!activeBubble || bubbleTimer <= 0) return;
+    const npc = activeBubble.npc;
+    const bx = npc.x * TILE + TILE / 2;
+    const by = npc.y * TILE - 14;
+    const text = activeBubble.text;
+    ctx.font = '8px sans-serif';
+    const tw = ctx.measureText(text).width + 10;
+    const bw = Math.max(tw, 40);
+    ctx.fillStyle = '#fff';
+    ctx.strokeStyle = '#333';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.roundRect(bx - bw / 2, by - 14, bw, 16, 4);
+    ctx.fill();
+    ctx.stroke();
+    ctx.fillStyle = '#333';
+    ctx.textAlign = 'center';
+    ctx.fillText(text, bx, by - 3);
+  }
+
+  function drawCoffeeAnim() {
+    if (coffeeAnim <= 0) return;
+    const ax = player.x + SIZE + 4;
+    const ay = player.y;
+    ctx.fillStyle = '#8B6914';
+    ctx.fillRect(ax, ay, 6, 8);
+    ctx.strokeStyle = '#8B6914';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.arc(ax + 8, ay + 4, 3, -Math.PI / 2, Math.PI / 2);
+    ctx.stroke();
+    ctx.fillStyle = 'rgba(255,255,255,0.6)';
+    ctx.font = '8px sans-serif';
+    ctx.textAlign = 'left';
+    const steamY = ay - 4 - (60 - coffeeAnim) * 0.2;
+    ctx.fillText('~', ax + 1, steamY);
+  }
+
+  // --- GAME LOOP ---
+  let phase = 'intro';
+
+  function updatePlayer() {
+    let dx = 0, dy = 0;
+    if (keys['ArrowUp'] || keys['w'] || keys['W']) dy -= speed;
+    if (keys['ArrowDown'] || keys['s'] || keys['S']) dy += speed;
+    if (keys['ArrowLeft'] || keys['a'] || keys['A']) dx -= speed;
+    if (keys['ArrowRight'] || keys['d'] || keys['D']) dx += speed;
+
+    if (dx !== 0 && canMove(player.x + dx, player.y, SIZE, SIZE)) player.x += dx;
+    if (dy !== 0 && canMove(player.x, player.y + dy, SIZE, SIZE)) player.y += dy;
+
+    if (coffeeCooldown > 0) coffeeCooldown--;
+    if (coffeeAnim > 0) coffeeAnim--;
+    if (bubbleTimer > 0) bubbleTimer--;
+  }
+
+  function gameLoop() {
+    if (phase !== 'game') return;
+    updatePlayer();
+    drawMap();
+    drawNPCs();
+    drawPlayer();
+    drawCoffeeAnim();
+    drawBubble();
+    drawHUD();
+    requestAnimationFrame(gameLoop);
+  }
+
+  // --- INTRO SEQUENCE ---
+  function runIntro() {
+    const els = {
+      t1: document.getElementById('gta-i-text1'),
+      dra: document.getElementById('gta-i-dramatic'),
+      logo: document.getElementById('gta-i-logo'),
+      loader: document.getElementById('gta-i-loader'),
+      loaderBar: document.getElementById('gta-i-loader-bar'),
+      loadText: document.getElementById('gta-i-load-text'),
+      title: document.getElementById('gta-i-title'),
+      subtitle: document.getElementById('gta-i-subtitle'),
+      prompt: document.getElementById('gta-i-prompt'),
+      flash: document.getElementById('gta-flash')
+    };
+
+    // Hide all initially
+    Object.values(els).forEach(el => { if (el) el.classList.remove('show'); });
+
+    let canSkip = false;
+
+    // Timeline
+    setTimeout(() => { els.t1.classList.add('show'); }, 300);
+    setTimeout(() => { els.t1.classList.remove('show'); els.t1.classList.add('hide'); }, 2000);
+    setTimeout(() => { els.dra.classList.add('show'); }, 2500);
+    setTimeout(() => { els.dra.classList.remove('show'); els.dra.classList.add('hide'); }, 4500);
+    setTimeout(() => { els.logo.classList.add('show'); }, 5000);
+    setTimeout(() => { els.logo.classList.remove('show'); els.logo.classList.add('hide'); }, 6800);
+    setTimeout(() => { els.loader.classList.add('show'); els.loadText.classList.add('show'); }, 7000);
+    setTimeout(() => { els.loaderBar.classList.add('fill'); }, 7200);
+    setTimeout(() => {
+      els.loader.style.display = 'none';
+      els.loadText.style.display = 'none';
+      els.flash.classList.add('flash');
+      setTimeout(() => { els.title.classList.add('show'); }, 200);
+      setTimeout(() => { els.subtitle.classList.add('show'); }, 1200);
+      setTimeout(() => { els.prompt.classList.add('show'); canSkip = true; }, 2000);
+    }, 9200);
+
+    function startGame() {
+      if (!canSkip) return;
+      intro.classList.add('fadeout');
+      setTimeout(() => {
+        intro.style.display = 'none';
+        phase = 'game';
+        gameLoop();
+      }, 500);
+    }
+
+    document.addEventListener('keydown', function handler(e) {
+      if (canSkip) { startGame(); document.removeEventListener('keydown', handler); }
+    });
+    intro.addEventListener('click', () => { if (canSkip) startGame(); });
+  }
+
+  runIntro();
+})();
+```
+
+## HTML-Grundstruktur
+
+```html
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gran Thomas Auto 6</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #0a0a0a; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+    #game { width: 480px; height: 640px; }
+    /* ... CSS von oben hier einfuegen ... */
+  </style>
+</head>
+<body>
+  <div id="game"></div>
+  <script>
+    // ... JavaScript von oben hier einfuegen ...
+  </script>
+</body>
+</html>
+```
