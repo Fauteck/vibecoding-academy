@@ -50,6 +50,16 @@ Konzepte und Spielideen, die als Vorlage dienen können:
 - Tetris -- Stapele fallende Blöcke zu vollen Reihen
 - Tic-Tac-Toe -- Drei in einer Reihe gewinnt
 
+## Handout
+
+Das ausfuehrliche Workshop-Handout behandelt:
+
+- Was ist Vibecoding und wie funktioniert die Zusammenarbeit mit KI
+- Der iterative Ansatz und Erfolgsfaktoren
+- Hosting-Optionen: GitHub Pages und Docker
+
+[Handout: Vibecoding & Hosting](https://fauteck.github.io/vibecoding-academy/handout/)
+
 ## Projekt hinzufügen
 
 1. **Unterordner anlegen** mit eigener `index.html`, z. B. `minesweeper/index.html`
