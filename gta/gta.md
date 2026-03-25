@@ -1,4 +1,4 @@
-# Gran Thomas Auto 6
+# Grand Thomas Auto 6
 
 ## Beschreibung
 Eine epische GTA-Parodie. Das Spiel startet mit einem absurd uebertriebenem Fake-AAA-Intro im Stil von GTA6 - dramatische Texte, Fake-Ladebalken, cinematische Effekte. Nach dem Intro-Schock wechselt das Spiel in eine GTA1-artige 2D-Draufsicht: Thomas, der Hauptdarsteller, laeuft durch das RTL-Sendezentrum in Koeln. Statt zu schiessen, trinkt er ueberall Kaffee auf Knopfdruck. RTL-Logos und TV-Mitarbeiter ueberall. Willkommen im Sendezentrum.
@@ -559,7 +559,7 @@ Eine epische GTA-Parodie. Das Spiel startet mit einem absurd uebertriebenem Fake
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gran Thomas Auto 6</title>
+  <title>Grand Thomas Auto 6</title>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;900&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
