@@ -302,8 +302,8 @@
       </a>
       <div class="d-flex align-items-center gap-1">
         <a class="navbar-link active" href="#workshop">Workshop</a>
-        <a class="navbar-link" href="#ergebnisse">Ergebnisse</a>
         <a class="navbar-link" href="#ideen">Ideen</a>
+        <a class="navbar-link" href="#ergebnisse">Ergebnisse</a>
         <a class="navbar-link" href="./handout/">Handout <i class="fas fa-arrow-up-right-from-square" style="font-size:0.7em; opacity:0.7;"></i></a>
         <a class="navbar-link" href="https://github.com/Fauteck/vibecoding-academy" target="_blank" rel="noopener">
           <i class="fab fa-github me-1"></i> GitHub
@@ -340,11 +340,11 @@
         <a href="#workshop" class="list-group-item list-group-item-action" data-bs-dismiss="offcanvas">
           <i class="fas fa-info-circle me-2"></i> Über den Workshop
         </a>
-        <a href="#ergebnisse" class="list-group-item list-group-item-action" data-bs-dismiss="offcanvas">
-          <i class="fas fa-rocket me-2"></i> Ergebnisse
-        </a>
         <a href="#ideen" class="list-group-item list-group-item-action" data-bs-dismiss="offcanvas">
           <i class="fas fa-lightbulb me-2"></i> Ideen &amp; Konzepte
+        </a>
+        <a href="#ergebnisse" class="list-group-item list-group-item-action" data-bs-dismiss="offcanvas">
+          <i class="fas fa-rocket me-2"></i> Ergebnisse
         </a>
         <a href="./handout/" class="list-group-item list-group-item-action" data-bs-dismiss="offcanvas">
           <i class="fas fa-file-alt me-2"></i> Handout <i class="fas fa-arrow-up-right-from-square" style="font-size:0.7em; opacity:0.6;"></i>
@@ -375,109 +375,54 @@
   <main class="container-fluid py-3" style="max-width: 900px; margin: 0 auto;">
 
     <!-- Workshop -->
-    <div class="card mb-4" id="workshop">
-      <div class="card-header">
-        <i class="fas fa-info-circle me-2" style="color: var(--primary-color);"></i>Workshop
-      </div>
-      <div class="card-body">
-        <p>
-          <strong>Vibecoding</strong> bedeutet: Du beschreibst in natürlicher Sprache, was du haben möchtest –
-          und eine KI schreibt den Code dafür. Programmierkenntnisse brauchst du dafür nicht.
-        </p>
-        <p>
-          In diesem Workshop spielen wir den kompletten Weg von der Idee bis zur fertigen Web-Anwendung gemeinsam durch.
-          Anhand konkreter Beispiele zeigen wir, wie Vibecoding in der Praxis funktioniert – von der Konzepterstellung
-          über die digitale Infrastruktur bis hin zum Release.
-        </p>
+    <div class="section-header" id="workshop">
+      <h5><i class="fas fa-info-circle me-2"></i>Workshop</h5>
+    </div>
 
-        <!-- Ablauf -->
-        <div class="fw-bold small text-muted mb-1 mt-3">
-          <i class="fas fa-cogs me-1"></i>Ablauf
-        </div>
-        <p class="small">
-          Wir starten mit fertigen Beispiel-Anwendungen und schauen uns an, wie diese entstanden sind.
-        </p>
+    <p>
+      Du beschreibst in natürlicher Sprache, was du haben möchtest. Und eine KI schreibt den Code dafür.
+      Programmierkenntnisse brauchst du dafür nicht - das ist Vibecoding.
+    </p>
+    <p>
+      In diesem Workshop spielen wir den kompletten Weg von der Idee bis zur fertigen Web-Anwendung gemeinsam durch.
+      Anhand konkreter Beispiele zeigen wir, wie Vibecoding in der Praxis funktioniert – von der Konzepterstellung
+      über die digitale Infrastruktur bis hin zum Release.
+    </p>
+    <p>
+      Wir starten mit fertigen Beispiel-Anwendungen und schauen uns an, wie diese entstanden sind.
+    </p>
 
-        <!-- Beispiel-Anwendungen -->
-        <div class="mb-3">
-          <div class="fw-bold small text-muted mb-2">
-            <i class="fas fa-th-large me-1"></i>Beispiel-Anwendungen
-            <span class="fw-normal text-muted">(nicht verlinkt)</span>
-          </div>
-          <div class="d-flex flex-wrap gap-2">
-            <span class="badge bg-light text-dark border">
-              <i class="fas fa-globe me-1"></i> Website
-            </span>
-            <span class="badge bg-light text-dark border">
-              <i class="fas fa-check-square me-1"></i> To-Do-App
-            </span>
-            <span class="badge bg-light text-dark border">
-              <i class="fas fa-wallet me-1"></i> Finanzüberblick
-            </span>
-            <span class="badge bg-light text-dark border">
-              <i class="fas fa-tachometer-alt me-1"></i> Dashboard
-            </span>
-          </div>
-        </div>
-
-        <p class="small">
-          Danach können wir gemeinsam kleine Anwendungen mit der KI umsetzen.
-        </p>
-
-        <!-- Mitmachen -->
-        <div id="mitmachen" class="rounded-3 p-3 mb-3" style="background: #eaf7ee; border: 1px solid #c3e6cb;">
-          <div class="fw-bold small mb-1" style="color: var(--success-color);">
-            <i class="fas fa-hand-point-right me-1"></i>Mitmachen
-          </div>
-          <p class="mb-0 small">
-            Bring gerne eine eigene Idee mit: Welches kleine Web-Game (Tetris, Minesweeper, Snake etc.)
-            oder welche Anwendung (To-Do-Liste, Notizen-App etc.) soll die KI für dich bauen?
-          </p>
-        </div>
-
-        <p class="small text-muted mb-0">
-          Da das Coding der KI etwas dauern kann, lassen wir mehrere Projekte parallel laufen –
-          die Ergebnisse werden im Nachgang als Links bereitgestellt.
-        </p>
-
+    <div class="mb-4">
+      <div class="d-flex flex-wrap gap-2 justify-content-center">
+        <span class="badge bg-light text-dark border">
+          <i class="fas fa-globe me-1"></i> Website
+        </span>
+        <span class="badge bg-light text-dark border">
+          <i class="fas fa-check-square me-1"></i> To-Do-App
+        </span>
+        <span class="badge bg-light text-dark border">
+          <i class="fas fa-wallet me-1"></i> Finanzüberblick
+        </span>
+        <span class="badge bg-light text-dark border">
+          <i class="fas fa-tachometer-alt me-1"></i> Dashboard
+        </span>
       </div>
     </div>
 
-    <!-- Ergebnisse -->
-    <div class="section-header" id="ergebnisse">
-      <h5><i class="fas fa-rocket me-2"></i>Ergebnisse</h5>
-      <p class="text-muted small mb-0 mt-1">Fertige Projekte aus dem Workshop zum Ausprobieren</p>
+    <!-- Mitmachen -->
+    <div class="section-header mt-4" id="mitmachen">
+      <h5><i class="fas fa-hand-point-right me-2"></i>Mitmachen</h5>
     </div>
 
-    <div class="row g-3">
-      <div class="col-md-4 col-sm-6">
-        <a class="card text-decoration-none h-100" href="./pong/">
-          <div class="card-body text-center">
-            <div class="fs-1 mb-2">🏓</div>
-            <h6 class="card-title">Pong</h6>
-            <p class="card-text text-muted small">Klassisches Pong-Spiel: Spieler gegen KI</p>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-4 col-sm-6">
-        <a class="card text-decoration-none h-100" href="./gta/">
-          <div class="card-body text-center">
-            <div class="fs-1 mb-2">🚗</div>
-            <h6 class="card-title">Grand Thomas Auto 6</h6>
-            <p class="card-text text-muted small">GTA-Parodie im RTL-Sendezentrum</p>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-4 col-sm-6">
-        <div class="card h-100" style="border: 2px dashed var(--border-color);">
-          <div class="card-body text-center text-muted d-flex flex-column justify-content-center">
-            <div class="fs-1 mb-2">🚀</div>
-            <h6 class="card-title">Dein Projekt?</h6>
-            <p class="card-text small">Erstelle im Workshop dein eigenes Projekt!</p>
-          </div>
-        </div>
-      </div>
-    </div>
+    <p>
+      Gemeinsam werden wir kleine Anwendungen mit der KI umsetzen.
+      Bring gerne eine eigene Idee mit: Welches kleine Web-Game (Tetris, Minesweeper, Snake etc.)
+      oder welche Anwendung (To-Do-Liste, Notizen-App etc.) soll die KI für dich bauen?
+    </p>
+    <p class="text-muted mb-0">
+      Da das Coding der KI etwas dauern kann, lassen wir mehrere Projekte parallel laufen –
+      die Ergebnisse werden im Nachgang als Links bereitgestellt.
+    </p>
 
     <!-- Ideen & Konzepte -->
     <div class="section-header mt-4" id="ideen">
@@ -569,13 +514,51 @@
       </div>
     </div>
 
+    <!-- Ergebnisse -->
+    <div class="section-header mt-4" id="ergebnisse">
+      <h5><i class="fas fa-rocket me-2"></i>Ergebnisse</h5>
+      <p class="text-muted small mb-0 mt-1">Fertige Projekte aus dem Workshop zum Ausprobieren</p>
+    </div>
+
+    <div class="row g-3">
+      <div class="col-md-4 col-sm-6">
+        <a class="card text-decoration-none h-100" href="./pong/">
+          <div class="card-body text-center">
+            <div class="fs-1 mb-2">🏓</div>
+            <h6 class="card-title">Pong</h6>
+            <p class="card-text text-muted small">Klassisches Pong-Spiel: Spieler gegen KI</p>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <a class="card text-decoration-none h-100" href="./gta/">
+          <div class="card-body text-center">
+            <div class="fs-1 mb-2">🚗</div>
+            <h6 class="card-title">Grand Thomas Auto 6</h6>
+            <p class="card-text text-muted small">GTA-Parodie im RTL-Sendezentrum</p>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <div class="card h-100" style="border: 2px dashed var(--border-color);">
+          <div class="card-body text-center text-muted d-flex flex-column justify-content-center">
+            <div class="fs-1 mb-2">🚀</div>
+            <h6 class="card-title">Dein Projekt?</h6>
+            <p class="card-text small">Erstelle im Workshop dein eigenes Projekt!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Handout -->
     <div class="section-header mt-4" id="handout">
       <h5><i class="fas fa-file-alt me-2"></i>Handout</h5>
-      <p class="text-muted small mb-0 mt-1">
-        <a href="./handout/" class="text-decoration-none">Ausführliches Handout zum Workshop</a> – Was ist Vibecoding, wie arbeitet man mit der KI, und wie hostet man seine Projekte (GitHub Pages &amp; Docker).
-      </p>
+      <p class="text-muted small mb-0 mt-1">Alle Informationen zum Workshop</p>
     </div>
+
+    <p>
+      <a href="./handout/" class="text-decoration-none">Ausführliches Handout zum Workshop</a> – Was ist Vibecoding, wie arbeitet man mit der KI, und wie hostet man seine Projekte (GitHub Pages &amp; Docker).
+    </p>
 
   </main>
 
@@ -605,13 +588,13 @@
       <i class="fas fa-info-circle"></i>
       <span>Workshop</span>
     </a>
-    <a class="bottom-nav-item" href="#ergebnisse">
-      <i class="fas fa-rocket"></i>
-      <span>Ergebnisse</span>
-    </a>
     <a class="bottom-nav-item" href="#ideen">
       <i class="fas fa-lightbulb"></i>
       <span>Ideen</span>
+    </a>
+    <a class="bottom-nav-item" href="#ergebnisse">
+      <i class="fas fa-rocket"></i>
+      <span>Ergebnisse</span>
     </a>
     <a class="bottom-nav-item" href="./handout/">
       <i class="fas fa-file-alt"></i>
