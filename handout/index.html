@@ -177,12 +177,17 @@
         <li><a href="#was-vibecoding-ausmacht">Was Vibe-Coding ausmacht</a></li>
         <li><a href="#zusammenarbeit-ki">Zusammenarbeit mit KI</a></li>
         <li><a href="#iterativ">Iterativ statt perfekt</a></li>
+        <li><a href="#paradigmenwechsel">Paradigmenwechsel: Bauen, was DU brauchst</a></li>
         <li><a href="#staerken">Was Vibe-Coding besonders gut kann</a></li>
         <li><a href="#nutzen-projekt">Nutzen im Projektkontext</a></li>
         <li><a href="#grenzen">Was dieser Workshop nicht leisten soll</a></li>
         <li><a href="#haltung">Gute Haltung für den Einstieg</a></li>
+        <li><a href="#copycat">Copycat-Prinzip: Gut adaptiert besser als schlecht selbst gedacht</a></li>
         <li><a href="#idee-strukturieren">Praktischer Tipp: Idee erst strukturieren</a></li>
+        <li><a href="#ki-kompetenzen">KI-Kompetenzen aufteilen</a></li>
         <li><a href="#erfolgsfaktoren">Erfolgsfaktoren für gutes Vibe-Coding</a></li>
+        <li><a href="#rahmenbedingungen">Rahmenbedingungen festlegen: CLAUDE.md &amp; Co.</a></li>
+        <li><a href="#alternative-tools">Alternative Vibecoding Tools</a></li>
         <li><a href="#fazit">Fazit</a></li>
         <li><a href="#hosting">Hosting-Anleitung</a>
           <ol>
@@ -308,6 +313,41 @@
 
     <!-- ───────────────────────────────────────────── -->
 
+    <h2 id="paradigmenwechsel">Paradigmenwechsel: Bauen, was DU brauchst</h2>
+
+    <p>Vibe-Coding verändert nicht nur <strong>wie</strong> Software entsteht, sondern auch <strong>für wen</strong>.</p>
+
+    <h3>Bisher: Entwicklung für die Mehrheit</h3>
+
+    <p>In der klassischen Softwareentwicklung baut ein Entwicklerteam Features für möglichst viele Nutzer:</p>
+
+    <ul>
+      <li>Anforderungen werden über <strong>Umfragen und Nutzerstudien</strong> erhoben</li>
+      <li>Features werden <strong>auf Nachfrage priorisiert</strong></li>
+      <li>Das Team entscheidet <strong>nach eigener Vorstellung</strong>, wie etwas genutzt wird</li>
+      <li>Nischenwünsche einzelner Nutzer fallen oft hinten runter</li>
+    </ul>
+
+    <h3>Neu: Entwicklung für DICH</h3>
+
+    <p>Mit Vibe-Coding kannst du dir ein Tool genau so bauen, <strong>wie du es brauchst</strong>:</p>
+
+    <ul>
+      <li>Du entscheidest, welche Funktionen rein kommen -- und welche nicht</li>
+      <li>Du kannst Features einbauen, die <strong>außer dir niemand brauchen würde</strong></li>
+      <li>Du lässt alles weg, was dich nicht betrifft</li>
+      <li>Das Tool passt sich dir an -- nicht umgekehrt</li>
+    </ul>
+
+    <div class="highlight-box highlight-blue">
+      <p><strong>Du bist nicht mehr Nutzer eines Standardprodukts, sondern Auftraggeber deiner eigenen Lösung.</strong></p>
+      <p>Genau das macht Vibe-Coding so mächtig: Du musst nicht mehr darauf warten, dass jemand anderes dein Problem löst.</p>
+    </div>
+
+    <hr>
+
+    <!-- ───────────────────────────────────────────── -->
+
     <h2 id="staerken">Was Vibe-Coding besonders gut kann</h2>
 
     <p>Vibe-Coding ist besonders stark, wenn es darum geht:</p>
@@ -402,6 +442,31 @@
 
     <!-- ───────────────────────────────────────────── -->
 
+    <h2 id="copycat">Copycat-Prinzip: Gut adaptiert besser als schlecht selbst gedacht</h2>
+
+    <p>Eine der effektivsten Strategien beim Vibe-Coding: <strong>Lass dich von bestehenden Apps und Features inspirieren.</strong></p>
+
+    <p>Statt jede Funktion von Grund auf neu zu beschreiben, kannst du der KI anschaulich zeigen, was du möchtest -- indem du auf Bekanntes verweist:</p>
+
+    <ul>
+      <li><strong>Bestehende Apps als Referenz nutzen</strong> -- &bdquo;Die Navigation soll so funktionieren wie bei Spotify&ldquo;</li>
+      <li><strong>Features aus anderen Tools adaptieren</strong> -- &bdquo;Ich möchte eine Drag-and-Drop-Sortierung wie bei Trello&ldquo;</li>
+      <li><strong>Screenshots oder Beschreibungen mitgeben</strong> -- &bdquo;Das Layout soll ungefähr so aussehen wie auf diesem Bild&ldquo;</li>
+      <li><strong>Bewusst abgrenzen</strong> -- &bdquo;Ähnlich wie bei Excel, aber ohne die Formeln -- nur eine einfache Tabelle&ldquo;</li>
+    </ul>
+
+    <blockquote>
+      <p>Ich möchte eine Aufgabenliste ähnlich wie bei Todoist: links eine Liste mit Kategorien, rechts die einzelnen Aufgaben. Jede Aufgabe hat eine Checkbox, einen Titel und ein optionales Fälligkeitsdatum. Aber ohne Prioritäten und ohne Kommentarfunktion -- halte es bewusst einfach.</p>
+    </blockquote>
+
+    <div class="highlight-box highlight-green">
+      <p><strong>Du musst das Rad nicht neu erfinden.</strong> Gute Ideen zu adaptieren und auf deine Bedürfnisse zuzuschneiden ist oft schneller und besser, als alles selbst von Grund auf zu beschreiben.</p>
+    </div>
+
+    <hr>
+
+    <!-- ───────────────────────────────────────────── -->
+
     <h2 id="idee-strukturieren">Praktischer Tipp: Idee erst strukturieren lassen</h2>
 
     <p>Ein sehr nützlicher Ansatz ist, <strong>nicht sofort mit dem Coding zu beginnen</strong>, sondern die Idee zunächst mit einer KI zu strukturieren.</p>
@@ -427,11 +492,59 @@
 
     <p>So entsteht eine deutlich bessere Ausgangsbasis für das eigentliche Vibe-Coding.</p>
 
-    <h3>Beispiel für einen sinnvollen Prompt an eine KI</h3>
+    <h3>Beispiel für einen sinnvollen Prompt an eine KI (z.&nbsp;B. ChatGPT)</h3>
 
     <blockquote>
       <p>Ich schildere dir jetzt frei eine Idee für ein digitales Tool. Bitte strukturiere meine Gedanken, fasse die Anforderungen übersichtlich zusammen, markiere offene Punkte und mögliche Missverständnisse und stelle mir Rückfragen. Ergänze außerdem eigene Vorschläge für sinnvolle Funktionen oder Aspekte, an die ich vielleicht noch nicht gedacht habe.</p>
     </blockquote>
+
+    <hr>
+
+    <!-- ───────────────────────────────────────────── -->
+
+    <h2 id="ki-kompetenzen">KI-Kompetenzen aufteilen: Das richtige Tool für die richtige Aufgabe</h2>
+
+    <p>Nicht jede KI ist für jede Aufgabe gleich gut geeignet. Ein bewährter Ansatz ist, <strong>verschiedene Tools gezielt für unterschiedliche Phasen</strong> einzusetzen:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Phase</th>
+          <th>Empfohlenes Tool</th>
+          <th>Warum</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Idee strukturieren, Brainstorming, Konzept erstellen</td>
+          <td><strong>ChatGPT</strong></td>
+          <td>Stark im freien Dialog, Strukturierung von Gedanken, kreative Ergänzungen</td>
+        </tr>
+        <tr>
+          <td>Coding, technische Umsetzung, Implementierung</td>
+          <td><strong>Claude (Code)</strong></td>
+          <td>Spezialisiert auf Code-Generierung, versteht Projektkontext, arbeitet direkt mit Dateien</td>
+        </tr>
+        <tr>
+          <td>Recherche, Vergleiche, Entscheidungshilfen</td>
+          <td><strong>ChatGPT oder Claude</strong></td>
+          <td>Beide gut geeignet -- je nach persönlicher Präferenz</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Empfohlener Workflow</h3>
+
+    <ol>
+      <li><strong>Schritt 1:</strong> Idee mit ChatGPT besprechen und strukturieren lassen</li>
+      <li><strong>Schritt 2:</strong> Das fertige Konzept als Grundlage an Claude Code übergeben</li>
+      <li><strong>Schritt 3:</strong> Claude Code setzt die technische Umsetzung um</li>
+      <li><strong>Schritt 4:</strong> Ergebnis testen, Feedback geben, iterativ verbessern</li>
+    </ol>
+
+    <div class="highlight-box highlight-yellow">
+      <p><strong>Tipp:</strong> Du kannst die Ideenphase auch als Sprachnachricht in ChatGPT starten -- einfach drauflos erzählen und die KI das Konzept daraus bauen lassen. Das fertige Konzept kopierst du dann zu Claude Code.</p>
+    </div>
 
     <hr>
 
@@ -456,6 +569,135 @@
 
     <h3>6. Ergebnisse realistisch einordnen</h3>
     <p>Ein guter Prototyp ist noch kein produktionsreifes Produkt.</p>
+
+    <hr>
+
+    <!-- ───────────────────────────────────────────── -->
+
+    <h2 id="rahmenbedingungen">Rahmenbedingungen festlegen: CLAUDE.md &amp; Co.</h2>
+
+    <p>Wenn du regelmäßig mit KI-Tools arbeitest, lohnt es sich, <strong>verbindliche Regeln für die KI in einer Datei festzulegen</strong>. So muss man nicht bei jedem Gespräch die gleichen Grundsätze wiederholen.</p>
+
+    <div class="highlight-box highlight-blue">
+      <p><strong>Was ist eine CLAUDE.md?</strong></p>
+      <p>Eine <code>CLAUDE.md</code> ist eine Markdown-Datei im Repository-Root, die Claude Code automatisch als Regelbasis erkennt. Sie enthält Projektregeln, Architekturvorgaben, erlaubte und verbotene Aktionen, Qualitätsanforderungen und mehr. Andere KI-Tools nutzen ähnliche Dateien unter anderen Namen.</p>
+    </div>
+
+    <h3>Kompatibilität mit verschiedenen KI-Tools</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Tool</th>
+          <th>Erwarteter Dateipfad</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Claude Code</td>
+          <td><code>CLAUDE.md</code> (Repository-Root)</td>
+        </tr>
+        <tr>
+          <td>GitHub Copilot</td>
+          <td><code>.github/copilot-instructions.md</code></td>
+        </tr>
+        <tr>
+          <td>Cursor</td>
+          <td><code>.cursor/rules</code> oder <code>.cursorrules</code></td>
+        </tr>
+        <tr>
+          <td>Windsurf</td>
+          <td><code>.windsurfrules</code></td>
+        </tr>
+        <tr>
+          <td>Cline</td>
+          <td><code>.clinerules</code></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>Tipp:</strong> Erstelle eine zentrale Regeldatei und lege Symlinks oder Kopien unter den jeweiligen Pfaden an, damit alle Tools dieselben Regeln verwenden.</p>
+
+    <h3>Beispiel-Template (anonymisiert)</h3>
+
+    <p>Das folgende Template zeigt eine typische Struktur. Passe die Inhalte an dein Projekt an:</p>
+
+    <pre><code># CLAUDE.md — Regeln für KI-gestützte Entwicklung
+
+## Projektübersicht
+- **Typ:** [Web-App / CLI / Bibliothek / statische Website]
+- **Stack:** [z. B. HTML, CSS, JavaScript / Python, Flask / etc.]
+- **Deployment:** [z. B. GitHub Pages / Docker / Cloud]
+
+## Grundprinzipien
+- Produktion wird ausschließlich über versionierte Deployments aktualisiert
+- Keine manuellen Hotfixes in Produktion
+- Der main-Branch spiegelt stets den Live-Stand wider
+
+## Erlaubt / Nicht erlaubt
+
+### Die KI darf
+- Code ändern und refactoren (im Rahmen bestehender Architektur)
+- Dateien erstellen/ändern (inkl. Tests und Doku)
+- Build-/CI-Konfiguration anpassen (wenn begründet)
+
+### Die KI darf NICHT
+- Frameworks oder Build-Tools eigenmächtig einführen
+- Infrastruktur-Annahmen treffen, die nicht explizit gegeben sind
+- Secrets oder Credentials im Code hinterlegen
+- Container oder Server direkt manipulieren
+
+## Branching &amp; Merge
+- Entwicklung auf Feature-/Fix-Branches
+- Merge via Pull Request
+- main ist geschützt und releasefähig
+
+## Qualitätsanforderungen
+- Tests laufen (sofern vorhanden)
+- Keine Debug-Ausgaben (console.log, alert, print)
+- Keine temporären Workarounds
+- Responsive Design intakt (bei Web-Projekten)
+- CDN-Links mit Integrity-Attributen (SRI)
+
+## Security
+- Keine Secrets im Code oder Repo
+- .env niemals committen (stattdessen .env.example)
+- Externe Links mit rel="noopener"
+- OWASP Top 10 als Mindestcheckliste beachten
+
+## Definition of Done
+- Code umgesetzt und getestet
+- Doku aktualisiert
+- PR reviewed und gemerged
+- Deployment erfolgreich
+
+## Design System (optional)
+- Farbpalette als CSS-Custom-Properties definieren
+- Einheitliche Typografie und Breakpoints festlegen
+- Komponentenbibliothek dokumentieren</code></pre>
+
+    <div class="highlight-box highlight-green">
+      <p><strong>Eine gute CLAUDE.md spart dir bei jedem Gespräch mit der KI Zeit</strong> -- sie muss nicht jedes Mal neu erklärt bekommen, welche Regeln gelten.</p>
+    </div>
+
+    <hr>
+
+    <!-- ───────────────────────────────────────────── -->
+
+    <h2 id="alternative-tools">Alternative Vibecoding Tools</h2>
+
+    <p>Claude Code ist nicht das einzige Tool für KI-gestütztes Coding. Hier eine Auswahl weiterer Werkzeuge, die einen Blick wert sind:</p>
+
+    <ul>
+      <li><strong><a href="https://agent.minimax.io" target="_blank" rel="noopener">MiniMax Agent</a></strong> -- KI-Agent, der komplette Web-Anwendungen generieren kann. Einfach Idee beschreiben, und der Agent baut eine fertige App.</li>
+      <li><strong><a href="https://github.com/features/copilot" target="_blank" rel="noopener">GitHub Copilot</a></strong> -- KI-Assistent direkt in der IDE (VS Code, JetBrains u.&nbsp;a.). Ergänzt Code in Echtzeit während des Tippens.</li>
+      <li><strong><a href="https://github.com/cline/cline" target="_blank" rel="noopener">Cline</a></strong> -- Open-Source KI-Coding-Agent, der als Erweiterung in VS Code läuft. Kann eigenständig Dateien erstellen, bearbeiten und Befehle ausführen.</li>
+      <li><strong><a href="https://opencode.ai" target="_blank" rel="noopener">opencode.ai</a></strong> -- Open-Source Terminal-Tool für KI-gestütztes Coding. Leichtgewichtige Alternative, die direkt in der Kommandozeile läuft.</li>
+    </ul>
+
+    <div class="highlight-box highlight-yellow">
+      <p><strong>Die Tool-Landschaft entwickelt sich rasant.</strong> Probiere verschiedene Werkzeuge aus und finde heraus, welches am besten zu deinem Workflow passt.</p>
+    </div>
 
     <hr>
 
