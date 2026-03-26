@@ -1,0 +1,3 @@
+# Haushaltsbuch
+
+*Konzept folgt.*
