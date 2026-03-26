@@ -187,6 +187,27 @@
       color: var(--text-primary);
     }
 
+    .section-header[role="button"] {
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .section-header[role="button"] h5 {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .section-header .fa-chevron-down {
+      transition: transform 0.3s ease;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .section-header[aria-expanded="true"] .fa-chevron-down {
+      transform: rotate(180deg);
+    }
+
     /* ── Card Overrides ────────────────────────────────────── */
     .card {
       border-radius: var(--border-radius-card);
@@ -433,11 +454,12 @@
     </div>
 
     <!-- Ideen & Konzepte -->
-    <div class="section-header mt-4" id="ideen">
-      <h5><i class="fas fa-lightbulb me-2"></i>Ideen &amp; Konzepte</h5>
+    <div class="section-header mt-4" id="ideen" role="button" data-bs-toggle="collapse" data-bs-target="#ideen-content" aria-expanded="false" aria-controls="ideen-content">
+      <h5><i class="fas fa-lightbulb me-2"></i>Ideen &amp; Konzepte <i class="fas fa-chevron-down"></i></h5>
       <p class="text-muted small mb-0 mt-1">Konzeptvorlagen als Startpunkt für eigene Projekte</p>
     </div>
 
+    <div class="collapse" id="ideen-content">
     <div class="row g-3">
       <div class="col-md-4 col-sm-6">
         <a class="card text-decoration-none h-100" href="./ideen/viewer.html?file=flappybird.md">
@@ -530,13 +552,15 @@
         </a>
       </div>
     </div>
+    </div>
 
     <!-- Ergebnisse -->
-    <div class="section-header mt-4" id="ergebnisse">
-      <h5><i class="fas fa-rocket me-2"></i>Ergebnisse</h5>
+    <div class="section-header mt-4" id="ergebnisse" role="button" data-bs-toggle="collapse" data-bs-target="#ergebnisse-content" aria-expanded="false" aria-controls="ergebnisse-content">
+      <h5><i class="fas fa-rocket me-2"></i>Ergebnisse <i class="fas fa-chevron-down"></i></h5>
       <p class="text-muted small mb-0 mt-1">Fertige Projekte aus dem Workshop zum Ausprobieren</p>
     </div>
 
+    <div class="collapse" id="ergebnisse-content">
     <div class="row g-3">
       <div class="col-md-4 col-sm-6">
         <a class="card text-decoration-none h-100" href="./pong/">
@@ -574,6 +598,7 @@
           </div>
         </div>
       </div>
+    </div>
     </div>
 
     <!-- Handout -->
