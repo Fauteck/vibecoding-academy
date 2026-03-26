@@ -33,9 +33,9 @@ Fertige Projekte aus dem Workshop:
 
 | Projekt | Beschreibung |
 |---------|-------------|
-| [Pong](https://fauteck.github.io/vibecoding-academy/pong/) | Klassisches Pong-Spiel: Spieler gegen KI |
-| [Grand Thomas Auto 6](https://fauteck.github.io/vibecoding-academy/gta/) | GTA-Parodie im RTL-Sendezentrum |
-| [Wochenendplanung](https://fauteck.github.io/vibecoding-academy/Wochenendplanung/) | Wochenenddienst-Planung und Übersicht |
+| [Pong](https://fauteck.github.io/vibecoding-academy/apps/pong/) | Klassisches Pong-Spiel: Spieler gegen KI |
+| [Grand Thomas Auto 6](https://fauteck.github.io/vibecoding-academy/apps/gta/) | GTA-Parodie im RTL-Sendezentrum |
+| [Wochenendplanung](https://fauteck.github.io/vibecoding-academy/apps/wochenendplanung/) | Wochenenddienst-Planung und Übersicht |
 
 ## Ideen & Konzepte
 
@@ -52,25 +52,19 @@ Konzepte und Spielideen, die als Vorlage dienen können:
 - Tetris -- Stapele fallende Blöcke zu vollen Reihen
 - Tic-Tac-Toe -- Drei in einer Reihe gewinnt
 
-## Handout
+## Wiki
 
-Das ausführliche Workshop-Handout behandelt:
+Dokumentation und Anleitungen:
 
-- Was ist Vibecoding und wie funktioniert die Zusammenarbeit mit KI
-- Paradigmenwechsel: Eigene Tools statt Massenprodukte
-- Das Copycat-Prinzip und iterativer Ansatz
-- KI-Kompetenzen aufteilen: ChatGPT vs. Claude
-- Rahmenbedingungen mit CLAUDE.md festlegen
-- Erfolgsfaktoren und alternative Tools
-- Hosting: Lokale Entwicklung, GitHub Pages und Docker
-
-[Handout: Vibecoding & Hosting](https://fauteck.github.io/vibecoding-academy/handout/)
+- [Handout: Vibecoding & Hosting](https://fauteck.github.io/vibecoding-academy/wiki/handout/) -- Alle Workshop-Infos
+- [Beispiel CLAUDE.md](https://fauteck.github.io/vibecoding-academy/wiki/claude-md/) -- Vorlage für KI-gestützte Entwicklung
 
 ## Projekt hinzufügen
 
-1. **Unterordner anlegen** mit eigener `index.html`, z. B. `minesweeper/index.html`
+1. **Unterordner in `apps/` anlegen** mit eigener `index.html`, z. B. `apps/snake/index.html`
 2. **Projekt-Card in `index.html` eintragen** -- im Bereich "Ergebnisse"
-3. **Committen & pushen** -- GitHub Pages deployt automatisch
+3. **Navigation mit einheitlichem Nav-Pattern versehen**
+4. **Committen & pushen** -- GitHub Pages deployt automatisch
 
 ## Tech-Stack
 

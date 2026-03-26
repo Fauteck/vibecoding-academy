@@ -14,58 +14,43 @@
 
     /* ── Desktop Navbar (>992px) ─────────────────────── */
     .site-navbar {
-      display: none;
-      background: linear-gradient(135deg, #3498db, #2c3e50);
-      position: sticky; top: 0; z-index: 1030;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-      align-items: center; justify-content: space-between;
-      padding: 0.5rem 1.5rem;
+      display: none; position: fixed; top: 0; left: 0; right: 0;
+      background: linear-gradient(135deg, #5B8BD6, #3D5A8C);
+      z-index: 1030; box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+      align-items: center; justify-content: space-between; padding: 0.5rem 1.5rem;
     }
-    .site-navbar-brand {
-      color: #fff; text-decoration: none; font-size: 1.3rem; font-weight: bold;
-      display: flex; align-items: center; gap: 0.4rem;
-    }
+    .site-navbar-brand { color: #fff; text-decoration: none; font-size: 1.3rem; font-weight: bold; display: flex; align-items: center; gap: 0.4rem; }
     .site-navbar-links { display: flex; align-items: center; gap: 0.25rem; }
-    .site-navbar-link {
-      color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.875rem;
-      padding: 0.4rem 0.8rem; border-radius: 6px; transition: background 0.2s, color 0.2s;
-    }
-    .site-navbar-link:hover, .site-navbar-link.active {
-      color: #fff; background: rgba(255,255,255,0.15);
-    }
+    .site-navbar-link { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.875rem; padding: 0.4rem 0.8rem; border-radius: 6px; transition: background 0.2s, color 0.2s; white-space: nowrap; }
+    .site-navbar-link:hover, .site-navbar-link.active { color: #fff; background: rgba(255,255,255,0.15); }
+    .site-navbar-dropdown { position: relative; }
+    .site-navbar-dropdown-menu { display: none; position: absolute; top: 100%; left: 0; min-width: 220px; background: #fff; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); padding: 0.5rem 0; z-index: 1040; margin-top: 0.25rem; }
+    .site-navbar-dropdown:hover .site-navbar-dropdown-menu, .site-navbar-dropdown:focus-within .site-navbar-dropdown-menu { display: block; }
+    .site-navbar-dropdown-menu a { display: block; padding: 0.5rem 1rem; color: #2D3748; text-decoration: none; font-size: 0.85rem; transition: background 0.15s; }
+    .site-navbar-dropdown-menu a:hover { background: #EEF2F7; }
+    .site-navbar-dropdown-menu .dropdown-header { padding: 0.5rem 1rem 0.25rem; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: #7A8599; font-weight: 600; }
 
     /* ── Mobile Top Bar (<=992px) ────────────────────── */
     .mobile-topbar {
       position: fixed; top: 0; left: 0; right: 0; height: 56px;
-      background: linear-gradient(135deg, #3498db, #2c3e50);
+      background: linear-gradient(135deg, #5B8BD6, #3D5A8C);
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0 1rem; z-index: 1030;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      padding: 0 1rem; z-index: 1030; box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     }
-    .mobile-topbar-brand {
-      color: #fff; text-decoration: none; font-size: 1.1rem; font-weight: bold;
-      display: flex; align-items: center; gap: 0.4rem;
-    }
-    .mobile-topbar-btn {
-      color: rgba(255,255,255,0.85); text-decoration: none; font-size: 1.1rem;
-      padding: 0.4rem; transition: color 0.2s;
-    }
+    .mobile-topbar-brand { color: #fff; text-decoration: none; font-size: 1.1rem; font-weight: bold; display: flex; align-items: center; gap: 0.4rem; }
+    .mobile-topbar-btn { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 1.1rem; padding: 0.4rem; transition: color 0.2s; }
     .mobile-topbar-btn:hover { color: #fff; }
 
     /* ── Mobile Bottom Nav (<=992px) ─────────────────── */
     .bottom-nav {
       position: fixed; bottom: 0; left: 0; right: 0; height: 60px;
-      background: #2c3e50; display: flex; justify-content: space-around; align-items: center;
+      background: #3D5A8C; display: flex; justify-content: space-around; align-items: center;
       z-index: 1030; box-shadow: 0 -2px 8px rgba(0,0,0,0.15);
     }
-    .bottom-nav-item {
-      display: flex; flex-direction: column; align-items: center; gap: 0.15rem;
-      color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.65rem;
-      padding: 0.3rem 0.6rem; transition: color 0.2s;
-    }
+    .bottom-nav-item { display: flex; flex-direction: column; align-items: center; gap: 0.15rem; color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.65rem; padding: 0.3rem 0.6rem; transition: color 0.2s; }
     .bottom-nav-item i { font-size: 1.15rem; }
     .bottom-nav-item:hover, .bottom-nav-item.active { color: #fff; }
-    .bottom-nav-item.active i { color: #3498db; }
+    .bottom-nav-item.active i { color: #5B8BD6; }
 
     /* ── Responsive ──────────────────────────────────── */
     @media (min-width: 992px) {
@@ -120,49 +105,58 @@
 <body>
   <!-- Desktop Navbar (>992px) -->
   <nav class="site-navbar">
-    <a class="site-navbar-brand" href="../">
-      <i class="fas fa-code"></i> Vibecoding Academy
-    </a>
+    <a class="site-navbar-brand" href="../../"><i class="fas fa-code"></i> Vibecoding Academy</a>
     <div class="site-navbar-links">
-      <a class="site-navbar-link" href="../">Home</a>
-      <a class="site-navbar-link" href="../pong/">Pong</a>
-      <a class="site-navbar-link" href="../gta/">GTA</a>
-      <a class="site-navbar-link active" href="../handout/">Handout</a>
-      <a class="site-navbar-link" href="https://github.com/Fauteck/vibecoding-academy" target="_blank" rel="noopener">
-        <i class="fab fa-github"></i> GitHub
-      </a>
+      <a class="site-navbar-link" href="../../">Home</a>
+      <div class="site-navbar-dropdown">
+        <a class="site-navbar-link" href="../../ideen/">Ideen <i class="fas fa-caret-down" style="font-size:0.7em;"></i></a>
+        <div class="site-navbar-dropdown-menu">
+          <div class="dropdown-header">Spielkonzepte</div>
+          <a href="../../ideen/viewer.html?file=flappybird.md">🐦 Flappy Bird</a>
+          <a href="../../ideen/viewer.html?file=memory.md">🃏 Memory</a>
+          <a href="../../ideen/viewer.html?file=minesweeper.md">💣 Minesweeper</a>
+          <a href="../../ideen/viewer.html?file=pong.md">🏓 Pong</a>
+          <a href="../../ideen/viewer.html?file=snake.md">🐍 Snake</a>
+          <a href="../../ideen/viewer.html?file=solitaire.md">🂡 Solitär</a>
+          <a href="../../ideen/viewer.html?file=sudoku.md">🔢 Sudoku</a>
+          <a href="../../ideen/viewer.html?file=tetris.md">🧱 Tetris</a>
+          <a href="../../ideen/viewer.html?file=tictactoe.md">❌ Tic-Tac-Toe</a>
+          <a href="../../ideen/viewer.html?file=haushaltsbuch.md">📒 Haushaltsbuch</a>
+        </div>
+      </div>
+      <div class="site-navbar-dropdown">
+        <a class="site-navbar-link" href="../../#ergebnisse">Ergebnisse <i class="fas fa-caret-down" style="font-size:0.7em;"></i></a>
+        <div class="site-navbar-dropdown-menu">
+          <div class="dropdown-header">Umgesetzte Apps</div>
+          <a href="../../apps/pong/">🏓 Pong</a>
+          <a href="../../apps/gta/">🚗 Grand Thomas Auto 6</a>
+          <a href="../../apps/wochenendplanung/">📅 Wochenendplanung</a>
+        </div>
+      </div>
+      <div class="site-navbar-dropdown">
+        <a class="site-navbar-link active" href="../">Wiki <i class="fas fa-caret-down" style="font-size:0.7em;"></i></a>
+        <div class="site-navbar-dropdown-menu">
+          <div class="dropdown-header">Dokumentation</div>
+          <a href="../handout/">📄 Handout</a>
+          <a href="../claude-md/">📋 Beispiel CLAUDE.md</a>
+        </div>
+      </div>
+      <a class="site-navbar-link" href="https://github.com/Fauteck/vibecoding-academy" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
     </div>
   </nav>
 
   <!-- Mobile Top Bar (<=992px) -->
   <div class="mobile-topbar">
-    <a class="mobile-topbar-brand" href="../">
-      <i class="fas fa-code"></i> Vibecoding Academy
-    </a>
-    <a href="https://github.com/Fauteck/vibecoding-academy"
-       class="mobile-topbar-btn" target="_blank" rel="noopener" aria-label="GitHub">
-      <i class="fab fa-github"></i>
-    </a>
+    <a class="mobile-topbar-brand" href="../../"><i class="fas fa-code"></i> Vibecoding Academy</a>
+    <a href="https://github.com/Fauteck/vibecoding-academy" class="mobile-topbar-btn" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
   </div>
 
   <!-- Mobile Bottom Navigation (<=992px) -->
   <nav class="bottom-nav">
-    <a class="bottom-nav-item" href="../">
-      <i class="fas fa-home"></i>
-      <span>Home</span>
-    </a>
-    <a class="bottom-nav-item" href="../pong/">
-      <i class="fas fa-table-tennis-paddle-ball"></i>
-      <span>Pong</span>
-    </a>
-    <a class="bottom-nav-item" href="../gta/">
-      <i class="fas fa-car"></i>
-      <span>GTA</span>
-    </a>
-    <a class="bottom-nav-item active" href="../handout/">
-      <i class="fas fa-file-alt"></i>
-      <span>Handout</span>
-    </a>
+    <a class="bottom-nav-item" href="../../"><i class="fas fa-home"></i><span>Home</span></a>
+    <a class="bottom-nav-item" href="../../ideen/"><i class="fas fa-lightbulb"></i><span>Ideen</span></a>
+    <a class="bottom-nav-item" href="../../#ergebnisse"><i class="fas fa-rocket"></i><span>Ergebnisse</span></a>
+    <a class="bottom-nav-item active" href="../"><i class="fas fa-book"></i><span>Wiki</span></a>
   </nav>
 
   <div id="content">

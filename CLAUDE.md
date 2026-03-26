@@ -21,12 +21,20 @@ Jedes Projekt ist eine **selbstständige HTML-Datei** in einem eigenen Unterordn
 
 ```
 vibecoding-academy/
-├── index.html              # Landing Page
+├── index.html              # Landing Page (Single-Page mit Sektionen)
 ├── robots.txt              # Crawler-Blocking
-├── pong/index.html         # Pong-Spiel
-├── gta/index.html          # GTA-Parodie
-├── handout/index.html      # Workshop-Handout
-└── ideen/                  # Spielkonzepte (Markdown)
+├── apps/                   # Umgesetzte Projekte
+│   ├── pong/index.html
+│   ├── gta/index.html
+│   └── wochenendplanung/index.html
+├── ideen/                  # Spielkonzepte (Markdown + Viewer)
+│   ├── index.html          # Ideen-Übersicht
+│   ├── viewer.html         # Markdown-Viewer
+│   └── *.md                # Konzeptdateien
+└── wiki/                   # Dokumentation
+    ├── index.html          # Wiki-Übersicht
+    ├── handout/index.html  # Workshop-Handout
+    └── claude-md/index.html # Beispiel CLAUDE.md
 ```
 
 - Kein Build-Prozess, kein Bundler, kein Package-Manager
@@ -35,9 +43,10 @@ vibecoding-academy/
 
 ### Neues Projekt hinzufügen
 
-1. Unterordner anlegen mit eigener `index.html` (z. B. `snake/index.html`)
+1. Unterordner in `apps/` anlegen mit eigener `index.html` (z. B. `apps/snake/index.html`)
 2. Projekt-Card in der Haupt-`index.html` im Bereich „Ergebnisse" eintragen
-3. Committen & pushen — GitHub Pages deployt automatisch
+3. Navigation in der neuen Datei mit dem einheitlichen Nav-Pattern versehen
+4. Committen & pushen — GitHub Pages deployt automatisch
 
 ---
 

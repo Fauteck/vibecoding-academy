@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ideen &amp; Konzepte – Vibecoding Academy</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230f0f1a'/%3E%3Ctext x='2' y='23' font-family='monospace' font-size='20' font-weight='bold' fill='%237c3aed'%3E%26lt;%3C/text%3E%3Ctext x='18' y='23' font-family='monospace' font-size='20' font-weight='bold' fill='%2306b6d4'%3E%26gt;%3C/text%3E%3Cpath d='M17 8 L13 17 L18 17 L15 26' stroke='url(%23g)' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23c4b5fd'/%3E%3Cstop offset='1' stop-color='%2306b6d4'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E">
+  <meta name="description" content="Spielkonzepte und Ideen als Startpunkt für eigene Projekte">
+  <meta name="theme-color" content="#5B8BD6">
+
+  <!-- Bootstrap 5.3.2 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+        crossorigin="anonymous">
+  <!-- Font Awesome 6.4.2 -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+
+  <style>
+    :root {
+      --primary-color:   #5B8BD6;
+      --secondary-color: #3D5A8C;
+      --bg-page:         #EEF2F7;
+      --bg-card:         rgba(255, 255, 255, 0.85);
+      --text-primary:    #2D3748;
+      --text-muted:      #7A8599;
+      --border-color:    #D4DCE8;
+      --border-radius-card: 10px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg-page);
+      color: var(--text-primary);
+      min-height: 100vh;
+    }
+
+    /* ── Desktop Navbar ────────────────────────────────────── */
+    .site-navbar {
+      display: none; position: fixed; top: 0; left: 0; right: 0;
+      background: linear-gradient(135deg, #5B8BD6, #3D5A8C);
+      z-index: 1030; box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+      align-items: center; justify-content: space-between;
+      padding: 0.5rem 1.5rem;
+    }
+    .site-navbar-brand {
+      color: #fff; text-decoration: none; font-size: 1.3rem; font-weight: bold;
+      display: flex; align-items: center; gap: 0.4rem;
+    }
+    .site-navbar-links { display: flex; align-items: center; gap: 0.25rem; }
+    .site-navbar-link {
+      color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.875rem;
+      padding: 0.4rem 0.8rem; border-radius: 6px; transition: background 0.2s, color 0.2s;
+      white-space: nowrap;
+    }
+    .site-navbar-link:hover, .site-navbar-link.active {
+      color: #fff; background: rgba(255,255,255,0.15);
+    }
+
+    /* Dropdown */
+    .site-navbar-dropdown { position: relative; }
+    .site-navbar-dropdown-menu {
+      display: none; position: absolute; top: 100%; left: 0; min-width: 220px;
+      background: #fff; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      padding: 0.5rem 0; z-index: 1040; margin-top: 0.25rem;
+    }
+    .site-navbar-dropdown:hover .site-navbar-dropdown-menu,
+    .site-navbar-dropdown:focus-within .site-navbar-dropdown-menu {
+      display: block;
+    }
+    .site-navbar-dropdown-menu a {
+      display: block; padding: 0.5rem 1rem; color: var(--text-primary);
+      text-decoration: none; font-size: 0.85rem; transition: background 0.15s;
+    }
+    .site-navbar-dropdown-menu a:hover {
+      background: var(--bg-page);
+    }
+    .site-navbar-dropdown-menu .dropdown-header {
+      padding: 0.5rem 1rem 0.25rem; font-size: 0.7rem; text-transform: uppercase;
+      letter-spacing: 0.05em; color: var(--text-muted); font-weight: 600;
+    }
+
+    /* ── Mobile Top Bar ────────────────────────────────────── */
+    .mobile-topbar {
+      position: fixed; top: 0; left: 0; right: 0; height: 56px;
+      background: linear-gradient(135deg, #5B8BD6, #3D5A8C);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 1rem; z-index: 1030;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .mobile-topbar-brand {
+      color: #fff; text-decoration: none; font-size: 1.1rem; font-weight: bold;
+      display: flex; align-items: center; gap: 0.4rem;
+    }
+    .mobile-topbar-btn {
+      color: rgba(255,255,255,0.85); text-decoration: none; font-size: 1.1rem;
+      padding: 0.4rem; transition: color 0.2s;
+    }
+    .mobile-topbar-btn:hover { color: #fff; }
+
+    /* ── Mobile Bottom Nav ─────────────────────────────────── */
+    .bottom-nav {
+      position: fixed; bottom: 0; left: 0; right: 0; height: 60px;
+      background: var(--secondary-color); display: flex; justify-content: space-around;
+      align-items: center; z-index: 1030; box-shadow: 0 -2px 8px rgba(0,0,0,0.15);
+    }
+    .bottom-nav-item {
+      display: flex; flex-direction: column; align-items: center; gap: 0.15rem;
+      color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.65rem;
+      padding: 0.3rem 0.6rem; transition: color 0.2s;
+    }
+    .bottom-nav-item i { font-size: 1.15rem; }
+    .bottom-nav-item:hover, .bottom-nav-item.active { color: #fff; }
+    .bottom-nav-item.active i { color: var(--primary-color); }
+
+    /* ── Offcanvas (Mobile 2nd-Level) ──────────────────────── */
+    .more-sheet {
+      background: var(--secondary-color); color: #fff; border-radius: 16px 16px 0 0;
+    }
+    .more-sheet .list-group-item {
+      background: transparent; color: rgba(255,255,255,0.85);
+      border-color: rgba(255,255,255,0.1); padding: 0.75rem 1.25rem;
+    }
+    .more-sheet .list-group-item:hover { background: rgba(255,255,255,0.1); color: #fff; }
+    .more-sheet .offcanvas-header { border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .more-sheet .list-group-header {
+      padding: 0.75rem 1.25rem 0.25rem; font-size: 0.7rem; text-transform: uppercase;
+      letter-spacing: 0.05em; color: rgba(255,255,255,0.5); font-weight: 600;
+    }
+
+    /* ── Responsive ────────────────────────────────────────── */
+    @media (min-width: 992px) {
+      .site-navbar { display: flex; }
+      .mobile-topbar, .bottom-nav { display: none !important; }
+      body { padding-top: 52px; }
+    }
+    @media (max-width: 991.98px) {
+      body { padding-top: 56px; padding-bottom: 60px; }
+    }
+
+    /* ── Page Content ──────────────────────────────────────── */
+    .page-header {
+      background: linear-gradient(135deg, rgba(91,139,214,0.1), rgba(61,90,140,0.08));
+      border-bottom: 1px solid var(--border-color);
+      padding: 2rem 0;
+    }
+    .page-header h1 { font-size: 1.6rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .page-header p { color: var(--text-muted); margin-bottom: 0; }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius-card);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    a.card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ Desktop Navbar ══════════════════════════════════════ -->
+  <nav class="site-navbar">
+    <a class="site-navbar-brand" href="../">
+      <i class="fas fa-code"></i> Vibecoding Academy
+    </a>
+    <div class="site-navbar-links">
+      <a class="site-navbar-link" href="../">Home</a>
+      <div class="site-navbar-dropdown">
+        <a class="site-navbar-link active" href="./">Ideen <i class="fas fa-caret-down" style="font-size:0.7em;"></i></a>
+        <div class="site-navbar-dropdown-menu">
+          <div class="dropdown-header">Spielkonzepte</div>
+          <a href="./viewer.html?file=flappybird.md">🐦 Flappy Bird</a>
+          <a href="./viewer.html?file=memory.md">🃏 Memory</a>
+          <a href="./viewer.html?file=minesweeper.md">💣 Minesweeper</a>
+          <a href="./viewer.html?file=pong.md">🏓 Pong</a>
+          <a href="./viewer.html?file=snake.md">🐍 Snake</a>
+          <a href="./viewer.html?file=solitaire.md">🂡 Solitär</a>
+          <a href="./viewer.html?file=sudoku.md">🔢 Sudoku</a>
+          <a href="./viewer.html?file=tetris.md">🧱 Tetris</a>
+          <a href="./viewer.html?file=tictactoe.md">❌ Tic-Tac-Toe</a>
+          <a href="./viewer.html?file=haushaltsbuch.md">📒 Haushaltsbuch</a>
+        </div>
+      </div>
+      <div class="site-navbar-dropdown">
+        <a class="site-navbar-link" href="../#ergebnisse">Ergebnisse <i class="fas fa-caret-down" style="font-size:0.7em;"></i></a>
+        <div class="site-navbar-dropdown-menu">
+          <div class="dropdown-header">Umgesetzte Apps</div>
+          <a href="../apps/pong/">🏓 Pong</a>
+          <a href="../apps/gta/">🚗 Grand Thomas Auto 6</a>
+          <a href="../apps/wochenendplanung/">📅 Wochenendplanung</a>
+        </div>
+      </div>
+      <div class="site-navbar-dropdown">
+        <a class="site-navbar-link" href="../wiki/">Wiki <i class="fas fa-caret-down" style="font-size:0.7em;"></i></a>
+        <div class="site-navbar-dropdown-menu">
+          <div class="dropdown-header">Dokumentation</div>
+          <a href="../wiki/handout/">📄 Handout</a>
+          <a href="../wiki/claude-md/">📋 Beispiel CLAUDE.md</a>
+        </div>
+      </div>
+      <a class="site-navbar-link" href="https://github.com/Fauteck/vibecoding-academy" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i> GitHub
+      </a>
+    </div>
+  </nav>
+
+  <!-- ══ Mobile Top Bar ══════════════════════════════════════ -->
+  <div class="mobile-topbar d-lg-none">
+    <a class="mobile-topbar-brand" href="../">
+      <i class="fas fa-code"></i> Vibecoding Academy
+    </a>
+    <a href="https://github.com/Fauteck/vibecoding-academy"
+       class="mobile-topbar-btn" target="_blank" rel="noopener" aria-label="GitHub">
+      <i class="fab fa-github"></i>
+    </a>
+  </div>
+
+  <!-- ══ Page Content ════════════════════════════════════════ -->
+  <div class="page-header">
+    <div class="container">
+      <h1><i class="fas fa-lightbulb me-2"></i>Ideen &amp; Konzepte</h1>
+      <p>Konzeptvorlagen als Startpunkt für eigene Projekte</p>
+    </div>
+  </div>
+
+  <main class="container py-4">
+    <div class="row g-3">
+      <div class="col-md-4 col-sm-6">
+        <a class="card text-decoration-none h-100" href="./viewer.html?file=flappybird.md">
+          <div class="card-body text-center">
+            <div class="fs-1 mb-2">🐦</div>
+            <h6 class="card-title">Flappy Bird</h6>
+            <p class="card-text text-muted small">Fliege durch die Lücken zwischen den Röhren</p>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <a class="card text-decoration-none h-100" href="./viewer.html?file=memory.md">
+          <div class="card-body text-center">
+            <div class="fs-1 mb-2">🃏</div>
+            <h6 class="card-title">Memory</h6>
+            <p class="card-text text-muted small">Finde alle passenden Kartenpaare</p>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <a class="card text-decoration-none h-100" href="./viewer.html?file=minesweeper.md">
+          <div class="card-body text-center">
+            <div class="fs-1 mb-2">💣</div>
+            <h6 class="card-title">Minesweeper</h6>
+            <p class="card-text text-muted small">Decke das Feld auf, ohne eine Mine zu treffen</p>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <a class="card text-decoration-none h-100" href="./viewer.html?file=pong.md">
+          <div class="card-body text-center">
+            <div class="fs-1 mb-2">🏓</div>
+            <h6 class="card-title">Pong</h6>
+            <p class="card-text text-muted small">Klassisches Pong-Spiel: Spieler gegen KI</p>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <a class="card text-decoration-none h-100" href="./viewer.html?file=snake.md">
+          <div class="card-body text-center">
+            <div class="fs-1 mb-2">🐍</div>
+            <h6 class="card-title">Snake</h6>
+            <p class="card-text text-muted small">Sammle Futter und werde immer länger</p>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <a class="card text-decoration-none h-100" href="./viewer.html?file=solitaire.md">
+          <div class="card-body text-center">
+            <div class="fs-1 mb-2">🂡</div>
+            <h6 class="card-title">Solitär</h6>
+            <p class="card-text text-muted small">Klassisches Klondike-Kartenspiel</p>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <a class="card text-decoration-none h-100" href="./viewer.html?file=sudoku.md">
+          <div class="card-body text-center">
+            <div class="fs-1 mb-2">🔢</div>
+            <h6 class="card-title">Sudoku</h6>
+            <p class="card-text text-muted small">Fülle das 9×9-Gitter mit den richtigen Zahlen</p>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <a class="card text-decoration-none h-100" href="./viewer.html?file=tetris.md">
+          <div class="card-body text-center">
+            <div class="fs-1 mb-2">🧱</div>
+            <h6 class="card-title">Tetris</h6>
+            <p class="card-text text-muted small">Stapele fallende Blöcke zu vollen Reihen</p>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <a class="card text-decoration-none h-100" href="./viewer.html?file=tictactoe.md">
+          <div class="card-body text-center">
+            <div class="fs-1 mb-2">❌</div>
+            <h6 class="card-title">Tic-Tac-Toe</h6>
+            <p class="card-text text-muted small">Drei in einer Reihe gewinnt</p>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <a class="card text-decoration-none h-100" href="./viewer.html?file=haushaltsbuch.md">
+          <div class="card-body text-center">
+            <div class="fs-1 mb-2">📒</div>
+            <h6 class="card-title">Haushaltsbuch</h6>
+            <p class="card-text text-muted small">Einfache Eingaben-/Ausgaben-App für den Haushalt</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- ══ Footer ══════════════════════════════════════════════ -->
+  <footer class="text-center py-4" style="background: var(--secondary-color); color: rgba(255,255,255,0.7); font-size: 0.85rem;">
+    <div class="container">
+      <p class="mb-1">Niklas Fauteck 2026</p>
+      <div class="d-flex justify-content-center gap-3">
+        <a href="https://github.com/Fauteck/vibecoding-academy" target="_blank" rel="noopener" style="color: rgba(255,255,255,0.7);">
+          <i class="fab fa-github me-1"></i>GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/fauteck" target="_blank" rel="noopener" style="color: rgba(255,255,255,0.7);">
+          <i class="fab fa-linkedin me-1"></i>LinkedIn
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ══ Mobile Bottom Nav ═══════════════════════════════════ -->
+  <nav class="bottom-nav d-lg-none">
+    <a class="bottom-nav-item" href="../">
+      <i class="fas fa-home"></i>
+      <span>Home</span>
+    </a>
+    <a class="bottom-nav-item active" href="./" data-bs-toggle="offcanvas" data-bs-target="#mobileIdeen">
+      <i class="fas fa-lightbulb"></i>
+      <span>Ideen</span>
+    </a>
+    <a class="bottom-nav-item" href="../#ergebnisse" data-bs-toggle="offcanvas" data-bs-target="#mobileErgebnisse">
+      <i class="fas fa-rocket"></i>
+      <span>Ergebnisse</span>
+    </a>
+    <a class="bottom-nav-item" href="../wiki/" data-bs-toggle="offcanvas" data-bs-target="#mobileWiki">
+      <i class="fas fa-book"></i>
+      <span>Wiki</span>
+    </a>
+  </nav>
+
+  <!-- ══ Mobile Offcanvas Sheets ═════════════════════════════ -->
+  <div class="offcanvas offcanvas-bottom more-sheet" tabindex="-1" id="mobileIdeen" style="height: auto; max-height: 80vh;">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title"><i class="fas fa-lightbulb me-2"></i>Ideen &amp; Konzepte</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Schließen"></button>
+    </div>
+    <div class="offcanvas-body p-0">
+      <div class="list-group list-group-flush">
+        <a href="./viewer.html?file=flappybird.md" class="list-group-item list-group-item-action">🐦 Flappy Bird</a>
+        <a href="./viewer.html?file=memory.md" class="list-group-item list-group-item-action">🃏 Memory</a>
+        <a href="./viewer.html?file=minesweeper.md" class="list-group-item list-group-item-action">💣 Minesweeper</a>
+        <a href="./viewer.html?file=pong.md" class="list-group-item list-group-item-action">🏓 Pong</a>
+        <a href="./viewer.html?file=snake.md" class="list-group-item list-group-item-action">🐍 Snake</a>
+        <a href="./viewer.html?file=solitaire.md" class="list-group-item list-group-item-action">🂡 Solitär</a>
+        <a href="./viewer.html?file=sudoku.md" class="list-group-item list-group-item-action">🔢 Sudoku</a>
+        <a href="./viewer.html?file=tetris.md" class="list-group-item list-group-item-action">🧱 Tetris</a>
+        <a href="./viewer.html?file=tictactoe.md" class="list-group-item list-group-item-action">❌ Tic-Tac-Toe</a>
+        <a href="./viewer.html?file=haushaltsbuch.md" class="list-group-item list-group-item-action">📒 Haushaltsbuch</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="offcanvas offcanvas-bottom more-sheet" tabindex="-1" id="mobileErgebnisse" style="height: auto; max-height: 80vh;">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title"><i class="fas fa-rocket me-2"></i>Ergebnisse</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Schließen"></button>
+    </div>
+    <div class="offcanvas-body p-0">
+      <div class="list-group list-group-flush">
+        <a href="../apps/pong/" class="list-group-item list-group-item-action">🏓 Pong</a>
+        <a href="../apps/gta/" class="list-group-item list-group-item-action">🚗 Grand Thomas Auto 6</a>
+        <a href="../apps/wochenendplanung/" class="list-group-item list-group-item-action">📅 Wochenendplanung</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="offcanvas offcanvas-bottom more-sheet" tabindex="-1" id="mobileWiki" style="height: auto; max-height: 80vh;">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title"><i class="fas fa-book me-2"></i>Wiki</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Schließen"></button>
+    </div>
+    <div class="offcanvas-body p-0">
+      <div class="list-group list-group-flush">
+        <a href="../wiki/handout/" class="list-group-item list-group-item-action">📄 Handout</a>
+        <a href="../wiki/claude-md/" class="list-group-item list-group-item-action">📋 Beispiel CLAUDE.md</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+          crossorigin="anonymous"></script>
+</body>
+</html>
