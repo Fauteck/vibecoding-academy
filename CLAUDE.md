@@ -13,7 +13,7 @@ Es zeigt den Weg von der Idee bis zur fertigen Web-Anwendung mit KI-Tools.
 - **Typ:** Rein statische Website (HTML, CSS, JavaScript) — kein Backend, keine Datenbank
 - **Deployment:** GitHub Pages (automatisch bei Push auf `main`)
 - **Live:** https://fauteck.github.io/vibecoding-academy/
-- **Inhalt:** Landing Page, fertige Spiele (Pong, GTA-Parodie), Spielkonzepte, Workshop-Handout
+- **Inhalt:** Landing Page, fertige Apps (Pong, GTA-Parodie, Wochenendplanung), Spielkonzepte, Wiki/Handout
 
 ### Architektur
 
@@ -23,9 +23,13 @@ Jedes Projekt ist eine **selbstständige HTML-Datei** in einem eigenen Unterordn
 vibecoding-academy/
 ├── index.html              # Landing Page
 ├── robots.txt              # Crawler-Blocking
-├── pong/index.html         # Pong-Spiel
-├── gta/index.html          # GTA-Parodie
-├── handout/index.html      # Workshop-Handout
+├── apps/                   # Fertige Projekte
+│   ├── pong/index.html     # Pong-Spiel
+│   ├── gta/index.html      # GTA-Parodie
+│   └── wochenendplanung/index.html  # Wochenendplanung
+├── wiki/                   # Workshop-Materialien
+│   ├── index.html          # Workshop-Handout
+│   └── beispiel-claude.md  # Beispiel CLAUDE.md
 └── ideen/                  # Spielkonzepte (Markdown)
 ```
 
@@ -35,9 +39,11 @@ vibecoding-academy/
 
 ### Neues Projekt hinzufügen
 
-1. Unterordner anlegen mit eigener `index.html` (z. B. `snake/index.html`)
-2. Projekt-Card in der Haupt-`index.html` im Bereich „Ergebnisse" eintragen
-3. Committen & pushen — GitHub Pages deployt automatisch
+1. Unterordner in `apps/` anlegen mit eigener `index.html` (z. B. `apps/snake/index.html`)
+2. Einheitliche Navigation einbauen (Desktop-Navbar mit Dropdowns, Mobile Bottom Nav mit Offcanvas)
+3. Projekt-Card in der Haupt-`index.html` im Bereich „Ergebnisse" eintragen
+4. Dropdown-Einträge in der Navigation aller bestehenden Seiten ergänzen
+5. Committen & pushen — GitHub Pages deployt automatisch
 
 ---
 
