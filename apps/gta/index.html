@@ -8,67 +8,71 @@
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         crossorigin="anonymous" referrerpolicy="no-referrer">
+  <!-- Bootstrap 5.3.2 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+        crossorigin="anonymous">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: system-ui, sans-serif; background: #0a0a0a; display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; padding-top: 48px; overflow: hidden; }
 
     /* ── Desktop Navbar (>992px) ─────────────────────── */
-    .site-navbar {
-      display: none; position: fixed; top: 0; left: 0; right: 0;
-      background: linear-gradient(135deg, #3498db, #2c3e50);
-      z-index: 1030; box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-      align-items: center; justify-content: space-between;
-      padding: 0.5rem 1.5rem;
+    .navbar {
+      background: linear-gradient(135deg, #5B8BD6, #3D5A8C);
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 1030; box-shadow: 0 2px 8px rgba(0,0,0,0.12);
     }
-    .site-navbar-brand {
-      color: #fff; text-decoration: none; font-size: 1.3rem; font-weight: bold;
-      display: flex; align-items: center; gap: 0.4rem;
-    }
-    .site-navbar-links { display: flex; align-items: center; gap: 0.25rem; }
-    .site-navbar-link {
+    .navbar-brand { color: #fff !important; font-size: 1.3rem; font-weight: bold; }
+    .navbar-link {
       color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.875rem;
       padding: 0.4rem 0.8rem; border-radius: 6px; transition: background 0.2s, color 0.2s;
     }
-    .site-navbar-link:hover, .site-navbar-link.active {
-      color: #fff; background: rgba(255,255,255,0.15);
+    .navbar-link:hover, .navbar-link.active { color: #fff; background: rgba(255,255,255,0.15); }
+    .navbar-link.dropdown-toggle::after { margin-left: 0.3em; vertical-align: 0.15em; }
+    .navbar .dropdown-menu {
+      background: #3D5A8C; border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 8px; min-width: 200px; padding: 0.4rem 0;
     }
+    .navbar .dropdown-menu .dropdown-item {
+      color: rgba(255,255,255,0.85); font-size: 0.875rem; padding: 0.45rem 1rem;
+    }
+    .navbar .dropdown-menu .dropdown-item:hover,
+    .navbar .dropdown-menu .dropdown-item:focus { background: rgba(255,255,255,0.15); color: #fff; }
+    .navbar .dropdown-menu .dropdown-divider { border-color: rgba(255,255,255,0.15); }
 
-    /* ── Mobile Top Bar (<=992px) ──��─────────────────── */
+    /* ── Mobile Top Bar (<=992px) ────────────────────── */
     .mobile-topbar {
       position: fixed; top: 0; left: 0; right: 0; height: 56px;
-      background: linear-gradient(135deg, #3498db, #2c3e50);
+      background: linear-gradient(135deg, #5B8BD6, #3D5A8C);
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0 1rem; z-index: 1030;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      padding: 0 1rem; z-index: 1030; box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     }
-    .mobile-topbar-brand {
-      color: #fff; text-decoration: none; font-size: 1.1rem; font-weight: bold;
-      display: flex; align-items: center; gap: 0.4rem;
-    }
-    .mobile-topbar-btn {
-      color: rgba(255,255,255,0.85); text-decoration: none; font-size: 1.1rem;
-      padding: 0.4rem; transition: color 0.2s;
-    }
+    .mobile-topbar-brand { color: #fff; text-decoration: none; font-size: 1.1rem; font-weight: bold; display: flex; align-items: center; gap: 0.4rem; }
+    .mobile-topbar-btn { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 1.1rem; padding: 0.4rem; transition: color 0.2s; }
     .mobile-topbar-btn:hover { color: #fff; }
 
     /* ── Mobile Bottom Nav (<=992px) ─────────────────── */
     .bottom-nav {
       position: fixed; bottom: 0; left: 0; right: 0; height: 60px;
-      background: #2c3e50; display: flex; justify-content: space-around; align-items: center;
+      background: #3D5A8C; display: flex; justify-content: space-around; align-items: center;
       z-index: 1030; box-shadow: 0 -2px 8px rgba(0,0,0,0.15);
     }
     .bottom-nav-item {
       display: flex; flex-direction: column; align-items: center; gap: 0.15rem;
       color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.65rem;
-      padding: 0.3rem 0.6rem; transition: color 0.2s;
+      background: none; border: none; padding: 0.3rem 0.6rem; transition: color 0.2s;
     }
     .bottom-nav-item i { font-size: 1.15rem; }
     .bottom-nav-item:hover, .bottom-nav-item.active { color: #fff; }
-    .bottom-nav-item.active i { color: #3498db; }
+    .bottom-nav-item.active i { color: #5B8BD6; }
+
+    /* ── Offcanvas Bottom Sheets ─────────────────────── */
+    .nav-sheet { border-radius: 16px 16px 0 0 !important; }
+    .nav-sheet .offcanvas-header { background: #3D5A8C; color: #fff; border-radius: 16px 16px 0 0; }
 
     /* ── Responsive ──────────────────────────────────── */
     @media (min-width: 992px) {
-      .site-navbar { display: flex; }
       .mobile-topbar, .bottom-nav { display: none !important; }
     }
     @media (max-width: 991.98px) {
@@ -232,25 +236,52 @@
 </head>
 <body>
   <!-- Desktop Navbar (>992px) -->
-  <nav class="site-navbar">
-    <a class="site-navbar-brand" href="../">
-      <i class="fas fa-code"></i> Vibecoding Academy
-    </a>
-    <div class="site-navbar-links">
-      <a class="site-navbar-link" href="../">Home</a>
-      <a class="site-navbar-link" href="../pong/">Pong</a>
-      <a class="site-navbar-link active" href="../gta/">GTA</a>
-      <a class="site-navbar-link" href="../handout/">Handout</a>
-      <a class="site-navbar-link" href="https://github.com/Fauteck/vibecoding-academy" target="_blank" rel="noopener">
-        <i class="fab fa-github"></i> GitHub
+  <nav class="navbar navbar-expand d-none d-lg-flex">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="../../">
+        <i class="fas fa-code me-1"></i> Vibecoding Academy
       </a>
+      <div class="d-flex align-items-center gap-1">
+        <a class="navbar-link" href="../../#workshop">Workshop</a>
+        <div class="dropdown">
+          <a class="navbar-link dropdown-toggle" href="../../#ideen" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ideen</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="../../ideen/viewer.html?file=flappybird.md">Flappy Bird</a></li>
+            <li><a class="dropdown-item" href="../../ideen/viewer.html?file=memory.md">Memory</a></li>
+            <li><a class="dropdown-item" href="../../ideen/viewer.html?file=minesweeper.md">Minesweeper</a></li>
+            <li><a class="dropdown-item" href="../../ideen/viewer.html?file=pong.md">Pong</a></li>
+            <li><a class="dropdown-item" href="../../ideen/viewer.html?file=snake.md">Snake</a></li>
+            <li><a class="dropdown-item" href="../../ideen/viewer.html?file=solitaire.md">Solitaer</a></li>
+            <li><a class="dropdown-item" href="../../ideen/viewer.html?file=sudoku.md">Sudoku</a></li>
+            <li><a class="dropdown-item" href="../../ideen/viewer.html?file=tetris.md">Tetris</a></li>
+            <li><a class="dropdown-item" href="../../ideen/viewer.html?file=tictactoe.md">Tic-Tac-Toe</a></li>
+            <li><a class="dropdown-item" href="../../ideen/viewer.html?file=haushaltsbuch.md">Haushaltsbuch</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="../../#ideen"><i class="fas fa-lightbulb me-1"></i> Alle Ideen</a></li>
+          </ul>
+        </div>
+        <div class="dropdown">
+          <a class="navbar-link dropdown-toggle active" href="../../#ergebnisse" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ergebnisse</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="../../apps/pong/">Pong</a></li>
+            <li><a class="dropdown-item active" href="../../apps/gta/">Grand Thomas Auto 6</a></li>
+            <li><a class="dropdown-item" href="../../apps/wochenendplanung/">Wochenendplanung</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="../../#ergebnisse"><i class="fas fa-rocket me-1"></i> Alle Ergebnisse</a></li>
+          </ul>
+        </div>
+        <a class="navbar-link" href="../../wiki/">Wiki</a>
+        <a class="navbar-link" href="https://github.com/Fauteck/vibecoding-academy" target="_blank" rel="noopener">
+          <i class="fab fa-github me-1"></i> GitHub
+        </a>
+      </div>
     </div>
   </nav>
 
   <!-- Mobile Top Bar (<=992px) -->
-  <div class="mobile-topbar">
-    <a class="mobile-topbar-brand" href="../">
-      <i class="fas fa-code"></i> Vibecoding Academy
+  <div class="mobile-topbar d-lg-none">
+    <a class="mobile-topbar-brand" href="../../">
+      <i class="fas fa-code me-1"></i> Vibecoding Academy
     </a>
     <a href="https://github.com/Fauteck/vibecoding-academy"
        class="mobile-topbar-btn" target="_blank" rel="noopener" aria-label="GitHub">
@@ -258,23 +289,60 @@
     </a>
   </div>
 
+  <!-- Mobile Offcanvas: Ideen -->
+  <div class="offcanvas offcanvas-bottom nav-sheet" tabindex="-1" id="ideenSheet" style="height: auto; max-height: 70vh;">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title"><i class="fas fa-lightbulb me-2"></i>Ideen &amp; Konzepte</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body p-0">
+      <div class="list-group list-group-flush">
+        <a href="../../ideen/viewer.html?file=flappybird.md" class="list-group-item list-group-item-action">Flappy Bird</a>
+        <a href="../../ideen/viewer.html?file=memory.md" class="list-group-item list-group-item-action">Memory</a>
+        <a href="../../ideen/viewer.html?file=minesweeper.md" class="list-group-item list-group-item-action">Minesweeper</a>
+        <a href="../../ideen/viewer.html?file=pong.md" class="list-group-item list-group-item-action">Pong</a>
+        <a href="../../ideen/viewer.html?file=snake.md" class="list-group-item list-group-item-action">Snake</a>
+        <a href="../../ideen/viewer.html?file=solitaire.md" class="list-group-item list-group-item-action">Solitaer</a>
+        <a href="../../ideen/viewer.html?file=sudoku.md" class="list-group-item list-group-item-action">Sudoku</a>
+        <a href="../../ideen/viewer.html?file=tetris.md" class="list-group-item list-group-item-action">Tetris</a>
+        <a href="../../ideen/viewer.html?file=tictactoe.md" class="list-group-item list-group-item-action">Tic-Tac-Toe</a>
+        <a href="../../ideen/viewer.html?file=haushaltsbuch.md" class="list-group-item list-group-item-action">Haushaltsbuch</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Offcanvas: Ergebnisse -->
+  <div class="offcanvas offcanvas-bottom nav-sheet" tabindex="-1" id="ergebnisseSheet" style="height: auto; max-height: 70vh;">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title"><i class="fas fa-rocket me-2"></i>Ergebnisse</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body p-0">
+      <div class="list-group list-group-flush">
+        <a href="../../apps/pong/" class="list-group-item list-group-item-action">Pong</a>
+        <a href="../../apps/gta/" class="list-group-item list-group-item-action active">Grand Thomas Auto 6</a>
+        <a href="../../apps/wochenendplanung/" class="list-group-item list-group-item-action">Wochenendplanung</a>
+      </div>
+    </div>
+  </div>
+
   <!-- Mobile Bottom Navigation (<=992px) -->
-  <nav class="bottom-nav">
-    <a class="bottom-nav-item" href="../">
-      <i class="fas fa-home"></i>
-      <span>Home</span>
+  <nav class="bottom-nav d-lg-none">
+    <a class="bottom-nav-item" href="../../#workshop">
+      <i class="fas fa-info-circle"></i>
+      <span>Workshop</span>
     </a>
-    <a class="bottom-nav-item" href="../pong/">
-      <i class="fas fa-table-tennis-paddle-ball"></i>
-      <span>Pong</span>
-    </a>
-    <a class="bottom-nav-item active" href="../gta/">
-      <i class="fas fa-car"></i>
-      <span>GTA</span>
-    </a>
-    <a class="bottom-nav-item" href="../handout/">
-      <i class="fas fa-file-alt"></i>
-      <span>Handout</span>
+    <button class="bottom-nav-item" data-bs-toggle="offcanvas" data-bs-target="#ideenSheet">
+      <i class="fas fa-lightbulb"></i>
+      <span>Ideen</span>
+    </button>
+    <button class="bottom-nav-item" data-bs-toggle="offcanvas" data-bs-target="#ergebnisseSheet">
+      <i class="fas fa-rocket"></i>
+      <span>Ergebnisse</span>
+    </button>
+    <a class="bottom-nav-item" href="../../wiki/">
+      <i class="fas fa-book"></i>
+      <span>Wiki</span>
     </a>
   </nav>
 
@@ -790,5 +858,9 @@
   runIntro();
 })();
   </script>
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+          crossorigin="anonymous"></script>
 </body>
 </html>

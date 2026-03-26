@@ -160,15 +160,45 @@
       color: var(--primary-color);
     }
 
-    /* ── More Bottom Sheet ─────────────────────────────────── */
-    .more-sheet {
+    /* ── Offcanvas Bottom Sheets ─────────────────────────────── */
+    .nav-sheet {
       border-radius: 16px 16px 0 0 !important;
     }
 
-    .more-sheet .offcanvas-header {
+    .nav-sheet .offcanvas-header {
       background: var(--secondary-color);
       color: #fff;
       border-radius: 16px 16px 0 0;
+    }
+
+    /* ── Dropdown Overrides ───────────────────────────────────── */
+    .navbar-link.dropdown-toggle::after {
+      margin-left: 0.3em;
+      vertical-align: 0.15em;
+    }
+
+    .navbar .dropdown-menu {
+      background: var(--secondary-color);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 8px;
+      min-width: 200px;
+      padding: 0.4rem 0;
+    }
+
+    .navbar .dropdown-menu .dropdown-item {
+      color: rgba(255,255,255,0.85);
+      font-size: 0.875rem;
+      padding: 0.45rem 1rem;
+    }
+
+    .navbar .dropdown-menu .dropdown-item:hover,
+    .navbar .dropdown-menu .dropdown-item:focus {
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+    }
+
+    .navbar .dropdown-menu .dropdown-divider {
+      border-color: rgba(255,255,255,0.15);
     }
 
     /* ── Section Header ────────────────────────────────────── */
@@ -326,9 +356,34 @@
       </a>
       <div class="d-flex align-items-center gap-1">
         <a class="navbar-link active" href="#workshop">Workshop</a>
-        <a class="navbar-link" href="#ideen">Ideen</a>
-        <a class="navbar-link" href="#ergebnisse">Ergebnisse</a>
-        <a class="navbar-link" href="./handout/">Handout <i class="fas fa-arrow-up-right-from-square" style="font-size:0.7em; opacity:0.7;"></i></a>
+        <div class="dropdown">
+          <a class="navbar-link dropdown-toggle" href="#ideen" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ideen</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="./ideen/viewer.html?file=flappybird.md">Flappy Bird</a></li>
+            <li><a class="dropdown-item" href="./ideen/viewer.html?file=memory.md">Memory</a></li>
+            <li><a class="dropdown-item" href="./ideen/viewer.html?file=minesweeper.md">Minesweeper</a></li>
+            <li><a class="dropdown-item" href="./ideen/viewer.html?file=pong.md">Pong</a></li>
+            <li><a class="dropdown-item" href="./ideen/viewer.html?file=snake.md">Snake</a></li>
+            <li><a class="dropdown-item" href="./ideen/viewer.html?file=solitaire.md">Solitaer</a></li>
+            <li><a class="dropdown-item" href="./ideen/viewer.html?file=sudoku.md">Sudoku</a></li>
+            <li><a class="dropdown-item" href="./ideen/viewer.html?file=tetris.md">Tetris</a></li>
+            <li><a class="dropdown-item" href="./ideen/viewer.html?file=tictactoe.md">Tic-Tac-Toe</a></li>
+            <li><a class="dropdown-item" href="./ideen/viewer.html?file=haushaltsbuch.md">Haushaltsbuch</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#ideen"><i class="fas fa-lightbulb me-1"></i> Alle Ideen</a></li>
+          </ul>
+        </div>
+        <div class="dropdown">
+          <a class="navbar-link dropdown-toggle" href="#ergebnisse" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ergebnisse</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="./apps/pong/">Pong</a></li>
+            <li><a class="dropdown-item" href="./apps/gta/">Grand Thomas Auto 6</a></li>
+            <li><a class="dropdown-item" href="./apps/wochenendplanung/">Wochenendplanung</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#ergebnisse"><i class="fas fa-rocket me-1"></i> Alle Ergebnisse</a></li>
+          </ul>
+        </div>
+        <a class="navbar-link" href="./wiki/">Wiki</a>
         <a class="navbar-link" href="https://github.com/Fauteck/vibecoding-academy" target="_blank" rel="noopener">
           <i class="fab fa-github me-1"></i> GitHub
         </a>
@@ -350,33 +405,44 @@
   </div>
 
   <!-- ══════════════════════════════════════════════════════ -->
-  <!--  Mobile "Mehr" Bottom Sheet                           -->
+  <!--  Mobile Offcanvas: Ideen                              -->
   <!-- ══════════════════════════════════════════════════════ -->
-  <div class="offcanvas offcanvas-bottom more-sheet" tabindex="-1" id="mobileMoreSheet"
-       style="height: auto; max-height: 80vh;">
+  <div class="offcanvas offcanvas-bottom nav-sheet" tabindex="-1" id="ideenSheet"
+       style="height: auto; max-height: 70vh;">
     <div class="offcanvas-header">
-      <h5 class="offcanvas-title">Vibecoding Academy</h5>
-      <button type="button" class="btn-close btn-close-white"
-              data-bs-dismiss="offcanvas"></button>
+      <h5 class="offcanvas-title"><i class="fas fa-lightbulb me-2"></i>Ideen &amp; Konzepte</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body p-0">
       <div class="list-group list-group-flush">
-        <a href="#workshop" class="list-group-item list-group-item-action" data-bs-dismiss="offcanvas">
-          <i class="fas fa-info-circle me-2"></i> Über den Workshop
-        </a>
-        <a href="#ideen" class="list-group-item list-group-item-action" data-bs-dismiss="offcanvas">
-          <i class="fas fa-lightbulb me-2"></i> Ideen &amp; Konzepte
-        </a>
-        <a href="#ergebnisse" class="list-group-item list-group-item-action" data-bs-dismiss="offcanvas">
-          <i class="fas fa-rocket me-2"></i> Ergebnisse
-        </a>
-        <a href="./handout/" class="list-group-item list-group-item-action" data-bs-dismiss="offcanvas">
-          <i class="fas fa-file-alt me-2"></i> Handout <i class="fas fa-arrow-up-right-from-square" style="font-size:0.7em; opacity:0.6;"></i>
-        </a>
-        <a href="https://github.com/Fauteck/vibecoding-academy" target="_blank" rel="noopener"
-           class="list-group-item list-group-item-action">
-          <i class="fab fa-github me-2"></i> GitHub Repository
-        </a>
+        <a href="./ideen/viewer.html?file=flappybird.md" class="list-group-item list-group-item-action">Flappy Bird</a>
+        <a href="./ideen/viewer.html?file=memory.md" class="list-group-item list-group-item-action">Memory</a>
+        <a href="./ideen/viewer.html?file=minesweeper.md" class="list-group-item list-group-item-action">Minesweeper</a>
+        <a href="./ideen/viewer.html?file=pong.md" class="list-group-item list-group-item-action">Pong</a>
+        <a href="./ideen/viewer.html?file=snake.md" class="list-group-item list-group-item-action">Snake</a>
+        <a href="./ideen/viewer.html?file=solitaire.md" class="list-group-item list-group-item-action">Solitaer</a>
+        <a href="./ideen/viewer.html?file=sudoku.md" class="list-group-item list-group-item-action">Sudoku</a>
+        <a href="./ideen/viewer.html?file=tetris.md" class="list-group-item list-group-item-action">Tetris</a>
+        <a href="./ideen/viewer.html?file=tictactoe.md" class="list-group-item list-group-item-action">Tic-Tac-Toe</a>
+        <a href="./ideen/viewer.html?file=haushaltsbuch.md" class="list-group-item list-group-item-action">Haushaltsbuch</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!--  Mobile Offcanvas: Ergebnisse                         -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="offcanvas offcanvas-bottom nav-sheet" tabindex="-1" id="ergebnisseSheet"
+       style="height: auto; max-height: 70vh;">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title"><i class="fas fa-rocket me-2"></i>Ergebnisse</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body p-0">
+      <div class="list-group list-group-flush">
+        <a href="./apps/pong/" class="list-group-item list-group-item-action">Pong</a>
+        <a href="./apps/gta/" class="list-group-item list-group-item-action">Grand Thomas Auto 6</a>
+        <a href="./apps/wochenendplanung/" class="list-group-item list-group-item-action">Wochenendplanung</a>
       </div>
     </div>
   </div>
@@ -563,7 +629,7 @@
     <div class="collapse" id="ergebnisse-content">
     <div class="row g-3">
       <div class="col-md-4 col-sm-6">
-        <a class="card text-decoration-none h-100" href="./pong/">
+        <a class="card text-decoration-none h-100" href="./apps/pong/">
           <div class="card-body text-center">
             <div class="fs-1 mb-2">🏓</div>
             <h6 class="card-title">Pong</h6>
@@ -572,7 +638,7 @@
         </a>
       </div>
       <div class="col-md-4 col-sm-6">
-        <a class="card text-decoration-none h-100" href="./gta/">
+        <a class="card text-decoration-none h-100" href="./apps/gta/">
           <div class="card-body text-center">
             <div class="fs-1 mb-2">🚗</div>
             <h6 class="card-title">Grand Thomas Auto 6</h6>
@@ -581,7 +647,7 @@
         </a>
       </div>
       <div class="col-md-4 col-sm-6">
-        <a class="card text-decoration-none h-100" href="./Wochenendplanung/">
+        <a class="card text-decoration-none h-100" href="./apps/wochenendplanung/">
           <div class="card-body text-center">
             <div class="fs-1 mb-2">📅</div>
             <h6 class="card-title">Wochenendplanung</h6>
@@ -601,16 +667,16 @@
     </div>
     </div>
 
-    <!-- Handout -->
-    <div class="section-header mt-4" id="handout">
-      <h5><i class="fas fa-file-alt me-2"></i>Handout</h5>
-      <p class="text-muted small mb-0 mt-1">Alle Informationen zum Workshop</p>
+    <!-- Wiki -->
+    <div class="section-header mt-4" id="wiki-section">
+      <h5><i class="fas fa-book me-2"></i>Wiki</h5>
+      <p class="text-muted small mb-0 mt-1">Handout, Beispiele und Materialien zum Workshop</p>
     </div>
 
     <div class="card mb-4">
       <div class="card-body">
         <p class="mb-2">
-          <a href="./handout/" class="text-decoration-none">Ausführliches Handout zum Workshop</a>
+          <a href="./wiki/" class="text-decoration-none">Workshop-Handout &amp; Materialien</a>
         </p>
         <ul class="text-muted small mb-0">
           <li>Was ist Vibecoding und wie funktioniert die Zusammenarbeit mit KI</li>
@@ -652,17 +718,17 @@
       <i class="fas fa-info-circle"></i>
       <span>Workshop</span>
     </a>
-    <a class="bottom-nav-item" href="#ideen">
+    <button class="bottom-nav-item" data-bs-toggle="offcanvas" data-bs-target="#ideenSheet">
       <i class="fas fa-lightbulb"></i>
       <span>Ideen</span>
-    </a>
-    <a class="bottom-nav-item" href="#ergebnisse">
+    </button>
+    <button class="bottom-nav-item" data-bs-toggle="offcanvas" data-bs-target="#ergebnisseSheet">
       <i class="fas fa-rocket"></i>
       <span>Ergebnisse</span>
-    </a>
-    <a class="bottom-nav-item" href="./handout/">
-      <i class="fas fa-file-alt"></i>
-      <span>Handout</span>
+    </button>
+    <a class="bottom-nav-item" href="./wiki/">
+      <i class="fas fa-book"></i>
+      <span>Wiki</span>
     </a>
   </nav>
 
@@ -671,18 +737,14 @@
           integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
           crossorigin="anonymous"></script>
 
-  <!-- Scroll-Spy: highlight active nav item -->
+  <!-- Scroll-Spy: highlight active desktop nav item -->
   <script>
     (function () {
-      var sections = document.querySelectorAll('#workshop, #ergebnisse, #ideen');
-      var desktopLinks = document.querySelectorAll('.navbar-link[href^="#"]');
-      var mobileLinks = document.querySelectorAll('.bottom-nav-item[href^="#"]');
+      var sections = document.querySelectorAll('#workshop, #ideen, #ergebnisse');
+      var desktopLinks = document.querySelectorAll('.navbar > .container-fluid > .d-flex > .navbar-link[href^="#"], .navbar > .container-fluid > .d-flex > .dropdown > .navbar-link[href^="#"]');
 
       function setActive(id) {
         desktopLinks.forEach(function (l) {
-          l.classList.toggle('active', l.getAttribute('href') === '#' + id);
-        });
-        mobileLinks.forEach(function (l) {
           l.classList.toggle('active', l.getAttribute('href') === '#' + id);
         });
       }
