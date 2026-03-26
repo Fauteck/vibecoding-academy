@@ -35,12 +35,14 @@ Fertige Projekte aus dem Workshop:
 |---------|-------------|
 | [Pong](https://fauteck.github.io/vibecoding-academy/pong/) | Klassisches Pong-Spiel: Spieler gegen KI |
 | [Grand Thomas Auto 6](https://fauteck.github.io/vibecoding-academy/gta/) | GTA-Parodie im RTL-Sendezentrum |
+| [Wochenendplanung](https://fauteck.github.io/vibecoding-academy/Wochenendplanung/) | Wochenenddienst-Planung und Übersicht |
 
 ## Ideen & Konzepte
 
 Konzepte und Spielideen, die als Vorlage dienen können:
 
 - Flappy Bird -- Fliege durch die Lücken zwischen den Röhren
+- Haushaltsbuch -- Einfache Eingaben-/Ausgaben-App für den Haushalt
 - Memory -- Finde alle passenden Kartenpaare
 - Minesweeper -- Decke das Feld auf, ohne eine Mine zu treffen
 - Pong -- Klassisches Pong-Spiel: Spieler gegen KI
@@ -55,8 +57,12 @@ Konzepte und Spielideen, die als Vorlage dienen können:
 Das ausführliche Workshop-Handout behandelt:
 
 - Was ist Vibecoding und wie funktioniert die Zusammenarbeit mit KI
-- Der iterative Ansatz und Erfolgsfaktoren
-- Hosting: Lokale Entwicklung mit Claude Code, GitHub Pages und Docker
+- Paradigmenwechsel: Eigene Tools statt Massenprodukte
+- Das Copycat-Prinzip und iterativer Ansatz
+- KI-Kompetenzen aufteilen: ChatGPT vs. Claude
+- Rahmenbedingungen mit CLAUDE.md festlegen
+- Erfolgsfaktoren und alternative Tools
+- Hosting: Lokale Entwicklung, GitHub Pages und Docker
 
 [Handout: Vibecoding & Hosting](https://fauteck.github.io/vibecoding-academy/handout/)
 
