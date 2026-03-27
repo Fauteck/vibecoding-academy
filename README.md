@@ -1,60 +1,166 @@
 # Vibecoding Academy
 
-KI-gestütztes Web-Coding -- von der Idee bis zum Release
+[![GitHub Pages](https://img.shields.io/badge/Live-GitHub%20Pages-blue)](https://fauteck.github.io/vibecoding-academy/)
+[![HTML](https://img.shields.io/badge/HTML-statisch-orange)]()
+[![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3.2-purple)](https://getbootstrap.com/)
 
-## Live
+KI-gestütztes Web-Coding -- von der Idee bis zum Release.
 
-[fauteck.github.io/vibecoding-academy](https://fauteck.github.io/vibecoding-academy/)
+**Live:** [fauteck.github.io/vibecoding-academy](https://fauteck.github.io/vibecoding-academy/)
 
-## Workshop
+---
 
-**Vibecoding** bedeutet: Du beschreibst in natürlicher Sprache, was du haben möchtest -- und eine KI schreibt den Code dafür. Programmierkenntnisse brauchst du dafür nicht.
+## Feature-Übersicht
 
-In diesem Workshop spielen wir den kompletten Weg von der Idee bis zur fertigen Web-Anwendung gemeinsam durch. Anhand konkreter Beispiele zeigen wir, wie Vibecoding in der Praxis funktioniert -- von der Konzepterstellung über die digitale Infrastruktur bis hin zum Release.
-
-### Ablauf
-
-Wir starten mit fertigen Beispiel-Anwendungen und schauen uns an, wie diese entstanden sind. Danach kann jeder selbst eine kleine Anwendung mit der KI umsetzen. Da das Coding der KI etwas dauern kann, lassen wir mehrere Projekte parallel laufen -- die Ergebnisse werden im Nachgang als Links bereitgestellt.
-
-### Beispiel-Anwendungen
-
-- Website
-- To-Do-App
-- Finanzüberblick
-- Dashboard
-
-### Mitmachen
-
-Bring gerne eine eigene Idee mit: Welches kleine Web-Game (Tetris, Minesweeper, Snake etc.) oder welche Anwendung (To-Do-Liste, Notizen-App etc.) soll die KI für dich bauen?
-
-## Ergebnisse
-
-Fertige Projekte aus dem Workshop:
-
-| Projekt | Beschreibung |
+| Feature | Beschreibung |
 |---------|-------------|
-| [Pong](https://fauteck.github.io/vibecoding-academy/pong/) | Klassisches Pong-Spiel: Spieler gegen KI |
-| [Grand Thomas Auto 6](https://fauteck.github.io/vibecoding-academy/gta/) | GTA-Parodie im RTL-Sendezentrum |
-| [Wochenendplanung](https://fauteck.github.io/vibecoding-academy/Wochenendplanung/) | Wochenenddienst-Planung und Übersicht |
+| **Workshop** | Interaktiver Workshop: Vibecoding in 5 Schritten -- von der Idee bis zum Deploy |
+| **Fertige Apps** | Pong, Grand Thomas Auto 6, Wochenendplanung als spielbare Beispiele |
+| **Spielkonzepte** | 10 Konzeptvorlagen (Flappy Bird, Memory, Snake, Tetris u.a.) als Markdown mit Viewer |
+| **Workshop-Handout** | Ausführliches Wiki zu Vibecoding, KI-Tools, Hosting und Best Practices |
+| **Coach-Profil** | Vorstellung des Workshop-Leiters Niklas Fauteck |
+| **Responsive Design** | Desktop-Navbar mit Dropdowns, Mobile Bottom Navigation mit Offcanvas |
 
-## Ideen & Konzepte
+---
 
-Konzepte und Spielideen, die als Vorlage dienen können:
+## Architektur
 
-- Flappy Bird -- Fliege durch die Lücken zwischen den Röhren
-- Haushaltsbuch -- Einfache Eingaben-/Ausgaben-App für den Haushalt
-- Memory -- Finde alle passenden Kartenpaare
-- Minesweeper -- Decke das Feld auf, ohne eine Mine zu treffen
-- Pong -- Klassisches Pong-Spiel: Spieler gegen KI
-- Snake -- Sammle Futter und werde immer länger
-- Solitär -- Klassisches Klondike-Kartenspiel
-- Sudoku -- Fülle das 9x9-Gitter mit den richtigen Zahlen
-- Tetris -- Stapele fallende Blöcke zu vollen Reihen
-- Tic-Tac-Toe -- Drei in einer Reihe gewinnt
+Rein statische Website ohne Backend, Build-Prozess oder Datenbank. Jedes Projekt ist eine **selbstständige HTML-Datei** in einem eigenen Unterordner.
 
-## Handout
+```
+Browser  ──>  GitHub Pages  ──>  Statische HTML-Dateien
+                                  (CSS + JS inline)
+                                  (Bootstrap + Font Awesome via CDN)
+```
 
-Das ausführliche Workshop-Handout behandelt:
+---
+
+## Voraussetzungen
+
+| Anforderung | Details |
+|-------------|---------|
+| Browser | Aktueller Browser (Chrome, Firefox, Safari, Edge) |
+| Lokal testen | Beliebiger Webserver oder `python3 -m http.server` |
+| Deployment | Git + GitHub-Account (Pages aktiviert) |
+
+---
+
+## Installation / Schnellstart
+
+```bash
+git clone https://github.com/Fauteck/vibecoding-academy.git
+cd vibecoding-academy
+
+# Lokaler Webserver starten (optional)
+python3 -m http.server 8000
+# Öffne http://localhost:8000
+```
+
+Alternativ: `index.html` direkt im Browser öffnen.
+
+---
+
+## Konfiguration
+
+Keine Konfiguration erforderlich. Alle Einstellungen (Farben, Schriften, Breakpoints) sind als CSS-Variablen direkt in den HTML-Dateien definiert. Siehe [CLAUDE.md](CLAUDE.md) §12 für das vollständige Design System.
+
+---
+
+## Sicherheitsaspekte
+
+| Maßnahme | Umsetzung |
+|----------|-----------|
+| **SRI-Hashes** | Alle CDN-Einbindungen (Bootstrap, Font Awesome) mit `integrity`-Attribut |
+| **CORS** | CDN-Links mit `crossorigin="anonymous"` |
+| **Externe Links** | Mit `rel="noopener"` versehen |
+| **Keine Secrets** | Kein Backend, keine API-Keys, keine `.env`-Dateien |
+| **XSS-Prävention** | `textContent` statt `innerHTML` mit unkontrollierten Daten |
+| **robots.txt** | Blockiert alle Suchmaschinen und KI-Crawler (GPTBot, ClaudeBot u.a.) |
+
+---
+
+## Technologie-Stack
+
+| Technologie | Version | Zweck |
+|-------------|---------|-------|
+| HTML5 | -- | Seitenstruktur |
+| CSS3 | -- | Styling (inline) |
+| JavaScript | ES6+ | Interaktivität (inline) |
+| Bootstrap | 5.3.2 | Responsive Layout, Komponenten |
+| Font Awesome | 6.4.2 | Icons |
+| GitHub Pages | -- | Hosting & Deployment |
+
+---
+
+## Projektstruktur
+
+```
+vibecoding-academy/
+├── index.html                          # Landing Page
+├── README.md                           # Diese Datei
+├── CLAUDE.md                           # KI-Entwicklungsregeln
+├── robots.txt                          # Crawler-Blocking
+├── images/
+│   ├── content-bg.jpg                  # Hintergrundbild
+│   └── niklas-fauteck.jpg              # Coach-Foto
+├── apps/                               # Fertige Projekte
+│   ├── pong/index.html                 # Pong -- Spieler gegen KI
+│   ├── gta/index.html                  # Grand Thomas Auto 6 -- GTA-Parodie
+│   └── wochenendplanung/index.html     # Wochenenddienst-Planung
+├── ideen/                              # Spielkonzepte (Markdown)
+│   ├── viewer.html                     # Markdown-Viewer für Konzepte
+│   ├── flappybird.md                   # Flappy Bird
+│   ├── haushaltsbuch.md                # Haushaltsbuch
+│   ├── memory.md                       # Memory
+│   ├── minesweeper.md                  # Minesweeper
+│   ├── pong.md                         # Pong
+│   ├── snake.md                        # Snake
+│   ├── solitaire.md                    # Solitär
+│   ├── sudoku.md                       # Sudoku
+│   ├── tetris.md                       # Tetris
+│   └── tictactoe.md                    # Tic-Tac-Toe
+├── wiki/                               # Workshop-Materialien
+│   ├── index.html                      # Workshop-Handout
+│   └── beispiel-claude.md              # Beispiel CLAUDE.md
+└── ueber-mich/                         # Coach-Profil
+    └── index.html                      # Niklas Fauteck
+```
+
+---
+
+## Entwicklung
+
+### Neues Projekt hinzufügen
+
+1. Unterordner in `apps/` anlegen mit eigener `index.html` (z.B. `apps/snake/index.html`)
+2. Einheitliche Navigation einbauen (Desktop-Navbar mit Dropdowns, Mobile Bottom Nav mit Offcanvas)
+3. Projekt-Card in der Haupt-`index.html` im Bereich "Ergebnisse" eintragen
+4. Dropdown-Einträge in der Navigation aller bestehenden Seiten ergänzen
+5. Committen & pushen -- GitHub Pages deployt automatisch
+
+### Branching
+
+- Entwicklung auf Feature-/Fix-Branches (`feature/...`, `fix/...`, `chore/...`)
+- Merge via Pull Request
+- `main` ist geschützt und entspricht dem Live-Stand
+
+### Fertige Projekte
+
+| Projekt | Link | Beschreibung |
+|---------|------|-------------|
+| Pong | [apps/pong/](https://fauteck.github.io/vibecoding-academy/apps/pong/) | Klassisches Pong-Spiel: Spieler gegen KI |
+| Grand Thomas Auto 6 | [apps/gta/](https://fauteck.github.io/vibecoding-academy/apps/gta/) | GTA-Parodie im RTL-Sendezentrum |
+| Wochenendplanung | [apps/wochenendplanung/](https://fauteck.github.io/vibecoding-academy/apps/wochenendplanung/) | Wochenenddienst-Planung und Übersicht |
+
+### Spielkonzepte
+
+Konzepte und Spielideen als Markdown-Dateien in `ideen/`, abrufbar über den [Konzept-Viewer](https://fauteck.github.io/vibecoding-academy/ideen/viewer.html):
+
+Flappy Bird, Haushaltsbuch, Memory, Minesweeper, Pong, Snake, Solitär, Sudoku, Tetris, Tic-Tac-Toe
+
+### Workshop-Handout
+
+Das [Workshop-Handout](https://fauteck.github.io/vibecoding-academy/wiki/) behandelt:
 
 - Was ist Vibecoding und wie funktioniert die Zusammenarbeit mit KI
 - Paradigmenwechsel: Eigene Tools statt Massenprodukte
@@ -64,19 +170,13 @@ Das ausführliche Workshop-Handout behandelt:
 - Erfolgsfaktoren und alternative Tools
 - Hosting: Lokale Entwicklung, GitHub Pages und Docker
 
-[Handout: Vibecoding & Hosting](https://fauteck.github.io/vibecoding-academy/handout/)
+---
 
-## Projekt hinzufügen
+## Lizenz
 
-1. **Unterordner anlegen** mit eigener `index.html`, z. B. `minesweeper/index.html`
-2. **Projekt-Card in `index.html` eintragen** -- im Bereich "Ergebnisse"
-3. **Committen & pushen** -- GitHub Pages deployt automatisch
+Alle Rechte vorbehalten. &copy; Niklas Fauteck
 
-## Tech-Stack
-
-- HTML, CSS, JavaScript (Bootstrap 5.3, Font Awesome 6.4)
-- Responsive Design mit Mobile Bottom Navigation
-- Gehostet via GitHub Pages
+---
 
 ## Kontakt
 
