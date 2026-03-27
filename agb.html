@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AGB – Vibecoding Academy</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230f0f1a'/%3E%3Ctext x='2' y='23' font-family='monospace' font-size='20' font-weight='bold' fill='%237c3aed'%3E%26lt;%3C/text%3E%3Ctext x='18' y='23' font-family='monospace' font-size='20' font-weight='bold' fill='%2306b6d4'%3E%26gt;%3C/text%3E%3Cpath d='M17 8 L13 17 L18 17 L15 26' stroke='url(%23g)' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23c4b5fd'/%3E%3Cstop offset='1' stop-color='%2306b6d4'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E">
+  <meta name="description" content="Allgemeine Geschäftsbedingungen der Vibecoding Academy">
+  <meta name="robots" content="noindex">
+  <meta property="og:locale" content="de_DE">
+  <meta name="theme-color" content="#5B8BD6">
+
+  <!-- Bootstrap 5.3.2 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+        crossorigin="anonymous">
+  <!-- Font Awesome 6.4.2 -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="css/nav.css">
+
+  <style>
+    :root {
+      --primary-color:      #5B8BD6;
+      --secondary-color:    #3D5A8C;
+      --success-color:      #5CC6A7;
+      --danger-color:       #D46B6B;
+      --warning-color:      #D4A55B;
+      --info-color:         #6BB8D4;
+      --bg-page:            #EEF2F7;
+      --bg-card:            rgba(255, 255, 255, 0.85);
+      --text-primary:       #2D3748;
+      --text-muted:         #7A8599;
+      --border-color:       #D4DCE8;
+      --border-radius-card: 10px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background:
+        linear-gradient(rgba(238, 242, 247, 0.45), rgba(238, 242, 247, 0.45)),
+        url('images/content-bg.jpg') top center/cover no-repeat fixed,
+        var(--bg-page);
+      color: var(--text-primary);
+      min-height: 100vh;
+    }
+
+    .page-wrapper {
+      padding-top: 80px;
+      padding-bottom: 3rem;
+    }
+
+    @media (max-width: 991.98px) {
+      body { padding-top: 56px; padding-bottom: 60px; }
+      .page-wrapper { padding-top: 1.5rem; }
+    }
+
+    /* ── Cards ─────────────────────────────────────────── */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius-card);
+      backdrop-filter: blur(6px);
+    }
+
+    .section-header {
+      border-left: 4px solid var(--primary-color);
+      padding-left: 0.75rem;
+      margin-bottom: 1rem;
+      margin-top: 2rem;
+    }
+
+    .section-header:first-child { margin-top: 0; }
+
+    h1 { font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 700; }
+    h2 { font-size: 1.1rem; font-weight: 700; color: var(--secondary-color); }
+
+    /* ── Footer ─────────────────────────────────────────── */
+    .footer {
+      background: var(--secondary-color);
+      color: rgba(255,255,255,0.7);
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.85rem;
+    }
+    .footer a { color: rgba(255,255,255,0.85); text-decoration: none; }
+    .footer a:hover { color: #fff; }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!--  Desktop Navbar (>992px)                              -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <nav class="navbar navbar-expand d-none d-lg-flex">
+    <div class="container-fluid">
+      <a href="https://fauteck.github.io/website/" class="navbar-back-link" aria-label="Zurück zu niklasfauteck.de">
+        <i class="fas fa-house me-1"></i> niklasfauteck.de
+      </a>
+      <span class="navbar-back-separator">|</span>
+      <a class="navbar-brand" href="./">
+        <i class="fas fa-code me-1"></i> Vibecoding Academy
+      </a>
+      <div class="d-flex align-items-center gap-1">
+        <a class="navbar-link" href="./#workshop">Workshop</a>
+        <div class="dropdown">
+          <a class="navbar-link dropdown-toggle" href="./#ideen" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ideen</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="./ideen/viewer.html?file=flappybird.md">Flappy Bird</a></li>
+            <li><a class="dropdown-item" href="./ideen/viewer.html?file=memory.md">Memory</a></li>
+            <li><a class="dropdown-item" href="./ideen/viewer.html?file=minesweeper.md">Minesweeper</a></li>
+            <li><a class="dropdown-item" href="./ideen/viewer.html?file=pong.md">Pong</a></li>
+            <li><a class="dropdown-item" href="./ideen/viewer.html?file=snake.md">Snake</a></li>
+            <li><a class="dropdown-item" href="./ideen/viewer.html?file=solitaire.md">Solitaer</a></li>
+            <li><a class="dropdown-item" href="./ideen/viewer.html?file=sudoku.md">Sudoku</a></li>
+            <li><a class="dropdown-item" href="./ideen/viewer.html?file=tetris.md">Tetris</a></li>
+            <li><a class="dropdown-item" href="./ideen/viewer.html?file=tictactoe.md">Tic-Tac-Toe</a></li>
+            <li><a class="dropdown-item" href="./ideen/viewer.html?file=haushaltsbuch.md">Haushaltsbuch</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="./#ideen"><i class="fas fa-lightbulb me-1"></i> Alle Ideen</a></li>
+          </ul>
+        </div>
+        <div class="dropdown">
+          <a class="navbar-link dropdown-toggle" href="./#ergebnisse" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ergebnisse</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="./apps/pong/">Pong</a></li>
+            <li><a class="dropdown-item" href="./apps/gta/">Grand Thomas Auto 6</a></li>
+            <li><a class="dropdown-item" href="./apps/wochenendplanung/">Wochenendplanung</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="./#ergebnisse"><i class="fas fa-rocket me-1"></i> Alle Ergebnisse</a></li>
+          </ul>
+        </div>
+        <a class="navbar-link" href="./wiki/">Wiki</a>
+        <a class="navbar-link" href="./ueber-mich/">Dein Coach</a>
+        <a class="navbar-link" href="https://github.com/Fauteck/vibecoding-academy" target="_blank" rel="noopener">
+          <i class="fab fa-github me-1"></i> GitHub
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!--  Mobile Top Bar (<=992px)                             -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="mobile-topbar d-lg-none">
+    <a href="https://fauteck.github.io/website/" class="mobile-topbar-btn" aria-label="Zurück zu niklasfauteck.de">
+      <i class="fas fa-arrow-left"></i>
+    </a>
+    <a class="mobile-topbar-brand" href="./">
+      <i class="fas fa-code me-1"></i> Vibecoding Academy
+    </a>
+    <a href="https://github.com/Fauteck/vibecoding-academy"
+       class="mobile-topbar-btn" target="_blank" rel="noopener" aria-label="GitHub">
+      <i class="fab fa-github"></i>
+    </a>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!--  Mobile Offcanvas: Ideen                              -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="offcanvas offcanvas-bottom nav-sheet" tabindex="-1" id="ideenSheet" style="height: auto; max-height: 70vh;">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title"><i class="fas fa-lightbulb me-2"></i>Ideen &amp; Konzepte</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body p-0">
+      <div class="list-group list-group-flush">
+        <a href="./ideen/viewer.html?file=flappybird.md" class="list-group-item list-group-item-action">Flappy Bird</a>
+        <a href="./ideen/viewer.html?file=memory.md" class="list-group-item list-group-item-action">Memory</a>
+        <a href="./ideen/viewer.html?file=minesweeper.md" class="list-group-item list-group-item-action">Minesweeper</a>
+        <a href="./ideen/viewer.html?file=pong.md" class="list-group-item list-group-item-action">Pong</a>
+        <a href="./ideen/viewer.html?file=snake.md" class="list-group-item list-group-item-action">Snake</a>
+        <a href="./ideen/viewer.html?file=solitaire.md" class="list-group-item list-group-item-action">Solitaer</a>
+        <a href="./ideen/viewer.html?file=sudoku.md" class="list-group-item list-group-item-action">Sudoku</a>
+        <a href="./ideen/viewer.html?file=tetris.md" class="list-group-item list-group-item-action">Tetris</a>
+        <a href="./ideen/viewer.html?file=tictactoe.md" class="list-group-item list-group-item-action">Tic-Tac-Toe</a>
+        <a href="./ideen/viewer.html?file=haushaltsbuch.md" class="list-group-item list-group-item-action">Haushaltsbuch</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!--  Mobile Offcanvas: Ergebnisse                         -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="offcanvas offcanvas-bottom nav-sheet" tabindex="-1" id="ergebnisseSheet" style="height: auto; max-height: 70vh;">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title"><i class="fas fa-rocket me-2"></i>Ergebnisse</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body p-0">
+      <div class="list-group list-group-flush">
+        <a href="./apps/pong/" class="list-group-item list-group-item-action">Pong</a>
+        <a href="./apps/gta/" class="list-group-item list-group-item-action">Grand Thomas Auto 6</a>
+        <a href="./apps/wochenendplanung/" class="list-group-item list-group-item-action">Wochenendplanung</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!--  Seiteninhalt                                         -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="page-wrapper">
+    <div class="container" style="max-width: 800px;">
+
+      <div class="card mb-4">
+        <div class="card-body p-4">
+
+          <h1 class="mb-1"><i class="fas fa-file-contract me-2" style="color: var(--primary-color);"></i>Allgemeine Geschäftsbedingungen</h1>
+          <p class="text-muted mb-4" style="font-size: 0.85rem;">Stand: März 2026 – Niklas Fauteck, Troisdorf</p>
+
+          <!-- §1 Geltungsbereich -->
+          <div class="section-header">
+            <h2>§ 1 Geltungsbereich</h2>
+          </div>
+          <p class="mb-2">
+            Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle Verträge zwischen
+          </p>
+          <p class="mb-2">
+            <strong>Niklas Fauteck</strong><br>
+            Germanenstraße 1, 53844 Troisdorf<br>
+            E-Mail: <a href="mailto:me@fauteck.eu">me@fauteck.eu</a><br>
+            (nachfolgend „Anbieter")
+          </p>
+          <p class="mb-4">
+            und natürlichen oder juristischen Personen (nachfolgend „Auftraggeber"), die
+            Leistungen des Anbieters in Anspruch nehmen. Abweichende Bedingungen des
+            Auftraggebers gelten nur, wenn der Anbieter ihnen ausdrücklich schriftlich zugestimmt hat.
+          </p>
+
+          <!-- §2 Leistungsangebot -->
+          <div class="section-header">
+            <h2>§ 2 Leistungsangebot</h2>
+          </div>
+          <p class="mb-2">Der Anbieter erbringt freiberufliche Dienstleistungen in folgenden Bereichen:</p>
+          <ul class="mb-4">
+            <li><strong>Coaching</strong>: Individuelle Beratung und Begleitung von Einzelpersonen und Teams</li>
+            <li><strong>Beratung</strong>: Strategische und operative Beratungsleistungen, insbesondere zu digitaler Transformation und KI-gestützter Entwicklung</li>
+            <li><strong>Online-Kurse</strong>: Digitale Lehrformate mit Zugang zu Lernmaterialien</li>
+            <li><strong>Workshops und Vorträge</strong>: Präsenzveranstaltungen und digitale Formate zu den genannten Themen</li>
+          </ul>
+
+          <!-- §3 Vertragsabschluss -->
+          <div class="section-header">
+            <h2>§ 3 Vertragsabschluss</h2>
+          </div>
+          <p class="mb-2">
+            (1) Angebote des Anbieters sind freibleibend und unverbindlich, sofern sie nicht
+            ausdrücklich als verbindlich bezeichnet werden.
+          </p>
+          <p class="mb-2">
+            (2) Ein Vertrag kommt zustande durch schriftliche Auftragsbestätigung des Anbieters
+            (per E-Mail genügt) oder durch Beginn der Leistungserbringung.
+          </p>
+          <p class="mb-4">
+            (3) Bei Buchung von Workshops oder Vorträgen gilt die Anmeldung des Auftraggebers
+            als Angebot, das durch die Bestätigung des Anbieters angenommen wird.
+          </p>
+
+          <!-- §4 Vergütung und Zahlung -->
+          <div class="section-header">
+            <h2>§ 4 Vergütung und Zahlung</h2>
+          </div>
+          <p class="mb-2">
+            (1) Die Vergütung wird im Einzelvertrag bzw. Angebot vereinbart.
+          </p>
+          <p class="mb-2">
+            (2) Rechnungen sind innerhalb von 14 Tagen nach Rechnungsstellung ohne Abzug
+            zu begleichen, sofern nichts anderes vereinbart ist.
+          </p>
+          <p class="mb-2">
+            (3) Bei Zahlungsverzug ist der Anbieter berechtigt, Verzugszinsen in Höhe von
+            5 Prozentpunkten über dem Basiszinssatz (§ 247 BGB) zu berechnen.
+          </p>
+          <p class="mb-4">
+            (4) Der Anbieter ist als Freiberufler tätig. Soweit keine Umsatzsteuerpflicht besteht,
+            wird keine Mehrwertsteuer ausgewiesen. Änderungen des steuerlichen Status werden
+            dem Auftraggeber mitgeteilt.
+          </p>
+
+          <!-- §5 Leistungserbringung und Termine -->
+          <div class="section-header">
+            <h2>§ 5 Leistungserbringung und Termine</h2>
+          </div>
+          <p class="mb-2">
+            (1) Termine und Fristen sind verbindlich, soweit sie schriftlich als verbindlich
+            vereinbart wurden.
+          </p>
+          <p class="mb-2">
+            (2) Der Anbieter ist berechtigt, Leistungen durch geeignete Dritte zu erbringen,
+            sofern dem keine berechtigten Interessen des Auftraggebers entgegenstehen.
+          </p>
+          <p class="mb-4">
+            (3) Stornierungen von Workshops oder Einzelsitzungen müssen mindestens 48 Stunden
+            vor dem vereinbarten Termin schriftlich (E-Mail genügt) erfolgen. Bei späterer
+            Absage behält der Anbieter den Anspruch auf 50 % der vereinbarten Vergütung.
+          </p>
+
+          <!-- §6 Widerrufsrecht -->
+          <div class="section-header">
+            <h2>§ 6 Widerrufsrecht für Verbraucher</h2>
+          </div>
+          <p class="mb-2">
+            Verbraucher (§ 13 BGB) haben bei Verträgen, die außerhalb von Geschäftsräumen oder
+            im Fernabsatz geschlossen werden, ein gesetzliches Widerrufsrecht von 14 Tagen.
+          </p>
+          <p class="mb-4">
+            Das Widerrufsrecht erlischt bei vollständig erbrachten Dienstleistungen, wenn der
+            Anbieter mit der Ausführung der Dienstleistung nach ausdrücklicher Zustimmung des
+            Verbrauchers und Bestätigung, dass er sein Widerrufsrecht bei vollständiger
+            Vertragserfüllung verliert, begonnen hat. Weiteres richtet sich nach den gesetzlichen
+            Bestimmungen (§§ 355 ff. BGB).
+          </p>
+
+          <!-- §7 Geheimhaltung und Urheberrecht -->
+          <div class="section-header">
+            <h2>§ 7 Geheimhaltung und Urheberrecht</h2>
+          </div>
+          <p class="mb-2">
+            (1) Beide Parteien verpflichten sich, vertrauliche Informationen, die ihnen im
+            Rahmen der Zusammenarbeit bekannt werden, nicht an Dritte weiterzugeben.
+          </p>
+          <p class="mb-4">
+            (2) Alle vom Anbieter erstellten Unterlagen, Konzepte, Präsentationen und sonstigen
+            Materialien bleiben urheberrechtlich geschützt. Die Nutzungsrechte werden im
+            Einzelvertrag geregelt. Ohne ausdrückliche Vereinbarung ist die Weitergabe an Dritte
+            nicht gestattet.
+          </p>
+
+          <!-- §8 Haftung -->
+          <div class="section-header">
+            <h2>§ 8 Haftung</h2>
+          </div>
+          <p class="mb-2">
+            (1) Der Anbieter haftet unbeschränkt für Schäden aus der Verletzung des Lebens,
+            des Körpers oder der Gesundheit sowie für Schäden, die auf Vorsatz oder grober
+            Fahrlässigkeit beruhen.
+          </p>
+          <p class="mb-2">
+            (2) Für leicht fahrlässig verursachte Schäden haftet der Anbieter nur, soweit
+            wesentliche Vertragspflichten (Kardinalpflichten) verletzt werden. In diesem Fall
+            ist die Haftung auf den vorhersehbaren, typischerweise eintretenden Schaden begrenzt.
+          </p>
+          <p class="mb-4">
+            (3) Der Anbieter übernimmt keine Gewähr für den wirtschaftlichen Erfolg von
+            Coaching- oder Beratungsmaßnahmen, da dieser von zahlreichen außerhalb seines
+            Einflussbereichs liegenden Faktoren abhängt.
+          </p>
+
+          <!-- §9 Anwendbares Recht und Gerichtsstand -->
+          <div class="section-header">
+            <h2>§ 9 Anwendbares Recht und Gerichtsstand</h2>
+          </div>
+          <p class="mb-2">
+            (1) Für alle Vertragsbeziehungen zwischen dem Anbieter und dem Auftraggeber gilt
+            ausschließlich das Recht der Bundesrepublik Deutschland unter Ausschluss des
+            UN-Kaufrechts (CISG).
+          </p>
+          <p class="mb-4">
+            (2) Gerichtsstand für alle Streitigkeiten aus oder im Zusammenhang mit diesem
+            Vertrag ist <strong>Troisdorf</strong>, sofern der Auftraggeber Kaufmann, juristische Person
+            des öffentlichen Rechts oder öffentlich-rechtliches Sondervermögen ist oder keinen
+            allgemeinen Gerichtsstand in Deutschland hat. Im Übrigen gelten die gesetzlichen
+            Zuständigkeitsregelungen.
+          </p>
+
+          <!-- §10 Salvatorische Klausel -->
+          <div class="section-header">
+            <h2>§ 10 Salvatorische Klausel</h2>
+          </div>
+          <p class="mb-0">
+            Sollten einzelne Bestimmungen dieser AGB ganz oder teilweise unwirksam oder
+            undurchführbar sein oder werden, berührt dies die Wirksamkeit der übrigen
+            Bestimmungen nicht. Anstelle der unwirksamen oder undurchführbaren Bestimmung
+            gilt diejenige wirksame und durchführbare Regelung als vereinbart, deren Wirkungen
+            der wirtschaftlichen Zielsetzung am nächsten kommen, die die Vertragsparteien mit
+            der unwirksamen bzw. undurchführbaren Bestimmung verfolgt haben.
+          </p>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!--  Footer                                               -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <p class="mb-1">Niklas Fauteck &ndash; Vibecoding Academy</p>
+      <div class="d-flex justify-content-center gap-3 mb-2">
+        <a href="https://github.com/Fauteck/vibecoding-academy" target="_blank" rel="noopener">
+          <i class="fab fa-github me-1"></i>GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/fauteck" target="_blank" rel="noopener">
+          <i class="fab fa-linkedin me-1"></i>LinkedIn
+        </a>
+      </div>
+      <div class="d-flex justify-content-center gap-3" style="font-size: 0.8rem;">
+        <a href="./impressum.html">Impressum</a>
+        <a href="./datenschutz.html">Datenschutz</a>
+        <a href="./agb.html">AGB</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!--  Mobile Bottom Navigation (<=992px)                   -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <nav class="bottom-nav d-lg-none">
+    <a class="bottom-nav-item" href="./#workshop">
+      <i class="fas fa-info-circle"></i>
+      <span>Workshop</span>
+    </a>
+    <button class="bottom-nav-item" data-bs-toggle="offcanvas" data-bs-target="#ideenSheet">
+      <i class="fas fa-lightbulb"></i>
+      <span>Ideen</span>
+    </button>
+    <button class="bottom-nav-item" data-bs-toggle="offcanvas" data-bs-target="#ergebnisseSheet">
+      <i class="fas fa-rocket"></i>
+      <span>Ergebnisse</span>
+    </button>
+    <a class="bottom-nav-item" href="./wiki/">
+      <i class="fas fa-book"></i>
+      <span>Wiki</span>
+    </a>
+    <a class="bottom-nav-item" href="./ueber-mich/">
+      <i class="fas fa-user"></i>
+      <span>Dein Coach</span>
+    </a>
+  </nav>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+          crossorigin="anonymous"></script>
+</body>
+</html>
