@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://fauteck.github.io/vibecoding-academy/</loc>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://fauteck.github.io/vibecoding-academy/apps/pong/</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://fauteck.github.io/vibecoding-academy/apps/gta/</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://fauteck.github.io/vibecoding-academy/apps/wochenendplanung/</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://fauteck.github.io/vibecoding-academy/wiki/</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fauteck.github.io/vibecoding-academy/ideen/viewer.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://fauteck.github.io/vibecoding-academy/ueber-mich/</loc>
+    <priority>0.6</priority>
+  </url>
+</urlset>

@@ -50,3 +50,5 @@ Disallow: /
 
 User-agent: YouBot
 Disallow: /
+
+Sitemap: https://fauteck.github.io/vibecoding-academy/sitemap.xml
