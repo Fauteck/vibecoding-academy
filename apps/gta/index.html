@@ -3,83 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>Grand Thomas Auto 6</title>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;900&display=swap" rel="stylesheet">
+  <title>Grand Thomas Auto 6 - Vibecoding Academy</title>
+  <meta name="description" content="GTA-Parodie als Browser-Spiel – erstellt mit KI-gestütztem Vibecoding.">
+  <meta property="og:title" content="Grand Thomas Auto 6 - Vibecoding Academy">
+  <meta property="og:description" content="GTA-Parodie als Browser-Spiel – erstellt mit KI-gestütztem Vibecoding.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://fauteck.github.io/vibecoding-academy/apps/gta/">
+  <meta property="og:locale" content="de_DE">
+  <meta name="theme-color" content="#5B8BD6">
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer">
   <!-- Bootstrap 5.3.2 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
         rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
         crossorigin="anonymous">
+  <link rel="stylesheet" href="../../css/nav.css">
   <style>
+    @font-face { font-family: 'JetBrains Mono'; src: url('fonts/JetBrainsMono-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'JetBrains Mono'; src: url('fonts/JetBrainsMono-Bold.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'JetBrains Mono'; src: url('fonts/JetBrainsMono-ExtraBold.woff2') format('woff2'); font-weight: 800; font-style: normal; font-display: swap; }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: system-ui, sans-serif; background: #0a0a0a; display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; padding-top: 48px; overflow: hidden; }
 
-    /* ── Desktop Navbar (>992px) ─────────────────────── */
-    .navbar {
-      background: linear-gradient(135deg, #5B8BD6, #3D5A8C);
-      position: fixed; top: 0; left: 0; right: 0;
-      z-index: 1030; box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-    }
-    .navbar-back-link { color: rgba(255,255,255,0.75); font-size: 0.85rem; text-decoration: none; transition: color 0.2s; }
-    .navbar-back-link:hover { color: #fff; }
-    .navbar-back-separator { color: rgba(255,255,255,0.3); margin: 0 0.5rem; }
-    .navbar-brand { color: #fff !important; font-size: 1.3rem; font-weight: bold; }
-    .navbar-link {
-      color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.875rem;
-      padding: 0.4rem 0.8rem; border-radius: 6px; transition: background 0.2s, color 0.2s;
-    }
-    .navbar-link:hover, .navbar-link.active { color: #fff; background: rgba(255,255,255,0.15); }
-    .navbar-link.dropdown-toggle::after { margin-left: 0.3em; vertical-align: 0.15em; }
-    .navbar .dropdown-menu {
-      background: #3D5A8C; border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 8px; min-width: 200px; padding: 0.4rem 0;
-    }
-    .navbar .dropdown-menu .dropdown-item {
-      color: rgba(255,255,255,0.85); font-size: 0.875rem; padding: 0.45rem 1rem;
-    }
-    .navbar .dropdown-menu .dropdown-item:hover,
-    .navbar .dropdown-menu .dropdown-item:focus { background: rgba(255,255,255,0.15); color: #fff; }
-    .navbar .dropdown-menu .dropdown-divider { border-color: rgba(255,255,255,0.15); }
-
-    /* ── Mobile Top Bar (<=992px) ────────────────────── */
-    .mobile-topbar {
-      position: fixed; top: 0; left: 0; right: 0; height: 56px;
-      background: linear-gradient(135deg, #5B8BD6, #3D5A8C);
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 1rem; z-index: 1030; box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-    }
-    .mobile-topbar-brand { color: #fff; text-decoration: none; font-size: 1.1rem; font-weight: bold; display: flex; align-items: center; gap: 0.4rem; }
-    .mobile-topbar-btn { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 1.1rem; padding: 0.4rem; transition: color 0.2s; }
-    .mobile-topbar-btn:hover { color: #fff; }
-
-    /* ── Mobile Bottom Nav (<=992px) ─────────────────── */
-    .bottom-nav {
-      position: fixed; bottom: 0; left: 0; right: 0; height: 60px;
-      background: #3D5A8C; display: flex; justify-content: space-around; align-items: center;
-      z-index: 1030; box-shadow: 0 -2px 8px rgba(0,0,0,0.15);
-    }
-    .bottom-nav-item {
-      display: flex; flex-direction: column; align-items: center; gap: 0.15rem;
-      color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.65rem;
-      background: none; border: none; padding: 0.3rem 0.6rem; transition: color 0.2s;
-    }
-    .bottom-nav-item i { font-size: 1.15rem; }
-    .bottom-nav-item:hover, .bottom-nav-item.active { color: #fff; }
-    .bottom-nav-item.active i { color: #5B8BD6; }
-
-    /* ── Offcanvas Bottom Sheets ─────────────────────── */
-    .nav-sheet { border-radius: 16px 16px 0 0 !important; }
-    .nav-sheet .offcanvas-header { background: #3D5A8C; color: #fff; border-radius: 16px 16px 0 0; }
-
-    /* ── Responsive ──────────────────────────────────── */
-    @media (min-width: 992px) {
-      .mobile-topbar, .bottom-nav { display: none !important; }
-    }
     @media (max-width: 991.98px) {
-      body { padding-top: 56px; padding-bottom: 60px; }
       .gta-controls { bottom: 80px; }
     }
 
