@@ -5,15 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vibecoding Academy</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230f0f1a'/%3E%3Ctext x='2' y='23' font-family='monospace' font-size='20' font-weight='bold' fill='%237c3aed'%3E%26lt;%3C/text%3E%3Ctext x='18' y='23' font-family='monospace' font-size='20' font-weight='bold' fill='%2306b6d4'%3E%26gt;%3C/text%3E%3Cpath d='M17 8 L13 17 L18 17 L15 26' stroke='url(%23g)' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23c4b5fd'/%3E%3Cstop offset='1' stop-color='%2306b6d4'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E">
-  <meta name="description" content="Vibecoding Academy - Bau deine eigene Web-App mit KI. Von der Idee zum Prototyp im Workshop. Ohne Programmierkenntnisse.">
+  <meta name="description" content="Vibecoding Academy - Lerne, mit KI schnell funktionierende Prototypen zu bauen. Praxisnaher Workshop rund um KI-gestuetzte Softwareentwicklung.">
   <meta property="og:title" content="Vibecoding Academy – Workshop">
-  <meta property="og:description" content="Bau deine eigene Web-App mit KI - von der Idee zum Prototyp. Ohne Programmierkenntnisse.">
+  <meta property="og:description" content="Lerne, mit KI schnell funktionierende Prototypen zu bauen. Praxisnaher Workshop rund um KI-gestuetzte Softwareentwicklung.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://fauteck.github.io/vibecoding-academy/">
   <meta property="og:locale" content="de_DE">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Vibecoding Academy – Workshop">
-  <meta name="twitter:description" content="Bau deine eigene Web-App mit KI - von der Idee zum Prototyp. Ohne Programmierkenntnisse.">
+  <meta name="twitter:description" content="Lerne, mit KI schnell funktionierende Prototypen zu bauen. Praxisnaher Workshop rund um KI-gestuetzte Softwareentwicklung.">
   <meta name="theme-color" content="#5B8BD6">
 
   <!-- Bootstrap 5.3.2 -->
@@ -334,16 +334,12 @@
       </a>
       <div class="d-flex align-items-center gap-1">
         <a class="navbar-link active" href="#workshop">Workshop</a>
-        <div class="dropdown">
-          <a class="navbar-link dropdown-toggle" href="#ergebnisse" role="button" data-bs-toggle="dropdown" aria-expanded="false">Projekte</a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="./apps/pong/">Pong</a></li>
-            <li><a class="dropdown-item" href="./apps/gta/">Grand Thomas Auto 6</a></li>
-            <li><a class="dropdown-item" href="./apps/wochenendplanung/">Wochenendplanung</a></li>
-          </ul>
-        </div>
-        <a class="navbar-link" href="./ueber-mich/">Coach</a>
         <a class="navbar-link" href="./wiki/">Wiki</a>
+        <a class="navbar-link" href="./projekte/">Projekte</a>
+        <a class="navbar-link" href="./ueber-mich/">Coach</a>
+        <a class="navbar-link" href="https://github.com/Fauteck/vibecoding-academy" target="_blank" rel="noopener">
+          <i class="fab fa-github me-1"></i> GitHub
+        </a>
       </div>
     </div>
   </nav>
@@ -362,24 +358,6 @@
   </div>
 
   <!-- ══════════════════════════════════════════════════════ -->
-  <!--  Mobile Offcanvas: Projekte                           -->
-  <!-- ══════════════════════════════════════════════════════ -->
-  <div class="offcanvas offcanvas-bottom nav-sheet" tabindex="-1" id="projekteSheet"
-       style="height: auto; max-height: 70vh;">
-    <div class="offcanvas-header">
-      <h5 class="offcanvas-title"><i class="fas fa-rocket me-2"></i>Projekte</h5>
-      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
-    </div>
-    <div class="offcanvas-body p-0">
-      <div class="list-group list-group-flush">
-        <a href="./apps/pong/" class="list-group-item list-group-item-action">Pong</a>
-        <a href="./apps/gta/" class="list-group-item list-group-item-action">Grand Thomas Auto 6</a>
-        <a href="./apps/wochenendplanung/" class="list-group-item list-group-item-action">Wochenendplanung</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══════════════════════════════════════════════════════ -->
   <!--  Hauptinhalt                                          -->
   <!-- ══════════════════════════════════════════════════════ -->
   <!-- Hero (full-width banner) -->
@@ -387,12 +365,14 @@
     <div style="max-width: 900px; margin: 0 auto;">
       <span class="badge mb-3">Workshop</span>
       <h1>Vibecoding Academy</h1>
-      <p class="mx-auto mb-2" style="max-width: 600px; font-size: 1.15rem; font-weight: 600;">
-        Bau deine eigene Web-App mit KI - von der Idee zum Prototyp
+      <p class="mx-auto mb-2" style="max-width: 700px; font-size: 1.15rem; font-weight: 600;">
+        Lerne, mit KI schnell funktionierende Prototypen zu bauen – und zu verstehen, wann Vibecoding sinnvoll ist und wann nicht.
       </p>
-      <p class="mx-auto" style="max-width: 560px;">
-        In diesem Workshop entwickelst du deine eigene Web-App mit KI.
-        Von der ersten Idee bis zu einem Prototypen, den du zeigen kannst.
+      <p class="mx-auto mb-2" style="max-width: 700px;">
+        Die Vibecoding Academy ist ein praxisnaher Workshop rund um KI-gestuetzte Softwareentwicklung fuer schnelle Prototypen, kleine Tools und erste produktnahe Anwendungen. Im Mittelpunkt steht nicht das klassische Programmieren von Grund auf, sondern das strukturierte Arbeiten mit KI: Ideen formulieren, Anforderungen schaerfen, Ergebnisse testen, Fehler beheben und Schritt fuer Schritt verbessern.
+      </p>
+      <p class="mx-auto" style="max-width: 700px;">
+        Vibecoding bedeutet dabei nicht: einmal prompten und fertig. Gute Ergebnisse entstehen durch kleine, kontrollierte Iterationen, saubere Ueberpruefung und klare Entscheidungen darueber, was als Naechstes gebaut oder verbessert werden soll.
       </p>
       <a href="mailto:ki@fauteck.eu?subject=Workshop-Anfrage" class="hero-cta mt-3">
         <i class="fas fa-envelope me-2"></i>Jetzt Platz sichern
@@ -402,67 +382,80 @@
 
   <main class="container-fluid py-3" style="max-width: 900px; margin: 0 auto;">
 
-    <!-- Was du im Workshop machst -->
+    <!-- Fuer wen ist der Workshop? -->
     <div class="section-header" id="workshop">
-      <h5><i class="fas fa-check-circle me-2"></i>Was du im Workshop machst</h5>
+      <h5><i class="fas fa-user-check me-2"></i>Fuer wen ist der Workshop?</h5>
     </div>
 
     <div class="card mb-4">
       <div class="card-body">
+        <p>Der Workshop richtet sich an Menschen, die mit KI schneller zu sichtbaren Ergebnissen kommen moechten, ohne dafuer sofort tief in klassische Softwareentwicklung einsteigen zu muessen.</p>
+
+        <p class="mb-2" style="font-weight: 600;">Er ist besonders geeignet fuer dich, wenn du:</p>
         <ul class="mb-3" style="padding-left: 1.25rem;">
-          <li class="mb-2">Eigene App-Ideen mit KI entwickeln - ohne Programmierkenntnisse</li>
-          <li class="mb-2">An deinem eigenen Projekt arbeiten, Stueck fuer Stueck</li>
-          <li class="mb-2">KI-Tools gezielt einsetzen, um erste Funktionen umzusetzen</li>
-          <li>Einen praktischen Einstieg in App-Entwicklung mit KI bekommen</li>
+          <li class="mb-1">schnell klickbare Prototypen bauen willst</li>
+          <li class="mb-1">Ideen sichtbar und testbar machen moechtest</li>
+          <li class="mb-1">keine tiefe Programmiererfahrung mitbringst</li>
+          <li class="mb-1">lernen willst, wie man KI sinnvoll fuer digitale Produkte nutzt</li>
+          <li class="mb-1">bereit bist, Ergebnisse aktiv zu pruefen und zu verbessern</li>
+          <li class="mb-1">schnell erste Ergebnisse sehen willst</li>
+          <li class="mb-1">Ideen lieber praktisch als theoretisch entwickelst</li>
+          <li class="mb-1">mit KI nicht nur Texte, sondern funktionierende Tools erstellen moechtest</li>
+          <li>lernen willst, wie man gute Ergebnisse systematisch erarbeitet statt zufaellig erzeugt</li>
         </ul>
 
-        <!-- Workshop-Details -->
-        <div class="row g-0 mt-3 mb-3">
-          <div class="col-md-4">
-            <div class="info-tile">
-              <i class="fas fa-clock"></i>
-              <div>
-                <strong>Format</strong>
-                <span>Halbtages-Workshop (ca. 3-4 Stunden)</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="info-tile">
-              <i class="fas fa-users"></i>
-              <div>
-                <strong>Zielgruppe</strong>
-                <span>Fachkräfte, die ohne Programmier-Background eigene digitale Tools bauen wollen</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="info-tile">
-              <i class="fas fa-laptop"></i>
-              <div>
-                <strong>Voraussetzungen</strong>
-                <span>Laptop mitbringen - keine Programmierkenntnisse noetig</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
+        <p class="mb-2" style="font-weight: 600;">Weniger passend ist der Workshop fuer dich, wenn du:</p>
+        <ul class="mb-0" style="padding-left: 1.25rem;">
+          <li class="mb-1">direkt produktionsreife Enterprise-Software erwartest</li>
+          <li class="mb-1">Sicherheit, Compliance oder Skalierung sofort vollstaendig mitloesen musst</li>
+          <li class="mb-1">vor allem klassische Softwarearchitektur in der Tiefe lernen willst</li>
+          <li class="mb-1">sofort stabile Mehrbenutzer-Systeme bauen musst</li>
+          <li class="mb-1">an sicherheitskritischen Anwendungen arbeitest</li>
+          <li>eine vollstaendige Einfuehrung in professionelle Softwareentwicklung suchst</li>
+        </ul>
       </div>
     </div>
 
-    <!-- Workshop-Ablauf -->
+    <!-- Was nehme ich mit? -->
     <div class="section-header mt-4">
-      <h5><i class="fas fa-route me-2"></i>So läuft der Workshop ab</h5>
+      <h5><i class="fas fa-trophy me-2"></i>Was nehme ich mit?</h5>
     </div>
 
-    <div class="card mb-3">
+    <div class="card mb-4">
       <div class="card-body">
-        <p>
-          Du bringst eine Idee mit, wir arbeiten direkt damit.
-          Alles entsteht im Workshop.
-          Du gehst von der Idee in die Umsetzung und baust dabei deinen eigenen Prototypen.
-        </p>
+        <p>Nach dem Workshop kannst du:</p>
+        <ul class="mb-0" style="padding-left: 1.25rem;">
+          <li class="mb-1">eine kleine Web-App mit KI erstellen</li>
+          <li class="mb-1">Anforderungen klarer formulieren</li>
+          <li class="mb-1">mit KI strukturiert debuggen</li>
+          <li class="mb-1">Prototypen sinnvoll testen und verbessern</li>
+          <li class="mb-1">einfache Ergebnisse veroeffentlichen</li>
+          <li>beurteilen, wann Vibecoding sinnvoll ist und wann ein strukturierterer Entwicklungsprozess noetig wird</li>
+        </ul>
       </div>
+    </div>
+
+    <!-- Was brauche ich vorab? -->
+    <div class="section-header mt-4">
+      <h5><i class="fas fa-laptop me-2"></i>Was brauche ich vorab?</h5>
+    </div>
+
+    <div class="card mb-4">
+      <div class="card-body">
+        <p>Du brauchst keine tiefe Programmiererfahrung. Hilfreich sind:</p>
+        <ul class="mb-3" style="padding-left: 1.25rem;">
+          <li class="mb-1">ein Laptop</li>
+          <li class="mb-1">Grundverstaendnis fuer digitale Tools</li>
+          <li class="mb-1">Bereitschaft, Dinge auszuprobieren</li>
+          <li>Interesse an KI-gestuetztem Arbeiten</li>
+        </ul>
+        <p class="text-muted small mb-0">Wenn du bereits erste Erfahrungen mit ChatGPT, Claude, Copilot oder aehnlichen Tools hast, ist das nuetzlich, aber keine Voraussetzung.</p>
+      </div>
+    </div>
+
+    <!-- Typischer Ablauf -->
+    <div class="section-header mt-4">
+      <h5><i class="fas fa-route me-2"></i>Typischer Ablauf</h5>
     </div>
 
     <div class="row g-3 mb-4">
@@ -470,8 +463,8 @@
         <div class="card h-100">
           <div class="card-body step-card">
             <div class="step-number">1</div>
-            <h6>Vorstellung &amp; Beispiele</h6>
-            <p>Vibe-gecodete Beispiel-Apps werden gezeigt und erklärt, was Vibecoding ist</p>
+            <h6>Einfuehrung &amp; Demo</h6>
+            <p>Was ist Vibecoding, wie funktioniert der Workflow und wo liegen die Grenzen</p>
           </div>
         </div>
       </div>
@@ -479,8 +472,8 @@
         <div class="card h-100">
           <div class="card-body step-card">
             <div class="step-number">2</div>
-            <h6>Idee &amp; Konzept</h6>
-            <p>Wir wählen eine Idee, anhand derer wir den gesamten Prozess durchspielen</p>
+            <h6>Erstes Mini-Projekt</h6>
+            <p>Sichtbares Ergebnis bauen: Idee, Prompt, Output, Test und Verbesserung</p>
           </div>
         </div>
       </div>
@@ -488,8 +481,8 @@
         <div class="card h-100">
           <div class="card-body step-card">
             <div class="step-number">3</div>
-            <h6>KI-Briefing</h6>
-            <p>Wir formulieren die Anforderungen für die KI</p>
+            <h6>Feedback &amp; Debugging</h6>
+            <p>Mit echten Fehlern arbeiten, Anforderungen schaerfen, gezielt iterieren</p>
           </div>
         </div>
       </div>
@@ -497,8 +490,8 @@
         <div class="card h-100">
           <div class="card-body step-card">
             <div class="step-number">4</div>
-            <h6>Live Vibecoding</h6>
-            <p>Die KI schreibt den Code, wir steuern und verbessern</p>
+            <h6>Eigenes Projekt</h6>
+            <p>Eigene Idee umsetzen oder ein Beispielprojekt weiterentwickeln</p>
           </div>
         </div>
       </div>
@@ -506,9 +499,71 @@
         <div class="card h-100">
           <div class="card-body step-card">
             <div class="step-number">5</div>
-            <h6>Deploy &amp; Share</h6>
-            <p>Dein Projekt geht live und wir besprechen, wie es weitergeht</p>
+            <h6>Abschlussreview</h6>
+            <p>Ergebnisse teilen, veroeffentlichen und bewerten, ob der Prototyp gut genug ist</p>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- So ist die Academy aufgebaut -->
+    <div class="section-header mt-4">
+      <h5><i class="fas fa-sitemap me-2"></i>So ist die Academy aufgebaut</h5>
+    </div>
+
+    <div class="row g-3 mb-4">
+      <div class="col-md-6">
+        <div class="card h-100">
+          <div class="card-body">
+            <h6 style="font-weight: 700;"><i class="fas fa-chalkboard-user me-2" style="color: var(--primary-color);"></i>Workshop</h6>
+            <p class="small text-muted mb-0">Der Workshop ist der praktische Einstieg. Hier lernst du das Vorgehen anhand von Uebungen, Feedback und konkreten Projekten.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <a class="card h-100 text-decoration-none" href="./wiki/">
+          <div class="card-body">
+            <h6 style="font-weight: 700;"><i class="fas fa-book me-2" style="color: var(--primary-color);"></i>Wiki</h6>
+            <p class="small text-muted mb-0">Die Wiki ist dein Handout und Nachschlagewerk. Sie fuehrt dich durch den Lernpfad von Orientierung und Setup ueber erste Erfolge bis zu Qualitaet, Risiken und Vertiefung.</p>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-6">
+        <a class="card h-100 text-decoration-none" href="./projekte/">
+          <div class="card-body">
+            <h6 style="font-weight: 700;"><i class="fas fa-rocket me-2" style="color: var(--primary-color);"></i>Projekte</h6>
+            <p class="small text-muted mb-0">Hier findest du Beispielideen, Ergebnisse und Inspiration fuer eigene kleine Anwendungen.</p>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-6">
+        <a class="card h-100 text-decoration-none" href="./ueber-mich/">
+          <div class="card-body">
+            <h6 style="font-weight: 700;"><i class="fas fa-user-tie me-2" style="color: var(--primary-color);"></i>Coach</h6>
+            <p class="small text-muted mb-0">Niklas arbeitet seit Jahren an der Schnittstelle von Kommunikation und Technologie. Bei RTL Deutschland hat er digitale Plattformen nicht nur genutzt, sondern mitgebaut und KI-Workflows eingefuehrt. In der Vibecoding Academy zeigt er, wie du mit KI eigene Projekte umsetzt - ohne Programmierkenntnisse.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Einstieg -->
+    <div class="section-header mt-4">
+      <h5><i class="fas fa-door-open me-2"></i>Einstieg</h5>
+    </div>
+
+    <div class="card mb-4">
+      <div class="card-body">
+        <div class="mb-3">
+          <h6 style="font-weight: 700;">Neu hier?</h6>
+          <p class="small mb-0">Starte mit der <a href="./wiki/">Wiki</a>, wenn du verstehen willst, wie Vibecoding funktioniert und wie der Lernpfad aufgebaut ist.</p>
+        </div>
+        <div class="mb-3">
+          <h6 style="font-weight: 700;">Du willst sehen, was moeglich ist?</h6>
+          <p class="small mb-0">Schau dir die <a href="./projekte/">Projekte</a> an.</p>
+        </div>
+        <div>
+          <h6 style="font-weight: 700;">Du willst dein Ergebnis veroeffentlichen?</h6>
+          <p class="small mb-0">Nutze die separate <a href="./hosting/">Hosting-Anleitung</a> fuer lokal, GitHub Pages und Docker.</p>
         </div>
       </div>
     </div>
@@ -520,260 +575,36 @@
 
     <div class="card mb-4">
       <div class="card-body">
-        <p>
-          Klassische Entwicklung kostet Zeit und setzt technisches Vorwissen voraus. Beides brauchst du hier nicht.
-        </p>
-        <ul class="mb-0" style="padding-left: 1.25rem;">
-          <li class="mb-2">Von der Idee zum Prototyp in einem halben Tag</li>
-          <li class="mb-2">Die KI schreibt den Code - du steuerst, was entstehen soll</li>
-          <li>Du konzentrierst dich auf Konzept, Logik und das, was dein Tool können muss</li>
+        <p>Vibecoding ist stark, wenn du schnell ausprobieren, sichtbar machen und lernen willst. Es ist besonders nuetzlich fuer:</p>
+        <ul class="mb-3" style="padding-left: 1.25rem;">
+          <li class="mb-1">kleine interne Tools</li>
+          <li class="mb-1">klickbare Prototypen</li>
+          <li class="mb-1">erste Produktideen</li>
+          <li class="mb-1">Testballons fuer neue Konzepte</li>
+          <li>Lern- und Experimentierprojekte</li>
         </ul>
+        <p class="text-muted small mb-0">Vibecoding ist nicht dafuer da, alle Probleme auf einmal zu loesen. Es ist ein schneller Weg zu Erkenntnis, Feedback und funktionierenden ersten Ergebnissen.</p>
       </div>
     </div>
 
-    <!-- Für wen ist das? -->
+    <!-- Weiterfuehrende Inhalte -->
     <div class="section-header mt-4">
-      <h5><i class="fas fa-user-check me-2"></i>Für wen ist das?</h5>
+      <h5><i class="fas fa-link me-2"></i>Weiterfuehrende Inhalte</h5>
     </div>
 
     <div class="card mb-4">
       <div class="card-body">
-        <ul class="mb-0" style="padding-left: 1.25rem;">
-          <li class="mb-2">Fachkräfte, die selbst bauen wollen - ohne Entwickler-Hintergrund</li>
-          <li class="mb-2">Menschen, die eine konkrete App-Idee haben und wissen wollen, ob sie umsetzbar ist</li>
-          <li>Alle, die KI nicht nur nutzen, sondern damit etwas Eigenes erschaffen wollen</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Das Ergebnis -->
-    <div class="section-header mt-4">
-      <h5><i class="fas fa-trophy me-2"></i>Das Ergebnis</h5>
-    </div>
-
-    <div class="card mb-4">
-      <div class="card-body">
-        <p>Am Ende des Workshops hast du:</p>
-        <ul class="mb-0" style="padding-left: 1.25rem;">
-          <li class="mb-2">Einen zeigbaren Prototypen - deinen, nicht einen aus dem Tutorial</li>
-          <li class="mb-2">Ein Gefühl dafür, wie du mit KI eigenständig weiterarbeitest</li>
-          <li>Erste echte Erfahrung damit, wie Vibecoding in der Praxis läuft</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Dein Coach -->
-    <div class="section-header mt-4" id="coach">
-      <h5><i class="fas fa-user-tie me-2"></i>Dein Coach</h5>
-    </div>
-
-    <div class="card mb-4">
-      <div class="card-body">
-        <div class="coach-card">
-          <div class="coach-avatar">
-            <img src="./images/niklas-fauteck.jpg" alt="Niklas Fauteck">
-          </div>
-          <div>
-            <h5 class="mb-1" style="font-weight: 700;">Niklas Fauteck</h5>
-            <p class="coach-credential">Head of Digital Transformation Kommunikation, RTL Deutschland</p>
-            <p class="mb-2" style="font-size: 0.95rem;">
-              Niklas arbeitet seit ueber zehn Jahren an der Schnittstelle von Kommunikation und Technologie.
-              Bei RTL Deutschland hat er digitale Plattformen nicht nur genutzt, sondern mitgebaut und
-              KI-Workflows eingefuehrt. In der Vibecoding Academy zeigt er, wie du mit KI eigene
-              Projekte umsetzt - ohne Programmierkenntnisse.
-            </p>
-            <a href="./ueber-mich/" class="text-decoration-none" style="font-size: 0.9rem; font-weight: 600;">
-              Mehr erfahren <i class="fas fa-arrow-right ms-1" style="font-size: 0.75rem;"></i>
-            </a>
-          </div>
+        <div class="d-flex flex-wrap gap-3">
+          <a href="./projekte/" class="text-decoration-none" style="font-weight: 600;">
+            <i class="fas fa-rocket me-1"></i> Projekte
+          </a>
+          <a href="./wiki/" class="text-decoration-none" style="font-weight: 600;">
+            <i class="fas fa-book me-1"></i> Wiki
+          </a>
+          <a href="https://github.com/Fauteck/vibecoding-academy" target="_blank" rel="noopener" class="text-decoration-none" style="font-weight: 600;">
+            <i class="fab fa-github me-1"></i> GitHub
+          </a>
         </div>
-      </div>
-    </div>
-
-    <!-- Jetzt teilnehmen -->
-    <div class="section-header mt-4" id="mitmachen">
-      <h5><i class="fas fa-hand-point-right me-2"></i>Jetzt teilnehmen</h5>
-    </div>
-
-    <div class="card mb-4">
-      <div class="card-body text-center">
-        <p style="font-size: 1.05rem; font-weight: 600;">
-          Bring deine Idee mit und geh mit Vibecoding-Skills nach Hause.
-        </p>
-        <a href="mailto:ki@fauteck.eu?subject=Workshop-Anfrage" class="hero-cta mt-2" style="display: inline-block;">
-          <i class="fas fa-envelope me-2"></i>Jetzt Platz sichern
-        </a>
-      </div>
-    </div>
-
-    <!-- Ideen & Konzepte -->
-    <div class="section-header mt-4" id="ideen" role="button" data-bs-toggle="collapse" data-bs-target="#ideen-content" aria-expanded="false" aria-controls="ideen-content">
-      <h5><i class="fas fa-lightbulb me-2"></i>Ideen &amp; Konzepte <i class="fas fa-chevron-down"></i></h5>
-      <p class="text-muted small mb-0 mt-1">Konzeptvorlagen als Startpunkt für eigene Projekte</p>
-    </div>
-
-    <div class="collapse" id="ideen-content">
-    <div class="row g-3">
-      <div class="col-md-4 col-sm-6">
-        <a class="card text-decoration-none h-100" href="./ideen/viewer.html?file=flappybird.md">
-          <div class="card-body text-center">
-            <div class="fs-1 mb-2">🐦</div>
-            <h6 class="card-title">Flappy Bird</h6>
-            <p class="card-text text-muted small">Fliege durch die Lücken zwischen den Röhren</p>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-4 col-sm-6">
-        <a class="card text-decoration-none h-100" href="./ideen/viewer.html?file=memory.md">
-          <div class="card-body text-center">
-            <div class="fs-1 mb-2">🃏</div>
-            <h6 class="card-title">Memory</h6>
-            <p class="card-text text-muted small">Finde alle passenden Kartenpaare</p>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-4 col-sm-6">
-        <a class="card text-decoration-none h-100" href="./ideen/viewer.html?file=minesweeper.md">
-          <div class="card-body text-center">
-            <div class="fs-1 mb-2">💣</div>
-            <h6 class="card-title">Minesweeper</h6>
-            <p class="card-text text-muted small">Decke das Feld auf, ohne eine Mine zu treffen</p>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-4 col-sm-6">
-        <a class="card text-decoration-none h-100" href="./ideen/viewer.html?file=pong.md">
-          <div class="card-body text-center">
-            <div class="fs-1 mb-2">🏓</div>
-            <h6 class="card-title">Pong</h6>
-            <p class="card-text text-muted small">Klassisches Pong-Spiel: Spieler gegen KI</p>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-4 col-sm-6">
-        <a class="card text-decoration-none h-100" href="./ideen/viewer.html?file=snake.md">
-          <div class="card-body text-center">
-            <div class="fs-1 mb-2">🐍</div>
-            <h6 class="card-title">Snake</h6>
-            <p class="card-text text-muted small">Sammle Futter und werde immer länger</p>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-4 col-sm-6">
-        <a class="card text-decoration-none h-100" href="./ideen/viewer.html?file=solitaire.md">
-          <div class="card-body text-center">
-            <div class="fs-1 mb-2">🂡</div>
-            <h6 class="card-title">Solitär</h6>
-            <p class="card-text text-muted small">Klassisches Klondike-Kartenspiel</p>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-4 col-sm-6">
-        <a class="card text-decoration-none h-100" href="./ideen/viewer.html?file=sudoku.md">
-          <div class="card-body text-center">
-            <div class="fs-1 mb-2">🔢</div>
-            <h6 class="card-title">Sudoku</h6>
-            <p class="card-text text-muted small">Fülle das 9×9-Gitter mit den richtigen Zahlen</p>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-4 col-sm-6">
-        <a class="card text-decoration-none h-100" href="./ideen/viewer.html?file=tetris.md">
-          <div class="card-body text-center">
-            <div class="fs-1 mb-2">🧱</div>
-            <h6 class="card-title">Tetris</h6>
-            <p class="card-text text-muted small">Stapele fallende Blöcke zu vollen Reihen</p>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-4 col-sm-6">
-        <a class="card text-decoration-none h-100" href="./ideen/viewer.html?file=tictactoe.md">
-          <div class="card-body text-center">
-            <div class="fs-1 mb-2">❌</div>
-            <h6 class="card-title">Tic-Tac-Toe</h6>
-            <p class="card-text text-muted small">Drei in einer Reihe gewinnt</p>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-4 col-sm-6">
-        <a class="card text-decoration-none h-100" href="./ideen/viewer.html?file=haushaltsbuch.md">
-          <div class="card-body text-center">
-            <div class="fs-1 mb-2">📒</div>
-            <h6 class="card-title">Haushaltsbuch</h6>
-            <p class="card-text text-muted small">Einfache Eingaben-/Ausgaben-App für den Haushalt</p>
-          </div>
-        </a>
-      </div>
-    </div>
-    </div>
-
-    <!-- Ergebnisse -->
-    <div class="section-header mt-4" id="ergebnisse" role="button" data-bs-toggle="collapse" data-bs-target="#ergebnisse-content" aria-expanded="true" aria-controls="ergebnisse-content">
-      <h5><i class="fas fa-rocket me-2"></i>Ergebnisse <i class="fas fa-chevron-down"></i></h5>
-      <p class="text-muted small mb-0 mt-1">Fertige Projekte aus dem Workshop zum Ausprobieren</p>
-    </div>
-
-    <div class="collapse show" id="ergebnisse-content">
-    <div class="row g-3">
-      <div class="col-md-4 col-sm-6">
-        <a class="card text-decoration-none h-100" href="./apps/pong/">
-          <div class="card-body text-center">
-            <div class="fs-1 mb-2">🏓</div>
-            <h6 class="card-title">Pong</h6>
-            <p class="card-text text-muted small">Klassisches Pong-Spiel: Spieler gegen KI</p>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-4 col-sm-6">
-        <a class="card text-decoration-none h-100" href="./apps/gta/">
-          <div class="card-body text-center">
-            <div class="fs-1 mb-2">🚗</div>
-            <h6 class="card-title">Grand Thomas Auto 6</h6>
-            <p class="card-text text-muted small">GTA-Parodie im RTL-Sendezentrum</p>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-4 col-sm-6">
-        <a class="card text-decoration-none h-100" href="./apps/wochenendplanung/">
-          <div class="card-body text-center">
-            <div class="fs-1 mb-2">📅</div>
-            <h6 class="card-title">Wochenendplanung</h6>
-            <p class="card-text text-muted small">Wochenenddienst-Planung und Übersicht</p>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-4 col-sm-6">
-        <div class="card h-100" style="border: 2px dashed var(--border-color);">
-          <div class="card-body text-center text-muted d-flex flex-column justify-content-center">
-            <div class="fs-1 mb-2">🚀</div>
-            <h6 class="card-title">Dein Projekt?</h6>
-            <p class="card-text small">Erstelle im Workshop dein eigenes Projekt!</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
-
-    <!-- Wiki -->
-    <div class="section-header mt-4" id="wiki-section">
-      <h5><i class="fas fa-book me-2"></i>Wiki</h5>
-      <p class="text-muted small mb-0 mt-1">Handout, Beispiele und Materialien zum Workshop</p>
-    </div>
-
-    <div class="card mb-4">
-      <div class="card-body">
-        <p class="mb-2">
-          <a href="./wiki/" class="text-decoration-none">Workshop-Handout &amp; Materialien</a>
-        </p>
-        <ul class="text-muted small mb-0">
-          <li>Was ist Vibecoding und wie funktioniert die Zusammenarbeit mit KI</li>
-          <li>Paradigmenwechsel: Eigene Tools statt Massenprodukte</li>
-          <li>Das Copycat-Prinzip und iterativer Ansatz</li>
-          <li>KI-Kompetenzen aufteilen: ChatGPT vs. Claude</li>
-          <li>Rahmenbedingungen mit CLAUDE.md festlegen</li>
-          <li>Erfolgsfaktoren und alternative Tools</li>
-          <li>Hosting: Lokale Entwicklung, GitHub Pages und Docker</li>
-        </ul>
       </div>
     </div>
 
@@ -816,17 +647,21 @@
       <i class="fas fa-chalkboard-user"></i>
       <span>Workshop</span>
     </a>
-    <button class="bottom-nav-item" data-bs-toggle="offcanvas" data-bs-target="#projekteSheet">
-      <i class="fas fa-rocket"></i>
-      <span>Projekte</span>
-    </button>
-    <a class="bottom-nav-item" href="./ueber-mich/">
-      <i class="fas fa-user"></i>
-      <span>Coach</span>
-    </a>
     <a class="bottom-nav-item" href="./wiki/">
       <i class="fas fa-book"></i>
       <span>Wiki</span>
+    </a>
+    <a class="bottom-nav-item" href="./projekte/">
+      <i class="fas fa-rocket"></i>
+      <span>Projekte</span>
+    </a>
+    <a class="bottom-nav-item" href="mailto:ki@fauteck.eu?subject=Workshop-Anfrage" style="color: var(--success-color);">
+      <i class="fas fa-paper-plane"></i>
+      <span>Anfragen</span>
+    </a>
+    <a class="bottom-nav-item" href="./ueber-mich/">
+      <i class="fas fa-user"></i>
+      <span>Coach</span>
     </a>
   </nav>
 
@@ -838,24 +673,19 @@
   <!-- Scroll-Spy: highlight active desktop nav item -->
   <script>
     (function () {
-      var sections = document.querySelectorAll('#workshop, #ideen, #ergebnisse');
-      var desktopLinks = document.querySelectorAll('.navbar > .container-fluid > .d-flex > .navbar-link[href^="#"], .navbar > .container-fluid > .d-flex > .dropdown > .navbar-link[href^="#"]');
-
-      function setActive(id) {
-        desktopLinks.forEach(function (l) {
-          l.classList.toggle('active', l.getAttribute('href') === '#' + id);
-        });
-      }
+      var section = document.getElementById('workshop');
+      var workshopLink = document.querySelector('.navbar .navbar-link[href="#workshop"]');
+      if (!section || !workshopLink) return;
 
       var observer = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
-            setActive(entry.target.id);
+            workshopLink.classList.add('active');
           }
         });
       }, { rootMargin: '-20% 0px -60% 0px' });
 
-      sections.forEach(function (s) { observer.observe(s); });
+      observer.observe(section);
     })();
   </script>
 </body>

@@ -219,16 +219,12 @@
       </a>
       <div class="d-flex align-items-center gap-1">
         <a class="navbar-link" href="../#workshop">Workshop</a>
-        <div class="dropdown">
-          <a class="navbar-link dropdown-toggle" href="../#ergebnisse" role="button" data-bs-toggle="dropdown" aria-expanded="false">Projekte</a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="../apps/pong/">Pong</a></li>
-            <li><a class="dropdown-item" href="../apps/gta/">Grand Thomas Auto 6</a></li>
-            <li><a class="dropdown-item" href="../apps/wochenendplanung/">Wochenendplanung</a></li>
-          </ul>
-        </div>
-        <a class="navbar-link" href="../ueber-mich/">Coach</a>
         <a class="navbar-link active" href="../wiki/">Wiki</a>
+        <a class="navbar-link" href="../projekte/">Projekte</a>
+        <a class="navbar-link" href="../ueber-mich/">Coach</a>
+        <a class="navbar-link" href="https://github.com/Fauteck/vibecoding-academy" target="_blank" rel="noopener">
+          <i class="fab fa-github me-1"></i> GitHub
+        </a>
       </div>
     </div>
   </nav>
@@ -244,38 +240,23 @@
     <span style="width: 32px;"></span>
   </div>
 
-  <!-- Mobile Offcanvas: Projekte -->
-  <div class="offcanvas offcanvas-bottom nav-sheet" tabindex="-1" id="projekteSheet" style="height: auto; max-height: 70vh;">
-    <div class="offcanvas-header">
-      <h5 class="offcanvas-title"><i class="fas fa-rocket me-2"></i>Projekte</h5>
-      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
-    </div>
-    <div class="offcanvas-body p-0">
-      <div class="list-group list-group-flush">
-        <a href="../apps/pong/" class="list-group-item list-group-item-action">Pong</a>
-        <a href="../apps/gta/" class="list-group-item list-group-item-action">Grand Thomas Auto 6</a>
-        <a href="../apps/wochenendplanung/" class="list-group-item list-group-item-action">Wochenendplanung</a>
-      </div>
-    </div>
-  </div>
-
   <!-- Mobile Bottom Navigation (<=992px) -->
   <nav class="bottom-nav d-lg-none">
     <a class="bottom-nav-item" href="../#workshop">
       <i class="fas fa-chalkboard-user"></i>
       <span>Workshop</span>
     </a>
-    <button class="bottom-nav-item" data-bs-toggle="offcanvas" data-bs-target="#projekteSheet">
-      <i class="fas fa-rocket"></i>
-      <span>Projekte</span>
-    </button>
-    <a class="bottom-nav-item" href="../ueber-mich/">
-      <i class="fas fa-user"></i>
-      <span>Coach</span>
-    </a>
     <a class="bottom-nav-item active" href="../wiki/">
       <i class="fas fa-book"></i>
       <span>Wiki</span>
+    </a>
+    <a class="bottom-nav-item" href="../projekte/">
+      <i class="fas fa-rocket"></i>
+      <span>Projekte</span>
+    </a>
+    <a class="bottom-nav-item" href="../ueber-mich/">
+      <i class="fas fa-user"></i>
+      <span>Coach</span>
     </a>
   </nav>
 
