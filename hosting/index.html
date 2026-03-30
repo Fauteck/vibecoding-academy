@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hosting-Anleitung – Vibecoding Academy</title>
+  <meta name="description" content="Schritt-für-Schritt: Dein Vibecoding-Projekt lokal nutzen, mit GitHub Pages veröffentlichen oder per Docker hosten.">
+  <meta property="og:title" content="Hosting-Anleitung – Vibecoding Academy">
+  <meta property="og:description" content="Drei Wege, dein Projekt live zu bringen: lokal, GitHub Pages, Docker.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://fauteck.github.io/vibecoding-academy/hosting/">
+  <meta property="og:locale" content="de_DE">
+  <meta name="theme-color" content="#5B8BD6">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230f0f1a'/%3E%3Ctext x='2' y='23' font-family='monospace' font-size='20' font-weight='bold' fill='%237c3aed'%3E%26lt;%3C/text%3E%3Ctext x='18' y='23' font-family='monospace' font-size='20' font-weight='bold' fill='%2306b6d4'%3E%26gt;%3C/text%3E%3Cpath d='M17 8 L13 17 L18 17 L15 26' stroke='url(%23g)' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23c4b5fd'/%3E%3Cstop offset='1' stop-color='%2306b6d4'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E">
+  <!-- Bootstrap 5.3.2 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+        crossorigin="anonymous">
+  <!-- Font Awesome 6.4.2 -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="../css/nav.css">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #f5f7fa; color: #222; }
+
+    /* ── Content Container ────────────────────────── */
+    #content { max-width: 800px; margin: 2rem auto; padding: 0 1rem; line-height: 1.7; }
+
+    /* ── Page Header ──────────────────────────────── */
+    .page-header {
+      background: #fff; border-radius: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      padding: 2rem; margin-bottom: 1.5rem;
+    }
+    .page-header h1 { font-size: 1.8rem; margin-bottom: 0.5rem; color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 0.5rem; }
+    .page-header .subtitle { color: #666; margin-bottom: 1rem; font-size: 1rem; }
+
+    /* ── Info Boxes ───────────────────────────────── */
+    .info-box {
+      border-radius: 8px; padding: 1rem 1.2rem; margin: 1rem 0;
+      display: flex; gap: 0.75rem; align-items: flex-start;
+    }
+    .info-box .info-icon {
+      flex-shrink: 0; width: 28px; height: 28px; border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem; color: #fff;
+    }
+    .info-box .info-content { flex: 1; }
+    .info-box .info-content p:last-child { margin-bottom: 0; }
+    .info-box .info-label { font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.03em; margin-bottom: 0.2rem; }
+
+    .info-box.tip { background: #eaf7ee; border: 1px solid #c3e6cb; }
+    .info-box.tip .info-icon { background: #5CC6A7; }
+    .info-box.tip .info-label { color: #2d8a5e; }
+
+    .info-box.warning { background: #fff9e6; border: 1px solid #f0dca0; }
+    .info-box.warning .info-icon { background: #D4A55B; }
+    .info-box.warning .info-label { color: #96722e; }
+
+    .info-box.example { background: #f0f6fc; border: 1px solid #b8d4e8; }
+    .info-box.example .info-icon { background: #5B8BD6; }
+    .info-box.example .info-label { color: #3D5A8C; }
+
+    /* ── Section Blocks ───────────────────────────── */
+    .hosting-section {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      padding: 1.8rem 2rem; margin-bottom: 1.5rem;
+      border-left: 4px solid #5B8BD6;
+    }
+    .hosting-section:nth-child(even of .hosting-section) { border-left-color: #3D5A8C; }
+    .hosting-section h2 { font-size: 1.4rem; color: #2c3e50; margin-top: 0; margin-bottom: 0.8rem; }
+    .hosting-section h2::before {
+      content: ''; display: inline-block; width: 8px; height: 8px;
+      background: #5B8BD6; border-radius: 2px; margin-right: 0.5rem; vertical-align: middle;
+    }
+    .hosting-section h3 { font-size: 1.15rem; margin-top: 1.4rem; margin-bottom: 0.5rem; color: #34495e; }
+    .hosting-section p { margin-bottom: 0.8rem; }
+    .hosting-section ul, .hosting-section ol { margin-bottom: 0.8rem; padding-left: 1.5rem; }
+    .hosting-section li { margin-bottom: 0.3rem; }
+    .hosting-section code { background: #f0f2f5; padding: 0.15rem 0.4rem; border-radius: 3px; font-size: 0.9em; font-family: 'Consolas', 'Monaco', monospace; }
+    .hosting-section pre { background: #1e1e2e; color: #cdd6f4; padding: 1rem; border-radius: 6px; overflow-x: auto; margin-bottom: 1rem; }
+    .hosting-section pre code { background: none; padding: 0; color: inherit; font-size: 0.85rem; }
+    .hosting-section strong { color: #2c3e50; }
+    .hosting-section blockquote { border-left: 4px solid #3498db; background: #f0f6fc; padding: 1rem 1.2rem; margin: 1rem 0; border-radius: 0 6px 6px 0; color: #2c3e50; }
+
+    .highlight-box { border-radius: 6px; padding: 1rem 1.2rem; margin: 1rem 0; }
+    .highlight-box p:last-child { margin-bottom: 0; }
+    .highlight-green { background: #eaf7ee; border: 1px solid #c3e6cb; }
+    .highlight-blue { background: #f0f6fc; border: 1px solid #b8d4e8; }
+
+    /* ── TOC ───────────────────────────────────────── */
+    .toc { background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 6px; padding: 1.2rem 1.5rem; margin: 1rem 0; }
+    .toc-title { font-weight: 600; margin-bottom: 0.5rem; color: #2c3e50; }
+    .toc ol { margin-bottom: 0; padding-left: 1.5rem; }
+    .toc li { margin-bottom: 0.2rem; }
+    .toc a { color: #3498db; text-decoration: none; }
+    .toc a:hover { text-decoration: underline; }
+
+    /* ── Back / Next Links ─────────────────────────── */
+    .nav-links { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; margin-bottom: 1rem; }
+    .nav-links a { color: #3498db; text-decoration: none; font-weight: 600; }
+    .nav-links a:hover { text-decoration: underline; }
+
+    /* ── Footer ────────────────────────────────────── */
+    .related-footer {
+      background: #fff; border-radius: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      padding: 1.5rem 2rem; margin-top: 2rem; text-align: center;
+    }
+    .related-footer h3 { font-size: 1rem; color: #2c3e50; margin-bottom: 0.75rem; }
+    .related-footer .links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+    .related-footer .links a { color: #3498db; text-decoration: none; font-weight: 600; font-size: 0.95rem; }
+    .related-footer .links a:hover { text-decoration: underline; }
+
+    /* ── Responsive ────────────────────────────────── */
+    @media (max-width: 600px) {
+      #content { margin: 0.5rem; padding: 0 0.5rem; }
+      .hosting-section { padding: 1.2rem 1rem; }
+      .page-header { padding: 1.2rem; }
+    }
+    @media print {
+      .navbar, .mobile-topbar, .bottom-nav, .nav-sheet { display: none !important; }
+      body { padding-top: 0; padding-bottom: 0; background: #fff; }
+      #content { box-shadow: none; margin: 0; padding: 1rem; max-width: 100%; }
+      .hosting-section { box-shadow: none; border-left: 2px solid #ccc; page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!--  Desktop Navbar (>992px)                              -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <nav class="navbar navbar-expand d-none d-lg-flex">
+    <div class="container-fluid">
+      <a href="https://fauteck.github.io/website/" class="navbar-back-link" aria-label="Zurück zu niklasfauteck.de">
+        <i class="fas fa-house me-1"></i> niklasfauteck.de
+      </a>
+      <span class="navbar-back-separator">|</span>
+      <a class="navbar-brand" href="../">
+        <i class="fas fa-code me-1"></i> Vibecoding Academy
+      </a>
+      <div class="d-flex align-items-center gap-1">
+        <a class="navbar-link" href="../#workshop">Workshop</a>
+        <a class="navbar-link" href="../wiki/">Wiki</a>
+        <div class="dropdown">
+          <a class="navbar-link dropdown-toggle" href="../#projekte" role="button" data-bs-toggle="dropdown" aria-expanded="false">Projekte</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="../apps/pong/">Pong</a></li>
+            <li><a class="dropdown-item" href="../apps/gta/">Grand Thomas Auto 6</a></li>
+            <li><a class="dropdown-item" href="../apps/wochenendplanung/">Wochenendplanung</a></li>
+          </ul>
+        </div>
+        <a class="navbar-link" href="../ueber-mich/">Coach</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!--  Mobile Top Bar (<=992px)                             -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="mobile-topbar d-lg-none">
+    <a href="https://fauteck.github.io/website/" class="mobile-topbar-btn" aria-label="Zurück zu niklasfauteck.de">
+      <i class="fas fa-arrow-left"></i>
+    </a>
+    <a class="mobile-topbar-brand" href="../">
+      <i class="fas fa-code me-1"></i> Vibecoding Academy
+    </a>
+    <a href="https://github.com/Fauteck/vibecoding-academy"
+       class="mobile-topbar-btn" target="_blank" rel="noopener" aria-label="GitHub">
+      <i class="fab fa-github"></i>
+    </a>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!--  Mobile Offcanvas: Projekte                           -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="offcanvas offcanvas-bottom nav-sheet" tabindex="-1" id="projekteSheet"
+       style="height: auto; max-height: 70vh;">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title"><i class="fas fa-rocket me-2"></i>Projekte</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body p-0">
+      <div class="list-group list-group-flush">
+        <a href="../apps/pong/" class="list-group-item list-group-item-action">Pong</a>
+        <a href="../apps/gta/" class="list-group-item list-group-item-action">Grand Thomas Auto 6</a>
+        <a href="../apps/wochenendplanung/" class="list-group-item list-group-item-action">Wochenendplanung</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!--  Mobile Bottom Navigation (<=992px)                   -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <nav class="bottom-nav d-lg-none">
+    <a class="bottom-nav-item" href="../#workshop">
+      <i class="fas fa-chalkboard-user"></i>
+      <span>Workshop</span>
+    </a>
+    <a class="bottom-nav-item" href="../wiki/">
+      <i class="fas fa-book"></i>
+      <span>Wiki</span>
+    </a>
+    <button class="bottom-nav-item" data-bs-toggle="offcanvas" data-bs-target="#projekteSheet">
+      <i class="fas fa-rocket"></i>
+      <span>Projekte</span>
+    </button>
+    <a class="bottom-nav-item" href="../ueber-mich/">
+      <i class="fas fa-user"></i>
+      <span>Coach</span>
+    </a>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!--  Hauptinhalt                                          -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div id="content">
+
+    <div class="page-header">
+      <h1><i class="fas fa-server me-2" style="color: #5B8BD6;"></i>Hosting-Anleitung</h1>
+      <p class="subtitle">Schritt-für-Schritt: Dein Vibecoding-Projekt lokal nutzen, veröffentlichen oder selbst hosten.</p>
+
+      <div class="info-box tip">
+        <div class="info-icon"><i class="fas fa-info-circle"></i></div>
+        <div class="info-content">
+          <div class="info-label">Hinweis</div>
+          <p>Dies ist eine separate Umsetzungsanleitung für das Veröffentlichen deiner Projekte. Hosting ist ein eigener Schritt <strong>nach</strong> dem Prototyping. Den Lernpfad zum Bauen findest du in der <a href="../wiki/">Wiki</a>.</p>
+        </div>
+      </div>
+
+      <div class="info-box example">
+        <div class="info-icon"><i class="fas fa-puzzle-piece"></i></div>
+        <div class="info-content">
+          <div class="info-label">Tool-Hinweis</div>
+          <p>Die gezeigten Hosting-Schritte lassen sich unabhängig vom verwendeten KI-Tool umsetzen. In den Beispielen verwenden wir Claude Code als Referenz-Workflow.</p>
+        </div>
+      </div>
+
+      <nav class="toc">
+        <div class="toc-title">Inhalt</div>
+        <ol>
+          <li><a href="#hosting-lokal">Lokal ausführen</a></li>
+          <li><a href="#hosting-github">GitHub Pages</a></li>
+          <li><a href="#hosting-docker">Self-Hosting mit Docker</a></li>
+        </ol>
+      </nav>
+    </div>
+
+    <!-- ───────────────────────────────────────────── -->
+
+    <div class="hosting-section">
+      <h2 id="hosting-lokal">Lokal ausführen</h2>
+
+      <p>Der einfachste Weg, um dein Vibecoding-Projekt zu nutzen: <strong>Die fertigen Dateien liegen direkt in einem Ordner auf deinem Computer.</strong></p>
+
+      <h3>So funktioniert es</h3>
+      <ol>
+        <li><strong>Ordner anlegen</strong> – erstelle auf deinem Desktop (oder an einem beliebigen Ort) einen neuen Ordner, z.&nbsp;B. <code>mein-projekt</code></li>
+        <li><strong>KI-Tool öffnen</strong> – starte dein KI-Tool (z.&nbsp;B. Claude Code) und wähle diesen Ordner als Arbeitsverzeichnis</li>
+        <li><strong>Idee beschreiben</strong> – sage der KI, was du bauen möchtest. Sie erstellt die nötigen Dateien (HTML, CSS, JavaScript) direkt in deinem Ordner</li>
+        <li><strong>Im Browser öffnen</strong> – öffne die Datei <code>index.html</code> aus deinem Ordner per Doppelklick oder über <em>Datei &gt; Öffnen</em> in deinem Browser</li>
+      </ol>
+
+      <div class="highlight-box highlight-green">
+        <p><strong>Das ist der schnellste Weg, um deine Ergebnisse zu sehen.</strong> Du brauchst keinen Server, kein Konto und keine zusätzliche Software – nur ein KI-Tool und einen Browser.</p>
+      </div>
+
+      <p>Dein Projekt liegt dabei nur auf deinem eigenen Computer. Wenn du es mit anderen teilen oder im Internet zugänglich machen möchtest, lies weiter.</p>
+    </div>
+
+    <!-- ───────────────────────────────────────────── -->
+
+    <div class="hosting-section">
+      <h2 id="hosting-github">GitHub Pages</h2>
+
+      <div class="highlight-box highlight-blue">
+        <p><strong>Was ist GitHub?</strong></p>
+        <p>GitHub ist eine Plattform im Internet, auf der man Code-Projekte speichern und mit anderen teilen kann – ähnlich wie eine Cloud-Ablage, aber speziell für Quellcode. Du brauchst dafür ein kostenloses Konto unter <a href="https://github.com" target="_blank" rel="noopener">github.com</a>.</p>
+      </div>
+
+      <p>Mit <strong>GitHub Pages</strong> kannst du deine Seite kostenlos veröffentlichen – sie bekommt eine eigene Internetadresse. Viele KI-Tools (z.&nbsp;B. Claude Code) können direkt mit GitHub verbunden werden, sodass deine Dateien automatisch hochgeladen werden.</p>
+
+      <h3>Schritt-für-Schritt-Anleitung</h3>
+      <ol>
+        <li><strong>GitHub-Konto erstellen</strong> – registriere dich kostenlos auf <a href="https://github.com" target="_blank" rel="noopener">github.com</a></li>
+        <li><strong>Repository erstellen</strong> – lege ein neues Projekt (Repository) auf GitHub an</li>
+        <li><strong>Dateien hochladen</strong> – lade deine Projektdateien in das Repository hoch (manuell oder über dein KI-Tool)</li>
+        <li><strong>Pages aktivieren</strong> – im Repository unter <strong>Settings &gt; Pages</strong> den Branch <code>main</code> und Ordner <code>/ (root)</code> auswählen, dann speichern</li>
+        <li><strong>Fertig</strong> – die Seite ist nach ca. 1–2 Minuten unter <code>https://&lt;benutzername&gt;.github.io/&lt;repository-name&gt;/</code> erreichbar</li>
+      </ol>
+
+      <div class="highlight-box highlight-green">
+        <p>Änderungen, die auf <code>main</code> hochgeladen werden, werden automatisch veröffentlicht.</p>
+      </div>
+
+      <h3>Hinweis: Basispfade</h3>
+      <p>GitHub Pages liefert die Seite unter einem Unterpfad aus (z.&nbsp;B. <code>/mein-projekt/</code>). Wenn du die Seite lokal öffnest, liegt sie dagegen direkt unter <code>/</code>. Relative Links müssen ggf. angepasst werden.</p>
+
+      <h3>Vorteile</h3>
+      <ul>
+        <li>Kostenlos für öffentliche Projekte</li>
+        <li>Automatische Veröffentlichung bei jedem Push</li>
+        <li>Versionierung inklusive – du kannst jederzeit zu früheren Ständen zurück</li>
+        <li>Einfach teilbar über einen Link</li>
+      </ul>
+    </div>
+
+    <!-- ───────────────────────────────────────────── -->
+
+    <div class="hosting-section">
+      <h2 id="hosting-docker">Self-Hosting mit Docker</h2>
+
+      <div class="highlight-box highlight-blue">
+        <p><strong>Was ist Docker?</strong></p>
+        <p>Docker ist ein Werkzeug, das eine Anwendung mitsamt allem, was sie braucht, in einen tragbaren „Container" verpackt. Stell dir das wie einen kleinen, eigenständigen Mini-Computer vor, der deine Website ausliefert. Du installierst Docker einmal auf deinem Rechner, und danach reicht ein einziger Befehl, um deine Seite zu starten.</p>
+      </div>
+
+      <p>Docker eignet sich, wenn du deine Seite auf einem eigenen Server betreiben oder lokal in einer professionellen Umgebung testen möchtest.</p>
+
+      <h3>Voraussetzung</h3>
+      <p>Docker muss installiert sein: <a href="https://docs.docker.com/get-docker/" target="_blank" rel="noopener">https://docs.docker.com/get-docker/</a></p>
+
+      <h3>Variante A: Mit Dockerfile (empfohlen für eigene Images)</h3>
+
+      <p><strong>1. Dockerfile im Projektordner erstellen:</strong></p>
+      <pre><code>FROM nginx:alpine
+COPY . /usr/share/nginx/html
+EXPOSE 80</code></pre>
+
+      <p><strong>2. Image bauen und starten:</strong></p>
+      <pre><code>docker build -t mein-projekt .
+docker run -d -p 8080:80 mein-projekt</code></pre>
+
+      <p><strong>3. Im Browser öffnen:</strong> <code>http://localhost:8080</code></p>
+
+      <p><strong>4. Container stoppen:</strong></p>
+      <pre><code>docker ps                        # Container-ID nachschauen
+docker stop &lt;container-id&gt;       # Container stoppen</code></pre>
+
+      <h3>Variante B: Ohne Dockerfile (schnelle lokale Vorschau)</h3>
+
+      <p>Im Projektordner ausführen:</p>
+      <pre><code>docker run -d -p 8080:80 -v $(pwd):/usr/share/nginx/html:ro nginx:alpine</code></pre>
+
+      <p>Dieser Befehl startet einen nginx-Container und bindet den aktuellen Ordner direkt ein – ohne etwas zu bauen.</p>
+
+      <div class="info-box warning">
+        <div class="info-icon"><i class="fas fa-exclamation-triangle"></i></div>
+        <div class="info-content">
+          <div class="info-label">Hinweis</div>
+          <p>Docker ist ein Werkzeug für Fortgeschrittene. Für die meisten Workshop-Projekte reichen lokal öffnen oder GitHub Pages völlig aus.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ───────────────────────────────────────────── -->
+
+    <!-- Navigation Links -->
+    <div class="nav-links">
+      <a href="../wiki/">&larr; Zurück zur Wiki</a>
+      <a href="../">Zur Startseite &rarr;</a>
+    </div>
+
+    <!-- Related Footer -->
+    <div class="related-footer">
+      <h3>Weiterführende Inhalte</h3>
+      <div class="links">
+        <a href="../wiki/"><i class="fas fa-book me-1"></i>Wiki</a>
+        <a href="../#ideen"><i class="fas fa-lightbulb me-1"></i>Ideen</a>
+        <a href="../#ergebnisse"><i class="fas fa-rocket me-1"></i>Ergebnisse</a>
+        <a href="https://github.com/Fauteck/vibecoding-academy" target="_blank" rel="noopener"><i class="fab fa-github me-1"></i>GitHub</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!--  Footer                                               -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <footer style="text-align:center; padding:1rem; font-size:0.8rem; color:#7a8599; border-top:1px solid #e2e8f0; margin-top:2rem;">
+    <a href="../impressum.html" style="color:#7a8599; text-decoration:none; margin:0 0.5rem;">Impressum</a>
+    <a href="../datenschutz.html" style="color:#7a8599; text-decoration:none; margin:0 0.5rem;">Datenschutz</a>
+    <a href="../agb.html" style="color:#7a8599; text-decoration:none; margin:0 0.5rem;">AGB</a>
+  </footer>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+          crossorigin="anonymous"></script>
+</body>
+</html>
