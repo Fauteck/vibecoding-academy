@@ -26,10 +26,127 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #f5f7fa; color: #222; }
 
-    #content { max-width: 800px; margin: 2rem auto; padding: 2rem; background: #fff; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); line-height: 1.7; }
+    /* ── Reading Progress Bar ─────────────────────────── */
+    #reading-progress {
+      position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+      background: linear-gradient(90deg, #5CC6A7, #5B8BD6);
+      z-index: 1050; transition: width 0.1s linear; pointer-events: none;
+    }
+    @media (min-width: 992px) {
+      #reading-progress { top: 56px; }
+    }
+
+    /* ── Sticky Breadcrumb Bar ────────────────────────── */
+    #breadcrumb-bar {
+      position: fixed; left: 0; right: 0; z-index: 1025;
+      background: rgba(255,255,255,0.95); backdrop-filter: blur(6px);
+      border-bottom: 1px solid #e2e8f0; padding: 0.4rem 1rem;
+      font-size: 0.8rem; color: #7A8599;
+      transform: translateY(-100%); opacity: 0;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+    #breadcrumb-bar.visible { transform: translateY(0); opacity: 1; }
+    @media (min-width: 992px) {
+      #breadcrumb-bar { top: 56px; }
+    }
+    @media (max-width: 991.98px) {
+      #breadcrumb-bar { top: 56px; }
+    }
+    #breadcrumb-bar .breadcrumb-inner {
+      max-width: 800px; margin: 0 auto;
+      display: flex; align-items: center; gap: 0.4rem;
+    }
+    #breadcrumb-bar .breadcrumb-section {
+      color: #3D5A8C; font-weight: 600; white-space: nowrap;
+      overflow: hidden; text-overflow: ellipsis; max-width: 300px;
+    }
+    #breadcrumb-bar i { color: #5B8BD6; font-size: 0.7rem; }
+
+    /* ── Back to Top Button ───────────────────────────── */
+    #back-to-top {
+      position: fixed; bottom: 2rem; right: 2rem; z-index: 1040;
+      width: 44px; height: 44px; border-radius: 50%; border: none;
+      background: linear-gradient(135deg, #5B8BD6, #3D5A8C);
+      color: #fff; font-size: 1.1rem; cursor: pointer;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.3s, transform 0.3s, background 0.2s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    #back-to-top.visible { opacity: 1; transform: translateY(0); }
+    #back-to-top:hover { background: linear-gradient(135deg, #3D5A8C, #2c4570); }
+    @media (max-width: 991.98px) {
+      #back-to-top { bottom: 5rem; right: 1rem; }
+    }
+
+    /* ── Section Blocks ───────────────────────────────── */
+    .wiki-section {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      padding: 1.8rem 2rem; margin-bottom: 1.5rem;
+      border-left: 4px solid #5B8BD6;
+    }
+    .wiki-section:nth-child(even of .wiki-section) { border-left-color: #3D5A8C; }
+    .wiki-section h2 { margin-top: 0; border-bottom: none; padding-bottom: 0; margin-bottom: 0.8rem; }
+    .wiki-section h2::before {
+      content: ''; display: inline-block; width: 8px; height: 8px;
+      background: #5B8BD6; border-radius: 2px; margin-right: 0.5rem; vertical-align: middle;
+    }
+
+    /* ── Collapsible Sections ─────────────────────────── */
+    .collapsible-toggle {
+      display: flex; align-items: center; justify-content: space-between;
+      cursor: pointer; user-select: none; padding: 0.6rem 0;
+      border: none; background: none; width: 100%; text-align: left;
+      font-size: 1.15rem; font-weight: 600; color: #34495e;
+      font-family: inherit;
+    }
+    .collapsible-toggle:hover { color: #5B8BD6; }
+    .collapsible-toggle .toggle-icon {
+      font-size: 0.75rem; color: #7A8599; transition: transform 0.25s;
+    }
+    .collapsible-toggle[aria-expanded="true"] .toggle-icon { transform: rotate(90deg); }
+    .collapsible-body {
+      max-height: 0; overflow: hidden; transition: max-height 0.35s ease;
+    }
+    .collapsible-body.open { max-height: 2000px; }
+
+    /* ── Tip / Warning / Example Boxes ────────────────── */
+    .info-box {
+      border-radius: 8px; padding: 1rem 1.2rem; margin: 1rem 0;
+      display: flex; gap: 0.75rem; align-items: flex-start;
+    }
+    .info-box .info-icon {
+      flex-shrink: 0; width: 28px; height: 28px; border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem; color: #fff;
+    }
+    .info-box .info-content { flex: 1; }
+    .info-box .info-content p:last-child { margin-bottom: 0; }
+    .info-box .info-label { font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.03em; margin-bottom: 0.2rem; }
+
+    .info-box.tip { background: #eaf7ee; border: 1px solid #c3e6cb; }
+    .info-box.tip .info-icon { background: #5CC6A7; }
+    .info-box.tip .info-label { color: #2d8a5e; }
+
+    .info-box.warning { background: #fff9e6; border: 1px solid #f0dca0; }
+    .info-box.warning .info-icon { background: #D4A55B; }
+    .info-box.warning .info-label { color: #96722e; }
+
+    .info-box.example { background: #f0f6fc; border: 1px solid #b8d4e8; }
+    .info-box.example .info-icon { background: #5B8BD6; }
+    .info-box.example .info-label { color: #3D5A8C; }
+
+    .info-box.danger { background: #fdf0f0; border: 1px solid #e8b8b8; }
+    .info-box.danger .info-icon { background: #D46B6B; }
+    .info-box.danger .info-label { color: #a04040; }
+
+    /* ── Content Container (now sections-based) ───────── */
+    #content { max-width: 800px; margin: 2rem auto; padding: 0 1rem; background: transparent; border-radius: 0; box-shadow: none; line-height: 1.7; }
+    #content > .wiki-header { background: #fff; border-radius: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); padding: 2rem; margin-bottom: 1.5rem; }
     #content h1 { font-size: 1.8rem; margin-bottom: 0.5rem; color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 0.5rem; }
     #content .subtitle { color: #666; margin-bottom: 1.5rem; font-size: 1rem; }
-    #content h2 { font-size: 1.4rem; margin-top: 2.2rem; margin-bottom: 0.6rem; color: #2c3e50; border-bottom: 1px solid #eee; padding-bottom: 0.3rem; }
+    .wiki-section h2 { font-size: 1.4rem; color: #2c3e50; }
     #content h3 { font-size: 1.15rem; margin-top: 1.4rem; margin-bottom: 0.5rem; color: #34495e; }
     #content p { margin-bottom: 0.8rem; }
     #content ul, #content ol { margin-bottom: 0.8rem; padding-left: 1.5rem; }
@@ -41,7 +158,6 @@
     #content table { border-collapse: collapse; width: 100%; margin-bottom: 1rem; }
     #content th, #content td { border: 1px solid #ddd; padding: 0.5rem 0.75rem; text-align: left; }
     #content th { background: #f0f2f5; font-weight: 600; }
-    #content hr { border: none; border-top: 1px solid #eee; margin: 1.5rem 0; }
     #content blockquote { border-left: 4px solid #3498db; background: #f0f6fc; padding: 1rem 1.2rem; margin: 1rem 0; border-radius: 0 6px 6px 0; color: #2c3e50; }
     #content blockquote p { margin-bottom: 0; }
     .highlight-box { border-radius: 6px; padding: 1rem 1.2rem; margin: 1rem 0; }
@@ -58,17 +174,39 @@
     .back-link { display: inline-block; margin-top: 2rem; color: #3498db; text-decoration: none; font-weight: 600; }
     .back-link:hover { text-decoration: underline; }
     @media (max-width: 600px) {
-      #content { margin: 1rem; padding: 1.2rem; }
+      #content { margin: 0.5rem; padding: 0 0.5rem; }
+      .wiki-section { padding: 1.2rem 1rem; }
+      #content > .wiki-header { padding: 1.2rem; }
     }
     @media print {
-      .navbar, .mobile-topbar, .bottom-nav, .nav-sheet { display: none !important; }
+      .navbar, .mobile-topbar, .bottom-nav, .nav-sheet, #breadcrumb-bar, #back-to-top, #reading-progress { display: none !important; }
       body { padding-top: 0; padding-bottom: 0; background: #fff; }
       #content { box-shadow: none; margin: 0; padding: 1rem; max-width: 100%; }
+      .wiki-section { box-shadow: none; border-left: 2px solid #ccc; page-break-inside: avoid; }
       .back-link { display: none; }
+      .collapsible-body { max-height: none !important; overflow: visible !important; }
     }
   </style>
 </head>
 <body>
+  <!-- Reading Progress Bar -->
+  <div id="reading-progress" aria-hidden="true"></div>
+
+  <!-- Sticky Breadcrumb Bar -->
+  <div id="breadcrumb-bar" aria-label="Leseposition">
+    <div class="breadcrumb-inner">
+      <i class="fas fa-book-open"></i>
+      <span>Wiki</span>
+      <i class="fas fa-chevron-right"></i>
+      <span class="breadcrumb-section" id="breadcrumb-section">Orientierung</span>
+    </div>
+  </div>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top" aria-label="Zurück nach oben" title="Zurück nach oben">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
   <!-- Desktop Navbar (>992px) -->
   <nav class="navbar navbar-expand d-none d-lg-flex">
     <div class="container-fluid">
@@ -194,6 +332,7 @@
 
   <div id="content">
 
+    <div class="wiki-header">
     <h1>Vibecoding Academy – Wiki</h1>
     <p class="subtitle">Kompakter Einstieg in KI-gestütztes Web-Coding</p>
 
@@ -226,9 +365,11 @@
         </li>
       </ol>
     </nav>
+    </div>
 
     <!-- ───────────────────────────────────────────── -->
 
+    <div class="wiki-section">
     <h2 id="orientierung">Orientierung</h2>
 
     <h3>Warum diese Seite?</h3>
@@ -243,12 +384,18 @@
     <h3>Wann ist es sinnvoll?</h3>
     <p>Vibecoding eignet sich besonders gut für Prototyping, Lernen, kleine Tools und kreative Experimente. Es ist stark, wenn es darum geht, Ideen schnell sichtbar zu machen, Anforderungen anschaulich zu testen oder erste Klickdummys für Gespräche mit Stakeholdern zu bauen. Gerade in frühen Phasen hilft es, abstrakte Gedanken in erlebbare Entwürfe zu übersetzen.</p>
 
-    <hr>
+    <div class="info-box tip">
+      <div class="info-icon"><i class="fas fa-lightbulb"></i></div>
+      <div class="info-content">
+        <div class="info-label">Tipp</div>
+        <p>Vibecoding ist besonders wertvoll in Workshops: Teilnehmer sehen in Minuten erste Ergebnisse und bleiben motiviert.</p>
+      </div>
+    </div>
+    </div>
 
     <!-- ───────────────────────────────────────────── -->
 
-    <!-- ───────────────────────────────────────────── -->
-
+    <div class="wiki-section">
     <h2 id="mental-model">Mental Model</h2>
 
     <h3>Wie man beim Vibecoding denkt</h3>
@@ -284,11 +431,11 @@
       </tbody>
     </table>
     <p>Die KI übernimmt nicht die Verantwortung für das Ergebnis. Sie ist eher wie ein sehr schneller Umsetzer, der Unterstützung liefert. Die fachliche Richtung, die Bewertung und die Entscheidung bleiben beim Menschen.</p>
-
-    <hr>
+    </div>
 
     <!-- ───────────────────────────────────────────── -->
 
+    <div class="wiki-section">
     <h2 id="setup">Setup</h2>
 
     <h3>Werkzeuge</h3>
@@ -321,11 +468,11 @@
       <li>URL teilen</li>
     </ol>
     <p>Damit kann ein Workshop-Ergebnis sehr schnell aus einem lokalen Entwurf zu einer öffentlich erreichbaren Seite werden.</p>
-
-    <hr>
+    </div>
 
     <!-- ───────────────────────────────────────────── -->
 
+    <div class="wiki-section">
     <h2 id="erste-erfolge">Erste Erfolge</h2>
 
     <h3>Quick Wins</h3>
@@ -343,10 +490,18 @@
     <h3>Mini-Spiel</h3>
     <p>Ein kleines Spiel ist besonders motivierend, weil Ergebnisse sofort sichtbar sind. Außerdem zeigt ein Mini-Spiel gut, wie man mit KI kreative Ideen, einfache Logik und Interaktion kombinieren kann.</p>
 
-    <hr>
+    <div class="info-box example">
+      <div class="info-icon"><i class="fas fa-code"></i></div>
+      <div class="info-content">
+        <div class="info-label">Beispiel</div>
+        <p>„Erstelle ein Pong-Spiel mit zwei Schlägern und Punktestand. Einfaches Design, spielbar im Browser." – Solche Prompts reichen oft schon für einen funktionierenden Prototyp.</p>
+      </div>
+    </div>
+    </div>
 
     <!-- ───────────────────────────────────────────── -->
 
+    <div class="wiki-section">
     <h2 id="systematisch-bauen">Systematisches Bauen</h2>
 
     <h3>Vom schnellen Prototyp zur Struktur</h3>
@@ -364,10 +519,18 @@
     <h3>APIs einbinden</h3>
     <p>Viele spannende Prototypen werden erst dann besonders nützlich, wenn sie externe Daten einbinden. APIs ermöglichen zum Beispiel Wetterdaten, Suchfunktionen oder Datenabfragen. Hier ist besondere Vorsicht nötig, weil externe Schnittstellen Fehlerquellen, Limits und Sicherheitsfragen mitbringen.</p>
 
-    <hr>
+    <div class="info-box warning">
+      <div class="info-icon"><i class="fas fa-exclamation-triangle"></i></div>
+      <div class="info-content">
+        <div class="info-label">Achtung</div>
+        <p>API-Keys niemals direkt im Frontend-Code hinterlegen! Öffentlich sichtbare Seiten machen solche Schlüssel für jeden zugänglich.</p>
+      </div>
+    </div>
+    </div>
 
     <!-- ───────────────────────────────────────────── -->
 
+    <div class="wiki-section">
     <h2 id="qualitaet-risiken">Qualität und Risiken</h2>
 
     <h3>Warum dieser Abschnitt wichtig ist</h3>
@@ -398,10 +561,18 @@
     </blockquote>
     <p>So bekommt man meist bessere Ergebnisse als mit rein allgemeinen Fragen.</p>
 
-    <hr>
+    <div class="info-box danger">
+      <div class="info-icon"><i class="fas fa-bug"></i></div>
+      <div class="info-content">
+        <div class="info-label">Stolperfalle</div>
+        <p>KI-generierter Code kann <em>funktionierend aussehen</em>, obwohl er grundlegende Logikfehler enthält. Immer manuell testen!</p>
+      </div>
+    </div>
+    </div>
 
     <!-- ───────────────────────────────────────────── -->
 
+    <div class="wiki-section">
     <h2 id="deployment-sharing">Deployment und Sharing</h2>
 
     <h3>Warum Veröffentlichen wichtig ist</h3>
@@ -415,24 +586,28 @@
 
     <h3>Teilen von Links</h3>
     <p>Ein veröffentlichter Link ist oft die einfachste Form, einen Prototypen im Team oder Workshop zu teilen. Das erleichtert Feedback, Diskussionen und gemeinsames Lernen erheblich.</p>
-
-    <hr>
+    </div>
 
     <!-- ───────────────────────────────────────────── -->
 
+    <div class="wiki-section">
     <h2 id="sandbox">Projekte (Sandbox)</h2>
 
     <h3>Freies Arbeiten und Experimentieren</h3>
     <p>Die Sandbox ist der Raum für Ausprobieren. Hier geht es nicht um Perfektion, sondern um Geschwindigkeit, Kreativität und Lernen. Kleine Ideen dürfen hier unfertig, verspielt oder experimentell sein. Gerade das freie Arbeiten sorgt oft für die stärksten Aha-Momente.</p>
 
-    <div class="highlight-box highlight-green">
-      <p><strong>Vibe-Coding ist kein Hexenwerk.</strong> Wer eine Idee beschreiben kann, kann auch erste Ergebnisse erzeugen.</p>
+    <div class="info-box tip">
+      <div class="info-icon"><i class="fas fa-rocket"></i></div>
+      <div class="info-content">
+        <div class="info-label">Tipp</div>
+        <p><strong>Vibe-Coding ist kein Hexenwerk.</strong> Wer eine Idee beschreiben kann, kann auch erste Ergebnisse erzeugen.</p>
+      </div>
     </div>
-
-    <hr>
+    </div>
 
     <!-- ───────────────────────────────────────────── -->
 
+    <div class="wiki-section">
     <h2 id="golden-path">Golden Path Tutorial</h2>
 
     <p>Ein sinnvoller Standardablauf für Einsteiger:</p>
@@ -454,24 +629,28 @@
 
     <h3>Deployen</h3>
     <p>Zum Abschluss kann das Ergebnis lokal genutzt oder online veröffentlicht werden, etwa über GitHub Pages oder ein einfaches Hosting-Setup.</p>
-
-    <hr>
+    </div>
 
     <!-- ───────────────────────────────────────────── -->
 
+    <div class="wiki-section">
     <h2 id="anti-vibecoding">Anti-Vibecoding</h2>
 
     <h3>Wofür Vibecoding nicht geeignet ist</h3>
     <p>Vibecoding ist nicht geeignet für sicherheitskritische Systeme, große Anwendungen mit komplexer Architektur oder produktive Unternehmenslösungen ohne fachliche und technische Absicherung. Sobald Themen wie Datenschutz, Compliance, Betrieb, Integration oder Skalierung zentral werden, reicht reines Vibecoding nicht aus.</p>
 
-    <div class="highlight-box highlight-yellow">
-      <p><strong>Vibecoding ist ein Werkzeug für Prototypen, Lernen und kreative Experimente</strong> – kein Ersatz für professionelle Softwareentwicklung in kritischen Kontexten.</p>
+    <div class="info-box warning">
+      <div class="info-icon"><i class="fas fa-shield-halved"></i></div>
+      <div class="info-content">
+        <div class="info-label">Achtung</div>
+        <p><strong>Vibecoding ist ein Werkzeug für Prototypen, Lernen und kreative Experimente</strong> – kein Ersatz für professionelle Softwareentwicklung in kritischen Kontexten.</p>
+      </div>
     </div>
-
-    <hr>
+    </div>
 
     <!-- ───────────────────────────────────────────── -->
 
+    <div class="wiki-section">
     <h2 id="code-reading">Code Reading Light</h2>
 
     <h3>Warum minimales Codeverständnis hilft</h3>
@@ -485,12 +664,18 @@
 
     <h3>Änderungen nachvollziehen</h3>
     <p>Bei iterativer Arbeit mit KI ist es wichtig zu sehen, was sich von Version zu Version verändert hat. So erkennt man besser, ob ein Fix wirklich geholfen oder an anderer Stelle etwas verschlechtert hat.</p>
-
-    <hr>
+    </div>
 
     <!-- ───────────────────────────────────────────── -->
 
+    <div class="wiki-section">
     <h2 id="refactoring">Refactoring mit KI</h2>
+
+    <button class="collapsible-toggle" aria-expanded="false" aria-controls="refactoring-body">
+      <span>Details: Refactoring-Strategien</span>
+      <i class="fas fa-chevron-right toggle-icon"></i>
+    </button>
+    <div class="collapsible-body" id="refactoring-body">
 
     <h3>Besseren Code erzeugen</h3>
     <p>KI kann nicht nur neuen Code erzeugen, sondern auch bestehenden Code verbessern. Das ist besonders hilfreich, wenn ein Prototyp zwar funktioniert, aber unübersichtlich geworden ist.</p>
@@ -501,11 +686,27 @@
     <h3>„Mache ihn wartbarer"</h3>
     <p>Wartbarkeit bedeutet, dass Änderungen später leichter möglich sind. Die KI kann dabei helfen, doppelte Logik zu reduzieren, Funktionen sauberer aufzuteilen oder Benennungen verständlicher zu machen.</p>
 
-    <hr>
+    <div class="info-box example">
+      <div class="info-icon"><i class="fas fa-wand-magic-sparkles"></i></div>
+      <div class="info-content">
+        <div class="info-label">Beispiel-Prompt</div>
+        <p>„Dieser Code funktioniert, ist aber unübersichtlich. Bitte vereinfache ihn, ohne die Funktionalität zu ändern. Trenne UI und Logik."</p>
+      </div>
+    </div>
+
+    </div>
+    </div>
 
     <!-- ───────────────────────────────────────────── -->
 
+    <div class="wiki-section">
     <h2 id="kosten-limits">Kosten und Limits</h2>
+
+    <button class="collapsible-toggle" aria-expanded="false" aria-controls="kosten-body">
+      <span>Details: Kosten und Limitierungen</span>
+      <i class="fas fa-chevron-right toggle-icon"></i>
+    </button>
+    <div class="collapsible-body" id="kosten-body">
 
     <h3>Warum das relevant ist</h3>
     <p>Auch wenn viele erste Schritte günstig oder kostenlos möglich sind, stoßen KI-Tools und externe Dienste an Grenzen.</p>
@@ -519,10 +720,20 @@
     <h3>Rate Limits</h3>
     <p>Einige Dienste begrenzen, wie oft man in kurzer Zeit Anfragen senden darf. Das ist besonders relevant, wenn Prototypen externe APIs nutzen oder automatisiert viele Anfragen stellen.</p>
 
-    <hr>
+    <div class="info-box tip">
+      <div class="info-icon"><i class="fas fa-coins"></i></div>
+      <div class="info-content">
+        <div class="info-label">Tipp</div>
+        <p>Viele KI-Tools bieten kostenlose Stufen an, die für Workshop-Projekte völlig ausreichen. Bezahlte Modelle lohnen sich erst bei regelmäßiger, intensiver Nutzung.</p>
+      </div>
+    </div>
+
+    </div>
+    </div>
 
     <!-- ───────────────────────────────────────────── -->
 
+    <div class="wiki-section">
     <h2 id="playground-produkt">Vom Playground zum Produkt</h2>
 
     <h3>Der Übergang in die Realität</h3>
@@ -536,11 +747,11 @@
 
     <h3>Iteration</h3>
     <p>Der Weg vom Playground zum Produkt ist fast immer ein Prozess aus Nutzung, Feedback, Anpassung und erneuter Prüfung. Vibecoding kann diesen Weg beschleunigen, ersetzt aber nicht die saubere Produktarbeit.</p>
-
-    <hr>
+    </div>
 
     <!-- ───────────────────────────────────────────── -->
 
+    <div class="wiki-section">
     <h2 id="prompt-bibliothek">Prompt-Bibliothek</h2>
 
     <h3>Warum gute Prompts wichtig sind</h3>
@@ -557,15 +768,29 @@
 
     <h3>Vorlagen</h3>
     <p>Es lohnt sich, wiederverwendbare Prompt-Vorlagen zu sammeln, etwa für: Ideenstrukturierung, UI-Entwürfe, Debugging, Refactoring oder das Erzeugen erster MVPs.</p>
-
-    <hr>
+    </div>
 
     <!-- ───────────────────────────────────────────── -->
 
+    <div class="wiki-section">
     <h2 id="common-failures">Common Failures</h2>
+
+    <button class="collapsible-toggle" aria-expanded="false" aria-controls="failures-body">
+      <span>Details: Typische Fehlerquellen</span>
+      <i class="fas fa-chevron-right toggle-icon"></i>
+    </button>
+    <div class="collapsible-body" id="failures-body">
 
     <h3>UI kaputt</h3>
     <p>Ein häufiges Problem ist eine Oberfläche, die zwar grundsätzlich sichtbar ist, aber Layoutfehler, unklare Abstände oder schlechtes Verhalten auf kleineren Displays hat. Hier hilft es, gezielt auf einzelne Stellen hinzuweisen.</p>
+
+    <div class="info-box danger">
+      <div class="info-icon"><i class="fas fa-desktop"></i></div>
+      <div class="info-content">
+        <div class="info-label">Stolperfalle</div>
+        <p>Immer auf dem Handy testen! Viele KI-generierte Layouts sehen am Desktop gut aus, brechen aber auf kleinen Bildschirmen.</p>
+      </div>
+    </div>
 
     <h3>Code funktioniert nicht</h3>
     <p>Manchmal erzeugt die KI formal plausiblen Code, der in der Praxis Fehler wirft. Dann ist sauberes Debugging wichtig: Fehlermeldung kopieren, Ursache eingrenzen, minimalen Fix anfordern.</p>
@@ -573,10 +798,12 @@
     <h3>Logikfehler</h3>
     <p>Besonders tückisch sind Situationen, in denen die Anwendung funktioniert, aber inhaltlich das Falsche tut. Solche Fehler entdeckt man nur durch echtes Testen aus Nutzersicht.</p>
 
-    <hr>
+    </div>
+    </div>
 
     <!-- ───────────────────────────────────────────── -->
 
+    <div class="wiki-section">
     <h2 id="workflow-viz">Workflow Visualisierung</h2>
 
     <h3>Der Standardzyklus</h3>
@@ -584,23 +811,22 @@
       <p><strong>Idee → Prompt → Output → Test → Feedback → Iteration</strong></p>
       <p>Diese einfache Schleife ist das Kernmodell des Vibecodings. Wer sie verinnerlicht, arbeitet produktiver mit KI und erwartet nicht, dass perfekte Ergebnisse schon beim ersten Versuch entstehen.</p>
     </div>
-
-    <hr>
-    <hr>
+    </div>
 
     <!-- ═══════════════════════════════════════════════ -->
     <!--  TEIL 2: HOSTING-ANLEITUNG                      -->
     <!-- ═══════════════════════════════════════════════ -->
 
+    <div class="wiki-header">
     <h1 id="hosting">Hosting-Anleitung</h1>
     <p class="subtitle">Schritt-für-Schritt-Anleitung: Vom lokalen Ergebnis bis zur eigenen Website.<br>Zielgruppe: Workshop-Teilnehmer ohne Vorkenntnisse.</p>
 
     <p>Diese Anleitung zeigt drei Wege, wie du dein Vibe-Coding-Projekt nutzen und zugänglich machen kannst - vom einfachsten Einstieg bis hin zu fortgeschrittenen Optionen.</p>
-
-    <hr>
+    </div>
 
     <!-- ───────────────────────────────────────────── -->
 
+    <div class="wiki-section">
     <h2 id="hosting-lokal">Lokale Ergebnisse mit Claude Code</h2>
 
     <p>Der einfachste Weg, um mit Vibe-Coding loszulegen: <strong>Claude Code liefert dir die fertigen Dateien direkt in einen Ordner auf deinem Computer.</strong></p>
@@ -619,11 +845,11 @@
     </div>
 
     <p>Dein Projekt liegt dabei nur auf deinem eigenen Computer. Wenn du es mit anderen teilen oder im Internet zugänglich machen möchtest, lies weiter.</p>
-
-    <hr>
+    </div>
 
     <!-- ───────────────────────────────────────────── -->
 
+    <div class="wiki-section">
     <h2 id="hosting-github">Für Fortgeschrittene: GitHub Pages</h2>
 
     <div class="highlight-box highlight-blue">
@@ -650,11 +876,11 @@
     <h3>Hinweis: Basispfade</h3>
 
     <p>GitHub Pages liefert die Seite unter einem Unterpfad aus (z.&nbsp;B. <code>/vibecoding-academy/</code>). Wenn du die Seite lokal öffnest, liegt sie dagegen direkt unter <code>/</code>. Relative Links müssen ggf. angepasst werden.</p>
-
-    <hr>
+    </div>
 
     <!-- ───────────────────────────────────────────── -->
 
+    <div class="wiki-section">
     <h2 id="hosting-docker">Self-Hosting mit Docker</h2>
 
     <div class="highlight-box highlight-blue">
@@ -694,6 +920,7 @@ docker stop &lt;container-id&gt;       # Container stoppen</code></pre>
     <pre><code>docker run -d -p 8080:80 -v $(pwd):/usr/share/nginx/html:ro nginx:alpine</code></pre>
 
     <p>Dieser Befehl startet einen nginx-Container und bindet den aktuellen Ordner direkt ein - ohne etwas zu bauen.</p>
+    </div>
 
     <!-- ───────────────────────────────────────────── -->
 
@@ -714,5 +941,86 @@ docker stop &lt;container-id&gt;       # Container stoppen</code></pre>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
           integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
           crossorigin="anonymous"></script>
+
+  <script>
+  (function() {
+    // ── Reading Progress Bar ──────────────────────────
+    var progressBar = document.getElementById('reading-progress');
+    // ── Breadcrumb Bar ────────────────────────────────
+    var breadcrumbBar = document.getElementById('breadcrumb-bar');
+    var breadcrumbSection = document.getElementById('breadcrumb-section');
+    // ── Back to Top ───────────────────────────────────
+    var backToTop = document.getElementById('back-to-top');
+
+    // Collect all h2 elements for breadcrumb tracking
+    var sections = Array.from(document.querySelectorAll('.wiki-section h2[id]'));
+
+    var ticking = false;
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function() {
+        var scrollTop = window.scrollY;
+        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        progressBar.style.width = Math.min(progress, 100) + '%';
+
+        // Show/hide breadcrumb after scrolling past first section
+        if (scrollTop > 300) {
+          breadcrumbBar.classList.add('visible');
+        } else {
+          breadcrumbBar.classList.remove('visible');
+        }
+
+        // Update breadcrumb text
+        var currentSection = '';
+        for (var i = sections.length - 1; i >= 0; i--) {
+          if (sections[i].getBoundingClientRect().top <= 120) {
+            currentSection = sections[i].textContent;
+            break;
+          }
+        }
+        if (currentSection) {
+          breadcrumbSection.textContent = currentSection;
+        }
+
+        // Show/hide back-to-top button
+        if (scrollTop > 500) {
+          backToTop.classList.add('visible');
+        } else {
+          backToTop.classList.remove('visible');
+        }
+
+        ticking = false;
+      });
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    backToTop.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // ── Collapsible Sections ──────────────────────────
+    var toggles = document.querySelectorAll('.collapsible-toggle');
+    toggles.forEach(function(toggle) {
+      toggle.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var bodyId = this.getAttribute('aria-controls');
+        var body = document.getElementById(bodyId);
+        if (expanded) {
+          this.setAttribute('aria-expanded', 'false');
+          body.classList.remove('open');
+        } else {
+          this.setAttribute('aria-expanded', 'true');
+          body.classList.add('open');
+        }
+      });
+    });
+
+    // Fire once on load
+    onScroll();
+  })();
+  </script>
 </body>
 </html>
