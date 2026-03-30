@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hosting-Anleitung – Vibecoding Academy</title>
-  <meta name="description" content="Schritt-für-Schritt: Dein Vibecoding-Projekt lokal nutzen, mit GitHub Pages veröffentlichen oder per Docker hosten.">
+  <meta name="description" content="Hosting-Anleitung für Vibecoding-Projekte: lokal ausführen, GitHub Pages, Docker. Von der Idee bis zur veröffentlichten Web-Anwendung.">
   <meta property="og:title" content="Hosting-Anleitung – Vibecoding Academy">
   <meta property="og:description" content="Drei Wege, dein Projekt live zu bringen: lokal, GitHub Pages, Docker.">
   <meta property="og:type" content="website">
@@ -64,6 +64,10 @@
     .info-box.example .info-icon { background: #5B8BD6; }
     .info-box.example .info-label { color: #3D5A8C; }
 
+    .info-box.danger { background: #fdf0f0; border: 1px solid #e8b8b8; }
+    .info-box.danger .info-icon { background: #D46B6B; }
+    .info-box.danger .info-label { color: #8c3d3d; }
+
     /* ── Section Blocks ───────────────────────────── */
     .hosting-section {
       background: #fff; border-radius: 10px;
@@ -91,6 +95,7 @@
     .highlight-box p:last-child { margin-bottom: 0; }
     .highlight-green { background: #eaf7ee; border: 1px solid #c3e6cb; }
     .highlight-blue { background: #f0f6fc; border: 1px solid #b8d4e8; }
+    .highlight-yellow { background: #fff9e6; border: 1px solid #f0dca0; }
 
     /* ── TOC ───────────────────────────────────────── */
     .toc { background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 6px; padding: 1.2rem 1.5rem; margin: 1rem 0; }
@@ -100,12 +105,18 @@
     .toc a { color: #3498db; text-decoration: none; }
     .toc a:hover { text-decoration: underline; }
 
-    /* ── Back / Next Links ─────────────────────────── */
+    /* ── Comparison Table ──────────────────────────── */
+    .comparison-table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+    .comparison-table th { background: #3D5A8C; color: #fff; padding: 0.6rem 1rem; text-align: left; font-size: 0.9rem; }
+    .comparison-table td { padding: 0.6rem 1rem; border-bottom: 1px solid #e9ecef; font-size: 0.9rem; }
+    .comparison-table tr:nth-child(even) td { background: #f8f9fa; }
+
+    /* ── Nav Links ─────────────────────────────────── */
     .nav-links { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; margin-bottom: 1rem; }
     .nav-links a { color: #3498db; text-decoration: none; font-weight: 600; }
     .nav-links a:hover { text-decoration: underline; }
 
-    /* ── Footer ────────────────────────────────────── */
+    /* ── Related Footer ────────────────────────────── */
     .related-footer {
       background: #fff; border-radius: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.06);
       padding: 1.5rem 2rem; margin-top: 2rem; text-align: center;
@@ -120,6 +131,7 @@
       #content { margin: 0.5rem; padding: 0 0.5rem; }
       .hosting-section { padding: 1.2rem 1rem; }
       .page-header { padding: 1.2rem; }
+      .comparison-table th, .comparison-table td { padding: 0.4rem 0.6rem; font-size: 0.82rem; }
     }
     @media print {
       .navbar, .mobile-topbar, .bottom-nav, .nav-sheet { display: none !important; }
@@ -145,7 +157,6 @@
       </a>
       <div class="d-flex align-items-center gap-1">
         <a class="navbar-link" href="../#workshop">Workshop</a>
-        <a class="navbar-link" href="../wiki/">Wiki</a>
         <div class="dropdown">
           <a class="navbar-link dropdown-toggle" href="../projekte/" role="button" data-bs-toggle="dropdown" aria-expanded="false">Projekte</a>
           <ul class="dropdown-menu">
@@ -155,6 +166,7 @@
           </ul>
         </div>
         <a class="navbar-link" href="../ueber-mich/">Coach</a>
+        <a class="navbar-link" href="../wiki/">Wiki</a>
       </div>
     </div>
   </nav>
@@ -169,10 +181,7 @@
     <a class="mobile-topbar-brand" href="../">
       <i class="fas fa-code me-1"></i> Vibecoding Academy
     </a>
-    <a href="https://github.com/Fauteck/vibecoding-academy"
-       class="mobile-topbar-btn" target="_blank" rel="noopener" aria-label="GitHub">
-      <i class="fab fa-github"></i>
-    </a>
+    <span style="width: 32px;"></span>
   </div>
 
   <!-- ══════════════════════════════════════════════════════ -->
@@ -201,10 +210,6 @@
       <i class="fas fa-chalkboard-user"></i>
       <span>Workshop</span>
     </a>
-    <a class="bottom-nav-item" href="../wiki/">
-      <i class="fas fa-book"></i>
-      <span>Wiki</span>
-    </a>
     <button class="bottom-nav-item" data-bs-toggle="offcanvas" data-bs-target="#projekteSheet">
       <i class="fas fa-rocket"></i>
       <span>Projekte</span>
@@ -212,6 +217,10 @@
     <a class="bottom-nav-item" href="../ueber-mich/">
       <i class="fas fa-user"></i>
       <span>Coach</span>
+    </a>
+    <a class="bottom-nav-item" href="../wiki/">
+      <i class="fas fa-book"></i>
+      <span>Wiki</span>
     </a>
   </nav>
 
@@ -222,30 +231,36 @@
 
     <div class="page-header">
       <h1><i class="fas fa-server me-2" style="color: #5B8BD6;"></i>Hosting-Anleitung</h1>
-      <p class="subtitle">Schritt-für-Schritt: Dein Vibecoding-Projekt lokal nutzen, veröffentlichen oder selbst hosten.</p>
+      <p class="subtitle">Die praktische Ergänzung zur Wiki: Wie du ein fertiges Ergebnis lokal startest, teilst oder veröffentlichst.</p>
 
       <div class="info-box tip">
         <div class="info-icon"><i class="fas fa-info-circle"></i></div>
         <div class="info-content">
           <div class="info-label">Hinweis</div>
-          <p>Dies ist eine separate Umsetzungsanleitung für das Veröffentlichen deiner Projekte. Hosting ist ein eigener Schritt <strong>nach</strong> dem Prototyping. Den Lernpfad zum Bauen findest du in der <a href="../wiki/">Wiki</a>.</p>
+          <p>Die gezeigten Hosting-Schritte lassen sich unabhängig vom verwendeten KI-Tool umsetzen. In den Beispielen verwenden wir bei Bedarf einen exemplarischen Workflow. Die Hosting-Logik selbst ist jedoch tool-agnostisch.</p>
         </div>
       </div>
 
       <div class="info-box example">
-        <div class="info-icon"><i class="fas fa-puzzle-piece"></i></div>
+        <div class="info-icon"><i class="fas fa-compass"></i></div>
         <div class="info-content">
-          <div class="info-label">Tool-Hinweis</div>
-          <p>Die gezeigten Hosting-Schritte lassen sich unabhängig vom verwendeten KI-Tool umsetzen. In den Beispielen verwenden wir Claude Code als Referenz-Workflow.</p>
+          <div class="info-label">Noch am Anfang?</div>
+          <p>Wenn du noch ganz am Anfang stehst, starte zuerst mit der <a href="../wiki/">Wiki</a>. Diese Seite ist für dich relevant, wenn dein Prototyp bereits sichtbar funktioniert.</p>
         </div>
       </div>
 
       <nav class="toc">
         <div class="toc-title">Inhalt</div>
         <ol>
-          <li><a href="#hosting-lokal">Lokal ausführen</a></li>
-          <li><a href="#hosting-github">GitHub Pages</a></li>
-          <li><a href="#hosting-docker">Self-Hosting mit Docker</a></li>
+          <li><a href="#wann">Wann brauche ich diese Seite?</a></li>
+          <li><a href="#ueberblick">Überblick</a></li>
+          <li><a href="#lokal">Lokal ausführen</a></li>
+          <li><a href="#github-pages">GitHub Pages</a></li>
+          <li><a href="#docker">Docker</a></li>
+          <li><a href="#vergleich">Welcher Weg passt zu meinem Projekt?</a></li>
+          <li><a href="#checkliste">Vor jeder Veröffentlichung prüfen</a></li>
+          <li><a href="#fehler">Häufige Fehler beim Veröffentlichen</a></li>
+          <li><a href="#empfehlung">Empfehlung für Workshop-Projekte</a></li>
         </ol>
       </nav>
     </div>
@@ -253,107 +268,220 @@
     <!-- ───────────────────────────────────────────── -->
 
     <div class="hosting-section">
-      <h2 id="hosting-lokal">Lokal ausführen</h2>
-
-      <p>Der einfachste Weg, um dein Vibecoding-Projekt zu nutzen: <strong>Die fertigen Dateien liegen direkt in einem Ordner auf deinem Computer.</strong></p>
-
-      <h3>So funktioniert es</h3>
-      <ol>
-        <li><strong>Ordner anlegen</strong> – erstelle auf deinem Desktop (oder an einem beliebigen Ort) einen neuen Ordner, z.&nbsp;B. <code>mein-projekt</code></li>
-        <li><strong>KI-Tool öffnen</strong> – starte dein KI-Tool (z.&nbsp;B. Claude Code) und wähle diesen Ordner als Arbeitsverzeichnis</li>
-        <li><strong>Idee beschreiben</strong> – sage der KI, was du bauen möchtest. Sie erstellt die nötigen Dateien (HTML, CSS, JavaScript) direkt in deinem Ordner</li>
-        <li><strong>Im Browser öffnen</strong> – öffne die Datei <code>index.html</code> aus deinem Ordner per Doppelklick oder über <em>Datei &gt; Öffnen</em> in deinem Browser</li>
-      </ol>
-
-      <div class="highlight-box highlight-green">
-        <p><strong>Das ist der schnellste Weg, um deine Ergebnisse zu sehen.</strong> Du brauchst keinen Server, kein Konto und keine zusätzliche Software – nur ein KI-Tool und einen Browser.</p>
-      </div>
-
-      <p>Dein Projekt liegt dabei nur auf deinem eigenen Computer. Wenn du es mit anderen teilen oder im Internet zugänglich machen möchtest, lies weiter.</p>
-    </div>
-
-    <!-- ───────────────────────────────────────────── -->
-
-    <div class="hosting-section">
-      <h2 id="hosting-github">GitHub Pages</h2>
-
-      <div class="highlight-box highlight-blue">
-        <p><strong>Was ist GitHub?</strong></p>
-        <p>GitHub ist eine Plattform im Internet, auf der man Code-Projekte speichern und mit anderen teilen kann – ähnlich wie eine Cloud-Ablage, aber speziell für Quellcode. Du brauchst dafür ein kostenloses Konto unter <a href="https://github.com" target="_blank" rel="noopener">github.com</a>.</p>
-      </div>
-
-      <p>Mit <strong>GitHub Pages</strong> kannst du deine Seite kostenlos veröffentlichen – sie bekommt eine eigene Internetadresse. Viele KI-Tools (z.&nbsp;B. Claude Code) können direkt mit GitHub verbunden werden, sodass deine Dateien automatisch hochgeladen werden.</p>
-
-      <h3>Schritt-für-Schritt-Anleitung</h3>
-      <ol>
-        <li><strong>GitHub-Konto erstellen</strong> – registriere dich kostenlos auf <a href="https://github.com" target="_blank" rel="noopener">github.com</a></li>
-        <li><strong>Repository erstellen</strong> – lege ein neues Projekt (Repository) auf GitHub an</li>
-        <li><strong>Dateien hochladen</strong> – lade deine Projektdateien in das Repository hoch (manuell oder über dein KI-Tool)</li>
-        <li><strong>Pages aktivieren</strong> – im Repository unter <strong>Settings &gt; Pages</strong> den Branch <code>main</code> und Ordner <code>/ (root)</code> auswählen, dann speichern</li>
-        <li><strong>Fertig</strong> – die Seite ist nach ca. 1–2 Minuten unter <code>https://&lt;benutzername&gt;.github.io/&lt;repository-name&gt;/</code> erreichbar</li>
-      </ol>
-
-      <div class="highlight-box highlight-green">
-        <p>Änderungen, die auf <code>main</code> hochgeladen werden, werden automatisch veröffentlicht.</p>
-      </div>
-
-      <h3>Hinweis: Basispfade</h3>
-      <p>GitHub Pages liefert die Seite unter einem Unterpfad aus (z.&nbsp;B. <code>/mein-projekt/</code>). Wenn du die Seite lokal öffnest, liegt sie dagegen direkt unter <code>/</code>. Relative Links müssen ggf. angepasst werden.</p>
-
-      <h3>Vorteile</h3>
+      <h2 id="wann">Wann brauche ich diese Seite?</h2>
+      <p>Diese Seite ist für dich relevant, wenn:</p>
       <ul>
-        <li>Kostenlos für öffentliche Projekte</li>
-        <li>Automatische Veröffentlichung bei jedem Push</li>
-        <li>Versionierung inklusive – du kannst jederzeit zu früheren Ständen zurück</li>
-        <li>Einfach teilbar über einen Link</li>
+        <li>dein Prototyp bereits sichtbar funktioniert</li>
+        <li>du ihn lokal sauber starten willst</li>
+        <li>du ihn anderen zeigen möchtest</li>
+        <li>du ihn öffentlich oder halböffentlich bereitstellen willst</li>
       </ul>
     </div>
 
     <!-- ───────────────────────────────────────────── -->
 
     <div class="hosting-section">
-      <h2 id="hosting-docker">Self-Hosting mit Docker</h2>
+      <h2 id="ueberblick">Überblick</h2>
+      <p>Für erste Vibecoding-Projekte sind meist drei Wege relevant:</p>
+      <ol>
+        <li><strong>Lokal ausführen</strong> – Gut zum Testen auf dem eigenen Rechner</li>
+        <li><strong>GitHub Pages</strong> – Gut für einfache statische Projekte und schnelle öffentliche Demos</li>
+        <li><strong>Docker</strong> – Gut, wenn du reproduzierbare Umgebungen oder flexibleres Deployment brauchst</li>
+      </ol>
+    </div>
 
-      <div class="highlight-box highlight-blue">
-        <p><strong>Was ist Docker?</strong></p>
-        <p>Docker ist ein Werkzeug, das eine Anwendung mitsamt allem, was sie braucht, in einen tragbaren „Container" verpackt. Stell dir das wie einen kleinen, eigenständigen Mini-Computer vor, der deine Website ausliefert. Du installierst Docker einmal auf deinem Rechner, und danach reicht ein einziger Befehl, um deine Seite zu starten.</p>
+    <!-- ───────────────────────────────────────────── -->
+
+    <div class="hosting-section">
+      <h2 id="lokal">1. Lokal ausführen</h2>
+
+      <h3>Ziel</h3>
+      <p>Du willst dein Projekt erst einmal zuverlässig auf deinem eigenen Rechner starten und testen.</p>
+
+      <h3>Typischer Ablauf</h3>
+      <ul>
+        <li>Projektordner öffnen</li>
+        <li>Abhängigkeiten installieren</li>
+        <li>Lokalen Entwicklungsserver starten</li>
+        <li>Anwendung im Browser testen</li>
+      </ul>
+
+      <h3>Darauf achten</h3>
+      <ul>
+        <li>Gibt es eine Startanweisung?</li>
+        <li>Werden Umgebungsvariablen benötigt?</li>
+        <li>Sind Fehler im Terminal sichtbar?</li>
+        <li>Funktioniert die App auch nach einem Neustart?</li>
+      </ul>
+
+      <div class="info-box tip">
+        <div class="info-icon"><i class="fas fa-lightbulb"></i></div>
+        <div class="info-content">
+          <div class="info-label">Empfehlung</div>
+          <p>Nutze lokal zuerst einen einfachen, reproduzierbaren Ablauf. Dokumentiere kurz: wie das Projekt gestartet wird, welche Voraussetzungen nötig sind und welche Befehle wichtig sind.</p>
+        </div>
       </div>
+    </div>
 
-      <p>Docker eignet sich, wenn du deine Seite auf einem eigenen Server betreiben oder lokal in einer professionellen Umgebung testen möchtest.</p>
+    <!-- ───────────────────────────────────────────── -->
 
-      <h3>Voraussetzung</h3>
-      <p>Docker muss installiert sein: <a href="https://docs.docker.com/get-docker/" target="_blank" rel="noopener">https://docs.docker.com/get-docker/</a></p>
+    <div class="hosting-section">
+      <h2 id="github-pages">2. GitHub Pages</h2>
 
-      <h3>Variante A: Mit Dockerfile (empfohlen für eigene Images)</h3>
+      <h3>Geeignet für</h3>
+      <ul>
+        <li>Einfache statische Seiten</li>
+        <li>Frontend-Prototypen</li>
+        <li>Klickbare Demos</li>
+        <li>Workshop-Ergebnisse ohne serverseitige Logik</li>
+      </ul>
 
-      <p><strong>1. Dockerfile im Projektordner erstellen:</strong></p>
-      <pre><code>FROM nginx:alpine
-COPY . /usr/share/nginx/html
-EXPOSE 80</code></pre>
+      <h3>Weniger geeignet für</h3>
+      <ul>
+        <li>Projekte mit Backend</li>
+        <li>Anwendungen mit Logins</li>
+        <li>Projekte mit sensiblen Daten</li>
+        <li>Komplexe serverseitige Verarbeitung</li>
+      </ul>
 
-      <p><strong>2. Image bauen und starten:</strong></p>
-      <pre><code>docker build -t mein-projekt .
-docker run -d -p 8080:80 mein-projekt</code></pre>
+      <h3>Grundidee</h3>
+      <p>Du veröffentlichst ein statisches Build deines Projekts über ein GitHub-Repository.</p>
 
-      <p><strong>3. Im Browser öffnen:</strong> <code>http://localhost:8080</code></p>
-
-      <p><strong>4. Container stoppen:</strong></p>
-      <pre><code>docker ps                        # Container-ID nachschauen
-docker stop &lt;container-id&gt;       # Container stoppen</code></pre>
-
-      <h3>Variante B: Ohne Dockerfile (schnelle lokale Vorschau)</h3>
-
-      <p>Im Projektordner ausführen:</p>
-      <pre><code>docker run -d -p 8080:80 -v $(pwd):/usr/share/nginx/html:ro nginx:alpine</code></pre>
-
-      <p>Dieser Befehl startet einen nginx-Container und bindet den aktuellen Ordner direkt ein – ohne etwas zu bauen.</p>
+      <h3>Typischer Ablauf</h3>
+      <ol>
+        <li>Projekt in ein GitHub-Repository legen</li>
+        <li>Prüfen, ob das Projekt statisch deploybar ist</li>
+        <li>Build erzeugen</li>
+        <li>GitHub Pages aktivieren</li>
+        <li>Veröffentlichte URL testen</li>
+      </ol>
 
       <div class="info-box warning">
         <div class="info-icon"><i class="fas fa-exclamation-triangle"></i></div>
         <div class="info-content">
-          <div class="info-label">Hinweis</div>
-          <p>Docker ist ein Werkzeug für Fortgeschrittene. Für die meisten Workshop-Projekte reichen lokal öffnen oder GitHub Pages völlig aus.</p>
+          <div class="info-label">Vor dem Veröffentlichen prüfen</div>
+          <p>Sind sensible Daten ausgeschlossen? Sind API-Keys entfernt? Stimmen Pfade und Assets? Funktioniert die Anwendung auch auf einer Unterseite bzw. GitHub-Pages-URL?</p>
         </div>
+      </div>
+
+      <div class="highlight-box highlight-green">
+        <p><strong>Praktischer Hinweis:</strong> GitHub Pages ist ideal, wenn du schnell eine öffentliche Demo brauchst und dein Projekt keine serverseitigen Funktionen benötigt.</p>
+      </div>
+    </div>
+
+    <!-- ───────────────────────────────────────────── -->
+
+    <div class="hosting-section">
+      <h2 id="docker">3. Docker</h2>
+
+      <h3>Geeignet für</h3>
+      <ul>
+        <li>Reproduzierbare Ausführung</li>
+        <li>Standardisierte Entwicklungs- oder Testumgebungen</li>
+        <li>Spätere Übergabe an andere Systeme</li>
+        <li>Projekte, die nicht nur rein statisch sind</li>
+      </ul>
+
+      <h3>Grundidee</h3>
+      <p>Docker verpackt deine Anwendung in eine definierte Umgebung, die auf anderen Systemen leichter reproduzierbar läuft.</p>
+
+      <h3>Typischer Ablauf</h3>
+      <ol>
+        <li>Dockerfile erstellen oder prüfen</li>
+        <li>Container bauen</li>
+        <li>Container lokal starten</li>
+        <li>Ports und Umgebungsvariablen korrekt setzen</li>
+        <li>Anwendung testen</li>
+      </ol>
+
+      <h3>Vor dem Einsatz prüfen</h3>
+      <ul>
+        <li>Welche Dateien müssen ins Image?</li>
+        <li>Welche Variablen dürfen nicht ins Image?</li>
+        <li>Welche Ports werden benötigt?</li>
+        <li>Was muss persistent gespeichert werden?</li>
+        <li>Ist Docker für dieses Projekt überhaupt nötig?</li>
+      </ul>
+
+      <div class="info-box tip">
+        <div class="info-icon"><i class="fas fa-lightbulb"></i></div>
+        <div class="info-content">
+          <div class="info-label">Empfehlung</div>
+          <p>Docker ist oft sinnvoll, wenn du mehr Kontrolle über die Laufzeitumgebung brauchst. Für sehr einfache Frontend-Demos ist GitHub Pages meist schneller.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ───────────────────────────────────────────── -->
+
+    <div class="hosting-section">
+      <h2 id="vergleich">Welcher Weg passt zu meinem Projekt?</h2>
+
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Weg</th>
+            <th>Nutze es, wenn du …</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Lokal</strong></td>
+            <td>noch testest, schnell iterierst oder dein Projekt noch nicht teilen musst</td>
+          </tr>
+          <tr>
+            <td><strong>GitHub Pages</strong></td>
+            <td>eine einfache öffentliche Demo willst, ein statisches Frontend hast oder ohne Backend arbeitest</td>
+          </tr>
+          <tr>
+            <td><strong>Docker</strong></td>
+            <td>reproduzierbare Umgebungen brauchst, mehr technische Kontrolle willst oder dein Projekt flexibler betreiben möchtest</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ───────────────────────────────────────────── -->
+
+    <div class="hosting-section">
+      <h2 id="checkliste">Vor jeder Veröffentlichung prüfen</h2>
+      <p>Bevor du etwas veröffentlichst, gehe diese Fragen durch:</p>
+      <ul>
+        <li>Funktioniert der Hauptanwendungsfall?</li>
+        <li>Gibt es offensichtliche Fehler?</li>
+        <li>Sind API-Keys und sensible Daten entfernt?</li>
+        <li>Sind verwendete Bilder, Icons und Texte rechtlich unkritisch?</li>
+        <li>Ist klar, dass es sich um einen Prototyp handelt?</li>
+        <li>Brauchst du Impressum oder Datenschutz-Hinweise?</li>
+      </ul>
+    </div>
+
+    <!-- ───────────────────────────────────────────── -->
+
+    <div class="hosting-section">
+      <h2 id="fehler">Häufige Fehler beim Veröffentlichen</h2>
+      <ul>
+        <li>Versehentlich sensible Daten im Repository</li>
+        <li>Deployment eines Projekts, das nicht statisch geeignet ist</li>
+        <li>Falsche Pfade bei GitHub Pages</li>
+        <li>Nicht dokumentierte Startschritte</li>
+        <li>Ungeprüfte Umgebungsvariablen</li>
+        <li>Fehlender letzter Funktionstest</li>
+      </ul>
+    </div>
+
+    <!-- ───────────────────────────────────────────── -->
+
+    <div class="hosting-section">
+      <h2 id="empfehlung">Empfehlung für Workshop-Projekte</h2>
+      <p>Für die meisten Workshop-Ergebnisse gilt:</p>
+      <ul>
+        <li>Zuerst lokal prüfen</li>
+        <li>Bei einfachen Frontends GitHub Pages bevorzugen</li>
+        <li>Docker nur nutzen, wenn es einen klaren Mehrwert gibt</li>
+      </ul>
+      <div class="highlight-box highlight-green">
+        <p><strong>Das Ziel ist nicht maximale Infrastruktur, sondern ein sauber demonstrierbares Ergebnis.</strong></p>
       </div>
     </div>
 
@@ -367,12 +495,11 @@ docker stop &lt;container-id&gt;       # Container stoppen</code></pre>
 
     <!-- Related Footer -->
     <div class="related-footer">
-      <h3>Weiterführende Inhalte</h3>
+      <h3>Zurück zur Academy</h3>
       <div class="links">
+        <a href="../"><i class="fas fa-home me-1"></i>Startseite</a>
         <a href="../wiki/"><i class="fas fa-book me-1"></i>Wiki</a>
-        <a href="../#ideen"><i class="fas fa-lightbulb me-1"></i>Ideen</a>
-        <a href="../#ergebnisse"><i class="fas fa-rocket me-1"></i>Ergebnisse</a>
-        <a href="https://github.com/Fauteck/vibecoding-academy" target="_blank" rel="noopener"><i class="fab fa-github me-1"></i>GitHub</a>
+        <a href="../#ergebnisse"><i class="fas fa-rocket me-1"></i>Projekte</a>
       </div>
     </div>
 
