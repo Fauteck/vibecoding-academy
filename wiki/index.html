@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Handout: Vibecoding &amp; Hosting - Vibecoding Academy</title>
-  <meta name="description" content="Workshop-Handout für KI-gestütztes Web-Coding mit Claude, Cursor & GitHub Pages.">
-  <meta property="og:title" content="Handout: Vibecoding & Hosting - Vibecoding Academy">
-  <meta property="og:description" content="Workshop-Handout für KI-gestütztes Web-Coding mit Claude, Cursor & GitHub Pages.">
+  <title>Wiki – Vibecoding Academy</title>
+  <meta name="description" content="Kompakter Einstieg in KI-gestütztes Web-Coding: Vibecoding verstehen, erste Projekte bauen, Qualität sichern.">
+  <meta property="og:title" content="Wiki – Vibecoding Academy">
+  <meta property="og:description" content="Kompakter Einstieg in KI-gestütztes Web-Coding: Vibecoding verstehen, erste Projekte bauen, Qualität sichern.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://fauteck.github.io/vibecoding-academy/wiki/">
   <meta property="og:locale" content="de_DE">
@@ -194,28 +194,29 @@
 
   <div id="content">
 
-    <h1>Handout: Vibe-Coding Academy</h1>
-    <p class="subtitle">Vibecoding &amp; Hosting - Wissen kompakt für den Workshop</p>
+    <h1>Vibecoding Academy – Wiki</h1>
+    <p class="subtitle">Kompakter Einstieg in KI-gestütztes Web-Coding</p>
 
     <nav class="toc">
       <div class="toc-title">Inhalt</div>
       <ol>
-        <li><a href="#worum-es-geht">Worum es in diesem Workshop geht</a></li>
-        <li><a href="#was-vibecoding-ausmacht">Was Vibe-Coding ausmacht</a></li>
-        <li><a href="#zusammenarbeit-ki">Zusammenarbeit mit KI</a></li>
-        <li><a href="#iterativ">Iterativ statt perfekt</a></li>
-        <li><a href="#paradigmenwechsel">Paradigmenwechsel: Bauen, was DU brauchst</a></li>
-        <li><a href="#staerken">Was Vibe-Coding besonders gut kann</a></li>
-        <li><a href="#nutzen-projekt">Nutzen im Projektkontext</a></li>
-        <li><a href="#grenzen">Was dieser Workshop nicht leisten soll</a></li>
-        <li><a href="#haltung">Gute Haltung für den Einstieg</a></li>
-        <li><a href="#copycat">Copycat-Prinzip: Gut adaptiert besser als schlecht selbst gedacht</a></li>
-        <li><a href="#idee-strukturieren">Praktischer Tipp: Idee erst strukturieren</a></li>
-        <li><a href="#ki-kompetenzen">KI-Kompetenzen aufteilen</a></li>
-        <li><a href="#erfolgsfaktoren">Erfolgsfaktoren für gutes Vibe-Coding</a></li>
-        <li><a href="#rahmenbedingungen">Rahmenbedingungen festlegen: CLAUDE.md &amp; Co.</a></li>
-        <li><a href="#alternative-tools">Alternative Vibecoding Tools</a></li>
-        <li><a href="#fazit">Fazit</a></li>
+        <li><a href="#orientierung">Orientierung</a></li>
+        <li><a href="#mental-model">Mental Model</a></li>
+        <li><a href="#setup">Setup</a></li>
+        <li><a href="#erste-erfolge">Erste Erfolge</a></li>
+        <li><a href="#systematisch-bauen">Systematisches Bauen</a></li>
+        <li><a href="#qualitaet-risiken">Qualität und Risiken</a></li>
+        <li><a href="#deployment-sharing">Deployment und Sharing</a></li>
+        <li><a href="#sandbox">Projekte (Sandbox)</a></li>
+        <li><a href="#golden-path">Golden Path Tutorial</a></li>
+        <li><a href="#anti-vibecoding">Anti-Vibecoding</a></li>
+        <li><a href="#code-reading">Code Reading Light</a></li>
+        <li><a href="#refactoring">Refactoring mit KI</a></li>
+        <li><a href="#kosten-limits">Kosten und Limits</a></li>
+        <li><a href="#playground-produkt">Vom Playground zum Produkt</a></li>
+        <li><a href="#prompt-bibliothek">Prompt-Bibliothek</a></li>
+        <li><a href="#common-failures">Common Failures</a></li>
+        <li><a href="#workflow-viz">Workflow Visualisierung</a></li>
         <li><a href="#hosting">Hosting-Anleitung</a>
           <ol>
             <li><a href="#hosting-lokal">Lokale Ergebnisse mit Claude Code</a></li>
@@ -228,19 +229,201 @@
 
     <!-- ───────────────────────────────────────────── -->
 
-    <h2 id="worum-es-geht">Worum es in diesem Workshop geht</h2>
+    <h2 id="orientierung">Orientierung</h2>
 
-    <p>Die Vibe-Coding Academy zeigt, <strong>was mit KI-gestuetzter Entwicklung heute schon moeglich ist</strong> und wie leicht der Einstieg sein kann.</p>
+    <h3>Warum diese Seite?</h3>
+    <p>Diese Wiki-Seite soll einen kompakten, verständlichen Einstieg in das Thema Vibecoding geben. Sie richtet sich an Menschen, die mit KI schnell erste digitale Lösungen, Prototypen oder Ideen sichtbar machen möchten, ohne direkt tief in klassische Softwareentwicklung einsteigen zu müssen.</p>
 
-    <p>Es geht <strong>nicht</strong> darum, in kurzer Zeit ein fertiges Unternehmens-Tool zu bauen. Es geht um:</p>
+    <h3>Was ist Vibecoding?</h3>
+    <p>Vibecoding beschreibt das Erstellen von Software mithilfe von KI, bei dem der Fokus auf schnellen Ergebnissen, Ausprobieren und iterativer Verbesserung liegt. Statt jede Zeile Code selbst zu schreiben, beschreibt man einer KI in natürlicher Sprache, was entstehen soll, testet das Ergebnis und entwickelt es Schritt für Schritt weiter. Der Mehrwert liegt vor allem darin, Ideen schnell greifbar zu machen.</p>
 
+    <h3>Was ist es nicht?</h3>
+    <p>Vibecoding ist kein Ersatz für klassische Softwareentwicklung in komplexen oder produktionskritischen Systemen. Es ist kein Garant für sicheren, fehlerfreien oder wartbaren Code. Außerdem ist es kein Ansatz nach dem Motto „einmal prompten und fertig". Gute Ergebnisse entstehen fast immer durch mehrere Schleifen aus Testen, Prüfen und Nachschärfen.</p>
+
+    <h3>Wann ist es sinnvoll?</h3>
+    <p>Vibecoding eignet sich besonders gut für Prototyping, Lernen, kleine Tools und kreative Experimente. Es ist stark, wenn es darum geht, Ideen schnell sichtbar zu machen, Anforderungen anschaulich zu testen oder erste Klickdummys für Gespräche mit Stakeholdern zu bauen. Gerade in frühen Phasen hilft es, abstrakte Gedanken in erlebbare Entwürfe zu übersetzen.</p>
+
+    <hr>
+
+    <!-- ───────────────────────────────────────────── -->
+
+    <!-- ───────────────────────────────────────────── -->
+
+    <h2 id="mental-model">Mental Model</h2>
+
+    <h3>Wie man beim Vibecoding denkt</h3>
+    <p>Vibecoding funktioniert am besten, wenn man nicht in fertigen Endlösungen denkt, sondern in Lern- und Verbesserungszyklen. Ziel ist nicht Perfektion im ersten Schritt, sondern ein schneller erster Entwurf, der anschließend gemeinsam mit der KI verfeinert wird.</p>
+
+    <h3>Iterativer Workflow</h3>
+    <div class="highlight-box highlight-blue">
+      <p><strong>Idee → Prompt → Output → Test → Feedback → Iteration</strong></p>
+      <p>Zuerst wird eine Idee beschrieben. Daraus erzeugt die KI einen ersten Output, zum Beispiel eine kleine Anwendung oder einen Prototypen. Dieser wird getestet, bewertet und mit Feedback verbessert. Dieser Zyklus wiederholt sich, bis das Ergebnis nützlich und stimmig ist.</p>
+    </div>
+
+    <h3>Rollenmodell</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Rolle</th>
+          <th>Aufgabe</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Human</strong></td>
+          <td>Ziel definieren, Kontext geben, Qualität bewerten</td>
+        </tr>
+        <tr>
+          <td><strong>AI</strong></td>
+          <td>Code generieren, Vorschläge machen, Varianten liefern</td>
+        </tr>
+        <tr>
+          <td><strong>Human</strong></td>
+          <td>Testen, steuern, priorisieren, entscheiden</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Die KI übernimmt nicht die Verantwortung für das Ergebnis. Sie ist eher wie ein sehr schneller Umsetzer, der Unterstützung liefert. Die fachliche Richtung, die Bewertung und die Entscheidung bleiben beim Menschen.</p>
+
+    <hr>
+
+    <!-- ───────────────────────────────────────────── -->
+
+    <h2 id="setup">Setup</h2>
+
+    <h3>Werkzeuge</h3>
+    <p>Für den Einstieg braucht es meist weniger Infrastruktur, als viele vermuten. Schon mit Browser, KI-Tool und einem Ort zum Speichern oder Veröffentlichen lassen sich erste Ergebnisse bauen und zeigen.</p>
+
+    <h3>Minimal-Setup</h3>
+    <p>Ein sinnvolles Minimal-Setup besteht aus:</p>
     <ul>
-      <li>Neugier und Ausprobieren</li>
-      <li>Kreativität bei der Ideenentwicklung</li>
-      <li>schnelles Prototyping</li>
-      <li>iteratives Verbessern</li>
-      <li>ein besseres Verständnis dafür, wie man mit KI zusammenarbeitet</li>
+      <li>einem Browser,</li>
+      <li>einem KI-Tool wie ChatGPT, Claude oder Copilot,</li>
+      <li>einem Ort zur Ablage des Codes, z.&nbsp;B. lokal oder auf GitHub.</li>
     </ul>
+    <p>Damit lassen sich einfache Web-Prototypen oft schon vollständig erstellen, testen und teilen.</p>
+
+    <h3>Browser</h3>
+    <p>Der Browser ist die wichtigste Testumgebung für einfache Web-Projekte. HTML-, CSS- und JavaScript-Prototypen lassen sich direkt lokal öffnen und sofort ausprobieren. Das senkt die Einstiegshürde erheblich.</p>
+
+    <h3>ChatGPT / Copilot / Claude</h3>
+    <p>Verschiedene Tools eignen sich für verschiedene Phasen. ChatGPT ist stark bei Strukturierung, Brainstorming und freiem Dialog. Claude Code eignet sich gut für technische Umsetzung und Datei-Arbeit. Copilot unterstützt eher direkt in der Entwicklungsumgebung beim Schreiben und Ergänzen von Code.</p>
+
+    <h3>GitHub</h3>
+    <p>GitHub hilft dabei, Projekte sauber abzulegen, Versionen zu speichern und Ergebnisse später zu veröffentlichen. Für einfache statische Projekte ist GitHub außerdem ein guter Ausgangspunkt, um mit GitHub Pages kostenlos eine Website bereitzustellen.</p>
+
+    <h3>Deployment Flow</h3>
+    <p>Ein typischer einfacher Veröffentlichungsweg:</p>
+    <ol>
+      <li>Repository erstellen</li>
+      <li>HTML-Datei hinzufügen</li>
+      <li>GitHub Pages aktivieren</li>
+      <li>URL teilen</li>
+    </ol>
+    <p>Damit kann ein Workshop-Ergebnis sehr schnell aus einem lokalen Entwurf zu einer öffentlich erreichbaren Seite werden.</p>
+
+    <hr>
+
+    <!-- ───────────────────────────────────────────── -->
+
+    <h2 id="erste-erfolge">Erste Erfolge</h2>
+
+    <h3>Quick Wins</h3>
+    <p>Gerade am Anfang sind kleine, überschaubare Projekte ideal. Sie liefern schnell sichtbare Ergebnisse und helfen dabei, ein Gefühl für die Zusammenarbeit mit KI zu entwickeln.</p>
+
+    <h3>Mini-Projekte</h3>
+    <p>Geeignet sind besonders kleine Projekte mit klarer Oberfläche und einfacher Logik. Sie sind schnell testbar und überschaubar genug, um Iteration und Feedback direkt zu erleben.</p>
+
+    <h3>To-Do App</h3>
+    <p>Eine To-Do-App ist ein guter Einstieg, weil sie viele typische UI-Elemente enthält: Eingaben, Listen, Buttons und einfache Zustände. Gleichzeitig bleibt die fachliche Logik leicht verständlich.</p>
+
+    <h3>Taschenrechner</h3>
+    <p>Ein Taschenrechner eignet sich gut, um einfache Eingabelogik, Zustandsänderungen und Fehlerfälle zu verstehen. Er ist klein genug, um schnell fertig zu werden, aber komplex genug für erste Lernmomente.</p>
+
+    <h3>Mini-Spiel</h3>
+    <p>Ein kleines Spiel ist besonders motivierend, weil Ergebnisse sofort sichtbar sind. Außerdem zeigt ein Mini-Spiel gut, wie man mit KI kreative Ideen, einfache Logik und Interaktion kombinieren kann.</p>
+
+    <hr>
+
+    <!-- ───────────────────────────────────────────── -->
+
+    <h2 id="systematisch-bauen">Systematisches Bauen</h2>
+
+    <h3>Vom schnellen Prototyp zur Struktur</h3>
+    <p>Sobald erste Ergebnisse funktionieren, lohnt sich ein systematischerer Blick auf Aufbau und Bestandteile. Das hilft, Änderungen sauberer umzusetzen und spätere Erweiterungen zu erleichtern.</p>
+
+    <h3>UI (HTML/CSS)</h3>
+    <p>Die Benutzeroberfläche beschreibt, wie die Anwendung aussieht. HTML legt die Struktur fest, CSS das Design. Im Vibecoding kann die KI sehr schnell erste Layouts, Formulare, Navigationen oder Kartenansichten erzeugen, die dann schrittweise angepasst werden.</p>
+
+    <h3>Logik (JavaScript)</h3>
+    <p>JavaScript steuert das Verhalten einer Web-Anwendung. Dazu gehören Klicks, Berechnungen, Zustandswechsel oder Validierungen. Gerade hier zeigt sich, warum Testen wichtig ist: Die Oberfläche kann gut aussehen, obwohl die Logik im Hintergrund noch fehlerhaft ist.</p>
+
+    <h3>State Management</h3>
+    <p>Auch kleine Anwendungen haben Zustände: Welche Aufgabe ist erledigt? Welcher Filter ist aktiv? Welcher Nutzerpfad wurde gewählt? Wer Vibecoding länger nutzt, merkt schnell, dass ein gutes Verständnis von Zuständen hilft, Änderungen nachvollziehbar und stabil zu machen.</p>
+
+    <h3>APIs einbinden</h3>
+    <p>Viele spannende Prototypen werden erst dann besonders nützlich, wenn sie externe Daten einbinden. APIs ermöglichen zum Beispiel Wetterdaten, Suchfunktionen oder Datenabfragen. Hier ist besondere Vorsicht nötig, weil externe Schnittstellen Fehlerquellen, Limits und Sicherheitsfragen mitbringen.</p>
+
+    <hr>
+
+    <!-- ───────────────────────────────────────────── -->
+
+    <h2 id="qualitaet-risiken">Qualität und Risiken</h2>
+
+    <h3>Warum dieser Abschnitt wichtig ist</h3>
+    <p>KI kann schnell Ergebnisse liefern, aber nicht automatisch gute Ergebnisse. Deshalb gehört zur Arbeit mit Vibecoding immer auch eine realistische Einordnung der Qualität.</p>
+
+    <h3>Typische Probleme</h3>
+    <p>Gerade bei schnellen Prototypen treten oft typische Schwächen auf: unklare Logik, widersprüchliche Funktionen, brüchige UI, unsaubere Struktur oder fehlende Randfallbehandlung. Diese Probleme sind normal, solange man sie erkennt und systematisch bearbeitet.</p>
+
+    <h3>Halluzinationen</h3>
+    <p>KI kann Dinge behaupten oder erzeugen, die plausibel wirken, aber sachlich falsch oder technisch nicht funktionsfähig sind. Das gilt für Code genauso wie für Erklärungen. Deshalb sollten Ergebnisse nie ungeprüft übernommen werden.</p>
+
+    <h3>Sicherheitslücken</h3>
+    <p>KI-generierter Code ist nicht automatisch sicher. Besonders bei Formularen, Benutzerangaben, externen Datenquellen oder Authentifizierung können schnell Schwachstellen entstehen. Vibecoding ist deshalb ungeeignet, um sicherheitskritische Systeme ohne fachliche Prüfung zu bauen.</p>
+
+    <h3>Schlechter Code</h3>
+    <p>Auch wenn etwas funktioniert, kann der Code schwer verständlich, schlecht strukturiert oder schwer wartbar sein. Gerade bei mehreren Iterationen entstehen schnell doppelte Logik, unnötige Komplexität oder unklare Abhängigkeiten.</p>
+
+    <h3>Debugging mit KI</h3>
+    <p>Ein praktikabler Ansatz ist, Fehler gezielt mit der KI zu debuggen. Statt nur „es geht nicht" zu schreiben, hilft es, Fehlermeldungen, beobachtetes Verhalten und den betroffenen Codeabschnitt mitzugeben. So kann die KI präziser helfen.</p>
+
+    <h3>Fehler kopieren</h3>
+    <p>Besonders effektiv ist es, konkrete Fehlermeldungen oder problematische Stellen exakt zu kopieren. So vermeidet man Missverständnisse und erhöht die Chance auf eine passende Lösung.</p>
+
+    <h3>Gezielt nach Fix fragen</h3>
+    <p>Gute Debugging-Prompts sind konkret. Hilfreich ist zum Beispiel:</p>
+    <blockquote>
+      <p>Dieser Button reagiert nicht. Hier ist der relevante Code und die Fehlermeldung. Bitte finde die Ursache und schlage eine minimale Korrektur vor.</p>
+    </blockquote>
+    <p>So bekommt man meist bessere Ergebnisse als mit rein allgemeinen Fragen.</p>
+
+    <hr>
+
+    <!-- ───────────────────────────────────────────── -->
+
+    <h2 id="deployment-sharing">Deployment und Sharing</h2>
+
+    <h3>Warum Veröffentlichen wichtig ist</h3>
+    <p>Ein Prototyp wird deutlich wertvoller, wenn andere ihn sehen, testen oder kommentieren können. Deployment macht aus einer lokalen Idee ein teilbares Ergebnis.</p>
+
+    <h3>GitHub Pages</h3>
+    <p>GitHub Pages ist für einfache Websites ein besonders leichter Weg, Projekte kostenlos zu veröffentlichen. Man braucht nur ein Repository, eine HTML-Datei und die Aktivierung der Pages-Funktion. Danach ist das Ergebnis über eine URL erreichbar.</p>
+
+    <h3>Versionierung</h3>
+    <p>Versionierung hilft dabei, Änderungen nachvollziehbar zu halten. Statt nur den neuesten Stand zu kennen, kann man frühere Versionen sichern, Unterschiede vergleichen und Fehler leichter zurückverfolgen. Gerade bei iterativer Arbeit mit KI ist das sehr hilfreich.</p>
+
+    <h3>Teilen von Links</h3>
+    <p>Ein veröffentlichter Link ist oft die einfachste Form, einen Prototypen im Team oder Workshop zu teilen. Das erleichtert Feedback, Diskussionen und gemeinsames Lernen erheblich.</p>
+
+    <hr>
+
+    <!-- ───────────────────────────────────────────── -->
+
+    <h2 id="sandbox">Projekte (Sandbox)</h2>
+
+    <h3>Freies Arbeiten und Experimentieren</h3>
+    <p>Die Sandbox ist der Raum für Ausprobieren. Hier geht es nicht um Perfektion, sondern um Geschwindigkeit, Kreativität und Lernen. Kleine Ideen dürfen hier unfertig, verspielt oder experimentell sein. Gerade das freie Arbeiten sorgt oft für die stärksten Aha-Momente.</p>
 
     <div class="highlight-box highlight-green">
       <p><strong>Vibe-Coding ist kein Hexenwerk.</strong> Wer eine Idee beschreiben kann, kann auch erste Ergebnisse erzeugen.</p>
@@ -250,545 +433,156 @@
 
     <!-- ───────────────────────────────────────────── -->
 
-    <h2 id="was-vibecoding-ausmacht">Was Vibe-Coding ausmacht</h2>
+    <h2 id="golden-path">Golden Path Tutorial</h2>
 
-    <p>Vibe-Coding bedeutet, mit einer KI gemeinsam Anwendungen, Prototypen oder Klickdummys zu entwickeln - oft in natürlicher Sprache statt über klassischen Code von Grund auf.</p>
+    <p>Ein sinnvoller Standardablauf für Einsteiger:</p>
 
-    <p>Der Schlüssel ist dabei nicht nur Technik, sondern vor allem:</p>
+    <h3>Idee definieren</h3>
+    <p>Am Anfang steht kein perfektes Fachkonzept, sondern eine verständliche Idee. Wichtig ist nur, dass das Ziel klar genug beschrieben werden kann.</p>
 
-    <ul>
-      <li><strong>Kreativität</strong></li>
-      <li><strong>klare Kommunikation</strong></li>
-      <li><strong>Bereitschaft zur Iteration</strong></li>
-    </ul>
+    <h3>Prompt formulieren</h3>
+    <p>Danach wird die Idee in eine konkrete Anweisung für die KI übersetzt. Gute Prompts beschreiben Ziel, Nutzer, Funktionsumfang und gewünschtes Verhalten möglichst klar.</p>
 
-    <p>Man muss also nicht zwingend selbst programmieren können, um etwas zu erschaffen. Hilfreich ist es aber, wenn man:</p>
+    <h3>Code generieren</h3>
+    <p>Die KI erstellt daraufhin einen ersten Entwurf. Das kann ein einfacher Screen, eine kleine Anwendung oder ein klickbarer Prototyp sein.</p>
 
-    <ul>
-      <li>digitale Infrastruktur grob versteht,</li>
-      <li>bestehende Logiken nachvollziehen kann,</li>
-      <li>und bei Bedarf einfachen Code zumindest ansatzweise lesen oder prüfen kann.</li>
-    </ul>
+    <h3>Testen</h3>
+    <p>Danach wird ausprobiert, was schon funktioniert und was noch fehlt. Erst im Test zeigt sich oft, wo Logik, Nutzerführung oder Details noch unklar sind.</p>
 
-    <h3>Die wichtigste Erkenntnis</h3>
+    <h3>Debuggen</h3>
+    <p>Fehler sind Teil des Prozesses. Wichtiger als Fehlerfreiheit im ersten Anlauf ist die Fähigkeit, Probleme systematisch zu erkennen und mit der KI daran weiterzuarbeiten.</p>
 
-    <div class="highlight-box highlight-blue">
-      <p><strong>Man braucht keine Coding-Erfahrung, um mit Vibe-Coding zu guten ersten Ergebnissen zu kommen.</strong></p>
-      <p>Was man allerdings braucht:</p>
-      <ul>
-        <li>eine Idee,</li>
-        <li>die Fähigkeit, diese Idee zu beschreiben,</li>
-        <li>und die Bereitschaft, der KI Rückmeldung zu geben.</li>
-      </ul>
-    </div>
+    <h3>Deployen</h3>
+    <p>Zum Abschluss kann das Ergebnis lokal genutzt oder online veröffentlicht werden, etwa über GitHub Pages oder ein einfaches Hosting-Setup.</p>
 
     <hr>
 
     <!-- ───────────────────────────────────────────── -->
 
-    <h2 id="zusammenarbeit-ki">Zusammenarbeit mit KI: wie mit einem Werki</h2>
+    <h2 id="anti-vibecoding">Anti-Vibecoding</h2>
 
-    <p>Ein hilfreiches Bild: <strong>Arbeite mit der KI wie mit einem Werki.</strong></p>
-
-    <p>Das bedeutet:</p>
-
-    <ul>
-      <li>Anforderungen möglichst klar formulieren</li>
-      <li>Kontext mitgeben</li>
-      <li>Erwartungen konkret benennen</li>
-      <li>Rückfragen zulassen</li>
-      <li>Ergebnisse prüfen und nachschärfen</li>
-    </ul>
-
-    <p>Je klarer die Aufgabe beschrieben ist, desto besser wird das Ergebnis.</p>
-
-    <p>Gleichzeitig darf man nicht erwarten, dass die KI von Anfang an alles perfekt versteht. Gute Ergebnisse entstehen oft im Dialog.</p>
-
-    <hr>
-
-    <!-- ───────────────────────────────────────────── -->
-
-    <h2 id="iterativ">Iterativ statt perfekt von Anfang an</h2>
-
-    <p>Anders als im klassischen Projekt-, Produkt- oder Anforderungsmanagement muss beim Vibe-Coding <strong>nicht jeder Schritt von Anfang an vollständig durchpriorisiert und bis ins letzte Detail ausdefiniert</strong> sein.</p>
-
-    <p>Oft ist es sinnvoller, mit einem ersten Aufschlag zu starten:</p>
-
-    <ol>
-      <li>Idee grob beschreiben</li>
-      <li>ersten Prototyp oder ersten Entwurf erzeugen lassen</li>
-      <li>anschauen, bewerten, testen</li>
-      <li>Rückmeldung geben</li>
-      <li>iterativ verbessern</li>
-    </ol>
-
-    <p>Typische Rückmeldungen an die KI sind zum Beispiel:</p>
-
-    <ul>
-      <li>"Den Button wollte ich anders haben."</li>
-      <li>"Das Dropdown soll sich anders verhalten."</li>
-      <li>"Hier fehlt noch ein Schritt."</li>
-      <li>"Der Ablauf ist noch nicht intuitiv genug."</li>
-      <li>"Bitte ergänze noch einen alternativen Nutzerpfad."</li>
-    </ul>
-
-    <div class="highlight-box highlight-green">
-      <p><strong>Gerade diese iterative Arbeitsweise ist eine der größten Stärken von Vibe-Coding.</strong></p>
-    </div>
-
-    <hr>
-
-    <!-- ───────────────────────────────────────────── -->
-
-    <h2 id="paradigmenwechsel">Paradigmenwechsel: Bauen, was DU brauchst</h2>
-
-    <p>Vibe-Coding verändert nicht nur <strong>wie</strong> Software entsteht, sondern auch <strong>für wen</strong>.</p>
-
-    <h3>Bisher: Entwicklung für die Mehrheit</h3>
-
-    <p>In der klassischen Softwareentwicklung baut ein Entwicklerteam Features für möglichst viele Nutzer:</p>
-
-    <ul>
-      <li>Anforderungen werden über <strong>Umfragen und Nutzerstudien</strong> erhoben</li>
-      <li>Features werden <strong>auf Nachfrage priorisiert</strong></li>
-      <li>Das Team entscheidet <strong>nach eigener Vorstellung</strong>, wie etwas genutzt wird</li>
-      <li>Nischenwünsche einzelner Nutzer fallen oft hinten runter</li>
-    </ul>
-
-    <h3>Neu: Entwicklung für DICH</h3>
-
-    <p>Mit Vibe-Coding kannst du dir ein Tool genau so bauen, <strong>wie du es brauchst</strong>:</p>
-
-    <ul>
-      <li>Du entscheidest, welche Funktionen rein kommen - und welche nicht</li>
-      <li>Du kannst Features einbauen, die <strong>außer dir niemand brauchen würde</strong></li>
-      <li>Du lässt alles weg, was dich nicht betrifft</li>
-      <li>Das Tool passt sich dir an - nicht umgekehrt</li>
-    </ul>
-
-    <div class="highlight-box highlight-blue">
-      <p><strong>Du bist nicht mehr Nutzer eines Standardprodukts, sondern Auftraggeber deiner eigenen Lösung.</strong></p>
-      <p>Genau das macht Vibe-Coding so mächtig: Du musst nicht mehr darauf warten, dass jemand anderes dein Problem löst.</p>
-    </div>
-
-    <hr>
-
-    <!-- ───────────────────────────────────────────── -->
-
-    <h2 id="staerken">Was Vibe-Coding besonders gut kann</h2>
-
-    <p>Vibe-Coding ist besonders stark, wenn es darum geht:</p>
-
-    <ul>
-      <li>Ideen schnell sichtbar zu machen</li>
-      <li>theoretische Anforderungen in Prototypen zu übersetzen</li>
-      <li>Klickdummys für Stakeholder zu bauen</li>
-      <li>erste Funktionsideen erlebbar zu machen</li>
-      <li>Anforderungen anschaulich mit anderen abzugleichen</li>
-    </ul>
-
-    <p>Ein großer Vorteil: Dinge, die in einem schriftlichen Konzept oft noch abstrakt bleiben, werden im Prototypen viel greifbarer.</p>
-
-    <p>Zum Beispiel lässt sich oft erst im Ausprobieren wirklich beurteilen:</p>
-
-    <ul>
-      <li>wie sich ein Button verhalten soll,</li>
-      <li>wie ein Dropdown funktionieren sollte,</li>
-      <li>wie ein Nutzerfluss logisch wirkt,</li>
-      <li>oder welche Informationen an welcher Stelle fehlen.</li>
-    </ul>
-
-    <hr>
-
-    <!-- ───────────────────────────────────────────── -->
-
-    <h2 id="nutzen-projekt">Nutzen im Projektkontext</h2>
-
-    <p>Ein vibe-gecodeter Prototyp kann in Projekten sehr wertvoll sein - auch dann, wenn er <strong>nicht</strong> produktiv genutzt werden soll.</p>
-
-    <p>Er kann helfen als:</p>
-
-    <ul>
-      <li>Gesprächsgrundlage mit Stakeholdern</li>
-      <li>visuelle Ergänzung zu Fachkonzepten</li>
-      <li>Diskussionsbasis für Anforderungen</li>
-      <li>Anschauungsmaterial für Entwicklerinnen und Entwickler</li>
-    </ul>
-
-    <p>So erhalten Entwicklerteams nicht nur ein schriftliches Konzept, sondern auch eine grobe, visuelle Vorstellung davon, <strong>wie ein Feature gedacht ist und wie sich Details verhalten könnten</strong>.</p>
-
-    <p>Das ersetzt keine saubere technische Konzeption - kann aber das gemeinsame Verständnis deutlich verbessern.</p>
-
-    <hr>
-
-    <!-- ───────────────────────────────────────────── -->
-
-    <h2 id="grenzen">Was dieser Workshop ausdrücklich nicht leisten soll</h2>
-
-    <p>Der Workshop zielt <strong>nicht</strong> darauf ab, am Ende ein produktionsreifes Tool für den Unternehmenseinsatz zu bauen.</p>
-
-    <p>Denn dafür müssten zusätzlich viele weitere Fragen geklärt werden, zum Beispiel:</p>
-
-    <ul>
-      <li>Datenschutz</li>
-      <li>IT-Sicherheit</li>
-      <li>technische Architektur</li>
-      <li>Wartbarkeit</li>
-      <li>Integration in bestehende Systeme</li>
-      <li>Betrieb und Verantwortlichkeiten</li>
-      <li>Compliance und Governance</li>
-    </ul>
+    <h3>Wofür Vibecoding nicht geeignet ist</h3>
+    <p>Vibecoding ist nicht geeignet für sicherheitskritische Systeme, große Anwendungen mit komplexer Architektur oder produktive Unternehmenslösungen ohne fachliche und technische Absicherung. Sobald Themen wie Datenschutz, Compliance, Betrieb, Integration oder Skalierung zentral werden, reicht reines Vibecoding nicht aus.</p>
 
     <div class="highlight-box highlight-yellow">
-      <p>Der Fokus des Workshops liegt daher bewusst auf dem <strong>Erkunden von Möglichkeiten</strong> - nicht auf der finalen Produktivsetzung.</p>
+      <p><strong>Vibecoding ist ein Werkzeug für Prototypen, Lernen und kreative Experimente</strong> – kein Ersatz für professionelle Softwareentwicklung in kritischen Kontexten.</p>
     </div>
 
     <hr>
 
     <!-- ───────────────────────────────────────────── -->
 
-    <h2 id="haltung">Gute Haltung für den Einstieg</h2>
+    <h2 id="code-reading">Code Reading Light</h2>
 
-    <p>Wer mit Vibe-Coding starten möchte, braucht vor allem:</p>
+    <h3>Warum minimales Codeverständnis hilft</h3>
+    <p>Man muss kein Entwickler sein, um mit Vibecoding gute Ergebnisse zu erzielen. Trotzdem hilft es, einfache Strukturen im Code grob lesen und nachvollziehen zu können.</p>
 
-    <ul>
-      <li>Neugier</li>
-      <li>Mut zum Ausprobieren</li>
-      <li>Kreativität</li>
-      <li>Offenheit für Zwischenschritte</li>
-    </ul>
+    <h3>Variablen erkennen</h3>
+    <p>Variablen speichern Werte und Zustände. Wer erkennt, welche Informationen wo gehalten werden, versteht schneller, warum sich eine Anwendung auf bestimmte Weise verhält.</p>
 
-    <p>Es reicht völlig, mit einer groben Idee zu starten und einfach zu schauen:</p>
+    <h3>Funktionen verstehen</h3>
+    <p>Funktionen bündeln Verhalten. Schon ein grobes Verständnis davon, welche Funktion was auslöst, hilft beim Testen und Formulieren von Änderungswünschen.</p>
 
-    <div class="highlight-box highlight-blue">
-      <p><strong>"Was passiert, wenn ich diese Anforderung mal an eine KI übergebe?"</strong></p>
-      <p>Genau daraus entstehen oft die besten Aha-Momente.</p>
-    </div>
+    <h3>Änderungen nachvollziehen</h3>
+    <p>Bei iterativer Arbeit mit KI ist es wichtig zu sehen, was sich von Version zu Version verändert hat. So erkennt man besser, ob ein Fix wirklich geholfen oder an anderer Stelle etwas verschlechtert hat.</p>
 
     <hr>
 
     <!-- ───────────────────────────────────────────── -->
 
-    <h2 id="copycat">Copycat-Prinzip: Gut adaptiert besser als schlecht selbst gedacht</h2>
+    <h2 id="refactoring">Refactoring mit KI</h2>
 
-    <p>Eine der effektivsten Strategien beim Vibe-Coding: <strong>Lass dich von bestehenden Apps und Features inspirieren.</strong></p>
+    <h3>Besseren Code erzeugen</h3>
+    <p>KI kann nicht nur neuen Code erzeugen, sondern auch bestehenden Code verbessern. Das ist besonders hilfreich, wenn ein Prototyp zwar funktioniert, aber unübersichtlich geworden ist.</p>
 
-    <p>Statt jede Funktion von Grund auf neu zu beschreiben, kannst du der KI anschaulich zeigen, was du möchtest - indem du auf Bekanntes verweist:</p>
+    <h3>„Optimiere meinen Code"</h3>
+    <p>Ein nützlicher Anwendungsfall ist, die KI um Vereinfachung oder bessere Struktur zu bitten. Dabei sollte man möglichst klar sagen, was verbessert werden soll: Lesbarkeit, Kürze, Wiederverwendbarkeit oder Trennung von Logik und Darstellung.</p>
 
-    <ul>
-      <li><strong>Bestehende Apps als Referenz nutzen</strong> - "Die Navigation soll so funktionieren wie bei Spotify"</li>
-      <li><strong>Features aus anderen Tools adaptieren</strong> - "Ich möchte eine Drag-and-Drop-Sortierung wie bei Trello"</li>
-      <li><strong>Screenshots oder Beschreibungen mitgeben</strong> - "Das Layout soll ungefähr so aussehen wie auf diesem Bild"</li>
-      <li><strong>Bewusst abgrenzen</strong> - "Ähnlich wie bei Excel, aber ohne die Formeln - nur eine einfache Tabelle"</li>
-    </ul>
+    <h3>„Mache ihn wartbarer"</h3>
+    <p>Wartbarkeit bedeutet, dass Änderungen später leichter möglich sind. Die KI kann dabei helfen, doppelte Logik zu reduzieren, Funktionen sauberer aufzuteilen oder Benennungen verständlicher zu machen.</p>
 
+    <hr>
+
+    <!-- ───────────────────────────────────────────── -->
+
+    <h2 id="kosten-limits">Kosten und Limits</h2>
+
+    <h3>Warum das relevant ist</h3>
+    <p>Auch wenn viele erste Schritte günstig oder kostenlos möglich sind, stoßen KI-Tools und externe Dienste an Grenzen.</p>
+
+    <h3>API-Kosten beachten</h3>
+    <p>Wer mit APIs oder kostenpflichtigen KI-Modellen arbeitet, sollte die Nutzung im Blick behalten. Gerade bei wiederholten Anfragen oder größeren Projekten können Kosten entstehen, die anfangs unterschätzt werden.</p>
+
+    <h3>Token Limits</h3>
+    <p>KI-Modelle haben Begrenzungen bei der Menge an Eingabe- und Ausgabedaten. Sehr große Kontexte, lange Codeblöcke oder umfangreiche Verläufe können dazu führen, dass Informationen abgeschnitten oder schlechter verarbeitet werden.</p>
+
+    <h3>Rate Limits</h3>
+    <p>Einige Dienste begrenzen, wie oft man in kurzer Zeit Anfragen senden darf. Das ist besonders relevant, wenn Prototypen externe APIs nutzen oder automatisiert viele Anfragen stellen.</p>
+
+    <hr>
+
+    <!-- ───────────────────────────────────────────── -->
+
+    <h2 id="playground-produkt">Vom Playground zum Produkt</h2>
+
+    <h3>Der Übergang in die Realität</h3>
+    <p>Ein funktionierender Prototyp ist noch kein Produkt. Wer aus einer Idee mehr machen will, muss zusätzliche Themen berücksichtigen.</p>
+
+    <h3>Hosting</h3>
+    <p>Für erste Schritte reichen einfache Hosting-Lösungen wie GitHub Pages. Später können Self-Hosting, Docker oder professionellere Plattformen sinnvoll werden.</p>
+
+    <h3>Nutzerfeedback</h3>
+    <p>Sobald andere Menschen ein Tool nutzen, wird ihr Feedback zur wichtigsten Weiterentwicklungsquelle. Häufig zeigt erst echte Nutzung, welche Funktionen wirklich hilfreich sind.</p>
+
+    <h3>Iteration</h3>
+    <p>Der Weg vom Playground zum Produkt ist fast immer ein Prozess aus Nutzung, Feedback, Anpassung und erneuter Prüfung. Vibecoding kann diesen Weg beschleunigen, ersetzt aber nicht die saubere Produktarbeit.</p>
+
+    <hr>
+
+    <!-- ───────────────────────────────────────────── -->
+
+    <h2 id="prompt-bibliothek">Prompt-Bibliothek</h2>
+
+    <h3>Warum gute Prompts wichtig sind</h3>
+    <p>Die Qualität der Ergebnisse hängt stark davon ab, wie klar Ziel, Kontext und Erwartung beschrieben werden. Gute Prompts sparen Iterationen und führen schneller zu brauchbaren Ergebnissen.</p>
+
+    <h3>Gute Prompts</h3>
+    <p>Gute Prompts benennen: das Ziel, die Zielgruppe, die gewünschte Funktion, den Umfang, Einschränkungen, und idealerweise Beispiele oder Referenzen.</p>
     <blockquote>
-      <p>Ich möchte eine Aufgabenliste ähnlich wie bei Todoist: links eine Liste mit Kategorien, rechts die einzelnen Aufgaben. Jede Aufgabe hat eine Checkbox, einen Titel und ein optionales Fälligkeitsdatum. Aber ohne Prioritäten und ohne Kommentarfunktion - halte es bewusst einfach.</p>
+      <p>Erstelle eine einfache To-Do-Web-App für private Aufgaben. Links Kategorien, rechts Aufgabenliste. Jede Aufgabe hat Checkbox, Titel und optionales Datum. Bitte schlichtes Layout, mobil nutzbar, ohne Login und ohne Prioritäten.</p>
     </blockquote>
 
-    <div class="highlight-box highlight-green">
-      <p><strong>Du musst das Rad nicht neu erfinden.</strong> Gute Ideen zu adaptieren und auf deine Bedürfnisse zuzuschneiden ist oft schneller und besser, als alles selbst von Grund auf zu beschreiben.</p>
-    </div>
+    <h3>Schlechte Prompts</h3>
+    <p>Schlechte Prompts sind meist zu kurz, zu vage oder widersprüchlich. Ein Prompt wie „Bau mir eine coole App" lässt zu viel Interpretationsspielraum und führt selten direkt zu einem guten Ergebnis.</p>
+
+    <h3>Vorlagen</h3>
+    <p>Es lohnt sich, wiederverwendbare Prompt-Vorlagen zu sammeln, etwa für: Ideenstrukturierung, UI-Entwürfe, Debugging, Refactoring oder das Erzeugen erster MVPs.</p>
 
     <hr>
 
     <!-- ───────────────────────────────────────────── -->
 
-    <h2 id="idee-strukturieren">Praktischer Tipp: Idee erst strukturieren lassen</h2>
+    <h2 id="common-failures">Common Failures</h2>
 
-    <p>Ein sehr nützlicher Ansatz ist, <strong>nicht sofort mit dem Coding zu beginnen</strong>, sondern die Idee zunächst mit einer KI zu strukturieren.</p>
+    <h3>UI kaputt</h3>
+    <p>Ein häufiges Problem ist eine Oberfläche, die zwar grundsätzlich sichtbar ist, aber Layoutfehler, unklare Abstände oder schlechtes Verhalten auf kleineren Displays hat. Hier hilft es, gezielt auf einzelne Stellen hinzuweisen.</p>
 
-    <p>Zum Beispiel so:</p>
+    <h3>Code funktioniert nicht</h3>
+    <p>Manchmal erzeugt die KI formal plausiblen Code, der in der Praxis Fehler wirft. Dann ist sauberes Debugging wichtig: Fehlermeldung kopieren, Ursache eingrenzen, minimalen Fix anfordern.</p>
 
-    <ul>
-      <li>Idee als Sprachnachricht oder freies Brainstorming festhalten</li>
-      <li>einfach 5 bis 10 Minuten "drauflos erzählen"</li>
-      <li>die KI bitten, daraus ein strukturiertes Konzept zu machen</li>
-    </ul>
-
-    <p>Dabei kann die KI helfen, indem sie:</p>
-
-    <ul>
-      <li>Gedanken ordnet</li>
-      <li>Anforderungen strukturiert zusammenfasst</li>
-      <li>offene Punkte identifiziert</li>
-      <li>Rückfragen zu Missverständnissen stellt</li>
-      <li>fehlende Aspekte sichtbar macht</li>
-      <li>eigene Ideen und Ergänzungen einbringt</li>
-    </ul>
-
-    <p>So entsteht eine deutlich bessere Ausgangsbasis für das eigentliche Vibe-Coding.</p>
-
-    <h3>Beispiel für einen sinnvollen Prompt an eine KI (z.&nbsp;B. ChatGPT)</h3>
-
-    <blockquote>
-      <p>Ich schildere dir jetzt frei eine Idee für ein digitales Tool. Bitte strukturiere meine Gedanken, fasse die Anforderungen übersichtlich zusammen, markiere offene Punkte und mögliche Missverständnisse und stelle mir Rückfragen. Ergänze außerdem eigene Vorschläge für sinnvolle Funktionen oder Aspekte, an die ich vielleicht noch nicht gedacht habe.</p>
-    </blockquote>
+    <h3>Logikfehler</h3>
+    <p>Besonders tückisch sind Situationen, in denen die Anwendung funktioniert, aber inhaltlich das Falsche tut. Solche Fehler entdeckt man nur durch echtes Testen aus Nutzersicht.</p>
 
     <hr>
 
     <!-- ───────────────────────────────────────────── -->
 
-    <h2 id="ki-kompetenzen">KI-Kompetenzen aufteilen: Das richtige Tool für die richtige Aufgabe</h2>
+    <h2 id="workflow-viz">Workflow Visualisierung</h2>
 
-    <p>Nicht jede KI ist für jede Aufgabe gleich gut geeignet. Ein bewährter Ansatz ist, <strong>verschiedene Tools gezielt für unterschiedliche Phasen</strong> einzusetzen:</p>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Phase</th>
-          <th>Empfohlenes Tool</th>
-          <th>Warum</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Idee strukturieren, Brainstorming, Konzept erstellen</td>
-          <td><strong>ChatGPT</strong></td>
-          <td>Stark im freien Dialog, Strukturierung von Gedanken, kreative Ergänzungen</td>
-        </tr>
-        <tr>
-          <td>Coding, technische Umsetzung, Implementierung</td>
-          <td><strong>Claude (Code)</strong></td>
-          <td>Spezialisiert auf Code-Generierung, versteht Projektkontext, arbeitet direkt mit Dateien</td>
-        </tr>
-        <tr>
-          <td>Recherche, Vergleiche, Entscheidungshilfen</td>
-          <td><strong>ChatGPT oder Claude</strong></td>
-          <td>Beide gut geeignet - je nach persönlicher Präferenz</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <h3>Empfohlener Workflow</h3>
-
-    <ol>
-      <li><strong>Schritt 1:</strong> Idee mit ChatGPT besprechen und strukturieren lassen</li>
-      <li><strong>Schritt 2:</strong> Das fertige Konzept als Grundlage an Claude Code übergeben</li>
-      <li><strong>Schritt 3:</strong> Claude Code setzt die technische Umsetzung um</li>
-      <li><strong>Schritt 4:</strong> Ergebnis testen, Feedback geben, iterativ verbessern</li>
-    </ol>
-
-    <div class="highlight-box highlight-yellow">
-      <p><strong>Tipp:</strong> Du kannst die Ideenphase auch als Sprachnachricht in ChatGPT starten - einfach drauflos erzählen und die KI das Konzept daraus bauen lassen. Das fertige Konzept kopierst du dann zu Claude Code.</p>
-    </div>
-
-    <hr>
-
-    <!-- ───────────────────────────────────────────── -->
-
-    <h2 id="erfolgsfaktoren">Erfolgsfaktoren für gutes Vibe-Coding</h2>
-
-    <h3>1. Klar formulieren</h3>
-    <p>Beschreibe Ziel, Nutzergruppe, gewünschten Ablauf und Funktionsumfang möglichst konkret.</p>
-
-    <h3>2. Nicht auf Perfektion beim ersten Versuch warten</h3>
-    <p>Ein erster Entwurf darf unvollständig sein.</p>
-
-    <h3>3. Iterativ arbeiten</h3>
-    <p>Gib Feedback, korrigiere, ergänze, schärfe nach.</p>
-
-    <h3>4. Visualisierung nutzen</h3>
-    <p>Ein Prototyp zeigt oft besser als ein Text, wie etwas gemeint ist.</p>
-
-    <h3>5. Die KI mitdenken lassen</h3>
-    <p>Bitte die KI aktiv um Rückfragen, Verbesserungsvorschläge und alternative Ideen.</p>
-
-    <h3>6. Ergebnisse realistisch einordnen</h3>
-    <p>Ein guter Prototyp ist noch kein produktionsreifes Produkt.</p>
-
-    <hr>
-
-    <!-- ───────────────────────────────────────────── -->
-
-    <h2 id="rahmenbedingungen">Rahmenbedingungen festlegen: CLAUDE.md &amp; Co.</h2>
-
-    <p>Wenn du regelmäßig mit KI-Tools arbeitest, lohnt es sich, <strong>verbindliche Regeln für die KI in einer Datei festzulegen</strong>. So muss man nicht bei jedem Gespräch die gleichen Grundsätze wiederholen.</p>
-
+    <h3>Der Standardzyklus</h3>
     <div class="highlight-box highlight-blue">
-      <p><strong>Was ist eine CLAUDE.md?</strong></p>
-      <p>Eine <code>CLAUDE.md</code> ist eine Markdown-Datei im Repository-Root, die Claude Code automatisch als Regelbasis erkennt. Sie enthält Projektregeln, Architekturvorgaben, erlaubte und verbotene Aktionen, Qualitätsanforderungen und mehr. Andere KI-Tools nutzen ähnliche Dateien unter anderen Namen.</p>
-    </div>
-
-    <h3>Kompatibilität mit verschiedenen KI-Tools</h3>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Tool</th>
-          <th>Erwarteter Dateipfad</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Claude Code</td>
-          <td><code>CLAUDE.md</code> (Repository-Root)</td>
-        </tr>
-        <tr>
-          <td>GitHub Copilot</td>
-          <td><code>.github/copilot-instructions.md</code></td>
-        </tr>
-        <tr>
-          <td>Cursor</td>
-          <td><code>.cursor/rules</code> oder <code>.cursorrules</code></td>
-        </tr>
-        <tr>
-          <td>Windsurf</td>
-          <td><code>.windsurfrules</code></td>
-        </tr>
-        <tr>
-          <td>Cline</td>
-          <td><code>.clinerules</code></td>
-        </tr>
-      </tbody>
-    </table>
-
-    <p><strong>Tipp:</strong> Erstelle eine zentrale Regeldatei und lege Symlinks oder Kopien unter den jeweiligen Pfaden an, damit alle Tools dieselben Regeln verwenden.</p>
-
-    <h3>Beispiel-Template (anonymisiert)</h3>
-
-    <p>Das folgende Template zeigt eine typische Struktur. Passe die Inhalte an dein Projekt an:</p>
-
-    <pre><code># CLAUDE.md — Regeln für KI-gestützte Entwicklung
-
-## Projektübersicht
-- **Typ:** [Web-App / CLI / Bibliothek / statische Website]
-- **Stack:** [z. B. HTML, CSS, JavaScript / Python, Flask / etc.]
-- **Deployment:** [z. B. GitHub Pages / Docker / Cloud]
-
-## Grundprinzipien
-- Produktion wird ausschließlich über versionierte Deployments aktualisiert
-- Keine manuellen Hotfixes in Produktion
-- Der main-Branch spiegelt stets den Live-Stand wider
-
-## Erlaubt / Nicht erlaubt
-
-### Die KI darf
-- Code ändern und refactoren (im Rahmen bestehender Architektur)
-- Dateien erstellen/ändern (inkl. Tests und Doku)
-- Build-/CI-Konfiguration anpassen (wenn begründet)
-
-### Die KI darf NICHT
-- Frameworks oder Build-Tools eigenmächtig einführen
-- Infrastruktur-Annahmen treffen, die nicht explizit gegeben sind
-- Secrets oder Credentials im Code hinterlegen
-- Container oder Server direkt manipulieren
-
-## Branching &amp; Merge
-- Entwicklung auf Feature-/Fix-Branches
-- Merge via Pull Request
-- main ist geschützt und releasefähig
-
-## Qualitätsanforderungen
-- Tests laufen (sofern vorhanden)
-- Keine Debug-Ausgaben (console.log, alert, print)
-- Keine temporären Workarounds
-- Responsive Design intakt (bei Web-Projekten)
-- CDN-Links mit Integrity-Attributen (SRI)
-
-## Security
-- Keine Secrets im Code oder Repo
-- .env niemals committen (stattdessen .env.example)
-- Externe Links mit rel="noopener"
-- OWASP Top 10 als Mindestcheckliste beachten
-
-## Definition of Done
-- Code umgesetzt und getestet
-- Doku aktualisiert
-- PR reviewed und gemerged
-- Deployment erfolgreich
-
-## Design System (optional)
-- Farbpalette als CSS-Custom-Properties definieren
-- Einheitliche Typografie und Breakpoints festlegen
-- Komponentenbibliothek dokumentieren</code></pre>
-
-    <div class="highlight-box highlight-green">
-      <p><strong>Eine gute CLAUDE.md spart dir bei jedem Gespräch mit der KI Zeit</strong> - sie muss nicht jedes Mal neu erklärt bekommen, welche Regeln gelten.</p>
-    </div>
-
-    <hr>
-
-    <!-- ───────────────────────────────────────────── -->
-
-    <h2 id="alternative-tools">Alternative Vibecoding Tools</h2>
-
-    <p>Claude Code ist nicht das einzige Tool für KI-gestütztes Coding. Hier eine Auswahl weiterer Werkzeuge, die einen Blick wert sind:</p>
-
-    <ul>
-      <li><strong><a href="https://agent.minimax.io" target="_blank" rel="noopener">MiniMax Agent</a></strong> - KI-Agent, der komplette Web-Anwendungen generieren kann. Einfach Idee beschreiben, und der Agent baut eine fertige App.</li>
-      <li><strong><a href="https://github.com/features/copilot" target="_blank" rel="noopener">GitHub Copilot</a></strong> - KI-Assistent direkt in der IDE (VS Code, JetBrains u.&nbsp;a.). Ergänzt Code in Echtzeit während des Tippens.</li>
-      <li><strong><a href="https://github.com/cline/cline" target="_blank" rel="noopener">Cline</a></strong> - Open-Source KI-Coding-Agent, der als Erweiterung in VS Code läuft. Kann eigenständig Dateien erstellen, bearbeiten und Befehle ausführen.</li>
-      <li><strong><a href="https://opencode.ai" target="_blank" rel="noopener">opencode.ai</a></strong> - Open-Source Terminal-Tool für KI-gestütztes Coding. Leichtgewichtige Alternative, die direkt in der Kommandozeile läuft.</li>
-    </ul>
-
-    <div class="highlight-box highlight-yellow">
-      <p><strong>Die Tool-Landschaft entwickelt sich rasant.</strong> Probiere verschiedene Werkzeuge aus und finde heraus, welches am besten zu deinem Workflow passt.</p>
-    </div>
-
-    <hr>
-
-    <!-- ───────────────────────────────────────────── -->
-
-    <h2 id="linktipps">Linktipps: Newsletter &amp; Podcasts</h2>
-
-    <p>Wer am Ball bleiben möchte, findet hier empfehlenswerte Newsletter und Podcasts rund um KI:</p>
-
-    <h3>Newsletter</h3>
-
-    <ul>
-      <li>
-        <strong><a href="https://www.ainauten.com/" target="_blank" rel="noopener">AINAUTEN</a></strong> - Deutschsprachiger KI-Newsletter, der 3× pro Woche in 5 Minuten die relevantesten KI-News, Tools und Hacks liefert. Über 75.000 Abonnenten.<br>
-        <em>Herausgeber: AINAUTEN Team</em>
-      </li>
-      <li>
-        <strong><a href="https://www.implicator.ai" target="_blank" rel="noopener">Implicator.ai - Strategic AI Briefing from San Francisco</a></strong> - Täglicher englischsprachiger KI-Newsletter (werktags um 6 AM PT), der in unter 3 Minuten die 5 wichtigsten KI-Entwicklungen zusammenfasst - mit journalistischem Anspruch und kritischer Einordnung statt Hype.<br>
-        <em>Autor: Marcus Schuler, Schuler Media LLC (San Francisco)</em>
-      </li>
-    </ul>
-
-    <h3>Podcasts</h3>
-
-    <ul>
-      <li>
-        <strong><a href="https://www.heise.de/thema/KI-Update" target="_blank" rel="noopener">KI-Update - ein heise-Podcast</a></strong> - Erscheint 3× pro Woche (Mo, Mi, Fr) und fasst die wichtigsten KI-Entwicklungen zusammen. An abwechselnden Freitagen gibt es einen Deep Dive mit Experten. Produziert in Zusammenarbeit mit The Decoder.<br>
-        <em>Herausgeber: heise online; Moderation: Isabel Grünewald</em>
-      </li>
-      <li>
-        <strong><a href="https://t3n-meisterprompter.podigee.io/" target="_blank" rel="noopener">t3n MeisterPrompter</a></strong> - Wöchentlicher Podcast (mittwochs), der konkrete, direkt umsetzbare Prompt-Anleitungen für den Arbeitsalltag vorstellt und einmal im Monat häufige Prompt-Fehler aufgreift.<br>
-        <em>Herausgeber: t3n Magazin; Moderation: Susanne Renate Schneider &amp; Stella-Sophie Wojtczak</em>
-      </li>
-      <li>
-        <strong><a href="https://podcasts.apple.com/de/podcast/der-ki-podcast/id1698961192" target="_blank" rel="noopener">Der KI-Podcast</a></strong> - Gregor Schmalzried und Marie Kilg ordnen die neuesten Entwicklungen rund um Künstliche Intelligenz ein und erklären, was sie für unser Leben bedeuten.<br>
-        <em>Herausgeber: ARD; Moderation: Gregor Schmalzried &amp; Marie Kilg</em>
-      </li>
-    </ul>
-
-    <div class="highlight-box highlight-blue">
-      <p><strong>Tipp:</strong> Abonniere mindestens einen Newsletter und einen Podcast - so bleibst du ohne großen Aufwand auf dem Laufenden.</p>
-    </div>
-
-    <hr>
-
-    <!-- ───────────────────────────────────────────── -->
-
-    <h2 id="fazit">Fazit</h2>
-
-    <p>Vibe-Coding macht Entwicklung zugaenglicher und schneller.</p>
-
-    <p>Du kannst damit:</p>
-
-    <ul>
-      <li>Ideen schnell testen,</li>
-      <li>Konzepte sichtbar machen,</li>
-      <li>Anforderungen konkretisieren,</li>
-      <li>und mit wenig Vorwissen erste digitale Loesungen bauen.</li>
-    </ul>
-
-    <p>Wer neugierig ist und klar kommuniziert, kommt mit KI weit. Auch ohne Coding-Erfahrung.</p>
-
-    <div class="highlight-box highlight-green">
-      <p><strong>Der wichtigste Schritt ist oft nicht Perfektion, sondern einfach der erste Versuch.</strong></p>
+      <p><strong>Idee → Prompt → Output → Test → Feedback → Iteration</strong></p>
+      <p>Diese einfache Schleife ist das Kernmodell des Vibecodings. Wer sie verinnerlicht, arbeitet produktiver mit KI und erwartet nicht, dass perfekte Ergebnisse schon beim ersten Versuch entstehen.</p>
     </div>
 
     <hr>
