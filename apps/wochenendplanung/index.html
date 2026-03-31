@@ -182,14 +182,7 @@
       <div class="d-flex align-items-center gap-1">
         <a class="navbar-link" href="../../#workshop">Workshop</a>
         <a class="navbar-link" href="../../wiki/">Wiki</a>
-        <div class="dropdown">
-          <a class="navbar-link dropdown-toggle active" href="../../projekte/" role="button" data-bs-toggle="dropdown" aria-expanded="false">Projekte</a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="../../apps/pong/">Pong</a></li>
-            <li><a class="dropdown-item" href="../../apps/gta/">Grand Thomas Auto 6</a></li>
-            <li><a class="dropdown-item active" href="../../apps/wochenendplanung/">Wochenendplanung</a></li>
-          </ul>
-        </div>
+        <a class="navbar-link active" href="../../projekte/">Projekte</a>
         <a class="navbar-link" href="../../ueber-mich/">Coach</a>
       </div>
     </div>
@@ -206,21 +199,6 @@
     <span style="width: 32px;"></span>
   </div>
 
-  <!-- Mobile Offcanvas: Projekte -->
-  <div class="offcanvas offcanvas-bottom nav-sheet" tabindex="-1" id="projekteSheet" style="height: auto; max-height: 70vh;">
-    <div class="offcanvas-header">
-      <h5 class="offcanvas-title"><i class="fas fa-rocket me-2"></i>Projekte</h5>
-      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
-    </div>
-    <div class="offcanvas-body p-0">
-      <div class="list-group list-group-flush">
-        <a href="../../apps/pong/" class="list-group-item list-group-item-action">Pong</a>
-        <a href="../../apps/gta/" class="list-group-item list-group-item-action">Grand Thomas Auto 6</a>
-        <a href="../../apps/wochenendplanung/" class="list-group-item list-group-item-action active">Wochenendplanung</a>
-      </div>
-    </div>
-  </div>
-
   <!-- Mobile Bottom Navigation (<=992px) -->
   <nav class="bottom-nav d-lg-none">
     <a class="bottom-nav-item" href="../../#workshop">
@@ -231,10 +209,10 @@
       <i class="fas fa-book"></i>
       <span>Wiki</span>
     </a>
-    <button class="bottom-nav-item" data-bs-toggle="offcanvas" data-bs-target="#projekteSheet">
+    <a class="bottom-nav-item active" href="../../projekte/">
       <i class="fas fa-rocket"></i>
       <span>Projekte</span>
-    </button>
+    </a>
     <a class="bottom-nav-item" href="../../ueber-mich/">
       <i class="fas fa-user"></i>
       <span>Coach</span>
