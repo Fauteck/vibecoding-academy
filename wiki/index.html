@@ -172,20 +172,57 @@
       background: #fff;
       border-radius: 12px;
       box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-      padding: 1.8rem 2rem;
       margin-bottom: 1.5rem;
       border-left: 4px solid #5B8BD6;
+      overflow: hidden;
     }
 
     .wiki-section:nth-child(even of .wiki-section) {
       border-left-color: #3D5A8C;
     }
 
+    .section-toggle {
+      display: block;
+      width: 100%;
+      border: none;
+      background: none;
+      text-align: left;
+      padding: 1.4rem 2rem;
+      cursor: pointer;
+    }
+
+    .section-toggle:hover {
+      background: rgba(91, 139, 214, 0.04);
+    }
+
+    .section-toggle-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .section-toggle-text {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .section-toggle-icon {
+      color: #7A8599;
+      font-size: 0.9rem;
+      transition: transform 0.25s ease;
+      flex-shrink: 0;
+    }
+
+    .section-toggle[aria-expanded="true"] .section-toggle-icon {
+      transform: rotate(90deg);
+    }
+
     .wiki-section h2 {
       font-size: 1.45rem;
       color: #2c3e50;
       margin-top: 0;
-      margin-bottom: 0.9rem;
+      margin-bottom: 0;
       display: flex;
       align-items: center;
       gap: 0.55rem;
@@ -206,6 +243,20 @@
       margin-top: 1.35rem;
       margin-bottom: 0.45rem;
       color: #34495e;
+    }
+
+    .wiki-section-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+
+    .wiki-section-body.open {
+      max-height: 6000px;
+    }
+
+    .wiki-section-inner {
+      padding: 0 2rem 1.8rem;
     }
 
     p { margin-bottom: 0.85rem; }
@@ -448,9 +499,10 @@
 
     @media (max-width: 600px) {
       #content { margin: 0.5rem; padding: 0 0.5rem; }
-      .wiki-section { padding: 1.2rem 1rem; }
       .wiki-header { padding: 1.2rem; }
       .wiki-header h1 { font-size: 1.55rem; }
+      .section-toggle { padding: 1rem; }
+      .wiki-section-inner { padding: 0 1rem 1.2rem; }
     }
 
     @media print {
@@ -483,6 +535,7 @@
         page-break-inside: avoid;
       }
 
+      .wiki-section-body,
       .collapsible-body {
         max-height: none !important;
         overflow: visible !important;
@@ -615,539 +668,709 @@
     </header>
 
     <section class="wiki-section">
-      <div class="section-kicker"><i class="fas fa-seedling"></i> Lernpfad</div>
-      <h2 id="orientierung">1. Orientierung</h2>
-
-      <h3>Was ist Vibecoding?</h3>
-      <p>
-        Vibecoding ist ein pragmatischer Ansatz, mit KI schnell sichtbare Software-Ergebnisse zu erzeugen.
-        Statt alles von Hand zu programmieren, arbeitest du in kurzen Zyklen mit einem KI-Tool zusammen:
-        Du beschreibst ein Ziel, lässt einen Vorschlag erzeugen, prüfst das Ergebnis, gibst Feedback und
-        verbesserst Schritt für Schritt.
-      </p>
-
-      <div class="highlight-box highlight-blue">
-        <p><strong>Wichtig:</strong> Vibecoding ist nicht einfach „Code erzeugen lassen“.</p>
-        <ul>
-          <li>klare Ziele</li>
-          <li>kleine Änderungen</li>
-          <li>aktives Prüfen</li>
-          <li>kontrollierte Iteration</li>
-        </ul>
-      </div>
-
-      <button class="collapsible-toggle" aria-expanded="true" aria-controls="orientierung-body">
-        <span>Mehr zur Einordnung</span>
-        <i class="fas fa-chevron-right toggle-icon"></i>
+      <button class="section-toggle" aria-expanded="false" aria-controls="section-orientierung">
+        <div class="section-toggle-row">
+          <div class="section-toggle-text">
+            <div class="section-kicker"><i class="fas fa-seedling"></i> Lernpfad</div>
+            <h2 id="orientierung">1. Orientierung</h2>
+          </div>
+          <i class="fas fa-chevron-right section-toggle-icon"></i>
+        </div>
       </button>
-      <div class="collapsible-body open" id="orientierung-body">
-        <h3>Was Vibecoding gut kann</h3>
-        <ul>
-          <li>schnelle Prototypen</li>
-          <li>kleine Web-Apps</li>
-          <li>interne Tools</li>
-          <li>erste Produktideen</li>
-          <li>sichtbare Experimente</li>
-        </ul>
-
-        <h3>Was Vibecoding nicht automatisch löst</h3>
-        <ul>
-          <li>komplexe Sicherheit</li>
-          <li>Compliance</li>
-          <li>Skalierung</li>
-          <li>Mehrbenutzer-Architekturen</li>
-          <li>produktionsreife Systemlandschaften</li>
-        </ul>
-
-        <h3>Das Grundprinzip</h3>
-        <div class="highlight-box highlight-green">
-          <p><strong>Idee → Prompt → Output → Test → Feedback → Iteration</strong></p>
+      <div class="wiki-section-body" id="section-orientierung">
+        <div class="wiki-section-inner">
+          <h3>Was ist Vibecoding?</h3>
           <p>
-            Dieser Zyklus wird nicht als einmaliger Ablauf verstanden, sondern als wiederholbarer Arbeitsmodus.
-            Ziel ist pro Zyklus genau eine überprüfbare Verbesserung.
+            Vibecoding ist ein pragmatischer Ansatz, mit KI schnell sichtbare Software-Ergebnisse zu erzeugen.
+            Statt alles von Hand zu programmieren, arbeitest du in kurzen Zyklen mit einem KI-Tool zusammen:
+            Du beschreibst ein Ziel, lässt einen Vorschlag erzeugen, prüfst das Ergebnis, gibst Feedback und
+            verbesserst Schritt für Schritt.
+          </p>
+
+          <div class="highlight-box highlight-blue">
+            <p><strong>Wichtig:</strong> Vibecoding ist nicht einfach „Code erzeugen lassen“.</p>
+            <ul>
+              <li>klare Ziele</li>
+              <li>kleine Änderungen</li>
+              <li>aktives Prüfen</li>
+              <li>kontrollierte Iteration</li>
+            </ul>
+          </div>
+
+          <button class="collapsible-toggle" aria-expanded="false" aria-controls="orientierung-body">
+            <span>Mehr zur Einordnung</span>
+            <i class="fas fa-chevron-right toggle-icon"></i>
+          </button>
+          <div class="collapsible-body" id="orientierung-body">
+            <h3>Was Vibecoding gut kann</h3>
+            <ul>
+              <li>schnelle Prototypen</li>
+              <li>kleine Web-Apps</li>
+              <li>interne Tools</li>
+              <li>erste Produktideen</li>
+              <li>sichtbare Experimente</li>
+            </ul>
+
+            <h3>Was Vibecoding nicht automatisch löst</h3>
+            <ul>
+              <li>komplexe Sicherheit</li>
+              <li>Compliance</li>
+              <li>Skalierung</li>
+              <li>Mehrbenutzer-Architekturen</li>
+              <li>produktionsreife Systemlandschaften</li>
+            </ul>
+
+            <h3>Das Grundprinzip</h3>
+            <div class="highlight-box highlight-green">
+              <p><strong>Idee → Prompt → Output → Test → Feedback → Iteration</strong></p>
+              <p>
+                Dieser Zyklus wird nicht als einmaliger Ablauf verstanden, sondern als wiederholbarer Arbeitsmodus.
+                Ziel ist pro Zyklus genau eine überprüfbare Verbesserung.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="wiki-section">
+      <button class="section-toggle" aria-expanded="false" aria-controls="section-setup">
+        <div class="section-toggle-row">
+          <div class="section-toggle-text">
+            <div class="section-kicker"><i class="fas fa-laptop-code"></i> Lernpfad</div>
+            <h2 id="setup">2. Setup</h2>
+          </div>
+          <i class="fas fa-chevron-right section-toggle-icon"></i>
+        </div>
+      </button>
+      <div class="wiki-section-body" id="section-setup">
+        <div class="wiki-section-inner">
+          <h3>Was du brauchst</h3>
+          <ul>
+            <li>einen Laptop</li>
+            <li>ein KI-Tool deiner Wahl</li>
+            <li>einen Browser</li>
+            <li>Lust, Dinge praktisch auszuprobieren</li>
+          </ul>
+
+          <h3>Welche Tools geeignet sind</h3>
+          <p>
+            Die gezeigten Methoden funktionieren mit ChatGPT, Claude, Copilot und ähnlichen Tools.
+            Im Workshop demonstrieren wir die Abläufe exemplarisch mit einem konkreten Tool, die Grundprinzipien
+            sind aber tool-agnostisch.
+          </p>
+
+          <div class="info-box tip">
+            <div class="info-icon"><i class="fas fa-lightbulb"></i></div>
+            <div class="info-content">
+              <div class="info-label">Faustregel</div>
+              <p>Wähle zu Beginn lieber einen einfachen, stabilen Ablauf als ein komplexes Setup mit vielen Extras.</p>
+            </div>
+          </div>
+
+          <h3>Ziel des Setups</h3>
+          <p>
+            Das Setup soll dich nicht aufhalten. Es geht nicht darum, die perfekte Umgebung zu bauen,
+            sondern möglichst schnell in einen funktionsfähigen Arbeitsmodus zu kommen.
           </p>
         </div>
       </div>
     </section>
 
     <section class="wiki-section">
-      <div class="section-kicker"><i class="fas fa-laptop-code"></i> Lernpfad</div>
-      <h2 id="setup">2. Setup</h2>
-
-      <h3>Was du brauchst</h3>
-      <ul>
-        <li>einen Laptop</li>
-        <li>ein KI-Tool deiner Wahl</li>
-        <li>einen Browser</li>
-        <li>Lust, Dinge praktisch auszuprobieren</li>
-      </ul>
-
-      <h3>Welche Tools geeignet sind</h3>
-      <p>
-        Die gezeigten Methoden funktionieren mit ChatGPT, Claude, Copilot und ähnlichen Tools.
-        Im Workshop demonstrieren wir die Abläufe exemplarisch mit einem konkreten Tool, die Grundprinzipien
-        sind aber tool-agnostisch.
-      </p>
-
-      <div class="info-box tip">
-        <div class="info-icon"><i class="fas fa-lightbulb"></i></div>
-        <div class="info-content">
-          <div class="info-label">Faustregel</div>
-          <p>Wähle zu Beginn lieber einen einfachen, stabilen Ablauf als ein komplexes Setup mit vielen Extras.</p>
+      <button class="section-toggle" aria-expanded="false" aria-controls="section-erste-erfolge">
+        <div class="section-toggle-row">
+          <div class="section-toggle-text">
+            <div class="section-kicker"><i class="fas fa-rocket"></i> Lernpfad</div>
+            <h2 id="erste-erfolge">3. Erste Erfolge</h2>
+          </div>
+          <i class="fas fa-chevron-right section-toggle-icon"></i>
         </div>
-      </div>
-
-      <h3>Ziel des Setups</h3>
-      <p>
-        Das Setup soll dich nicht aufhalten. Es geht nicht darum, die perfekte Umgebung zu bauen,
-        sondern möglichst schnell in einen funktionsfähigen Arbeitsmodus zu kommen.
-      </p>
-    </section>
-
-    <section class="wiki-section">
-      <div class="section-kicker"><i class="fas fa-rocket"></i> Lernpfad</div>
-      <h2 id="erste-erfolge">3. Erste Erfolge</h2>
-
-      <p>
-        Am Anfang solltest du kein großes Produkt bauen, sondern ein kleines Ergebnis, das schnell sichtbar wird.
-      </p>
-
-      <h3>Geeignete erste Projekte</h3>
-      <ul>
-        <li>ein kleiner Wochenplaner</li>
-        <li>ein Formular mit einfacher Logik</li>
-        <li>eine Mini-To-do-App</li>
-        <li>ein kleiner Rechner</li>
-        <li>ein internes Hilfstool für einen klaren Zweck</li>
-      </ul>
-
-      <button class="collapsible-toggle" aria-expanded="false" aria-controls="erste-erfolge-body">
-        <span>Warum klein anfangen?</span>
-        <i class="fas fa-chevron-right toggle-icon"></i>
       </button>
-      <div class="collapsible-body" id="erste-erfolge-body">
-        <ul>
-          <li>schneller Feedback bekommen</li>
-          <li>Fehler leichter verstehen</li>
-          <li>Änderungen kontrollierter vornehmen</li>
-          <li>Motivation durch sichtbare Ergebnisse behalten</li>
-        </ul>
+      <div class="wiki-section-body" id="section-erste-erfolge">
+        <div class="wiki-section-inner">
+          <p>
+            Am Anfang solltest du kein großes Produkt bauen, sondern ein kleines Ergebnis, das schnell sichtbar wird.
+          </p>
 
-        <h3>Gute erste Ziele</h3>
-        <p>Ein gutes erstes Projekt ist:</p>
-        <ul class="checklist">
-          <li>in einem Satz beschreibbar</li>
-          <li>in kurzer Zeit sichtbar</li>
-          <li>ohne komplexes Login umsetzbar</li>
-          <li>ohne sensible Daten testbar</li>
-        </ul>
-      </div>
-    </section>
+          <h3>Geeignete erste Projekte</h3>
+          <ul>
+            <li>ein kleiner Wochenplaner</li>
+            <li>ein Formular mit einfacher Logik</li>
+            <li>eine Mini-To-do-App</li>
+            <li>ein kleiner Rechner</li>
+            <li>ein internes Hilfstool für einen klaren Zweck</li>
+          </ul>
 
-    <section class="wiki-section">
-      <div class="section-kicker"><i class="fas fa-route"></i> Lernpfad</div>
-      <h2 id="golden-path">4. Golden Path</h2>
+          <button class="collapsible-toggle" aria-expanded="false" aria-controls="erste-erfolge-body">
+            <span>Warum klein anfangen?</span>
+            <i class="fas fa-chevron-right toggle-icon"></i>
+          </button>
+          <div class="collapsible-body" id="erste-erfolge-body">
+            <ul>
+              <li>schneller Feedback bekommen</li>
+              <li>Fehler leichter verstehen</li>
+              <li>Änderungen kontrollierter vornehmen</li>
+              <li>Motivation durch sichtbare Ergebnisse behalten</li>
+            </ul>
 
-      <p>Der Golden Path ist der empfohlene Standardablauf für ein erstes Vibecoding-Projekt.</p>
-
-      <h3>Schritt 1: Ziel präzisieren</h3>
-      <p>Formuliere klar, was das kleine Tool tun soll.</p>
-      <blockquote>
-        <p>„Ich möchte eine kleine Web-App, in der ich Aufgaben mit Priorität anlegen, abhaken und filtern kann.“</p>
-      </blockquote>
-
-      <h3>Schritt 2: klein starten</h3>
-      <p>Bitte nicht sofort um zehn Funktionen gleichzeitig. Starte mit einem Kernfall.</p>
-      <blockquote>
-        <p>„Baue zuerst nur die Liste, Eingabe und Priorität. Noch keine Nutzerkonten, kein Backend, keine Synchronisierung.“</p>
-      </blockquote>
-
-      <h3>Schritt 3: Ergebnis prüfen</h3>
-      <p>Teste, ob der Hauptanwendungsfall funktioniert.</p>
-
-      <h3>Schritt 4: gezielt verbessern</h3>
-      <p>Formuliere den nächsten Änderungsschritt konkret.</p>
-      <blockquote>
-        <p>„Füge jetzt Filter für offene und erledigte Aufgaben hinzu, ohne das bestehende Layout stark zu verändern.“</p>
-      </blockquote>
-
-      <h3>Schritt 5: wiederholen</h3>
-      <p>Arbeite in kurzen Zyklen weiter.</p>
-
-      <div class="highlight-box highlight-yellow">
-        <p><strong>Workflow in der Praxis</strong></p>
-        <p>Typische Dauer pro Zyklus im Workshop: 5 bis 15 Minuten.<br>Ziel je Zyklus: genau eine überprüfbare Verbesserung.</p>
-      </div>
-    </section>
-
-    <section class="wiki-section">
-      <div class="section-kicker"><i class="fas fa-shield-halved"></i> Lernpfad</div>
-      <h2 id="qualitaet-risiken">5. Qualität &amp; Risiken</h2>
-
-      <p>
-        Vibecoding liefert schnell Ergebnisse, aber Geschwindigkeit ersetzt keine Prüfung.
-        Du bleibst verantwortlich für das, was gebaut wird.
-      </p>
-
-      <h3>Typische Risiken</h3>
-      <ul>
-        <li>Halluzinationen</li>
-        <li>Logikfehler</li>
-        <li>kaputte UI-Zustände</li>
-        <li>Sicherheitsprobleme</li>
-        <li>fragwürdiger Code</li>
-        <li>unbeabsichtigte Seiteneffekte</li>
-      </ul>
-
-      <button class="collapsible-toggle" aria-expanded="false" aria-controls="qualitaet-body">
-        <span>Prüfung, Freigabe und sicheres Arbeiten</span>
-        <i class="fas fa-chevron-right toggle-icon"></i>
-      </button>
-      <div class="collapsible-body" id="qualitaet-body">
-        <h3>5-Minuten-Test vor jeder Freigabe</h3>
-        <ul class="checklist">
-          <li>Funktioniert der Hauptanwendungsfall?</li>
-          <li>Was passiert bei leerer Eingabe?</li>
-          <li>Was passiert bei sehr langen Eingaben?</li>
-          <li>Funktioniert es mobil?</li>
-          <li>Ist durch den letzten Fix etwas anderes kaputtgegangen?</li>
-        </ul>
-
-        <h3>Gut genug für einen Workshop-Prototyp</h3>
-        <p>Ein Ergebnis ist oft gut genug, wenn:</p>
-        <ul>
-          <li>der Hauptflow funktioniert</li>
-          <li>die Oberfläche verständlich ist</li>
-          <li>keine offensichtlichen Fehler auftreten</li>
-          <li>das Ergebnis demonstrierbar und teilbar ist</li>
-        </ul>
-
-        <h3>Sicher arbeiten mit KI</h3>
-        <p><strong>Nicht in öffentliche KI-Tools kopieren:</strong></p>
-        <ul>
-          <li>vertrauliche Kundendaten</li>
-          <li>interne Dokumente</li>
-          <li>Zugangsdaten</li>
-          <li>personenbezogene Rohdaten</li>
-        </ul>
-
-        <p><strong>Vor Veröffentlichung prüfen:</strong></p>
-        <ul>
-          <li>Rechte an Bildern, Icons und Texten</li>
-          <li>verwendete Libraries</li>
-          <li>Impressum und Datenschutz bei echter Veröffentlichung</li>
-          <li>ob API-Keys oder sensible Konfigurationen sichtbar sind</li>
-        </ul>
-
-        <div class="info-box danger">
-          <div class="info-icon"><i class="fas fa-triangle-exclamation"></i></div>
-          <div class="info-content">
-            <div class="info-label">Kritisch</div>
-            <p>API-Keys gehören niemals ins Frontend oder in öffentlich zugängliche Repositories.</p>
+            <h3>Gute erste Ziele</h3>
+            <p>Ein gutes erstes Projekt ist:</p>
+            <ul class="checklist">
+              <li>in einem Satz beschreibbar</li>
+              <li>in kurzer Zeit sichtbar</li>
+              <li>ohne komplexes Login umsetzbar</li>
+              <li>ohne sensible Daten testbar</li>
+            </ul>
           </div>
         </div>
-
-        <h3>Zusätzlich beachten</h3>
-        <ul>
-          <li>Datenschutz</li>
-          <li>Prompt-Data-Leakage</li>
-          <li>Lizenz- und Urheberfragen</li>
-          <li>Risiken durch Drittbibliotheken</li>
-        </ul>
       </div>
     </section>
 
     <section class="wiki-section">
-      <div class="section-kicker"><i class="fas fa-keyboard"></i> Praxisbereich</div>
-      <h2 id="prompt-bibliothek">6. Prompt-Bibliothek</h2>
-
-      <p>
-        Prompts sind im Vibecoding wichtig, aber nicht der einzige Erfolgsfaktor.
-        Gute Prompts helfen vor allem dann, wenn Ziel, Kontext und gewünschter Umfang klar sind.
-      </p>
-
-      <button class="collapsible-toggle" aria-expanded="true" aria-controls="prompt-body">
-        <span>Beispiele für hilfreiche Prompts</span>
-        <i class="fas fa-chevron-right toggle-icon"></i>
-      </button>
-      <div class="collapsible-body open" id="prompt-body">
-        <h3>Für einen Start</h3>
-        <blockquote>
-          <p>„Erstelle eine kleine Web-App mit [Funktion]. Halte die Lösung bewusst einfach. Nutze eine klare, verständliche Oberfläche und konzentriere dich auf den Hauptanwendungsfall.“</p>
-        </blockquote>
-
-        <h3>Für gezielte Änderungen</h3>
-        <blockquote>
-          <p>„Ändere nur den Bereich der Filterleiste. Lasse Datenmodell und restliches Layout unverändert.“</p>
-        </blockquote>
-
-        <h3>Für planvolles Arbeiten</h3>
-        <blockquote>
-          <p>„Erkläre zuerst deinen Plan in drei Schritten und nimm danach nur die notwendige Änderung vor.“</p>
-        </blockquote>
-
-        <h3>Für Review</h3>
-        <blockquote>
-          <p>„Prüfe diesen Code auf Lesbarkeit, unnötige Komplexität und potenzielle Fehler. Nenne zuerst die Probleme, dann eine kleine verbesserte Version.“</p>
-        </blockquote>
-      </div>
-    </section>
-
-    <section class="wiki-section">
-      <div class="section-kicker"><i class="fas fa-bug"></i> Praxisbereich</div>
-      <h2 id="common-failures">7. Common Failures</h2>
-
-      <h3>Typische Fehler im Vibecoding</h3>
-      <ul>
-        <li>zu großer Scope am Anfang</li>
-        <li>zu viele Änderungen auf einmal</li>
-        <li>unklare Ziele</li>
-        <li>ungeprüfte Übernahme von KI-Ausgaben</li>
-        <li>fehlende Tests nach Änderungen</li>
-        <li>keine Versionierung vor größeren Umbauten</li>
-      </ul>
-
-      <div class="info-box warning">
-        <div class="info-icon"><i class="fas fa-save"></i></div>
-        <div class="info-content">
-          <div class="info-label">Praktische Regel</div>
-          <p>Vor jedem größeren Umbau: Commit oder Dateikopie anlegen. So kannst du auf einen funktionierenden Stand zurückgehen.</p>
+      <button class="section-toggle" aria-expanded="false" aria-controls="section-golden-path">
+        <div class="section-toggle-row">
+          <div class="section-toggle-text">
+            <div class="section-kicker"><i class="fas fa-route"></i> Lernpfad</div>
+            <h2 id="golden-path">4. Golden Path</h2>
+          </div>
+          <i class="fas fa-chevron-right section-toggle-icon"></i>
         </div>
-      </div>
-
-      <h3>Wenn etwas kaputtgeht</h3>
-      <p>Beschreibe das Problem konkret:</p>
-      <ul class="checklist">
-        <li>Was hast du erwartet?</li>
-        <li>Was ist stattdessen passiert?</li>
-        <li>Wann tritt der Fehler auf?</li>
-        <li>Gibt es eine Fehlermeldung?</li>
-        <li>Seit welcher Änderung ist das Verhalten neu?</li>
-      </ul>
-    </section>
-
-    <section class="wiki-section">
-      <div class="section-kicker"><i class="fas fa-diagram-project"></i> Praxisbereich</div>
-      <h2 id="beispielprojekte">8. Beispielprojekte</h2>
-
-      <p>Gute Workshop-Projekte sind klein, klar und sichtbar.</p>
-
-      <h3>Beispiele</h3>
-      <ul>
-        <li>Aufgabenliste mit Prioritäten</li>
-        <li>Wochenplaner</li>
-        <li>kleiner Angebots- oder Kostenrechner</li>
-        <li>Feedback-Formular mit Auswertung</li>
-        <li>interner Ideen-Sammler</li>
-        <li>Event- oder Content-Planer</li>
-      </ul>
-
-      <button class="collapsible-toggle" aria-expanded="false" aria-controls="beispielprojekte-body">
-        <span>Was ein gutes Beispielprojekt ausmacht</span>
-        <i class="fas fa-chevron-right toggle-icon"></i>
       </button>
-      <div class="collapsible-body" id="beispielprojekte-body">
-        <ul class="checklist">
-          <li>klarer Zweck</li>
-          <li>einfacher Hauptflow</li>
-          <li>sichtbares Ergebnis</li>
-          <li>geringer Abstimmungsaufwand</li>
-          <li>in kurzer Zeit iterierbar</li>
-        </ul>
-      </div>
-    </section>
+      <div class="wiki-section-body" id="section-golden-path">
+        <div class="wiki-section-inner">
+          <p>Der Golden Path ist der empfohlene Standardablauf für ein erstes Vibecoding-Projekt.</p>
 
-    <section class="wiki-section">
-      <div class="section-kicker"><i class="fas fa-flask"></i> Praxisbereich</div>
-      <h2 id="sandbox">9. Sandbox</h2>
+          <h3>Schritt 1: Ziel präzisieren</h3>
+          <p>Formuliere klar, was das kleine Tool tun soll.</p>
+          <blockquote>
+            <p>„Ich möchte eine kleine Web-App, in der ich Aufgaben mit Priorität anlegen, abhaken und filtern kann.“</p>
+          </blockquote>
 
-      <p>
-        Die Sandbox ist dein Raum zum Ausprobieren. Hier gilt: lieber klein starten, sauber testen und sichtbar lernen
-        als zu früh zu groß denken.
-      </p>
+          <h3>Schritt 2: klein starten</h3>
+          <p>Bitte nicht sofort um zehn Funktionen gleichzeitig. Starte mit einem Kernfall.</p>
+          <blockquote>
+            <p>„Baue zuerst nur die Liste, Eingabe und Priorität. Noch keine Nutzerkonten, kein Backend, keine Synchronisierung.“</p>
+          </blockquote>
 
-      <h3>Gute Regeln für die Sandbox</h3>
-      <ul>
-        <li>eine Idee pro Durchlauf</li>
-        <li>kleine Änderungsschritte</li>
-        <li>nach jedem Schritt prüfen</li>
-        <li>vor größeren Umbauten sichern</li>
-        <li>nur das Nächste entscheiden, nicht alles auf einmal</li>
-      </ul>
-    </section>
+          <h3>Schritt 3: Ergebnis prüfen</h3>
+          <p>Teste, ob der Hauptanwendungsfall funktioniert.</p>
 
-    <section class="wiki-section">
-      <div class="section-kicker"><i class="fas fa-compass-drafting"></i> Vertiefung</div>
-      <h2 id="vier-kernfaehigkeiten">10. Die vier Kernfähigkeiten im Vibecoding</h2>
+          <h3>Schritt 4: gezielt verbessern</h3>
+          <p>Formuliere den nächsten Änderungsschritt konkret.</p>
+          <blockquote>
+            <p>„Füge jetzt Filter für offene und erledigte Aufgaben hinzu, ohne das bestehende Layout stark zu verändern.“</p>
+          </blockquote>
 
-      <p>
-        Erfolg im Vibecoding entsteht selten durch den perfekten Prompt. Meist gewinnt, wer kleine Schritte sauber beschreibt,
-        Ergebnisse überprüft und Änderungen kontrolliert aufeinander aufbaut.
-      </p>
+          <h3>Schritt 5: wiederholen</h3>
+          <p>Arbeite in kurzen Zyklen weiter.</p>
 
-      <h3>1. Ziel präzisieren</h3>
-      <p>Ein gutes Ziel ist konkret, klein und überprüfbar.</p>
-
-      <h3>2. Änderung klein halten</h3>
-      <p>Große Komplettumbauten erzeugen oft mehr Chaos als Nutzen.</p>
-
-      <h3>3. Ergebnis prüfen</h3>
-      <p>Übernimm nie blind, was erzeugt wurde. Teste Verhalten, Logik und Verständlichkeit.</p>
-
-      <h3>4. Nächsten Schritt sauber formulieren</h3>
-      <p>Die Qualität des nächsten Schritts entscheidet oft stärker über den Projekterfolg als der erste Prompt.</p>
-    </section>
-
-    <section class="wiki-section">
-      <div class="section-kicker"><i class="fas fa-code"></i> Vertiefung</div>
-      <h2 id="code-reading">11. Code Reading Light</h2>
-
-      <p>
-        Du musst nicht jede Zeile perfekt verstehen, um mit KI sinnvoll zu arbeiten.
-        Aber du solltest wichtige Strukturen erkennen können:
-      </p>
-
-      <ul>
-        <li>Wo liegt die UI?</li>
-        <li>Wo liegt die Logik?</li>
-        <li>Welche Teile hängen zusammen?</li>
-        <li>Welche Änderung betrifft nur die Darstellung, welche das Verhalten?</li>
-      </ul>
-
-      <div class="highlight-box highlight-blue">
-        <p><strong>Ziel:</strong> Nicht „alles lesen“, sondern genug verstehen, um Änderungen bewusst steuern zu können.</p>
-      </div>
-    </section>
-
-    <section class="wiki-section">
-      <div class="section-kicker"><i class="fas fa-wand-magic-sparkles"></i> Vertiefung</div>
-      <h2 id="refactoring">12. Refactoring mit KI</h2>
-
-      <p>Refactoring mit KI ist sinnvoll, wenn ein Projekt zwar funktioniert, aber unübersichtlich wird.</p>
-
-      <h3>Gute Anlässe für Refactoring</h3>
-      <ul>
-        <li>wiederholter Code</li>
-        <li>zu große Komponenten</li>
-        <li>vermischte Zuständigkeiten</li>
-        <li>schwer lesbare Logik</li>
-        <li>unklare Benennung</li>
-      </ul>
-
-      <div class="info-box example">
-        <div class="info-icon"><i class="fas fa-message"></i></div>
-        <div class="info-content">
-          <div class="info-label">Beispielprompt</div>
-          <p>„Strukturiere den Code lesbarer. Trenne UI und Logik stärker, ohne das Verhalten zu ändern. Erkläre zuerst kurz, welche Refactoring-Schritte du vorschlägst.“</p>
+          <div class="highlight-box highlight-yellow">
+            <p><strong>Workflow in der Praxis</strong></p>
+            <p>Typische Dauer pro Zyklus im Workshop: 5 bis 15 Minuten.<br>Ziel je Zyklus: genau eine überprüfbare Verbesserung.</p>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="wiki-section">
-      <div class="section-kicker"><i class="fas fa-coins"></i> Vertiefung</div>
-      <h2 id="kosten-limits">13. Kosten &amp; Limits</h2>
+      <button class="section-toggle" aria-expanded="false" aria-controls="section-qualitaet-risiken">
+        <div class="section-toggle-row">
+          <div class="section-toggle-text">
+            <div class="section-kicker"><i class="fas fa-shield-halved"></i> Lernpfad</div>
+            <h2 id="qualitaet-risiken">5. Qualität &amp; Risiken</h2>
+          </div>
+          <i class="fas fa-chevron-right section-toggle-icon"></i>
+        </div>
+      </button>
+      <div class="wiki-section-body" id="section-qualitaet-risiken">
+        <div class="wiki-section-inner">
+          <p>
+            Vibecoding liefert schnell Ergebnisse, aber Geschwindigkeit ersetzt keine Prüfung.
+            Du bleibst verantwortlich für das, was gebaut wird.
+          </p>
 
-      <p>KI-Tools sind schnell, aber nicht unbegrenzt.</p>
+          <h3>Typische Risiken</h3>
+          <ul>
+            <li>Halluzinationen</li>
+            <li>Logikfehler</li>
+            <li>kaputte UI-Zustände</li>
+            <li>Sicherheitsprobleme</li>
+            <li>fragwürdiger Code</li>
+            <li>unbeabsichtigte Seiteneffekte</li>
+          </ul>
 
-      <h3>Darauf solltest du achten</h3>
-      <ul>
-        <li>Modelllimits</li>
-        <li>Rate Limits</li>
-        <li>API-Kosten</li>
-        <li>Qualitätsschwankungen je nach Tool</li>
-        <li>Kontextfenster und Verlaufslänge</li>
-      </ul>
+          <button class="collapsible-toggle" aria-expanded="false" aria-controls="qualitaet-body">
+            <span>Prüfung, Freigabe und sicheres Arbeiten</span>
+            <i class="fas fa-chevron-right toggle-icon"></i>
+          </button>
+          <div class="collapsible-body" id="qualitaet-body">
+            <h3>5-Minuten-Test vor jeder Freigabe</h3>
+            <ul class="checklist">
+              <li>Funktioniert der Hauptanwendungsfall?</li>
+              <li>Was passiert bei leerer Eingabe?</li>
+              <li>Was passiert bei sehr langen Eingaben?</li>
+              <li>Funktioniert es mobil?</li>
+              <li>Ist durch den letzten Fix etwas anderes kaputtgegangen?</li>
+            </ul>
 
-      <div class="info-box tip">
-        <div class="info-icon"><i class="fas fa-swatchbook"></i></div>
-        <div class="info-content">
-          <div class="info-label">Praktische Konsequenz</div>
-          <p>Arbeite möglichst klar, klein und fokussiert. Je präziser die Aufgabe, desto besser ist meist das Ergebnis.</p>
+            <h3>Gut genug für einen Workshop-Prototyp</h3>
+            <p>Ein Ergebnis ist oft gut genug, wenn:</p>
+            <ul>
+              <li>der Hauptflow funktioniert</li>
+              <li>die Oberfläche verständlich ist</li>
+              <li>keine offensichtlichen Fehler auftreten</li>
+              <li>das Ergebnis demonstrierbar und teilbar ist</li>
+            </ul>
+
+            <h3>Sicher arbeiten mit KI</h3>
+            <p><strong>Nicht in öffentliche KI-Tools kopieren:</strong></p>
+            <ul>
+              <li>vertrauliche Kundendaten</li>
+              <li>interne Dokumente</li>
+              <li>Zugangsdaten</li>
+              <li>personenbezogene Rohdaten</li>
+            </ul>
+
+            <p><strong>Vor Veröffentlichung prüfen:</strong></p>
+            <ul>
+              <li>Rechte an Bildern, Icons und Texten</li>
+              <li>verwendete Libraries</li>
+              <li>Impressum und Datenschutz bei echter Veröffentlichung</li>
+              <li>ob API-Keys oder sensible Konfigurationen sichtbar sind</li>
+            </ul>
+
+            <div class="info-box danger">
+              <div class="info-icon"><i class="fas fa-triangle-exclamation"></i></div>
+              <div class="info-content">
+                <div class="info-label">Kritisch</div>
+                <p>API-Keys gehören niemals ins Frontend oder in öffentlich zugängliche Repositories.</p>
+              </div>
+            </div>
+
+            <h3>Zusätzlich beachten</h3>
+            <ul>
+              <li>Datenschutz</li>
+              <li>Prompt-Data-Leakage</li>
+              <li>Lizenz- und Urheberfragen</li>
+              <li>Risiken durch Drittbibliotheken</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="wiki-section">
-      <div class="section-kicker"><i class="fas fa-cubes"></i> Vertiefung</div>
-      <h2 id="playground-produkt">14. Vom Playground zum Produkt</h2>
-
-      <p>Ein funktionierender Prototyp ist noch kein Produkt.</p>
-
-      <h3>Vibecoding ist stark für</h3>
-      <ul>
-        <li>Ideen validieren</li>
-        <li>interne Hilfstools</li>
-        <li>frühe Klickdummys</li>
-        <li>kleine Anwendungen mit überschaubarer Komplexität</li>
-      </ul>
-
-      <button class="collapsible-toggle" aria-expanded="false" aria-controls="produkt-body">
-        <span>Wann reines Vibecoding nicht mehr reicht</span>
-        <i class="fas fa-chevron-right toggle-icon"></i>
+      <button class="section-toggle" aria-expanded="false" aria-controls="section-prompt-bibliothek">
+        <div class="section-toggle-row">
+          <div class="section-toggle-text">
+            <div class="section-kicker"><i class="fas fa-keyboard"></i> Praxisbereich</div>
+            <h2 id="prompt-bibliothek">6. Prompt-Bibliothek</h2>
+          </div>
+          <i class="fas fa-chevron-right section-toggle-icon"></i>
+        </div>
       </button>
-      <div class="collapsible-body" id="produkt-body">
-        <ul>
-          <li>mehrere Benutzerrollen</li>
-          <li>echte Logins</li>
-          <li>personenbezogene Daten</li>
-          <li>externe Zahlungen</li>
-          <li>Integrationen in Unternehmenssysteme</li>
-          <li>dauerhafter Betrieb und Support</li>
-        </ul>
+      <div class="wiki-section-body" id="section-prompt-bibliothek">
+        <div class="wiki-section-inner">
+          <p>
+            Prompts sind im Vibecoding wichtig, aber nicht der einzige Erfolgsfaktor.
+            Gute Prompts helfen vor allem dann, wenn Ziel, Kontext und gewünschter Umfang klar sind.
+          </p>
 
-        <p>
-          Sobald diese Punkte relevant werden, brauchst du in der Regel mehr Struktur:
-          Architektur, Security, Wartung, Monitoring, Tests und klarere Entwicklungsprozesse.
-        </p>
+          <button class="collapsible-toggle" aria-expanded="false" aria-controls="prompt-body">
+            <span>Beispiele für hilfreiche Prompts</span>
+            <i class="fas fa-chevron-right toggle-icon"></i>
+          </button>
+          <div class="collapsible-body" id="prompt-body">
+            <h3>Für einen Start</h3>
+            <blockquote>
+              <p>„Erstelle eine kleine Web-App mit [Funktion]. Halte die Lösung bewusst einfach. Nutze eine klare, verständliche Oberfläche und konzentriere dich auf den Hauptanwendungsfall.“</p>
+            </blockquote>
+
+            <h3>Für gezielte Änderungen</h3>
+            <blockquote>
+              <p>„Ändere nur den Bereich der Filterleiste. Lasse Datenmodell und restliches Layout unverändert.“</p>
+            </blockquote>
+
+            <h3>Für planvolles Arbeiten</h3>
+            <blockquote>
+              <p>„Erkläre zuerst deinen Plan in drei Schritten und nimm danach nur die notwendige Änderung vor.“</p>
+            </blockquote>
+
+            <h3>Für Review</h3>
+            <blockquote>
+              <p>„Prüfe diesen Code auf Lesbarkeit, unnötige Komplexität und potenzielle Fehler. Nenne zuerst die Probleme, dann eine kleine verbesserte Version.“</p>
+            </blockquote>
+          </div>
+        </div>
       </div>
     </section>
 
     <section class="wiki-section">
-      <div class="section-kicker"><i class="fas fa-share-nodes"></i> Veröffentlichen</div>
-      <h2 id="deployment-sharing">15. Überblick zu Deployment und Sharing</h2>
+      <button class="section-toggle" aria-expanded="false" aria-controls="section-common-failures">
+        <div class="section-toggle-row">
+          <div class="section-toggle-text">
+            <div class="section-kicker"><i class="fas fa-bug"></i> Praxisbereich</div>
+            <h2 id="common-failures">7. Common Failures</h2>
+          </div>
+          <i class="fas fa-chevron-right section-toggle-icon"></i>
+        </div>
+      </button>
+      <div class="wiki-section-body" id="section-common-failures">
+        <div class="wiki-section-inner">
+          <h3>Typische Fehler im Vibecoding</h3>
+          <ul>
+            <li>zu großer Scope am Anfang</li>
+            <li>zu viele Änderungen auf einmal</li>
+            <li>unklare Ziele</li>
+            <li>ungeprüfte Übernahme von KI-Ausgaben</li>
+            <li>fehlende Tests nach Änderungen</li>
+            <li>keine Versionierung vor größeren Umbauten</li>
+          </ul>
 
-      <p>
-        Wenn dein Ergebnis funktioniert, möchtest du es oft anderen zeigen oder testbar machen.
-        Dafür gibt es verschiedene Wege, je nach Anspruch und technischem Setup.
-      </p>
+          <div class="info-box warning">
+            <div class="info-icon"><i class="fas fa-save"></i></div>
+            <div class="info-content">
+              <div class="info-label">Praktische Regel</div>
+              <p>Vor jedem größeren Umbau: Commit oder Dateikopie anlegen. So kannst du auf einen funktionierenden Stand zurückgehen.</p>
+            </div>
+          </div>
 
-      <h3>Typische Wege sind</h3>
-      <ul>
-        <li>lokal ausführen</li>
-        <li>GitHub Pages</li>
-        <li>Docker</li>
-      </ul>
-
-      <p>Die Details dazu haben wir bewusst in eine separate Seite ausgelagert.</p>
+          <h3>Wenn etwas kaputtgeht</h3>
+          <p>Beschreibe das Problem konkret:</p>
+          <ul class="checklist">
+            <li>Was hast du erwartet?</li>
+            <li>Was ist stattdessen passiert?</li>
+            <li>Wann tritt der Fehler auf?</li>
+            <li>Gibt es eine Fehlermeldung?</li>
+            <li>Seit welcher Änderung ist das Verhalten neu?</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
     <section class="wiki-section">
-      <div class="section-kicker"><i class="fas fa-server"></i> Veröffentlichen</div>
-      <h2 id="hosting-hinweis">16. Separate Hosting-Anleitung</h2>
+      <button class="section-toggle" aria-expanded="false" aria-controls="section-beispielprojekte">
+        <div class="section-toggle-row">
+          <div class="section-toggle-text">
+            <div class="section-kicker"><i class="fas fa-diagram-project"></i> Praxisbereich</div>
+            <h2 id="beispielprojekte">8. Beispielprojekte</h2>
+          </div>
+          <i class="fas fa-chevron-right section-toggle-icon"></i>
+        </div>
+      </button>
+      <div class="wiki-section-body" id="section-beispielprojekte">
+        <div class="wiki-section-inner">
+          <p>Gute Workshop-Projekte sind klein, klar und sichtbar.</p>
 
-      <p>
-        Du willst dein Ergebnis veröffentlichen? Hier findest du eine separate
-        Schritt-für-Schritt-Anleitung für lokal, GitHub Pages und Docker.
-      </p>
+          <h3>Beispiele</h3>
+          <ul>
+            <li>Aufgabenliste mit Prioritäten</li>
+            <li>Wochenplaner</li>
+            <li>kleiner Angebots- oder Kostenrechner</li>
+            <li>Feedback-Formular mit Auswertung</li>
+            <li>interner Ideen-Sammler</li>
+            <li>Event- oder Content-Planer</li>
+          </ul>
 
-      <p>
-        <a href="../hosting/" class="back-link">
-          <i class="fas fa-arrow-right me-1"></i> Zur Hosting-Anleitung
-        </a>
-      </p>
+          <button class="collapsible-toggle" aria-expanded="false" aria-controls="beispielprojekte-body">
+            <span>Was ein gutes Beispielprojekt ausmacht</span>
+            <i class="fas fa-chevron-right toggle-icon"></i>
+          </button>
+          <div class="collapsible-body" id="beispielprojekte-body">
+            <ul class="checklist">
+              <li>klarer Zweck</li>
+              <li>einfacher Hauptflow</li>
+              <li>sichtbares Ergebnis</li>
+              <li>geringer Abstimmungsaufwand</li>
+              <li>in kurzer Zeit iterierbar</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section class="wiki-section">
-      <div class="section-kicker"><i class="fas fa-bookmark"></i> Abschluss</div>
-      <h2 id="weiterfuehrende-inhalte">Weiterführende Inhalte</h2>
+      <button class="section-toggle" aria-expanded="false" aria-controls="section-sandbox">
+        <div class="section-toggle-row">
+          <div class="section-toggle-text">
+            <div class="section-kicker"><i class="fas fa-flask"></i> Praxisbereich</div>
+            <h2 id="sandbox">9. Sandbox</h2>
+          </div>
+          <i class="fas fa-chevron-right section-toggle-icon"></i>
+        </div>
+      </button>
+      <div class="wiki-section-body" id="section-sandbox">
+        <div class="wiki-section-inner">
+          <p>
+            Die Sandbox ist dein Raum zum Ausprobieren. Hier gilt: lieber klein starten, sauber testen und sichtbar lernen
+            als zu früh zu groß denken.
+          </p>
 
-      <ul>
-        <li>Ideen</li>
-        <li>Ergebnisse</li>
-        <li>GitHub</li>
-      </ul>
+          <h3>Gute Regeln für die Sandbox</h3>
+          <ul>
+            <li>eine Idee pro Durchlauf</li>
+            <li>kleine Änderungsschritte</li>
+            <li>nach jedem Schritt prüfen</li>
+            <li>vor größeren Umbauten sichern</li>
+            <li>nur das Nächste entscheiden, nicht alles auf einmal</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-      <a class="back-link" href="../">&larr; Zurück zur Startseite</a>
+    <section class="wiki-section">
+      <button class="section-toggle" aria-expanded="false" aria-controls="section-vier-kernfaehigkeiten">
+        <div class="section-toggle-row">
+          <div class="section-toggle-text">
+            <div class="section-kicker"><i class="fas fa-compass-drafting"></i> Vertiefung</div>
+            <h2 id="vier-kernfaehigkeiten">10. Die vier Kernfähigkeiten im Vibecoding</h2>
+          </div>
+          <i class="fas fa-chevron-right section-toggle-icon"></i>
+        </div>
+      </button>
+      <div class="wiki-section-body" id="section-vier-kernfaehigkeiten">
+        <div class="wiki-section-inner">
+          <p>
+            Erfolg im Vibecoding entsteht selten durch den perfekten Prompt. Meist gewinnt, wer kleine Schritte sauber beschreibt,
+            Ergebnisse überprüft und Änderungen kontrolliert aufeinander aufbaut.
+          </p>
+
+          <h3>1. Ziel präzisieren</h3>
+          <p>Ein gutes Ziel ist konkret, klein und überprüfbar.</p>
+
+          <h3>2. Änderung klein halten</h3>
+          <p>Große Komplettumbauten erzeugen oft mehr Chaos als Nutzen.</p>
+
+          <h3>3. Ergebnis prüfen</h3>
+          <p>Übernimm nie blind, was erzeugt wurde. Teste Verhalten, Logik und Verständlichkeit.</p>
+
+          <h3>4. Nächsten Schritt sauber formulieren</h3>
+          <p>Die Qualität des nächsten Schritts entscheidet oft stärker über den Projekterfolg als der erste Prompt.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="wiki-section">
+      <button class="section-toggle" aria-expanded="false" aria-controls="section-code-reading">
+        <div class="section-toggle-row">
+          <div class="section-toggle-text">
+            <div class="section-kicker"><i class="fas fa-code"></i> Vertiefung</div>
+            <h2 id="code-reading">11. Code Reading Light</h2>
+          </div>
+          <i class="fas fa-chevron-right section-toggle-icon"></i>
+        </div>
+      </button>
+      <div class="wiki-section-body" id="section-code-reading">
+        <div class="wiki-section-inner">
+          <p>
+            Du musst nicht jede Zeile perfekt verstehen, um mit KI sinnvoll zu arbeiten.
+            Aber du solltest wichtige Strukturen erkennen können:
+          </p>
+
+          <ul>
+            <li>Wo liegt die UI?</li>
+            <li>Wo liegt die Logik?</li>
+            <li>Welche Teile hängen zusammen?</li>
+            <li>Welche Änderung betrifft nur die Darstellung, welche das Verhalten?</li>
+          </ul>
+
+          <div class="highlight-box highlight-blue">
+            <p><strong>Ziel:</strong> Nicht „alles lesen“, sondern genug verstehen, um Änderungen bewusst steuern zu können.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="wiki-section">
+      <button class="section-toggle" aria-expanded="false" aria-controls="section-refactoring">
+        <div class="section-toggle-row">
+          <div class="section-toggle-text">
+            <div class="section-kicker"><i class="fas fa-wand-magic-sparkles"></i> Vertiefung</div>
+            <h2 id="refactoring">12. Refactoring mit KI</h2>
+          </div>
+          <i class="fas fa-chevron-right section-toggle-icon"></i>
+        </div>
+      </button>
+      <div class="wiki-section-body" id="section-refactoring">
+        <div class="wiki-section-inner">
+          <p>Refactoring mit KI ist sinnvoll, wenn ein Projekt zwar funktioniert, aber unübersichtlich wird.</p>
+
+          <h3>Gute Anlässe für Refactoring</h3>
+          <ul>
+            <li>wiederholter Code</li>
+            <li>zu große Komponenten</li>
+            <li>vermischte Zuständigkeiten</li>
+            <li>schwer lesbare Logik</li>
+            <li>unklare Benennung</li>
+          </ul>
+
+          <div class="info-box example">
+            <div class="info-icon"><i class="fas fa-message"></i></div>
+            <div class="info-content">
+              <div class="info-label">Beispielprompt</div>
+              <p>„Strukturiere den Code lesbarer. Trenne UI und Logik stärker, ohne das Verhalten zu ändern. Erkläre zuerst kurz, welche Refactoring-Schritte du vorschlägst.“</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="wiki-section">
+      <button class="section-toggle" aria-expanded="false" aria-controls="section-kosten-limits">
+        <div class="section-toggle-row">
+          <div class="section-toggle-text">
+            <div class="section-kicker"><i class="fas fa-coins"></i> Vertiefung</div>
+            <h2 id="kosten-limits">13. Kosten &amp; Limits</h2>
+          </div>
+          <i class="fas fa-chevron-right section-toggle-icon"></i>
+        </div>
+      </button>
+      <div class="wiki-section-body" id="section-kosten-limits">
+        <div class="wiki-section-inner">
+          <p>KI-Tools sind schnell, aber nicht unbegrenzt.</p>
+
+          <h3>Darauf solltest du achten</h3>
+          <ul>
+            <li>Modelllimits</li>
+            <li>Rate Limits</li>
+            <li>API-Kosten</li>
+            <li>Qualitätsschwankungen je nach Tool</li>
+            <li>Kontextfenster und Verlaufslänge</li>
+          </ul>
+
+          <div class="info-box tip">
+            <div class="info-icon"><i class="fas fa-swatchbook"></i></div>
+            <div class="info-content">
+              <div class="info-label">Praktische Konsequenz</div>
+              <p>Arbeite möglichst klar, klein und fokussiert. Je präziser die Aufgabe, desto besser ist meist das Ergebnis.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="wiki-section">
+      <button class="section-toggle" aria-expanded="false" aria-controls="section-playground-produkt">
+        <div class="section-toggle-row">
+          <div class="section-toggle-text">
+            <div class="section-kicker"><i class="fas fa-cubes"></i> Vertiefung</div>
+            <h2 id="playground-produkt">14. Vom Playground zum Produkt</h2>
+          </div>
+          <i class="fas fa-chevron-right section-toggle-icon"></i>
+        </div>
+      </button>
+      <div class="wiki-section-body" id="section-playground-produkt">
+        <div class="wiki-section-inner">
+          <p>Ein funktionierender Prototyp ist noch kein Produkt.</p>
+
+          <h3>Vibecoding ist stark für</h3>
+          <ul>
+            <li>Ideen validieren</li>
+            <li>interne Hilfstools</li>
+            <li>frühe Klickdummys</li>
+            <li>kleine Anwendungen mit überschaubarer Komplexität</li>
+          </ul>
+
+          <button class="collapsible-toggle" aria-expanded="false" aria-controls="produkt-body">
+            <span>Wann reines Vibecoding nicht mehr reicht</span>
+            <i class="fas fa-chevron-right toggle-icon"></i>
+          </button>
+          <div class="collapsible-body" id="produkt-body">
+            <ul>
+              <li>mehrere Benutzerrollen</li>
+              <li>echte Logins</li>
+              <li>personenbezogene Daten</li>
+              <li>externe Zahlungen</li>
+              <li>Integrationen in Unternehmenssysteme</li>
+              <li>dauerhafter Betrieb und Support</li>
+            </ul>
+
+            <p>
+              Sobald diese Punkte relevant werden, brauchst du in der Regel mehr Struktur:
+              Architektur, Security, Wartung, Monitoring, Tests und klarere Entwicklungsprozesse.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="wiki-section">
+      <button class="section-toggle" aria-expanded="false" aria-controls="section-deployment-sharing">
+        <div class="section-toggle-row">
+          <div class="section-toggle-text">
+            <div class="section-kicker"><i class="fas fa-share-nodes"></i> Veröffentlichen</div>
+            <h2 id="deployment-sharing">15. Überblick zu Deployment und Sharing</h2>
+          </div>
+          <i class="fas fa-chevron-right section-toggle-icon"></i>
+        </div>
+      </button>
+      <div class="wiki-section-body" id="section-deployment-sharing">
+        <div class="wiki-section-inner">
+          <p>
+            Wenn dein Ergebnis funktioniert, möchtest du es oft anderen zeigen oder testbar machen.
+            Dafür gibt es verschiedene Wege, je nach Anspruch und technischem Setup.
+          </p>
+
+          <h3>Typische Wege sind</h3>
+          <ul>
+            <li>lokal ausführen</li>
+            <li>GitHub Pages</li>
+            <li>Docker</li>
+          </ul>
+
+          <p>Die Details dazu haben wir bewusst in eine separate Seite ausgelagert.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="wiki-section">
+      <button class="section-toggle" aria-expanded="false" aria-controls="section-hosting-hinweis">
+        <div class="section-toggle-row">
+          <div class="section-toggle-text">
+            <div class="section-kicker"><i class="fas fa-server"></i> Veröffentlichen</div>
+            <h2 id="hosting-hinweis">16. Separate Hosting-Anleitung</h2>
+          </div>
+          <i class="fas fa-chevron-right section-toggle-icon"></i>
+        </div>
+      </button>
+      <div class="wiki-section-body" id="section-hosting-hinweis">
+        <div class="wiki-section-inner">
+          <p>
+            Du willst dein Ergebnis veröffentlichen? Hier findest du eine separate
+            Schritt-für-Schritt-Anleitung für lokal, GitHub Pages und Docker.
+          </p>
+
+          <p>
+            <a href="https://fauteck.github.io/vibecoding-academy/hosting/index.html" class="back-link">
+              <i class="fas fa-arrow-right me-1"></i> Zur Hosting-Anleitung
+            </a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="wiki-section">
+      <button class="section-toggle" aria-expanded="false" aria-controls="section-weiterfuehrende-inhalte">
+        <div class="section-toggle-row">
+          <div class="section-toggle-text">
+            <div class="section-kicker"><i class="fas fa-bookmark"></i> Abschluss</div>
+            <h2 id="weiterfuehrende-inhalte">Weiterführende Inhalte</h2>
+          </div>
+          <i class="fas fa-chevron-right section-toggle-icon"></i>
+        </div>
+      </button>
+      <div class="wiki-section-body" id="section-weiterfuehrende-inhalte">
+        <div class="wiki-section-inner">
+          <ul>
+            <li>Ideen</li>
+            <li>Ergebnisse</li>
+            <li>GitHub</li>
+          </ul>
+
+          <a class="back-link" href="../">&larr; Zurück zur Startseite</a>
+        </div>
+      </div>
     </section>
 
   </main>
@@ -1170,9 +1393,28 @@
       var backToTop = document.getElementById('back-to-top');
 
       var sections = Array.from(document.querySelectorAll('.wiki-section h2[id]'));
-      var toggles = document.querySelectorAll('.collapsible-toggle');
+      var sectionToggles = document.querySelectorAll('.section-toggle');
+      var innerToggles = document.querySelectorAll('.collapsible-toggle');
 
       var ticking = false;
+
+      function openSectionById(id) {
+        if (!id) return;
+        var target = document.getElementById(id);
+        if (!target) return;
+
+        var section = target.closest('.wiki-section');
+        if (!section) return;
+
+        var toggle = section.querySelector('.section-toggle');
+        var bodyId = toggle ? toggle.getAttribute('aria-controls') : null;
+        var body = bodyId ? document.getElementById(bodyId) : null;
+
+        if (toggle && body) {
+          toggle.setAttribute('aria-expanded', 'true');
+          body.classList.add('open');
+        }
+      }
 
       function onScroll() {
         if (ticking) return;
@@ -1215,7 +1457,7 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
 
-      toggles.forEach(function(toggle) {
+      sectionToggles.forEach(function(toggle) {
         toggle.addEventListener('click', function() {
           var expanded = this.getAttribute('aria-expanded') === 'true';
           var bodyId = this.getAttribute('aria-controls');
@@ -1230,6 +1472,39 @@
           }
         });
       });
+
+      innerToggles.forEach(function(toggle) {
+        toggle.addEventListener('click', function() {
+          var expanded = this.getAttribute('aria-expanded') === 'true';
+          var bodyId = this.getAttribute('aria-controls');
+          var body = document.getElementById(bodyId);
+
+          if (expanded) {
+            this.setAttribute('aria-expanded', 'false');
+            body.classList.remove('open');
+          } else {
+            this.setAttribute('aria-expanded', 'true');
+            body.classList.add('open');
+          }
+        });
+      });
+
+      document.querySelectorAll('.toc a[href^="#"]').forEach(function(link) {
+        link.addEventListener('click', function() {
+          var id = this.getAttribute('href').slice(1);
+          setTimeout(function() {
+            openSectionById(id);
+          }, 10);
+        });
+      });
+
+      window.addEventListener('hashchange', function() {
+        openSectionById(location.hash.replace('#', ''));
+      });
+
+      if (location.hash) {
+        openSectionById(location.hash.replace('#', ''));
+      }
 
       onScroll();
     })();
