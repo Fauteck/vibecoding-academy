@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Wiki – Vibecoding Academy</title>
-  <meta name="description" content="Kompakter Einstieg in KI-gestütztes Web-Coding: Vibecoding verstehen, erste Projekte bauen, Qualität sichern.">
+  <meta name="description" content="Handout und Lernpfad durch die wichtigsten Grundlagen, Methoden und Grenzen des Vibecodings.">
   <meta property="og:title" content="Wiki – Vibecoding Academy">
-  <meta property="og:description" content="Kompakter Einstieg in KI-gestütztes Web-Coding: Vibecoding verstehen, erste Projekte bauen, Qualität sichern.">
+  <meta property="og:description" content="Handout und Lernpfad durch die wichtigsten Grundlagen, Methoden und Grenzen des Vibecodings.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://fauteck.github.io/vibecoding-academy/wiki/">
   <meta property="og:locale" content="de_DE">
@@ -16,114 +16,335 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer">
-  <!-- Bootstrap 5.3.2 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
         rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
         crossorigin="anonymous">
   <link rel="stylesheet" href="../css/nav.css">
+
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #f5f7fa; color: #222; }
-
-    /* ── Reading Progress Bar ─────────────────────────── */
-    #reading-progress {
-      position: fixed; top: 0; left: 0; height: 3px; width: 0%;
-      background: linear-gradient(90deg, #5CC6A7, #5B8BD6);
-      z-index: 1050; transition: width 0.1s linear; pointer-events: none;
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: #f5f7fa;
+      color: #222;
     }
+
+    #reading-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, #5CC6A7, #5B8BD6);
+      z-index: 1050;
+      transition: width 0.1s linear;
+      pointer-events: none;
+    }
+
     @media (min-width: 992px) {
       #reading-progress { top: 56px; }
     }
 
-    /* ── Sticky Breadcrumb Bar ────────────────────────── */
     #breadcrumb-bar {
-      position: fixed; left: 0; right: 0; z-index: 1025;
-      background: rgba(255,255,255,0.95); backdrop-filter: blur(6px);
-      border-bottom: 1px solid #e2e8f0; padding: 0.4rem 1rem;
-      font-size: 0.8rem; color: #7A8599;
-      transform: translateY(-100%); opacity: 0;
+      position: fixed;
+      left: 0;
+      right: 0;
+      z-index: 1025;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid #e2e8f0;
+      padding: 0.4rem 1rem;
+      font-size: 0.8rem;
+      color: #7A8599;
+      transform: translateY(-100%);
+      opacity: 0;
       transition: transform 0.25s ease, opacity 0.25s ease;
     }
-    #breadcrumb-bar.visible { transform: translateY(0); opacity: 1; }
+
+    #breadcrumb-bar.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
     @media (min-width: 992px) {
       #breadcrumb-bar { top: 56px; }
     }
+
     @media (max-width: 991.98px) {
       #breadcrumb-bar { top: 56px; }
     }
-    #breadcrumb-bar .breadcrumb-inner {
-      max-width: 800px; margin: 0 auto;
-      display: flex; align-items: center; gap: 0.4rem;
-    }
-    #breadcrumb-bar .breadcrumb-section {
-      color: #3D5A8C; font-weight: 600; white-space: nowrap;
-      overflow: hidden; text-overflow: ellipsis; max-width: 300px;
-    }
-    #breadcrumb-bar i { color: #5B8BD6; font-size: 0.7rem; }
 
-    /* ── Back to Top Button ───────────────────────────── */
-    #back-to-top {
-      position: fixed; bottom: 2rem; right: 2rem; z-index: 1040;
-      width: 44px; height: 44px; border-radius: 50%; border: none;
-      background: linear-gradient(135deg, #5B8BD6, #3D5A8C);
-      color: #fff; font-size: 1.1rem; cursor: pointer;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-      opacity: 0; transform: translateY(20px);
-      transition: opacity 0.3s, transform 0.3s, background 0.2s;
-      display: flex; align-items: center; justify-content: center;
+    #breadcrumb-bar .breadcrumb-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      min-width: 0;
     }
-    #back-to-top.visible { opacity: 1; transform: translateY(0); }
-    #back-to-top:hover { background: linear-gradient(135deg, #3D5A8C, #2c4570); }
+
+    #breadcrumb-bar .breadcrumb-section {
+      color: #3D5A8C;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 420px;
+    }
+
+    #breadcrumb-bar i {
+      color: #5B8BD6;
+      font-size: 0.7rem;
+    }
+
+    #back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 1040;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(135deg, #5B8BD6, #3D5A8C);
+      color: #fff;
+      font-size: 1.1rem;
+      cursor: pointer;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.3s, transform 0.3s, background 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #back-to-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #back-to-top:hover {
+      background: linear-gradient(135deg, #3D5A8C, #2c4570);
+    }
+
     @media (max-width: 991.98px) {
       #back-to-top { bottom: 5rem; right: 1rem; }
     }
 
-    /* ── Section Blocks ───────────────────────────────── */
-    .wiki-section {
-      background: #fff; border-radius: 10px;
+    #content {
+      max-width: 860px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      line-height: 1.7;
+    }
+
+    .wiki-header {
+      background: #fff;
+      border-radius: 14px;
       box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-      padding: 1.8rem 2rem; margin-bottom: 1.5rem;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .wiki-header h1 {
+      font-size: 1.95rem;
+      margin-bottom: 0.5rem;
+      color: #2c3e50;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      color: #666;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    .intro-text {
+      color: #445;
+      margin-bottom: 0;
+    }
+
+    .wiki-section {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      padding: 1.8rem 2rem;
+      margin-bottom: 1.5rem;
       border-left: 4px solid #5B8BD6;
     }
-    .wiki-section:nth-child(even of .wiki-section) { border-left-color: #3D5A8C; }
-    .wiki-section h2 { margin-top: 0; border-bottom: none; padding-bottom: 0; margin-bottom: 0.8rem; }
+
+    .wiki-section:nth-child(even of .wiki-section) {
+      border-left-color: #3D5A8C;
+    }
+
+    .wiki-section h2 {
+      font-size: 1.45rem;
+      color: #2c3e50;
+      margin-top: 0;
+      margin-bottom: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
     .wiki-section h2::before {
-      content: ''; display: inline-block; width: 8px; height: 8px;
-      background: #5B8BD6; border-radius: 2px; margin-right: 0.5rem; vertical-align: middle;
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: #5B8BD6;
+      border-radius: 2px;
+      flex-shrink: 0;
     }
 
-    /* ── Collapsible Sections ─────────────────────────── */
-    .collapsible-toggle {
-      display: flex; align-items: center; justify-content: space-between;
-      cursor: pointer; user-select: none; padding: 0.6rem 0;
-      border: none; background: none; width: 100%; text-align: left;
-      font-size: 1.15rem; font-weight: 600; color: #34495e;
-      font-family: inherit;
+    .wiki-section h3 {
+      font-size: 1.08rem;
+      margin-top: 1.35rem;
+      margin-bottom: 0.45rem;
+      color: #34495e;
     }
-    .collapsible-toggle:hover { color: #5B8BD6; }
-    .collapsible-toggle .toggle-icon {
-      font-size: 0.75rem; color: #7A8599; transition: transform 0.25s;
-    }
-    .collapsible-toggle[aria-expanded="true"] .toggle-icon { transform: rotate(90deg); }
-    .collapsible-body {
-      max-height: 0; overflow: hidden; transition: max-height 0.35s ease;
-    }
-    .collapsible-body.open { max-height: 2000px; }
 
-    /* ── Tip / Warning / Example Boxes ────────────────── */
+    p { margin-bottom: 0.85rem; }
+    ul, ol { margin-bottom: 0.9rem; padding-left: 1.4rem; }
+    li { margin-bottom: 0.3rem; }
+
+    a {
+      color: #3D76C3;
+      text-decoration: none;
+    }
+
+    a:hover { text-decoration: underline; }
+
+    code {
+      background: #f0f2f5;
+      padding: 0.15rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+      font-family: 'Consolas', 'Monaco', monospace;
+    }
+
+    pre {
+      background: #1e1e2e;
+      color: #cdd6f4;
+      padding: 1rem;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin-bottom: 1rem;
+    }
+
+    pre code {
+      background: none;
+      padding: 0;
+      color: inherit;
+      font-size: 0.85rem;
+    }
+
+    blockquote {
+      border-left: 4px solid #3498db;
+      background: #f0f6fc;
+      padding: 1rem 1.2rem;
+      margin: 1rem 0;
+      border-radius: 0 6px 6px 0;
+      color: #2c3e50;
+    }
+
+    blockquote p:last-child { margin-bottom: 0; }
+
+    .toc {
+      background: #f8f9fa;
+      border: 1px solid #e9ecef;
+      border-radius: 10px;
+      padding: 1.25rem 1.4rem;
+      margin: 1.5rem 0 0;
+    }
+
+    .toc-title {
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+      color: #2c3e50;
+    }
+
+    .toc-group {
+      margin-bottom: 1rem;
+    }
+
+    .toc-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .toc-group-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #3D5A8C;
+      margin-bottom: 0.35rem;
+    }
+
+    .toc ol {
+      margin-bottom: 0;
+    }
+
+    .toc li {
+      margin-bottom: 0.25rem;
+    }
+
+    .section-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: #5B8BD6;
+      margin-bottom: 0.75rem;
+    }
+
+    .highlight-box {
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+      margin: 1rem 0;
+    }
+
+    .highlight-box p:last-child { margin-bottom: 0; }
+
+    .highlight-green { background: #eaf7ee; border: 1px solid #c3e6cb; }
+    .highlight-blue { background: #f0f6fc; border: 1px solid #b8d4e8; }
+    .highlight-yellow { background: #fff9e6; border: 1px solid #f0dca0; }
+
     .info-box {
-      border-radius: 8px; padding: 1rem 1.2rem; margin: 1rem 0;
-      display: flex; gap: 0.75rem; align-items: flex-start;
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+      margin: 1rem 0;
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
     }
+
     .info-box .info-icon {
-      flex-shrink: 0; width: 28px; height: 28px; border-radius: 6px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.85rem; color: #fff;
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      color: #fff;
     }
+
     .info-box .info-content { flex: 1; }
     .info-box .info-content p:last-child { margin-bottom: 0; }
-    .info-box .info-label { font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.03em; margin-bottom: 0.2rem; }
+    .info-label {
+      font-weight: 700;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-bottom: 0.2rem;
+    }
 
     .info-box.tip { background: #eaf7ee; border: 1px solid #c3e6cb; }
     .info-box.tip .info-icon { background: #5CC6A7; }
@@ -141,73 +362,152 @@
     .info-box.danger .info-icon { background: #D46B6B; }
     .info-box.danger .info-label { color: #a04040; }
 
-    /* ── Content Container (now sections-based) ───────── */
-    #content { max-width: 800px; margin: 2rem auto; padding: 0 1rem; background: transparent; border-radius: 0; box-shadow: none; line-height: 1.7; }
-    #content > .wiki-header { background: #fff; border-radius: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); padding: 2rem; margin-bottom: 1.5rem; }
-    #content h1 { font-size: 1.8rem; margin-bottom: 0.5rem; color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 0.5rem; }
-    #content .subtitle { color: #666; margin-bottom: 1.5rem; font-size: 1rem; }
-    .wiki-section h2 { font-size: 1.4rem; color: #2c3e50; }
-    #content h3 { font-size: 1.15rem; margin-top: 1.4rem; margin-bottom: 0.5rem; color: #34495e; }
-    #content p { margin-bottom: 0.8rem; }
-    #content ul, #content ol { margin-bottom: 0.8rem; padding-left: 1.5rem; }
-    #content li { margin-bottom: 0.3rem; }
-    #content code { background: #f0f2f5; padding: 0.15rem 0.4rem; border-radius: 3px; font-size: 0.9em; font-family: 'Consolas', 'Monaco', monospace; }
-    #content pre { background: #1e1e2e; color: #cdd6f4; padding: 1rem; border-radius: 6px; overflow-x: auto; margin-bottom: 1rem; }
-    #content pre code { background: none; padding: 0; color: inherit; font-size: 0.85rem; }
-    #content strong { color: #2c3e50; }
-    #content table { border-collapse: collapse; width: 100%; margin-bottom: 1rem; }
-    #content th, #content td { border: 1px solid #ddd; padding: 0.5rem 0.75rem; text-align: left; }
-    #content th { background: #f0f2f5; font-weight: 600; }
-    #content blockquote { border-left: 4px solid #3498db; background: #f0f6fc; padding: 1rem 1.2rem; margin: 1rem 0; border-radius: 0 6px 6px 0; color: #2c3e50; }
-    #content blockquote p { margin-bottom: 0; }
-    .highlight-box { border-radius: 6px; padding: 1rem 1.2rem; margin: 1rem 0; }
-    .highlight-box p:last-child { margin-bottom: 0; }
-    .highlight-green { background: #eaf7ee; border: 1px solid #c3e6cb; }
-    .highlight-blue { background: #f0f6fc; border: 1px solid #b8d4e8; }
-    .highlight-yellow { background: #fff9e6; border: 1px solid #f0dca0; }
-    .toc { background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 6px; padding: 1.2rem 1.5rem; margin: 1.5rem 0; }
-    .toc-title { font-weight: 600; margin-bottom: 0.5rem; color: #2c3e50; }
-    .toc ol { margin-bottom: 0; }
-    .toc li { margin-bottom: 0.2rem; }
-    .toc a { color: #3498db; text-decoration: none; }
-    .toc a:hover { text-decoration: underline; }
-    .back-link { display: inline-block; margin-top: 2rem; color: #3498db; text-decoration: none; font-weight: 600; }
+    .badge-soft {
+      display: inline-block;
+      padding: 0.25rem 0.55rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      background: #eef4ff;
+      color: #3D5A8C;
+      margin-bottom: 0.8rem;
+    }
+
+    .checklist {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .checklist li {
+      position: relative;
+      padding-left: 1.6rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .checklist li::before {
+      content: "\f00c";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      top: 0.1rem;
+      color: #5CC6A7;
+      font-size: 0.85rem;
+    }
+
+    .collapsible-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      user-select: none;
+      padding: 0.6rem 0;
+      border: none;
+      background: none;
+      width: 100%;
+      text-align: left;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #34495e;
+      font-family: inherit;
+    }
+
+    .collapsible-toggle:hover { color: #5B8BD6; }
+
+    .collapsible-toggle .toggle-icon {
+      font-size: 0.8rem;
+      color: #7A8599;
+      transition: transform 0.25s;
+      margin-left: 1rem;
+      flex-shrink: 0;
+    }
+
+    .collapsible-toggle[aria-expanded="true"] .toggle-icon {
+      transform: rotate(90deg);
+    }
+
+    .collapsible-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+
+    .collapsible-body.open {
+      max-height: 2500px;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 0.5rem;
+      color: #3498db;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
     .back-link:hover { text-decoration: underline; }
+
     @media (max-width: 600px) {
       #content { margin: 0.5rem; padding: 0 0.5rem; }
       .wiki-section { padding: 1.2rem 1rem; }
-      #content > .wiki-header { padding: 1.2rem; }
+      .wiki-header { padding: 1.2rem; }
+      .wiki-header h1 { font-size: 1.55rem; }
     }
+
     @media print {
-      .navbar, .mobile-topbar, .bottom-nav, .nav-sheet, #breadcrumb-bar, #back-to-top, #reading-progress { display: none !important; }
-      body { padding-top: 0; padding-bottom: 0; background: #fff; }
-      #content { box-shadow: none; margin: 0; padding: 1rem; max-width: 100%; }
-      .wiki-section { box-shadow: none; border-left: 2px solid #ccc; page-break-inside: avoid; }
+      .navbar,
+      .mobile-topbar,
+      .bottom-nav,
+      .nav-sheet,
+      #breadcrumb-bar,
+      #back-to-top,
+      #reading-progress {
+        display: none !important;
+      }
+
+      body {
+        padding-top: 0;
+        padding-bottom: 0;
+        background: #fff;
+      }
+
+      #content {
+        box-shadow: none;
+        margin: 0;
+        padding: 1rem;
+        max-width: 100%;
+      }
+
+      .wiki-section {
+        box-shadow: none;
+        border-left: 2px solid #ccc;
+        page-break-inside: avoid;
+      }
+
+      .collapsible-body {
+        max-height: none !important;
+        overflow: visible !important;
+      }
+
       .back-link { display: none; }
-      .collapsible-body { max-height: none !important; overflow: visible !important; }
     }
   </style>
 </head>
 <body>
-  <!-- Reading Progress Bar -->
   <div id="reading-progress" aria-hidden="true"></div>
 
-  <!-- Sticky Breadcrumb Bar -->
   <div id="breadcrumb-bar" aria-label="Leseposition">
     <div class="breadcrumb-inner">
       <i class="fas fa-book-open"></i>
       <span>Wiki</span>
       <i class="fas fa-chevron-right"></i>
-      <span class="breadcrumb-section" id="breadcrumb-section">Orientierung</span>
+      <span class="breadcrumb-section" id="breadcrumb-section">Einleitung</span>
     </div>
   </div>
 
-  <!-- Back to Top Button -->
   <button id="back-to-top" aria-label="Zurück nach oben" title="Zurück nach oben">
     <i class="fas fa-arrow-up"></i>
   </button>
 
-  <!-- Desktop Navbar (>992px) -->
   <nav class="navbar navbar-expand d-none d-lg-flex">
     <div class="container-fluid">
       <a href="https://fauteck.github.io/website/" class="navbar-back-link" aria-label="Zurück zu niklasfauteck.de">
@@ -229,7 +529,6 @@
     </div>
   </nav>
 
-  <!-- Mobile Top Bar (<=992px) -->
   <div class="mobile-topbar d-lg-none">
     <a href="https://fauteck.github.io/website/" class="mobile-topbar-btn" aria-label="Zurück zu niklasfauteck.de">
       <i class="fas fa-arrow-left"></i>
@@ -240,7 +539,6 @@
     <span style="width: 32px;"></span>
   </div>
 
-  <!-- Mobile Bottom Navigation (<=992px) -->
   <nav class="bottom-nav d-lg-none">
     <a class="bottom-nav-item" href="../#workshop">
       <i class="fas fa-chalkboard-user"></i>
@@ -260,697 +558,681 @@
     </a>
   </nav>
 
-  <div id="content">
+  <main id="content">
 
-    <div class="wiki-header">
-    <h1>Vibecoding Academy – Wiki</h1>
-    <p class="subtitle">Kompakter Einstieg in KI-gestütztes Web-Coding</p>
+    <header class="wiki-header">
+      <h1>Vibecoding Wiki</h1>
+      <p class="subtitle">Handout und Lernpfad durch die wichtigsten Grundlagen, Methoden und Grenzen des Vibecodings.</p>
+      <p class="intro-text">
+        Willkommen in der Vibecoding Wiki. Diese Seite ist dein Handout und Lernpfad durch die wichtigsten Grundlagen,
+        Methoden und Grenzen des Vibecodings. Wenn du ganz neu einsteigst, arbeite die Kapitel in der Reihenfolge des
+        Lernpfads durch. Wenn du bereits erste Erfahrungen hast, kannst du gezielt in den Praxis- oder Vertiefungsbereich springen.
+      </p>
 
-    <nav class="toc">
-      <div class="toc-title">Inhalt</div>
-      <ol>
-        <li><a href="#orientierung">Orientierung</a></li>
-        <li><a href="#mental-model">Mental Model</a></li>
-        <li><a href="#setup">Setup</a></li>
-        <li><a href="#erste-erfolge">Erste Erfolge</a></li>
-        <li><a href="#systematisch-bauen">Systematisches Bauen</a></li>
-        <li><a href="#qualitaet-risiken">Qualität und Risiken</a></li>
-        <li><a href="#deployment-sharing">Deployment und Sharing</a></li>
-        <li><a href="#sandbox">Projekte (Sandbox)</a></li>
-        <li><a href="#golden-path">Golden Path Tutorial</a></li>
-        <li><a href="#anti-vibecoding">Anti-Vibecoding</a></li>
-        <li><a href="#code-reading">Code Reading Light</a></li>
-        <li><a href="#refactoring">Refactoring mit KI</a></li>
-        <li><a href="#kosten-limits">Kosten und Limits</a></li>
-        <li><a href="#playground-produkt">Vom Playground zum Produkt</a></li>
-        <li><a href="#prompt-bibliothek">Prompt-Bibliothek</a></li>
-        <li><a href="#common-failures">Common Failures</a></li>
-        <li><a href="#workflow-viz">Workflow Visualisierung</a></li>
-        <li><a href="#hosting">Hosting-Anleitung</a>
+      <nav class="toc" aria-label="Inhaltsverzeichnis">
+        <div class="toc-title">Inhaltsverzeichnis</div>
+
+        <div class="toc-group">
+          <div class="toc-group-title">Lernpfad für Einsteiger</div>
           <ol>
-            <li><a href="#hosting-lokal">Lokale Ergebnisse mit Claude Code</a></li>
-            <li><a href="#hosting-github">Für Fortgeschrittene: GitHub Pages</a></li>
-            <li><a href="#hosting-docker">Self-Hosting mit Docker</a></li>
+            <li><a href="#orientierung">Orientierung</a></li>
+            <li><a href="#setup">Setup</a></li>
+            <li><a href="#erste-erfolge">Erste Erfolge</a></li>
+            <li><a href="#golden-path">Golden Path</a></li>
+            <li><a href="#qualitaet-risiken">Qualität &amp; Risiken</a></li>
           </ol>
-        </li>
-      </ol>
-    </nav>
-    </div>
+        </div>
 
-    <!-- ───────────────────────────────────────────── -->
+        <div class="toc-group">
+          <div class="toc-group-title">Praxisbereich</div>
+          <ol start="6">
+            <li><a href="#prompt-bibliothek">Prompt-Bibliothek</a></li>
+            <li><a href="#common-failures">Common Failures</a></li>
+            <li><a href="#beispielprojekte">Beispielprojekte</a></li>
+            <li><a href="#sandbox">Sandbox</a></li>
+          </ol>
+        </div>
 
-    <div class="wiki-section">
-    <h2 id="orientierung">Orientierung</h2>
+        <div class="toc-group">
+          <div class="toc-group-title">Vertiefung</div>
+          <ol start="10">
+            <li><a href="#vier-kernfaehigkeiten">Die vier Kernfähigkeiten im Vibecoding</a></li>
+            <li><a href="#code-reading">Code Reading Light</a></li>
+            <li><a href="#refactoring">Refactoring mit KI</a></li>
+            <li><a href="#kosten-limits">Kosten &amp; Limits</a></li>
+            <li><a href="#playground-produkt">Vom Playground zum Produkt</a></li>
+          </ol>
+        </div>
 
-    <h3>Warum diese Seite?</h3>
-    <p>Diese Wiki-Seite soll einen kompakten, verständlichen Einstieg in das Thema Vibecoding geben. Sie richtet sich an Menschen, die mit KI schnell erste digitale Lösungen, Prototypen oder Ideen sichtbar machen möchten, ohne direkt tief in klassische Softwareentwicklung einsteigen zu müssen.</p>
+        <div class="toc-group">
+          <div class="toc-group-title">Veröffentlichen</div>
+          <ol start="15">
+            <li><a href="#deployment-sharing">Überblick zu Deployment und Sharing</a></li>
+            <li><a href="#hosting-hinweis">Separate Hosting-Anleitung</a></li>
+          </ol>
+        </div>
+      </nav>
+    </header>
 
-    <h3>Was ist Vibecoding?</h3>
-    <p>Vibecoding beschreibt das Erstellen von Software mithilfe von KI, bei dem der Fokus auf schnellen Ergebnissen, Ausprobieren und iterativer Verbesserung liegt. Statt jede Zeile Code selbst zu schreiben, beschreibt man einer KI in natürlicher Sprache, was entstehen soll, testet das Ergebnis und entwickelt es Schritt für Schritt weiter. Der Mehrwert liegt vor allem darin, Ideen schnell greifbar zu machen.</p>
+    <section class="wiki-section">
+      <div class="section-kicker"><i class="fas fa-seedling"></i> Lernpfad</div>
+      <h2 id="orientierung">1. Orientierung</h2>
 
-    <h3>Was ist es nicht?</h3>
-    <p>Vibecoding ist kein Ersatz für klassische Softwareentwicklung in komplexen oder produktionskritischen Systemen. Es ist kein Garant für sicheren, fehlerfreien oder wartbaren Code. Außerdem ist es kein Ansatz nach dem Motto „einmal prompten und fertig". Gute Ergebnisse entstehen fast immer durch mehrere Schleifen aus Testen, Prüfen und Nachschärfen.</p>
+      <h3>Was ist Vibecoding?</h3>
+      <p>
+        Vibecoding ist ein pragmatischer Ansatz, mit KI schnell sichtbare Software-Ergebnisse zu erzeugen.
+        Statt alles von Hand zu programmieren, arbeitest du in kurzen Zyklen mit einem KI-Tool zusammen:
+        Du beschreibst ein Ziel, lässt einen Vorschlag erzeugen, prüfst das Ergebnis, gibst Feedback und
+        verbesserst Schritt für Schritt.
+      </p>
 
-    <h3>Wann ist es sinnvoll?</h3>
-    <p>Vibecoding eignet sich besonders gut für Prototyping, Lernen, kleine Tools und kreative Experimente. Es ist stark, wenn es darum geht, Ideen schnell sichtbar zu machen, Anforderungen anschaulich zu testen oder erste Klickdummys für Gespräche mit Stakeholdern zu bauen. Gerade in frühen Phasen hilft es, abstrakte Gedanken in erlebbare Entwürfe zu übersetzen.</p>
-
-    <div class="info-box tip">
-      <div class="info-icon"><i class="fas fa-lightbulb"></i></div>
-      <div class="info-content">
-        <div class="info-label">Tipp</div>
-        <p>Vibecoding ist besonders wertvoll in Workshops: Teilnehmer sehen in Minuten erste Ergebnisse und bleiben motiviert.</p>
+      <div class="highlight-box highlight-blue">
+        <p><strong>Wichtig:</strong> Vibecoding ist nicht einfach „Code erzeugen lassen“.</p>
+        <ul>
+          <li>klare Ziele</li>
+          <li>kleine Änderungen</li>
+          <li>aktives Prüfen</li>
+          <li>kontrollierte Iteration</li>
+        </ul>
       </div>
-    </div>
-    </div>
 
-    <!-- ───────────────────────────────────────────── -->
+      <button class="collapsible-toggle" aria-expanded="true" aria-controls="orientierung-body">
+        <span>Mehr zur Einordnung</span>
+        <i class="fas fa-chevron-right toggle-icon"></i>
+      </button>
+      <div class="collapsible-body open" id="orientierung-body">
+        <h3>Was Vibecoding gut kann</h3>
+        <ul>
+          <li>schnelle Prototypen</li>
+          <li>kleine Web-Apps</li>
+          <li>interne Tools</li>
+          <li>erste Produktideen</li>
+          <li>sichtbare Experimente</li>
+        </ul>
 
-    <div class="wiki-section">
-    <h2 id="mental-model">Mental Model</h2>
+        <h3>Was Vibecoding nicht automatisch löst</h3>
+        <ul>
+          <li>komplexe Sicherheit</li>
+          <li>Compliance</li>
+          <li>Skalierung</li>
+          <li>Mehrbenutzer-Architekturen</li>
+          <li>produktionsreife Systemlandschaften</li>
+        </ul>
 
-    <h3>Wie man beim Vibecoding denkt</h3>
-    <p>Vibecoding funktioniert am besten, wenn man nicht in fertigen Endlösungen denkt, sondern in Lern- und Verbesserungszyklen. Ziel ist nicht Perfektion im ersten Schritt, sondern ein schneller erster Entwurf, der anschließend gemeinsam mit der KI verfeinert wird.</p>
-
-    <h3>Iterativer Workflow</h3>
-    <div class="highlight-box highlight-blue">
-      <p><strong>Idee → Prompt → Output → Test → Feedback → Iteration</strong></p>
-      <p>Zuerst wird eine Idee beschrieben. Daraus erzeugt die KI einen ersten Output, zum Beispiel eine kleine Anwendung oder einen Prototypen. Dieser wird getestet, bewertet und mit Feedback verbessert. Dieser Zyklus wiederholt sich, bis das Ergebnis nützlich und stimmig ist.</p>
-    </div>
-
-    <h3>Rollenmodell</h3>
-    <table>
-      <thead>
-        <tr>
-          <th>Rolle</th>
-          <th>Aufgabe</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>Human</strong></td>
-          <td>Ziel definieren, Kontext geben, Qualität bewerten</td>
-        </tr>
-        <tr>
-          <td><strong>AI</strong></td>
-          <td>Code generieren, Vorschläge machen, Varianten liefern</td>
-        </tr>
-        <tr>
-          <td><strong>Human</strong></td>
-          <td>Testen, steuern, priorisieren, entscheiden</td>
-        </tr>
-      </tbody>
-    </table>
-    <p>Die KI übernimmt nicht die Verantwortung für das Ergebnis. Sie ist eher wie ein sehr schneller Umsetzer, der Unterstützung liefert. Die fachliche Richtung, die Bewertung und die Entscheidung bleiben beim Menschen.</p>
-    </div>
-
-    <!-- ───────────────────────────────────────────── -->
-
-    <div class="wiki-section">
-    <h2 id="setup">Setup</h2>
-
-    <h3>Werkzeuge</h3>
-    <p>Für den Einstieg braucht es meist weniger Infrastruktur, als viele vermuten. Schon mit Browser, KI-Tool und einem Ort zum Speichern oder Veröffentlichen lassen sich erste Ergebnisse bauen und zeigen.</p>
-
-    <h3>Minimal-Setup</h3>
-    <p>Ein sinnvolles Minimal-Setup besteht aus:</p>
-    <ul>
-      <li>einem Browser,</li>
-      <li>einem KI-Tool wie ChatGPT, Claude oder Copilot,</li>
-      <li>einem Ort zur Ablage des Codes, z.&nbsp;B. lokal oder auf GitHub.</li>
-    </ul>
-    <p>Damit lassen sich einfache Web-Prototypen oft schon vollständig erstellen, testen und teilen.</p>
-
-    <h3>Browser</h3>
-    <p>Der Browser ist die wichtigste Testumgebung für einfache Web-Projekte. HTML-, CSS- und JavaScript-Prototypen lassen sich direkt lokal öffnen und sofort ausprobieren. Das senkt die Einstiegshürde erheblich.</p>
-
-    <h3>ChatGPT / Copilot / Claude</h3>
-    <p>Verschiedene Tools eignen sich für verschiedene Phasen. ChatGPT ist stark bei Strukturierung, Brainstorming und freiem Dialog. Claude Code eignet sich gut für technische Umsetzung und Datei-Arbeit. Copilot unterstützt eher direkt in der Entwicklungsumgebung beim Schreiben und Ergänzen von Code.</p>
-
-    <h3>GitHub</h3>
-    <p>GitHub hilft dabei, Projekte sauber abzulegen, Versionen zu speichern und Ergebnisse später zu veröffentlichen. Für einfache statische Projekte ist GitHub außerdem ein guter Ausgangspunkt, um mit GitHub Pages kostenlos eine Website bereitzustellen.</p>
-
-    <h3>Deployment Flow</h3>
-    <p>Ein typischer einfacher Veröffentlichungsweg:</p>
-    <ol>
-      <li>Repository erstellen</li>
-      <li>HTML-Datei hinzufügen</li>
-      <li>GitHub Pages aktivieren</li>
-      <li>URL teilen</li>
-    </ol>
-    <p>Damit kann ein Workshop-Ergebnis sehr schnell aus einem lokalen Entwurf zu einer öffentlich erreichbaren Seite werden.</p>
-    </div>
-
-    <!-- ───────────────────────────────────────────── -->
-
-    <div class="wiki-section">
-    <h2 id="erste-erfolge">Erste Erfolge</h2>
-
-    <h3>Quick Wins</h3>
-    <p>Gerade am Anfang sind kleine, überschaubare Projekte ideal. Sie liefern schnell sichtbare Ergebnisse und helfen dabei, ein Gefühl für die Zusammenarbeit mit KI zu entwickeln.</p>
-
-    <h3>Mini-Projekte</h3>
-    <p>Geeignet sind besonders kleine Projekte mit klarer Oberfläche und einfacher Logik. Sie sind schnell testbar und überschaubar genug, um Iteration und Feedback direkt zu erleben.</p>
-
-    <h3>To-Do App</h3>
-    <p>Eine To-Do-App ist ein guter Einstieg, weil sie viele typische UI-Elemente enthält: Eingaben, Listen, Buttons und einfache Zustände. Gleichzeitig bleibt die fachliche Logik leicht verständlich.</p>
-
-    <h3>Taschenrechner</h3>
-    <p>Ein Taschenrechner eignet sich gut, um einfache Eingabelogik, Zustandsänderungen und Fehlerfälle zu verstehen. Er ist klein genug, um schnell fertig zu werden, aber komplex genug für erste Lernmomente.</p>
-
-    <h3>Mini-Spiel</h3>
-    <p>Ein kleines Spiel ist besonders motivierend, weil Ergebnisse sofort sichtbar sind. Außerdem zeigt ein Mini-Spiel gut, wie man mit KI kreative Ideen, einfache Logik und Interaktion kombinieren kann.</p>
-
-    <div class="info-box example">
-      <div class="info-icon"><i class="fas fa-code"></i></div>
-      <div class="info-content">
-        <div class="info-label">Beispiel</div>
-        <p>„Erstelle ein Pong-Spiel mit zwei Schlägern und Punktestand. Einfaches Design, spielbar im Browser." – Solche Prompts reichen oft schon für einen funktionierenden Prototyp.</p>
+        <h3>Das Grundprinzip</h3>
+        <div class="highlight-box highlight-green">
+          <p><strong>Idee → Prompt → Output → Test → Feedback → Iteration</strong></p>
+          <p>
+            Dieser Zyklus wird nicht als einmaliger Ablauf verstanden, sondern als wiederholbarer Arbeitsmodus.
+            Ziel ist pro Zyklus genau eine überprüfbare Verbesserung.
+          </p>
+        </div>
       </div>
-    </div>
-    </div>
+    </section>
 
-    <!-- ───────────────────────────────────────────── -->
+    <section class="wiki-section">
+      <div class="section-kicker"><i class="fas fa-laptop-code"></i> Lernpfad</div>
+      <h2 id="setup">2. Setup</h2>
 
-    <div class="wiki-section">
-    <h2 id="systematisch-bauen">Systematisches Bauen</h2>
+      <h3>Was du brauchst</h3>
+      <ul>
+        <li>einen Laptop</li>
+        <li>ein KI-Tool deiner Wahl</li>
+        <li>einen Browser</li>
+        <li>Lust, Dinge praktisch auszuprobieren</li>
+      </ul>
 
-    <h3>Vom schnellen Prototyp zur Struktur</h3>
-    <p>Sobald erste Ergebnisse funktionieren, lohnt sich ein systematischerer Blick auf Aufbau und Bestandteile. Das hilft, Änderungen sauberer umzusetzen und spätere Erweiterungen zu erleichtern.</p>
+      <h3>Welche Tools geeignet sind</h3>
+      <p>
+        Die gezeigten Methoden funktionieren mit ChatGPT, Claude, Copilot und ähnlichen Tools.
+        Im Workshop demonstrieren wir die Abläufe exemplarisch mit einem konkreten Tool, die Grundprinzipien
+        sind aber tool-agnostisch.
+      </p>
 
-    <h3>UI (HTML/CSS)</h3>
-    <p>Die Benutzeroberfläche beschreibt, wie die Anwendung aussieht. HTML legt die Struktur fest, CSS das Design. Im Vibecoding kann die KI sehr schnell erste Layouts, Formulare, Navigationen oder Kartenansichten erzeugen, die dann schrittweise angepasst werden.</p>
-
-    <h3>Logik (JavaScript)</h3>
-    <p>JavaScript steuert das Verhalten einer Web-Anwendung. Dazu gehören Klicks, Berechnungen, Zustandswechsel oder Validierungen. Gerade hier zeigt sich, warum Testen wichtig ist: Die Oberfläche kann gut aussehen, obwohl die Logik im Hintergrund noch fehlerhaft ist.</p>
-
-    <h3>State Management</h3>
-    <p>Auch kleine Anwendungen haben Zustände: Welche Aufgabe ist erledigt? Welcher Filter ist aktiv? Welcher Nutzerpfad wurde gewählt? Wer Vibecoding länger nutzt, merkt schnell, dass ein gutes Verständnis von Zuständen hilft, Änderungen nachvollziehbar und stabil zu machen.</p>
-
-    <h3>APIs einbinden</h3>
-    <p>Viele spannende Prototypen werden erst dann besonders nützlich, wenn sie externe Daten einbinden. APIs ermöglichen zum Beispiel Wetterdaten, Suchfunktionen oder Datenabfragen. Hier ist besondere Vorsicht nötig, weil externe Schnittstellen Fehlerquellen, Limits und Sicherheitsfragen mitbringen.</p>
-
-    <div class="info-box warning">
-      <div class="info-icon"><i class="fas fa-exclamation-triangle"></i></div>
-      <div class="info-content">
-        <div class="info-label">Achtung</div>
-        <p>API-Keys niemals direkt im Frontend-Code hinterlegen! Öffentlich sichtbare Seiten machen solche Schlüssel für jeden zugänglich.</p>
+      <div class="info-box tip">
+        <div class="info-icon"><i class="fas fa-lightbulb"></i></div>
+        <div class="info-content">
+          <div class="info-label">Faustregel</div>
+          <p>Wähle zu Beginn lieber einen einfachen, stabilen Ablauf als ein komplexes Setup mit vielen Extras.</p>
+        </div>
       </div>
-    </div>
-    </div>
 
-    <!-- ───────────────────────────────────────────── -->
+      <h3>Ziel des Setups</h3>
+      <p>
+        Das Setup soll dich nicht aufhalten. Es geht nicht darum, die perfekte Umgebung zu bauen,
+        sondern möglichst schnell in einen funktionsfähigen Arbeitsmodus zu kommen.
+      </p>
+    </section>
 
-    <div class="wiki-section">
-    <h2 id="qualitaet-risiken">Qualität und Risiken</h2>
+    <section class="wiki-section">
+      <div class="section-kicker"><i class="fas fa-rocket"></i> Lernpfad</div>
+      <h2 id="erste-erfolge">3. Erste Erfolge</h2>
 
-    <h3>Warum dieser Abschnitt wichtig ist</h3>
-    <p>KI kann schnell Ergebnisse liefern, aber nicht automatisch gute Ergebnisse. Deshalb gehört zur Arbeit mit Vibecoding immer auch eine realistische Einordnung der Qualität.</p>
+      <p>
+        Am Anfang solltest du kein großes Produkt bauen, sondern ein kleines Ergebnis, das schnell sichtbar wird.
+      </p>
 
-    <h3>Typische Probleme</h3>
-    <p>Gerade bei schnellen Prototypen treten oft typische Schwächen auf: unklare Logik, widersprüchliche Funktionen, brüchige UI, unsaubere Struktur oder fehlende Randfallbehandlung. Diese Probleme sind normal, solange man sie erkennt und systematisch bearbeitet.</p>
+      <h3>Geeignete erste Projekte</h3>
+      <ul>
+        <li>ein kleiner Wochenplaner</li>
+        <li>ein Formular mit einfacher Logik</li>
+        <li>eine Mini-To-do-App</li>
+        <li>ein kleiner Rechner</li>
+        <li>ein internes Hilfstool für einen klaren Zweck</li>
+      </ul>
 
-    <h3>Halluzinationen</h3>
-    <p>KI kann Dinge behaupten oder erzeugen, die plausibel wirken, aber sachlich falsch oder technisch nicht funktionsfähig sind. Das gilt für Code genauso wie für Erklärungen. Deshalb sollten Ergebnisse nie ungeprüft übernommen werden.</p>
+      <button class="collapsible-toggle" aria-expanded="false" aria-controls="erste-erfolge-body">
+        <span>Warum klein anfangen?</span>
+        <i class="fas fa-chevron-right toggle-icon"></i>
+      </button>
+      <div class="collapsible-body" id="erste-erfolge-body">
+        <ul>
+          <li>schneller Feedback bekommen</li>
+          <li>Fehler leichter verstehen</li>
+          <li>Änderungen kontrollierter vornehmen</li>
+          <li>Motivation durch sichtbare Ergebnisse behalten</li>
+        </ul>
 
-    <h3>Sicherheitslücken</h3>
-    <p>KI-generierter Code ist nicht automatisch sicher. Besonders bei Formularen, Benutzerangaben, externen Datenquellen oder Authentifizierung können schnell Schwachstellen entstehen. Vibecoding ist deshalb ungeeignet, um sicherheitskritische Systeme ohne fachliche Prüfung zu bauen.</p>
-
-    <h3>Schlechter Code</h3>
-    <p>Auch wenn etwas funktioniert, kann der Code schwer verständlich, schlecht strukturiert oder schwer wartbar sein. Gerade bei mehreren Iterationen entstehen schnell doppelte Logik, unnötige Komplexität oder unklare Abhängigkeiten.</p>
-
-    <h3>Debugging mit KI</h3>
-    <p>Ein praktikabler Ansatz ist, Fehler gezielt mit der KI zu debuggen. Statt nur „es geht nicht" zu schreiben, hilft es, Fehlermeldungen, beobachtetes Verhalten und den betroffenen Codeabschnitt mitzugeben. So kann die KI präziser helfen.</p>
-
-    <h3>Fehler kopieren</h3>
-    <p>Besonders effektiv ist es, konkrete Fehlermeldungen oder problematische Stellen exakt zu kopieren. So vermeidet man Missverständnisse und erhöht die Chance auf eine passende Lösung.</p>
-
-    <h3>Gezielt nach Fix fragen</h3>
-    <p>Gute Debugging-Prompts sind konkret. Hilfreich ist zum Beispiel:</p>
-    <blockquote>
-      <p>Dieser Button reagiert nicht. Hier ist der relevante Code und die Fehlermeldung. Bitte finde die Ursache und schlage eine minimale Korrektur vor.</p>
-    </blockquote>
-    <p>So bekommt man meist bessere Ergebnisse als mit rein allgemeinen Fragen.</p>
-
-    <div class="info-box danger">
-      <div class="info-icon"><i class="fas fa-bug"></i></div>
-      <div class="info-content">
-        <div class="info-label">Stolperfalle</div>
-        <p>KI-generierter Code kann <em>funktionierend aussehen</em>, obwohl er grundlegende Logikfehler enthält. Immer manuell testen!</p>
+        <h3>Gute erste Ziele</h3>
+        <p>Ein gutes erstes Projekt ist:</p>
+        <ul class="checklist">
+          <li>in einem Satz beschreibbar</li>
+          <li>in kurzer Zeit sichtbar</li>
+          <li>ohne komplexes Login umsetzbar</li>
+          <li>ohne sensible Daten testbar</li>
+        </ul>
       </div>
-    </div>
-    </div>
+    </section>
 
-    <!-- ───────────────────────────────────────────── -->
+    <section class="wiki-section">
+      <div class="section-kicker"><i class="fas fa-route"></i> Lernpfad</div>
+      <h2 id="golden-path">4. Golden Path</h2>
 
-    <div class="wiki-section">
-    <h2 id="deployment-sharing">Deployment und Sharing</h2>
+      <p>Der Golden Path ist der empfohlene Standardablauf für ein erstes Vibecoding-Projekt.</p>
 
-    <h3>Warum Veröffentlichen wichtig ist</h3>
-    <p>Ein Prototyp wird deutlich wertvoller, wenn andere ihn sehen, testen oder kommentieren können. Deployment macht aus einer lokalen Idee ein teilbares Ergebnis.</p>
+      <h3>Schritt 1: Ziel präzisieren</h3>
+      <p>Formuliere klar, was das kleine Tool tun soll.</p>
+      <blockquote>
+        <p>„Ich möchte eine kleine Web-App, in der ich Aufgaben mit Priorität anlegen, abhaken und filtern kann.“</p>
+      </blockquote>
 
-    <h3>GitHub Pages</h3>
-    <p>GitHub Pages ist für einfache Websites ein besonders leichter Weg, Projekte kostenlos zu veröffentlichen. Man braucht nur ein Repository, eine HTML-Datei und die Aktivierung der Pages-Funktion. Danach ist das Ergebnis über eine URL erreichbar.</p>
+      <h3>Schritt 2: klein starten</h3>
+      <p>Bitte nicht sofort um zehn Funktionen gleichzeitig. Starte mit einem Kernfall.</p>
+      <blockquote>
+        <p>„Baue zuerst nur die Liste, Eingabe und Priorität. Noch keine Nutzerkonten, kein Backend, keine Synchronisierung.“</p>
+      </blockquote>
 
-    <h3>Versionierung</h3>
-    <p>Versionierung hilft dabei, Änderungen nachvollziehbar zu halten. Statt nur den neuesten Stand zu kennen, kann man frühere Versionen sichern, Unterschiede vergleichen und Fehler leichter zurückverfolgen. Gerade bei iterativer Arbeit mit KI ist das sehr hilfreich.</p>
+      <h3>Schritt 3: Ergebnis prüfen</h3>
+      <p>Teste, ob der Hauptanwendungsfall funktioniert.</p>
 
-    <h3>Teilen von Links</h3>
-    <p>Ein veröffentlichter Link ist oft die einfachste Form, einen Prototypen im Team oder Workshop zu teilen. Das erleichtert Feedback, Diskussionen und gemeinsames Lernen erheblich.</p>
-    </div>
+      <h3>Schritt 4: gezielt verbessern</h3>
+      <p>Formuliere den nächsten Änderungsschritt konkret.</p>
+      <blockquote>
+        <p>„Füge jetzt Filter für offene und erledigte Aufgaben hinzu, ohne das bestehende Layout stark zu verändern.“</p>
+      </blockquote>
 
-    <!-- ───────────────────────────────────────────── -->
+      <h3>Schritt 5: wiederholen</h3>
+      <p>Arbeite in kurzen Zyklen weiter.</p>
 
-    <div class="wiki-section">
-    <h2 id="sandbox">Projekte (Sandbox)</h2>
-
-    <h3>Freies Arbeiten und Experimentieren</h3>
-    <p>Die Sandbox ist der Raum für Ausprobieren. Hier geht es nicht um Perfektion, sondern um Geschwindigkeit, Kreativität und Lernen. Kleine Ideen dürfen hier unfertig, verspielt oder experimentell sein. Gerade das freie Arbeiten sorgt oft für die stärksten Aha-Momente.</p>
-
-    <div class="info-box tip">
-      <div class="info-icon"><i class="fas fa-rocket"></i></div>
-      <div class="info-content">
-        <div class="info-label">Tipp</div>
-        <p><strong>Vibe-Coding ist kein Hexenwerk.</strong> Wer eine Idee beschreiben kann, kann auch erste Ergebnisse erzeugen.</p>
+      <div class="highlight-box highlight-yellow">
+        <p><strong>Workflow in der Praxis</strong></p>
+        <p>Typische Dauer pro Zyklus im Workshop: 5 bis 15 Minuten.<br>Ziel je Zyklus: genau eine überprüfbare Verbesserung.</p>
       </div>
-    </div>
-    </div>
+    </section>
 
-    <!-- ───────────────────────────────────────────── -->
+    <section class="wiki-section">
+      <div class="section-kicker"><i class="fas fa-shield-halved"></i> Lernpfad</div>
+      <h2 id="qualitaet-risiken">5. Qualität &amp; Risiken</h2>
 
-    <div class="wiki-section">
-    <h2 id="golden-path">Golden Path Tutorial</h2>
+      <p>
+        Vibecoding liefert schnell Ergebnisse, aber Geschwindigkeit ersetzt keine Prüfung.
+        Du bleibst verantwortlich für das, was gebaut wird.
+      </p>
 
-    <p>Ein sinnvoller Standardablauf für Einsteiger:</p>
+      <h3>Typische Risiken</h3>
+      <ul>
+        <li>Halluzinationen</li>
+        <li>Logikfehler</li>
+        <li>kaputte UI-Zustände</li>
+        <li>Sicherheitsprobleme</li>
+        <li>fragwürdiger Code</li>
+        <li>unbeabsichtigte Seiteneffekte</li>
+      </ul>
 
-    <h3>Idee definieren</h3>
-    <p>Am Anfang steht kein perfektes Fachkonzept, sondern eine verständliche Idee. Wichtig ist nur, dass das Ziel klar genug beschrieben werden kann.</p>
+      <button class="collapsible-toggle" aria-expanded="false" aria-controls="qualitaet-body">
+        <span>Prüfung, Freigabe und sicheres Arbeiten</span>
+        <i class="fas fa-chevron-right toggle-icon"></i>
+      </button>
+      <div class="collapsible-body" id="qualitaet-body">
+        <h3>5-Minuten-Test vor jeder Freigabe</h3>
+        <ul class="checklist">
+          <li>Funktioniert der Hauptanwendungsfall?</li>
+          <li>Was passiert bei leerer Eingabe?</li>
+          <li>Was passiert bei sehr langen Eingaben?</li>
+          <li>Funktioniert es mobil?</li>
+          <li>Ist durch den letzten Fix etwas anderes kaputtgegangen?</li>
+        </ul>
 
-    <h3>Prompt formulieren</h3>
-    <p>Danach wird die Idee in eine konkrete Anweisung für die KI übersetzt. Gute Prompts beschreiben Ziel, Nutzer, Funktionsumfang und gewünschtes Verhalten möglichst klar.</p>
+        <h3>Gut genug für einen Workshop-Prototyp</h3>
+        <p>Ein Ergebnis ist oft gut genug, wenn:</p>
+        <ul>
+          <li>der Hauptflow funktioniert</li>
+          <li>die Oberfläche verständlich ist</li>
+          <li>keine offensichtlichen Fehler auftreten</li>
+          <li>das Ergebnis demonstrierbar und teilbar ist</li>
+        </ul>
 
-    <h3>Code generieren</h3>
-    <p>Die KI erstellt daraufhin einen ersten Entwurf. Das kann ein einfacher Screen, eine kleine Anwendung oder ein klickbarer Prototyp sein.</p>
+        <h3>Sicher arbeiten mit KI</h3>
+        <p><strong>Nicht in öffentliche KI-Tools kopieren:</strong></p>
+        <ul>
+          <li>vertrauliche Kundendaten</li>
+          <li>interne Dokumente</li>
+          <li>Zugangsdaten</li>
+          <li>personenbezogene Rohdaten</li>
+        </ul>
 
-    <h3>Testen</h3>
-    <p>Danach wird ausprobiert, was schon funktioniert und was noch fehlt. Erst im Test zeigt sich oft, wo Logik, Nutzerführung oder Details noch unklar sind.</p>
+        <p><strong>Vor Veröffentlichung prüfen:</strong></p>
+        <ul>
+          <li>Rechte an Bildern, Icons und Texten</li>
+          <li>verwendete Libraries</li>
+          <li>Impressum und Datenschutz bei echter Veröffentlichung</li>
+          <li>ob API-Keys oder sensible Konfigurationen sichtbar sind</li>
+        </ul>
 
-    <h3>Debuggen</h3>
-    <p>Fehler sind Teil des Prozesses. Wichtiger als Fehlerfreiheit im ersten Anlauf ist die Fähigkeit, Probleme systematisch zu erkennen und mit der KI daran weiterzuarbeiten.</p>
+        <div class="info-box danger">
+          <div class="info-icon"><i class="fas fa-triangle-exclamation"></i></div>
+          <div class="info-content">
+            <div class="info-label">Kritisch</div>
+            <p>API-Keys gehören niemals ins Frontend oder in öffentlich zugängliche Repositories.</p>
+          </div>
+        </div>
 
-    <h3>Deployen</h3>
-    <p>Zum Abschluss kann das Ergebnis lokal genutzt oder online veröffentlicht werden, etwa über GitHub Pages oder ein einfaches Hosting-Setup.</p>
-    </div>
-
-    <!-- ───────────────────────────────────────────── -->
-
-    <div class="wiki-section">
-    <h2 id="anti-vibecoding">Anti-Vibecoding</h2>
-
-    <h3>Wofür Vibecoding nicht geeignet ist</h3>
-    <p>Vibecoding ist nicht geeignet für sicherheitskritische Systeme, große Anwendungen mit komplexer Architektur oder produktive Unternehmenslösungen ohne fachliche und technische Absicherung. Sobald Themen wie Datenschutz, Compliance, Betrieb, Integration oder Skalierung zentral werden, reicht reines Vibecoding nicht aus.</p>
-
-    <div class="info-box warning">
-      <div class="info-icon"><i class="fas fa-shield-halved"></i></div>
-      <div class="info-content">
-        <div class="info-label">Achtung</div>
-        <p><strong>Vibecoding ist ein Werkzeug für Prototypen, Lernen und kreative Experimente</strong> – kein Ersatz für professionelle Softwareentwicklung in kritischen Kontexten.</p>
+        <h3>Zusätzlich beachten</h3>
+        <ul>
+          <li>Datenschutz</li>
+          <li>Prompt-Data-Leakage</li>
+          <li>Lizenz- und Urheberfragen</li>
+          <li>Risiken durch Drittbibliotheken</li>
+        </ul>
       </div>
-    </div>
-    </div>
+    </section>
 
-    <!-- ───────────────────────────────────────────── -->
+    <section class="wiki-section">
+      <div class="section-kicker"><i class="fas fa-keyboard"></i> Praxisbereich</div>
+      <h2 id="prompt-bibliothek">6. Prompt-Bibliothek</h2>
 
-    <div class="wiki-section">
-    <h2 id="code-reading">Code Reading Light</h2>
+      <p>
+        Prompts sind im Vibecoding wichtig, aber nicht der einzige Erfolgsfaktor.
+        Gute Prompts helfen vor allem dann, wenn Ziel, Kontext und gewünschter Umfang klar sind.
+      </p>
 
-    <h3>Warum minimales Codeverständnis hilft</h3>
-    <p>Man muss kein Entwickler sein, um mit Vibecoding gute Ergebnisse zu erzielen. Trotzdem hilft es, einfache Strukturen im Code grob lesen und nachvollziehen zu können.</p>
+      <button class="collapsible-toggle" aria-expanded="true" aria-controls="prompt-body">
+        <span>Beispiele für hilfreiche Prompts</span>
+        <i class="fas fa-chevron-right toggle-icon"></i>
+      </button>
+      <div class="collapsible-body open" id="prompt-body">
+        <h3>Für einen Start</h3>
+        <blockquote>
+          <p>„Erstelle eine kleine Web-App mit [Funktion]. Halte die Lösung bewusst einfach. Nutze eine klare, verständliche Oberfläche und konzentriere dich auf den Hauptanwendungsfall.“</p>
+        </blockquote>
 
-    <h3>Variablen erkennen</h3>
-    <p>Variablen speichern Werte und Zustände. Wer erkennt, welche Informationen wo gehalten werden, versteht schneller, warum sich eine Anwendung auf bestimmte Weise verhält.</p>
+        <h3>Für gezielte Änderungen</h3>
+        <blockquote>
+          <p>„Ändere nur den Bereich der Filterleiste. Lasse Datenmodell und restliches Layout unverändert.“</p>
+        </blockquote>
 
-    <h3>Funktionen verstehen</h3>
-    <p>Funktionen bündeln Verhalten. Schon ein grobes Verständnis davon, welche Funktion was auslöst, hilft beim Testen und Formulieren von Änderungswünschen.</p>
+        <h3>Für planvolles Arbeiten</h3>
+        <blockquote>
+          <p>„Erkläre zuerst deinen Plan in drei Schritten und nimm danach nur die notwendige Änderung vor.“</p>
+        </blockquote>
 
-    <h3>Änderungen nachvollziehen</h3>
-    <p>Bei iterativer Arbeit mit KI ist es wichtig zu sehen, was sich von Version zu Version verändert hat. So erkennt man besser, ob ein Fix wirklich geholfen oder an anderer Stelle etwas verschlechtert hat.</p>
-    </div>
-
-    <!-- ───────────────────────────────────────────── -->
-
-    <div class="wiki-section">
-    <h2 id="refactoring">Refactoring mit KI</h2>
-
-    <button class="collapsible-toggle" aria-expanded="false" aria-controls="refactoring-body">
-      <span>Details: Refactoring-Strategien</span>
-      <i class="fas fa-chevron-right toggle-icon"></i>
-    </button>
-    <div class="collapsible-body" id="refactoring-body">
-
-    <h3>Besseren Code erzeugen</h3>
-    <p>KI kann nicht nur neuen Code erzeugen, sondern auch bestehenden Code verbessern. Das ist besonders hilfreich, wenn ein Prototyp zwar funktioniert, aber unübersichtlich geworden ist.</p>
-
-    <h3>„Optimiere meinen Code"</h3>
-    <p>Ein nützlicher Anwendungsfall ist, die KI um Vereinfachung oder bessere Struktur zu bitten. Dabei sollte man möglichst klar sagen, was verbessert werden soll: Lesbarkeit, Kürze, Wiederverwendbarkeit oder Trennung von Logik und Darstellung.</p>
-
-    <h3>„Mache ihn wartbarer"</h3>
-    <p>Wartbarkeit bedeutet, dass Änderungen später leichter möglich sind. Die KI kann dabei helfen, doppelte Logik zu reduzieren, Funktionen sauberer aufzuteilen oder Benennungen verständlicher zu machen.</p>
-
-    <div class="info-box example">
-      <div class="info-icon"><i class="fas fa-wand-magic-sparkles"></i></div>
-      <div class="info-content">
-        <div class="info-label">Beispiel-Prompt</div>
-        <p>„Dieser Code funktioniert, ist aber unübersichtlich. Bitte vereinfache ihn, ohne die Funktionalität zu ändern. Trenne UI und Logik."</p>
+        <h3>Für Review</h3>
+        <blockquote>
+          <p>„Prüfe diesen Code auf Lesbarkeit, unnötige Komplexität und potenzielle Fehler. Nenne zuerst die Probleme, dann eine kleine verbesserte Version.“</p>
+        </blockquote>
       </div>
-    </div>
+    </section>
 
-    </div>
-    </div>
+    <section class="wiki-section">
+      <div class="section-kicker"><i class="fas fa-bug"></i> Praxisbereich</div>
+      <h2 id="common-failures">7. Common Failures</h2>
 
-    <!-- ───────────────────────────────────────────── -->
+      <h3>Typische Fehler im Vibecoding</h3>
+      <ul>
+        <li>zu großer Scope am Anfang</li>
+        <li>zu viele Änderungen auf einmal</li>
+        <li>unklare Ziele</li>
+        <li>ungeprüfte Übernahme von KI-Ausgaben</li>
+        <li>fehlende Tests nach Änderungen</li>
+        <li>keine Versionierung vor größeren Umbauten</li>
+      </ul>
 
-    <div class="wiki-section">
-    <h2 id="kosten-limits">Kosten und Limits</h2>
-
-    <button class="collapsible-toggle" aria-expanded="false" aria-controls="kosten-body">
-      <span>Details: Kosten und Limitierungen</span>
-      <i class="fas fa-chevron-right toggle-icon"></i>
-    </button>
-    <div class="collapsible-body" id="kosten-body">
-
-    <h3>Warum das relevant ist</h3>
-    <p>Auch wenn viele erste Schritte günstig oder kostenlos möglich sind, stoßen KI-Tools und externe Dienste an Grenzen.</p>
-
-    <h3>API-Kosten beachten</h3>
-    <p>Wer mit APIs oder kostenpflichtigen KI-Modellen arbeitet, sollte die Nutzung im Blick behalten. Gerade bei wiederholten Anfragen oder größeren Projekten können Kosten entstehen, die anfangs unterschätzt werden.</p>
-
-    <h3>Token Limits</h3>
-    <p>KI-Modelle haben Begrenzungen bei der Menge an Eingabe- und Ausgabedaten. Sehr große Kontexte, lange Codeblöcke oder umfangreiche Verläufe können dazu führen, dass Informationen abgeschnitten oder schlechter verarbeitet werden.</p>
-
-    <h3>Rate Limits</h3>
-    <p>Einige Dienste begrenzen, wie oft man in kurzer Zeit Anfragen senden darf. Das ist besonders relevant, wenn Prototypen externe APIs nutzen oder automatisiert viele Anfragen stellen.</p>
-
-    <div class="info-box tip">
-      <div class="info-icon"><i class="fas fa-coins"></i></div>
-      <div class="info-content">
-        <div class="info-label">Tipp</div>
-        <p>Viele KI-Tools bieten kostenlose Stufen an, die für Workshop-Projekte völlig ausreichen. Bezahlte Modelle lohnen sich erst bei regelmäßiger, intensiver Nutzung.</p>
+      <div class="info-box warning">
+        <div class="info-icon"><i class="fas fa-save"></i></div>
+        <div class="info-content">
+          <div class="info-label">Praktische Regel</div>
+          <p>Vor jedem größeren Umbau: Commit oder Dateikopie anlegen. So kannst du auf einen funktionierenden Stand zurückgehen.</p>
+        </div>
       </div>
-    </div>
 
-    </div>
-    </div>
+      <h3>Wenn etwas kaputtgeht</h3>
+      <p>Beschreibe das Problem konkret:</p>
+      <ul class="checklist">
+        <li>Was hast du erwartet?</li>
+        <li>Was ist stattdessen passiert?</li>
+        <li>Wann tritt der Fehler auf?</li>
+        <li>Gibt es eine Fehlermeldung?</li>
+        <li>Seit welcher Änderung ist das Verhalten neu?</li>
+      </ul>
+    </section>
 
-    <!-- ───────────────────────────────────────────── -->
+    <section class="wiki-section">
+      <div class="section-kicker"><i class="fas fa-diagram-project"></i> Praxisbereich</div>
+      <h2 id="beispielprojekte">8. Beispielprojekte</h2>
 
-    <div class="wiki-section">
-    <h2 id="playground-produkt">Vom Playground zum Produkt</h2>
+      <p>Gute Workshop-Projekte sind klein, klar und sichtbar.</p>
 
-    <h3>Der Übergang in die Realität</h3>
-    <p>Ein funktionierender Prototyp ist noch kein Produkt. Wer aus einer Idee mehr machen will, muss zusätzliche Themen berücksichtigen.</p>
+      <h3>Beispiele</h3>
+      <ul>
+        <li>Aufgabenliste mit Prioritäten</li>
+        <li>Wochenplaner</li>
+        <li>kleiner Angebots- oder Kostenrechner</li>
+        <li>Feedback-Formular mit Auswertung</li>
+        <li>interner Ideen-Sammler</li>
+        <li>Event- oder Content-Planer</li>
+      </ul>
 
-    <h3>Hosting</h3>
-    <p>Für erste Schritte reichen einfache Hosting-Lösungen wie GitHub Pages. Später können Self-Hosting, Docker oder professionellere Plattformen sinnvoll werden.</p>
-
-    <h3>Nutzerfeedback</h3>
-    <p>Sobald andere Menschen ein Tool nutzen, wird ihr Feedback zur wichtigsten Weiterentwicklungsquelle. Häufig zeigt erst echte Nutzung, welche Funktionen wirklich hilfreich sind.</p>
-
-    <h3>Iteration</h3>
-    <p>Der Weg vom Playground zum Produkt ist fast immer ein Prozess aus Nutzung, Feedback, Anpassung und erneuter Prüfung. Vibecoding kann diesen Weg beschleunigen, ersetzt aber nicht die saubere Produktarbeit.</p>
-    </div>
-
-    <!-- ───────────────────────────────────────────── -->
-
-    <div class="wiki-section">
-    <h2 id="prompt-bibliothek">Prompt-Bibliothek</h2>
-
-    <h3>Warum gute Prompts wichtig sind</h3>
-    <p>Die Qualität der Ergebnisse hängt stark davon ab, wie klar Ziel, Kontext und Erwartung beschrieben werden. Gute Prompts sparen Iterationen und führen schneller zu brauchbaren Ergebnissen.</p>
-
-    <h3>Gute Prompts</h3>
-    <p>Gute Prompts benennen: das Ziel, die Zielgruppe, die gewünschte Funktion, den Umfang, Einschränkungen, und idealerweise Beispiele oder Referenzen.</p>
-    <blockquote>
-      <p>Erstelle eine einfache To-Do-Web-App für private Aufgaben. Links Kategorien, rechts Aufgabenliste. Jede Aufgabe hat Checkbox, Titel und optionales Datum. Bitte schlichtes Layout, mobil nutzbar, ohne Login und ohne Prioritäten.</p>
-    </blockquote>
-
-    <h3>Schlechte Prompts</h3>
-    <p>Schlechte Prompts sind meist zu kurz, zu vage oder widersprüchlich. Ein Prompt wie „Bau mir eine coole App" lässt zu viel Interpretationsspielraum und führt selten direkt zu einem guten Ergebnis.</p>
-
-    <h3>Vorlagen</h3>
-    <p>Es lohnt sich, wiederverwendbare Prompt-Vorlagen zu sammeln, etwa für: Ideenstrukturierung, UI-Entwürfe, Debugging, Refactoring oder das Erzeugen erster MVPs.</p>
-    </div>
-
-    <!-- ───────────────────────────────────────────── -->
-
-    <div class="wiki-section">
-    <h2 id="common-failures">Common Failures</h2>
-
-    <button class="collapsible-toggle" aria-expanded="false" aria-controls="failures-body">
-      <span>Details: Typische Fehlerquellen</span>
-      <i class="fas fa-chevron-right toggle-icon"></i>
-    </button>
-    <div class="collapsible-body" id="failures-body">
-
-    <h3>UI kaputt</h3>
-    <p>Ein häufiges Problem ist eine Oberfläche, die zwar grundsätzlich sichtbar ist, aber Layoutfehler, unklare Abstände oder schlechtes Verhalten auf kleineren Displays hat. Hier hilft es, gezielt auf einzelne Stellen hinzuweisen.</p>
-
-    <div class="info-box danger">
-      <div class="info-icon"><i class="fas fa-desktop"></i></div>
-      <div class="info-content">
-        <div class="info-label">Stolperfalle</div>
-        <p>Immer auf dem Handy testen! Viele KI-generierte Layouts sehen am Desktop gut aus, brechen aber auf kleinen Bildschirmen.</p>
+      <button class="collapsible-toggle" aria-expanded="false" aria-controls="beispielprojekte-body">
+        <span>Was ein gutes Beispielprojekt ausmacht</span>
+        <i class="fas fa-chevron-right toggle-icon"></i>
+      </button>
+      <div class="collapsible-body" id="beispielprojekte-body">
+        <ul class="checklist">
+          <li>klarer Zweck</li>
+          <li>einfacher Hauptflow</li>
+          <li>sichtbares Ergebnis</li>
+          <li>geringer Abstimmungsaufwand</li>
+          <li>in kurzer Zeit iterierbar</li>
+        </ul>
       </div>
-    </div>
+    </section>
 
-    <h3>Code funktioniert nicht</h3>
-    <p>Manchmal erzeugt die KI formal plausiblen Code, der in der Praxis Fehler wirft. Dann ist sauberes Debugging wichtig: Fehlermeldung kopieren, Ursache eingrenzen, minimalen Fix anfordern.</p>
+    <section class="wiki-section">
+      <div class="section-kicker"><i class="fas fa-flask"></i> Praxisbereich</div>
+      <h2 id="sandbox">9. Sandbox</h2>
 
-    <h3>Logikfehler</h3>
-    <p>Besonders tückisch sind Situationen, in denen die Anwendung funktioniert, aber inhaltlich das Falsche tut. Solche Fehler entdeckt man nur durch echtes Testen aus Nutzersicht.</p>
+      <p>
+        Die Sandbox ist dein Raum zum Ausprobieren. Hier gilt: lieber klein starten, sauber testen und sichtbar lernen
+        als zu früh zu groß denken.
+      </p>
 
-    </div>
-    </div>
+      <h3>Gute Regeln für die Sandbox</h3>
+      <ul>
+        <li>eine Idee pro Durchlauf</li>
+        <li>kleine Änderungsschritte</li>
+        <li>nach jedem Schritt prüfen</li>
+        <li>vor größeren Umbauten sichern</li>
+        <li>nur das Nächste entscheiden, nicht alles auf einmal</li>
+      </ul>
+    </section>
 
-    <!-- ───────────────────────────────────────────── -->
+    <section class="wiki-section">
+      <div class="section-kicker"><i class="fas fa-compass-drafting"></i> Vertiefung</div>
+      <h2 id="vier-kernfaehigkeiten">10. Die vier Kernfähigkeiten im Vibecoding</h2>
 
-    <div class="wiki-section">
-    <h2 id="workflow-viz">Workflow Visualisierung</h2>
+      <p>
+        Erfolg im Vibecoding entsteht selten durch den perfekten Prompt. Meist gewinnt, wer kleine Schritte sauber beschreibt,
+        Ergebnisse überprüft und Änderungen kontrolliert aufeinander aufbaut.
+      </p>
 
-    <h3>Der Standardzyklus</h3>
-    <div class="highlight-box highlight-blue">
-      <p><strong>Idee → Prompt → Output → Test → Feedback → Iteration</strong></p>
-      <p>Diese einfache Schleife ist das Kernmodell des Vibecodings. Wer sie verinnerlicht, arbeitet produktiver mit KI und erwartet nicht, dass perfekte Ergebnisse schon beim ersten Versuch entstehen.</p>
-    </div>
-    </div>
+      <h3>1. Ziel präzisieren</h3>
+      <p>Ein gutes Ziel ist konkret, klein und überprüfbar.</p>
 
-    <!-- ═══════════════════════════════════════════════ -->
-    <!--  TEIL 2: HOSTING-ANLEITUNG                      -->
-    <!-- ═══════════════════════════════════════════════ -->
+      <h3>2. Änderung klein halten</h3>
+      <p>Große Komplettumbauten erzeugen oft mehr Chaos als Nutzen.</p>
 
-    <div class="wiki-header">
-    <h1 id="hosting">Hosting-Anleitung</h1>
-    <p class="subtitle">Schritt-für-Schritt-Anleitung: Vom lokalen Ergebnis bis zur eigenen Website.<br>Zielgruppe: Workshop-Teilnehmer ohne Vorkenntnisse.</p>
+      <h3>3. Ergebnis prüfen</h3>
+      <p>Übernimm nie blind, was erzeugt wurde. Teste Verhalten, Logik und Verständlichkeit.</p>
 
-    <p>Diese Anleitung zeigt drei Wege, wie du dein Vibe-Coding-Projekt nutzen und zugänglich machen kannst - vom einfachsten Einstieg bis hin zu fortgeschrittenen Optionen.</p>
-    </div>
+      <h3>4. Nächsten Schritt sauber formulieren</h3>
+      <p>Die Qualität des nächsten Schritts entscheidet oft stärker über den Projekterfolg als der erste Prompt.</p>
+    </section>
 
-    <!-- ───────────────────────────────────────────── -->
+    <section class="wiki-section">
+      <div class="section-kicker"><i class="fas fa-code"></i> Vertiefung</div>
+      <h2 id="code-reading">11. Code Reading Light</h2>
 
-    <div class="wiki-section">
-    <h2 id="hosting-lokal">Lokale Ergebnisse mit Claude Code</h2>
+      <p>
+        Du musst nicht jede Zeile perfekt verstehen, um mit KI sinnvoll zu arbeiten.
+        Aber du solltest wichtige Strukturen erkennen können:
+      </p>
 
-    <p>Der einfachste Weg, um mit Vibe-Coding loszulegen: <strong>Claude Code liefert dir die fertigen Dateien direkt in einen Ordner auf deinem Computer.</strong></p>
+      <ul>
+        <li>Wo liegt die UI?</li>
+        <li>Wo liegt die Logik?</li>
+        <li>Welche Teile hängen zusammen?</li>
+        <li>Welche Änderung betrifft nur die Darstellung, welche das Verhalten?</li>
+      </ul>
 
-    <p>So funktioniert es:</p>
+      <div class="highlight-box highlight-blue">
+        <p><strong>Ziel:</strong> Nicht „alles lesen“, sondern genug verstehen, um Änderungen bewusst steuern zu können.</p>
+      </div>
+    </section>
 
-    <ol>
-      <li><strong>Ordner anlegen</strong> - erstelle auf deinem Desktop (oder an einem beliebigen Ort) einen neuen Ordner, z.&nbsp;B. <code>mein-projekt</code></li>
-      <li><strong>Claude Code öffnen</strong> - starte Claude Code und wähle diesen Ordner als Arbeitsverzeichnis</li>
-      <li><strong>Idee beschreiben</strong> - sage Claude Code, was du bauen möchtest. Die KI erstellt die nötigen Dateien (HTML, CSS, JavaScript) direkt in deinem Ordner</li>
-      <li><strong>Im Browser öffnen</strong> - öffne die Datei <code>index.html</code> aus deinem Ordner per Doppelklick oder über <em>Datei &gt; Öffnen</em> in deinem Browser</li>
-    </ol>
+    <section class="wiki-section">
+      <div class="section-kicker"><i class="fas fa-wand-magic-sparkles"></i> Vertiefung</div>
+      <h2 id="refactoring">12. Refactoring mit KI</h2>
 
-    <div class="highlight-box highlight-green">
-      <p><strong>Das ist der schnellste Weg, um deine Ergebnisse zu sehen.</strong> Du brauchst keinen Server, kein Konto und keine zusätzliche Software - nur Claude Code und einen Browser.</p>
-    </div>
+      <p>Refactoring mit KI ist sinnvoll, wenn ein Projekt zwar funktioniert, aber unübersichtlich wird.</p>
 
-    <p>Dein Projekt liegt dabei nur auf deinem eigenen Computer. Wenn du es mit anderen teilen oder im Internet zugänglich machen möchtest, lies weiter.</p>
-    </div>
+      <h3>Gute Anlässe für Refactoring</h3>
+      <ul>
+        <li>wiederholter Code</li>
+        <li>zu große Komponenten</li>
+        <li>vermischte Zuständigkeiten</li>
+        <li>schwer lesbare Logik</li>
+        <li>unklare Benennung</li>
+      </ul>
 
-    <!-- ───────────────────────────────────────────── -->
+      <div class="info-box example">
+        <div class="info-icon"><i class="fas fa-message"></i></div>
+        <div class="info-content">
+          <div class="info-label">Beispielprompt</div>
+          <p>„Strukturiere den Code lesbarer. Trenne UI und Logik stärker, ohne das Verhalten zu ändern. Erkläre zuerst kurz, welche Refactoring-Schritte du vorschlägst.“</p>
+        </div>
+      </div>
+    </section>
 
-    <div class="wiki-section">
-    <h2 id="hosting-github">Für Fortgeschrittene: GitHub Pages</h2>
+    <section class="wiki-section">
+      <div class="section-kicker"><i class="fas fa-coins"></i> Vertiefung</div>
+      <h2 id="kosten-limits">13. Kosten &amp; Limits</h2>
 
-    <div class="highlight-box highlight-blue">
-      <p><strong>Was ist GitHub?</strong></p>
-      <p>GitHub ist eine Plattform im Internet, auf der man Code-Projekte speichern und mit anderen teilen kann - ähnlich wie eine Cloud-Ablage, aber speziell für Quellcode. Du brauchst dafür ein kostenloses Konto unter <a href="https://github.com" target="_blank" rel="noopener">github.com</a>.</p>
-    </div>
+      <p>KI-Tools sind schnell, aber nicht unbegrenzt.</p>
 
-    <p>Claude Code kann direkt mit GitHub verbunden werden. So werden deine Dateien nicht nur lokal gespeichert, sondern auch auf GitHub hochgeladen. Für kleine, öffentlich zugängliche Projekte bietet GitHub mit <strong>GitHub Pages</strong> sogar kostenloses Hosting - deine Seite bekommt eine eigene Internetadresse.</p>
+      <h3>Darauf solltest du achten</h3>
+      <ul>
+        <li>Modelllimits</li>
+        <li>Rate Limits</li>
+        <li>API-Kosten</li>
+        <li>Qualitätsschwankungen je nach Tool</li>
+        <li>Kontextfenster und Verlaufslänge</li>
+      </ul>
 
-    <h3>Schritt-für-Schritt-Anleitung</h3>
+      <div class="info-box tip">
+        <div class="info-icon"><i class="fas fa-swatchbook"></i></div>
+        <div class="info-content">
+          <div class="info-label">Praktische Konsequenz</div>
+          <p>Arbeite möglichst klar, klein und fokussiert. Je präziser die Aufgabe, desto besser ist meist das Ergebnis.</p>
+        </div>
+      </div>
+    </section>
 
-    <ol>
-      <li><strong>GitHub-Konto erstellen</strong> - registriere dich kostenlos auf <a href="https://github.com" target="_blank" rel="noopener">github.com</a></li>
-      <li><strong>Repository erstellen</strong> - lege ein neues Projekt (Repository) auf GitHub an</li>
-      <li><strong>Claude Code mit GitHub verbinden</strong> - Claude Code kann deine Dateien direkt in das Repository hochladen</li>
-      <li><strong>Pages aktivieren</strong> - im Repository unter <strong>Settings &gt; Pages</strong> den Branch <code>main</code> und Ordner <code>/ (root)</code> auswählen, dann speichern</li>
-      <li><strong>Fertig</strong> - die Seite ist nach ca. 1-2 Minuten unter <code>https://&lt;benutzername&gt;.github.io/&lt;repository-name&gt;/</code> erreichbar</li>
-    </ol>
+    <section class="wiki-section">
+      <div class="section-kicker"><i class="fas fa-cubes"></i> Vertiefung</div>
+      <h2 id="playground-produkt">14. Vom Playground zum Produkt</h2>
 
-    <div class="highlight-box highlight-green">
-      <p>Änderungen, die auf <code>main</code> hochgeladen werden, werden automatisch veröffentlicht.</p>
-    </div>
+      <p>Ein funktionierender Prototyp ist noch kein Produkt.</p>
 
-    <h3>Hinweis: Basispfade</h3>
+      <h3>Vibecoding ist stark für</h3>
+      <ul>
+        <li>Ideen validieren</li>
+        <li>interne Hilfstools</li>
+        <li>frühe Klickdummys</li>
+        <li>kleine Anwendungen mit überschaubarer Komplexität</li>
+      </ul>
 
-    <p>GitHub Pages liefert die Seite unter einem Unterpfad aus (z.&nbsp;B. <code>/vibecoding-academy/</code>). Wenn du die Seite lokal öffnest, liegt sie dagegen direkt unter <code>/</code>. Relative Links müssen ggf. angepasst werden.</p>
-    </div>
+      <button class="collapsible-toggle" aria-expanded="false" aria-controls="produkt-body">
+        <span>Wann reines Vibecoding nicht mehr reicht</span>
+        <i class="fas fa-chevron-right toggle-icon"></i>
+      </button>
+      <div class="collapsible-body" id="produkt-body">
+        <ul>
+          <li>mehrere Benutzerrollen</li>
+          <li>echte Logins</li>
+          <li>personenbezogene Daten</li>
+          <li>externe Zahlungen</li>
+          <li>Integrationen in Unternehmenssysteme</li>
+          <li>dauerhafter Betrieb und Support</li>
+        </ul>
 
-    <!-- ───────────────────────────────────────────── -->
+        <p>
+          Sobald diese Punkte relevant werden, brauchst du in der Regel mehr Struktur:
+          Architektur, Security, Wartung, Monitoring, Tests und klarere Entwicklungsprozesse.
+        </p>
+      </div>
+    </section>
 
-    <div class="wiki-section">
-    <h2 id="hosting-docker">Self-Hosting mit Docker</h2>
+    <section class="wiki-section">
+      <div class="section-kicker"><i class="fas fa-share-nodes"></i> Veröffentlichen</div>
+      <h2 id="deployment-sharing">15. Überblick zu Deployment und Sharing</h2>
 
-    <div class="highlight-box highlight-blue">
-      <p><strong>Was ist Docker?</strong></p>
-      <p>Docker ist ein Werkzeug, das eine Anwendung mitsamt allem, was sie braucht, in einen tragbaren "Container" verpackt. Stell dir das wie einen kleinen, eigenständigen Mini-Computer vor, der deine Website ausliefert. Du installierst Docker einmal auf deinem Rechner, und danach reicht ein einziger Befehl, um deine Seite zu starten.</p>
-    </div>
+      <p>
+        Wenn dein Ergebnis funktioniert, möchtest du es oft anderen zeigen oder testbar machen.
+        Dafür gibt es verschiedene Wege, je nach Anspruch und technischem Setup.
+      </p>
 
-    <p>Docker eignet sich, wenn du deine Seite auf einem eigenen Server betreiben oder lokal in einer professionellen Umgebung testen möchtest.</p>
+      <h3>Typische Wege sind</h3>
+      <ul>
+        <li>lokal ausführen</li>
+        <li>GitHub Pages</li>
+        <li>Docker</li>
+      </ul>
 
-    <h3>Voraussetzung</h3>
-    <p>Docker muss installiert sein: <a href="https://docs.docker.com/get-docker/" target="_blank" rel="noopener">https://docs.docker.com/get-docker/</a></p>
+      <p>Die Details dazu haben wir bewusst in eine separate Seite ausgelagert.</p>
+    </section>
 
-    <h3>Variante A: Mit Dockerfile (empfohlen für eigene Images)</h3>
+    <section class="wiki-section">
+      <div class="section-kicker"><i class="fas fa-server"></i> Veröffentlichen</div>
+      <h2 id="hosting-hinweis">16. Separate Hosting-Anleitung</h2>
 
-    <p><strong>1. Dockerfile im Projektordner erstellen:</strong></p>
+      <p>
+        Du willst dein Ergebnis veröffentlichen? Hier findest du eine separate
+        Schritt-für-Schritt-Anleitung für lokal, GitHub Pages und Docker.
+      </p>
 
-    <pre><code>FROM nginx:alpine
-COPY . /usr/share/nginx/html
-EXPOSE 80</code></pre>
+      <p>
+        <a href="../hosting/" class="back-link">
+          <i class="fas fa-arrow-right me-1"></i> Zur Hosting-Anleitung
+        </a>
+      </p>
+    </section>
 
-    <p><strong>2. Image bauen und starten:</strong></p>
+    <section class="wiki-section">
+      <div class="section-kicker"><i class="fas fa-bookmark"></i> Abschluss</div>
+      <h2 id="weiterfuehrende-inhalte">Weiterführende Inhalte</h2>
 
-    <pre><code>docker build -t vibecoding-academy .
-docker run -d -p 8080:80 vibecoding-academy</code></pre>
+      <ul>
+        <li>Ideen</li>
+        <li>Ergebnisse</li>
+        <li>GitHub</li>
+      </ul>
 
-    <p><strong>3. Im Browser öffnen:</strong> <code>http://localhost:8080</code></p>
+      <a class="back-link" href="../">&larr; Zurück zur Startseite</a>
+    </section>
 
-    <p><strong>4. Container stoppen:</strong></p>
+  </main>
 
-    <pre><code>docker ps                        # Container-ID nachschauen
-docker stop &lt;container-id&gt;       # Container stoppen</code></pre>
-
-    <h3>Variante B: Ohne Dockerfile (schnelle lokale Vorschau)</h3>
-
-    <p>Im Projektordner ausführen:</p>
-
-    <pre><code>docker run -d -p 8080:80 -v $(pwd):/usr/share/nginx/html:ro nginx:alpine</code></pre>
-
-    <p>Dieser Befehl startet einen nginx-Container und bindet den aktuellen Ordner direkt ein - ohne etwas zu bauen.</p>
-    </div>
-
-    <!-- ───────────────────────────────────────────── -->
-
-    <a class="back-link" href="../">&larr; Zurück zur Startseite</a>
-
-  </div>
-
-  <!-- ══════════════════════════════════════════════════ -->
-  <!--  Footer                                           -->
-  <!-- ══════════════════════════════════════════════════ -->
   <footer style="text-align:center; padding:1rem; font-size:0.8rem; color:#7a8599; border-top:1px solid #e2e8f0; margin-top:2rem;">
     <a href="../impressum.html" style="color:#7a8599; text-decoration:none; margin:0 0.5rem;">Impressum</a>
     <a href="../datenschutz.html" style="color:#7a8599; text-decoration:none; margin:0 0.5rem;">Datenschutz</a>
     <a href="../agb.html" style="color:#7a8599; text-decoration:none; margin:0 0.5rem;">AGB</a>
   </footer>
 
-  <!-- Bootstrap JS Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
           integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
           crossorigin="anonymous"></script>
 
   <script>
-  (function() {
-    // ── Reading Progress Bar ──────────────────────────
-    var progressBar = document.getElementById('reading-progress');
-    // ── Breadcrumb Bar ────────────────────────────────
-    var breadcrumbBar = document.getElementById('breadcrumb-bar');
-    var breadcrumbSection = document.getElementById('breadcrumb-section');
-    // ── Back to Top ───────────────────────────────────
-    var backToTop = document.getElementById('back-to-top');
+    (function() {
+      var progressBar = document.getElementById('reading-progress');
+      var breadcrumbBar = document.getElementById('breadcrumb-bar');
+      var breadcrumbSection = document.getElementById('breadcrumb-section');
+      var backToTop = document.getElementById('back-to-top');
 
-    // Collect all h2 elements for breadcrumb tracking
-    var sections = Array.from(document.querySelectorAll('.wiki-section h2[id]'));
+      var sections = Array.from(document.querySelectorAll('.wiki-section h2[id]'));
+      var toggles = document.querySelectorAll('.collapsible-toggle');
 
-    var ticking = false;
-    function onScroll() {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(function() {
-        var scrollTop = window.scrollY;
-        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-        progressBar.style.width = Math.min(progress, 100) + '%';
+      var ticking = false;
 
-        // Show/hide breadcrumb after scrolling past first section
-        if (scrollTop > 300) {
-          breadcrumbBar.classList.add('visible');
-        } else {
-          breadcrumbBar.classList.remove('visible');
-        }
+      function onScroll() {
+        if (ticking) return;
+        ticking = true;
 
-        // Update breadcrumb text
-        var currentSection = '';
-        for (var i = sections.length - 1; i >= 0; i--) {
-          if (sections[i].getBoundingClientRect().top <= 120) {
-            currentSection = sections[i].textContent;
-            break;
+        requestAnimationFrame(function() {
+          var scrollTop = window.scrollY;
+          var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+          progressBar.style.width = Math.min(progress, 100) + '%';
+
+          if (scrollTop > 280) {
+            breadcrumbBar.classList.add('visible');
+          } else {
+            breadcrumbBar.classList.remove('visible');
           }
-        }
-        if (currentSection) {
+
+          var currentSection = 'Einleitung';
+          for (var i = sections.length - 1; i >= 0; i--) {
+            if (sections[i].getBoundingClientRect().top <= 140) {
+              currentSection = sections[i].textContent;
+              break;
+            }
+          }
           breadcrumbSection.textContent = currentSection;
-        }
 
-        // Show/hide back-to-top button
-        if (scrollTop > 500) {
-          backToTop.classList.add('visible');
-        } else {
-          backToTop.classList.remove('visible');
-        }
+          if (scrollTop > 500) {
+            backToTop.classList.add('visible');
+          } else {
+            backToTop.classList.remove('visible');
+          }
 
-        ticking = false;
+          ticking = false;
+        });
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      backToTop.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       });
-    }
 
-    window.addEventListener('scroll', onScroll, { passive: true });
+      toggles.forEach(function(toggle) {
+        toggle.addEventListener('click', function() {
+          var expanded = this.getAttribute('aria-expanded') === 'true';
+          var bodyId = this.getAttribute('aria-controls');
+          var body = document.getElementById(bodyId);
 
-    backToTop.addEventListener('click', function() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // ── Collapsible Sections ──────────────────────────
-    var toggles = document.querySelectorAll('.collapsible-toggle');
-    toggles.forEach(function(toggle) {
-      toggle.addEventListener('click', function() {
-        var expanded = this.getAttribute('aria-expanded') === 'true';
-        var bodyId = this.getAttribute('aria-controls');
-        var body = document.getElementById(bodyId);
-        if (expanded) {
-          this.setAttribute('aria-expanded', 'false');
-          body.classList.remove('open');
-        } else {
-          this.setAttribute('aria-expanded', 'true');
-          body.classList.add('open');
-        }
+          if (expanded) {
+            this.setAttribute('aria-expanded', 'false');
+            body.classList.remove('open');
+          } else {
+            this.setAttribute('aria-expanded', 'true');
+            body.classList.add('open');
+          }
+        });
       });
-    });
 
-    // Fire once on load
-    onScroll();
-  })();
+      onScroll();
+    })();
   </script>
 </body>
 </html>
