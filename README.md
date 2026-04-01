@@ -154,7 +154,7 @@ vibecoding-academy/
 
 ### Spielkonzepte
 
-Konzepte und Spielideen als Markdown-Dateien in `ideen/`, abrufbar über den [Konzept-Viewer](https://fauteck.github.io/vibecoding-academy/ideen/viewer.html):
+Konzepte und Spielideen als Markdown-Dateien in `projekte/`, abrufbar über den [Konzept-Viewer](https://fauteck.github.io/vibecoding-academy/projekte/viewer.html):
 
 Flappy Bird, Haushaltsbuch, Memory, Minesweeper, Pong, Snake, Solitär, Sudoku, Tetris, Tic-Tac-Toe
 
