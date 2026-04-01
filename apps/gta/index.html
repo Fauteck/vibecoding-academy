@@ -225,47 +225,29 @@
   </style>
 </head>
 <body>
-  <!-- Desktop Navbar (>992px) -->
-  <nav class="navbar navbar-expand d-none d-lg-flex">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="../../">
-        <span class="navbar-brand-name"><i class="fas fa-code me-1"></i> Vibecoding Academy</span>
-        <span class="navbar-brand-subtitle">mit Niklas Fauteck</span>
+  <nav class="site-nav" role="navigation" aria-label="Hauptnavigation">
+    <div class="site-nav-inner">
+      <a class="site-nav-brand" href="../../">
+        <span class="site-nav-brand-name">Vibecoding Academy</span>
+        <span class="site-nav-brand-subtitle">mit Niklas Fauteck</span>
       </a>
-      <div class="d-flex align-items-center gap-1">
-        <a class="navbar-link" href="../../">Workshop</a>
-        <a class="navbar-link" href="../../wiki/">Wiki</a>
-        <a class="navbar-link active" href="../../projekte/">Projekte</a>
-        <a class="navbar-link" href="../../ueber-mich/">Coach</a>
+      <div class="site-nav-links">
+        <a class="site-nav-link" href="../../">Workshop</a>
+        <a class="site-nav-link" href="../../wiki/">Wiki</a>
+        <a class="site-nav-link active" href="../../projekte/">Projekte</a>
+        <a class="site-nav-link" href="../../ueber-mich/">Coach</a>
+      </div>
+      <button class="site-nav-hamburger" aria-label="Menü" aria-expanded="false"
+              onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');this.setAttribute('aria-expanded',this.classList.contains('open'))">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="site-nav-dropdown">
+        <a class="site-nav-link" href="../../">Workshop</a>
+        <a class="site-nav-link" href="../../wiki/">Wiki</a>
+        <a class="site-nav-link" href="../../projekte/">Projekte</a>
+        <a class="site-nav-link" href="../../ueber-mich/">Coach</a>
       </div>
     </div>
-  </nav>
-
-  <!-- Mobile Top Bar (<=992px) -->
-  <div class="mobile-topbar d-lg-none">
-    <a class="mobile-topbar-brand" href="../../">
-      <i class="fas fa-code me-1"></i> Vibecoding Academy
-    </a>
-  </div>
-
-  <!-- Mobile Bottom Navigation (<=992px) -->
-  <nav class="bottom-nav d-lg-none">
-    <a class="bottom-nav-item" href="../../">
-      <i class="fas fa-chalkboard-user"></i>
-      <span>Workshop</span>
-    </a>
-    <a class="bottom-nav-item" href="../../wiki/">
-      <i class="fas fa-book"></i>
-      <span>Wiki</span>
-    </a>
-    <a class="bottom-nav-item active" href="../../projekte/">
-      <i class="fas fa-rocket"></i>
-      <span>Projekte</span>
-    </a>
-    <a class="bottom-nav-item" href="../../ueber-mich/">
-      <i class="fas fa-user"></i>
-      <span>Coach</span>
-    </a>
   </nav>
 
   <!-- Page Header -->

@@ -1,70 +1,161 @@
-/* ── Desktop Navbar (>992px) ─────────────────────── */
-.navbar {
-  background: linear-gradient(135deg, #5B8BD6, #3D5A8C);
-  position: fixed; top: 0; left: 0; right: 0;
-  z-index: 1030; box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-}
-.navbar .container-fluid { justify-content: space-between; }
-.navbar-brand {
-  color: #fff !important; text-decoration: none;
-  display: flex; flex-direction: column; gap: 0.1rem; line-height: 1.2;
-}
-.navbar-brand-name { font-size: 1.3rem; font-weight: bold; }
-.navbar-brand-subtitle {
-  font-size: 0.7rem; font-weight: 400; color: rgba(255,255,255,0.7);
-  letter-spacing: 0.05em; text-transform: uppercase;
-}
-.navbar-link {
-  color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.875rem;
-  padding: 0.4rem 0.8rem; border-radius: 6px; transition: background 0.2s, color 0.2s;
-}
-.navbar-link:hover, .navbar-link.active { color: #fff; background: rgba(255,255,255,0.15); }
-.navbar-link.dropdown-toggle::after { margin-left: 0.3em; vertical-align: 0.15em; }
-.navbar .dropdown-menu {
-  background: #3D5A8C; border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 8px; min-width: 200px; padding: 0.4rem 0;
-}
-.navbar .dropdown-menu .dropdown-item {
-  color: rgba(255,255,255,0.85); font-size: 0.875rem; padding: 0.45rem 1rem;
-}
-.navbar .dropdown-menu .dropdown-item:hover,
-.navbar .dropdown-menu .dropdown-item:focus { background: rgba(255,255,255,0.15); color: #fff; }
-.navbar .dropdown-menu .dropdown-divider { border-color: rgba(255,255,255,0.15); }
+/* ── Unified Top Navigation ─────────────────────── */
 
-/* ── Mobile Top Bar (<=992px) ────────────────────── */
-.mobile-topbar {
-  position: fixed; top: 0; left: 0; right: 0; height: 56px;
-  background: linear-gradient(135deg, #5B8BD6, #3D5A8C);
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 1rem; z-index: 1030; box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1030;
+  background: #fff;
+  border-bottom: 1px solid var(--border-color, #D4DCE8);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.04);
 }
-.mobile-topbar-brand { color: #fff; text-decoration: none; font-size: 1.1rem; font-weight: bold; display: flex; align-items: center; gap: 0.4rem; }
-.mobile-topbar-btn { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 1.1rem; padding: 0.4rem; transition: color 0.2s; }
-.mobile-topbar-btn:hover { color: #fff; }
 
-/* ── Mobile Bottom Nav (<=992px) ─────────────────── */
-.bottom-nav {
-  position: fixed; bottom: 0; left: 0; right: 0; height: 60px;
-  background: #3D5A8C; display: flex; justify-content: space-around; align-items: center;
-  z-index: 1030; box-shadow: 0 -2px 8px rgba(0,0,0,0.15);
+.site-nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 3rem;
 }
-.bottom-nav-item {
-  display: flex; flex-direction: column; align-items: center; gap: 0.15rem;
-  color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.65rem;
-  background: none; border: none; padding: 0.3rem 0.6rem; transition: color 0.2s;
-}
-.bottom-nav-item i { font-size: 1.15rem; }
-.bottom-nav-item:hover, .bottom-nav-item.active { color: #fff; }
-.bottom-nav-item.active i { color: #5B8BD6; }
 
-/* ── Offcanvas Bottom Sheets ─────────────────────── */
-.nav-sheet { border-radius: 16px 16px 0 0 !important; }
-.nav-sheet .offcanvas-header { background: #3D5A8C; color: #fff; border-radius: 16px 16px 0 0; }
+/* ── Logo (left) ─────────────────────────────────── */
+
+.site-nav-brand {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+  transition: color 0.2s ease;
+}
+
+.site-nav-brand-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--secondary-color, #3D5A8C);
+}
+
+.site-nav-brand-subtitle {
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted, #7A8599);
+}
+
+.site-nav-brand:hover .site-nav-brand-name,
+.site-nav-brand:hover .site-nav-brand-subtitle {
+  color: var(--primary-color, #5B8BD6);
+}
+
+/* ── Navigation Links (right, desktop) ───────────── */
+
+.site-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-nav-link {
+  text-decoration: none;
+  color: var(--text-muted, #7A8599);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.site-nav-link:hover,
+.site-nav-link.active {
+  color: var(--primary-color, #5B8BD6);
+}
+
+/* ── Hamburger Button (mobile) ───────────────────── */
+
+.site-nav-hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+}
+
+.site-nav-hamburger span {
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--secondary-color, #3D5A8C);
+  border-radius: 1px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* Hamburger → X animation */
+.site-nav-hamburger.open span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+.site-nav-hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.site-nav-hamburger.open span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* ── Mobile Dropdown ─────────────────────────────── */
+
+.site-nav-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-bottom: 1px solid var(--border-color, #D4DCE8);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  padding: 0.5rem 0;
+}
+
+.site-nav-dropdown.open {
+  display: block;
+}
+
+.site-nav-dropdown .site-nav-link {
+  display: block;
+  padding: 0.75rem 3rem;
+}
+
+.site-nav-dropdown .site-nav-link:hover {
+  background: var(--bg-page, #EEF2F7);
+}
+
+/* ── Body Offset ─────────────────────────────────── */
+
+body {
+  padding-top: 4.5rem;
+}
 
 /* ── Responsive ──────────────────────────────────── */
-@media (min-width: 992px) {
-  .mobile-topbar, .bottom-nav { display: none !important; }
+
+@media (max-width: 968px) {
+  .site-nav-links {
+    display: none;
+  }
+  .site-nav-hamburger {
+    display: flex;
+  }
 }
-@media (max-width: 991.98px) {
-  body { padding-top: 56px; padding-bottom: 60px; }
+
+@media (max-width: 600px) {
+  .site-nav-inner {
+    padding: 1rem 1.5rem;
+  }
+  .site-nav-dropdown .site-nav-link {
+    padding: 0.75rem 1.5rem;
+  }
 }
