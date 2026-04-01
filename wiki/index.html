@@ -27,8 +27,13 @@
     html { scroll-behavior: smooth; }
     body {
       font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      background: #f5f7fa;
+      background:
+        linear-gradient(rgba(238, 242, 247, 0.45), rgba(238, 242, 247, 0.45)),
+        url('../images/content-bg.jpg') top center/cover no-repeat fixed,
+        #EEF2F7;
       color: #222;
+      min-height: 100vh;
+      position: relative;
     }
 
     #reading-progress {
@@ -44,7 +49,7 @@
     }
 
     @media (min-width: 992px) {
-      #reading-progress { top: 56px; }
+      #reading-progress { top: 4.5rem; }
     }
 
     #breadcrumb-bar {
@@ -69,11 +74,11 @@
     }
 
     @media (min-width: 992px) {
-      #breadcrumb-bar { top: 56px; }
+      #breadcrumb-bar { top: 4.5rem; }
     }
 
     @media (max-width: 991.98px) {
-      #breadcrumb-bar { top: 56px; }
+      #breadcrumb-bar { top: 4.5rem; }
     }
 
     #breadcrumb-bar .breadcrumb-inner {
@@ -141,26 +146,36 @@
       line-height: 1.7;
     }
 
-    .wiki-header {
-      background: #fff;
+    .hero-section {
+      background:
+        linear-gradient(135deg, rgba(61, 90, 140, 0.3) 0%, rgba(91, 139, 214, 0.15) 100%),
+        linear-gradient(135deg, #5B8BD6 0%, #6BB8D4 35%, #7DD4C8 55%, #A89BD4 100%);
+      padding: 3rem 1.5rem 2.5rem;
+      text-align: center;
+      border-radius: 0 0 10px 10px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-section h1 {
+      color: #ffffff;
+      font-weight: 800;
+      font-size: clamp(2rem, 5vw, 3rem);
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-section p {
+      color: rgba(255, 255, 255, 0.9);
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+    }
+
+    .wiki-intro-card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(8px);
       border-radius: 14px;
       box-shadow: 0 1px 4px rgba(0,0,0,0.06);
       padding: 2rem;
       margin-bottom: 1.5rem;
-    }
-
-    .wiki-header h1 {
-      font-size: 1.95rem;
-      margin-bottom: 0.5rem;
-      color: #2c3e50;
-      border-bottom: 2px solid #eee;
-      padding-bottom: 0.5rem;
-    }
-
-    .subtitle {
-      color: #666;
-      margin-bottom: 1rem;
-      font-size: 1rem;
     }
 
     .intro-text {
@@ -169,7 +184,8 @@
     }
 
     .wiki-section {
-      background: #fff;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(8px);
       border-radius: 12px;
       box-shadow: 0 1px 4px rgba(0,0,0,0.06);
       margin-bottom: 1.5rem;
@@ -306,7 +322,7 @@
     blockquote p:last-child { margin-bottom: 0; }
 
     .toc {
-      background: #f8f9fa;
+      background: rgba(248, 249, 250, 0.85);
       border: 1px solid #e9ecef;
       border-radius: 10px;
       padding: 1.25rem 1.4rem;
@@ -497,10 +513,16 @@
 
     .back-link:hover { text-decoration: underline; }
 
+    @media (max-width: 991.98px) {
+      .hero-section {
+        padding: 2.5rem 1rem 2rem;
+        border-radius: 0;
+      }
+    }
+
     @media (max-width: 600px) {
       #content { margin: 0.5rem; padding: 0 0.5rem; }
-      .wiki-header { padding: 1.2rem; }
-      .wiki-header h1 { font-size: 1.55rem; }
+      .wiki-intro-card { padding: 1.2rem; }
       .section-toggle { padding: 1rem; }
       .wiki-section-inner { padding: 0 1rem 1.2rem; }
     }
@@ -583,11 +605,18 @@
     </div>
   </nav>
 
+  <div class="hero-section">
+    <div style="max-width: 900px; margin: 0 auto;">
+      <h1>Vibecoding Wiki</h1>
+      <p class="mx-auto" style="max-width: 600px;">
+        Handout und Lernpfad durch die wichtigsten Grundlagen, Methoden und Grenzen des Vibecodings.
+      </p>
+    </div>
+  </div>
+
   <main id="content">
 
-    <header class="wiki-header">
-      <h1>Vibecoding Wiki</h1>
-      <p class="subtitle">Handout und Lernpfad durch die wichtigsten Grundlagen, Methoden und Grenzen des Vibecodings.</p>
+    <div class="wiki-intro-card">
       <p class="intro-text">
         Willkommen in der Vibecoding Wiki. Diese Seite ist dein Handout und Lernpfad durch die wichtigsten Grundlagen,
         Methoden und Grenzen des Vibecodings. Wenn du ganz neu einsteigst, arbeite die Kapitel in der Reihenfolge des
@@ -637,7 +666,7 @@
           </ol>
         </div>
       </nav>
-    </header>
+    </div>
 
     <section class="wiki-section">
       <button class="section-toggle" aria-expanded="false" aria-controls="section-orientierung">
