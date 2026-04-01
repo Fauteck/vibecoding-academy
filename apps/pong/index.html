@@ -22,16 +22,52 @@
         crossorigin="anonymous">
   <link rel="stylesheet" href="../../css/nav.css">
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: system-ui, sans-serif; background: #111; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding-top: 48px; }
+    /* ── Design Tokens ────────────────────────────────── */
+    :root {
+      --primary-color:   #5B8BD6;
+      --secondary-color: #3D5A8C;
+      --success-color:   #5CC6A7;
+      --danger-color:    #D46B6B;
+      --warning-color:   #D4A55B;
+      --info-color:      #6BB8D4;
+      --bg-page:         #EEF2F7;
+      --bg-card:         rgba(255, 255, 255, 0.85);
+      --text-primary:    #2D3748;
+      --text-muted:      #7A8599;
+      --border-color:    #D4DCE8;
+      --border-radius-card: 10px;
+    }
 
-    #game { width: 420px; height: 500px; position: relative; }
-    .pong-wrap { display:flex; flex-direction:column; align-items:center; height:100%; background:#111; padding:8px; box-sizing:border-box; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg-page);
+      color: var(--text-primary);
+      padding-top: 48px;
+      min-height: 100vh;
+    }
+
+    /* ── Page Header ────────────────────────────────── */
+    .page-header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: #fff; padding: 2rem 1rem; text-align: center; margin-bottom: 1.5rem;
+    }
+    .page-header h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .page-header p { opacity: 0.85; font-size: 0.95rem; margin: 0; }
+
+    @media (max-width: 768px) {
+      .page-header h1 { font-size: 1.4rem; }
+      .page-header p { font-size: 0.85rem; }
+    }
+
+    #game { width: 420px; max-width: 100%; position: relative; margin: 0 auto 2rem; }
+    .pong-wrap { display:flex; flex-direction:column; align-items:center; background:#111; padding:8px; box-sizing:border-box; border-radius: var(--border-radius-card); }
     .pong-scores { display:flex; justify-content:space-between; width:300px; color:#fff; font:bold 14px/1 system-ui; padding:4px 0 6px; }
     .pong-scores span { opacity:.7; }
     .pong-scores strong { font-size:18px; }
     .pong-wrap canvas { background:#000; border-radius:4px; display:block; }
-    .pong-overlay { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; background:rgba(0,0,0,.72); z-index:2; cursor:pointer; }
+    .pong-overlay { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; background:rgba(0,0,0,.72); z-index:2; cursor:pointer; border-radius: var(--border-radius-card); }
     .pong-overlay-title { color:#fff; font:bold 22px/1 system-ui; margin-bottom:6px; }
     .pong-overlay-sub { color:#aaa; font:13px/1 system-ui; }
   </style>
@@ -86,7 +122,16 @@
       <span>Coach</span>
     </a>
   </nav>
-  <div id="game"></div>
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <h1><i class="fas fa-table-tennis-paddle-ball me-2"></i>Pong</h1>
+    <p>Klassisches Pong-Spiel – gebaut mit KI im Vibecoding-Workshop</p>
+  </div>
+
+  <main style="max-width: 1100px; margin: 0 auto; padding: 0 1rem 2rem;">
+    <div id="game"></div>
+  </main>
   <script>
 (function() {
   const container = document.getElementById('game');

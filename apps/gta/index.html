@@ -26,18 +26,55 @@
     @font-face { font-family: 'JetBrains Mono'; src: url('fonts/JetBrainsMono-Bold.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
     @font-face { font-family: 'JetBrains Mono'; src: url('fonts/JetBrainsMono-ExtraBold.woff2') format('woff2'); font-weight: 800; font-style: normal; font-display: swap; }
 
+    /* ── Design Tokens ────────────────────────────────── */
+    :root {
+      --primary-color:   #5B8BD6;
+      --secondary-color: #3D5A8C;
+      --success-color:   #5CC6A7;
+      --danger-color:    #D46B6B;
+      --warning-color:   #D4A55B;
+      --info-color:      #6BB8D4;
+      --bg-page:         #EEF2F7;
+      --bg-card:         rgba(255, 255, 255, 0.85);
+      --text-primary:    #2D3748;
+      --text-muted:      #7A8599;
+      --border-color:    #D4DCE8;
+      --border-radius-card: 10px;
+    }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: system-ui, sans-serif; background: #0a0a0a; display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; padding-top: 48px; overflow: hidden; }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg-page);
+      color: var(--text-primary);
+      padding-top: 48px;
+      min-height: 100vh;
+    }
+
+    /* ── Page Header ────────────────────────────────── */
+    .page-header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: #fff; padding: 2rem 1rem; text-align: center; margin-bottom: 1.5rem;
+    }
+    .page-header h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .page-header p { opacity: 0.85; font-size: 0.95rem; margin: 0; }
+
+    @media (max-width: 768px) {
+      .page-header h1 { font-size: 1.4rem; }
+      .page-header p { font-size: 0.85rem; }
+    }
 
     @media (max-width: 991.98px) {
       .gta-controls { bottom: 80px; }
     }
 
-    #game { width: 100vw; height: calc(100vh - 48px); display: flex; align-items: center; justify-content: center; }
+    #game { width: 100%; margin: 0 auto 2rem; display: flex; align-items: center; justify-content: center; }
     .gta-game {
       display: flex; flex-direction: column; align-items: center; justify-content: center;
-      background: #0a0a0a; width: 100%; height: 100%; position: relative;
+      background: #0a0a0a; position: relative;
       overflow: hidden; font-family: 'JetBrains Mono', monospace;
+      border-radius: var(--border-radius-card);
     }
     #gta-canvas {
       display: block;
@@ -238,7 +275,15 @@
     </a>
   </nav>
 
-  <div id="game"></div>
+  <!-- Page Header -->
+  <div class="page-header">
+    <h1><i class="fas fa-car me-2"></i>Grand Thomas Auto 6</h1>
+    <p>GTA-Parodie als Browser-Spiel – erstellt mit KI-gestütztem Vibecoding</p>
+  </div>
+
+  <main style="padding: 0 1rem 2rem; text-align: center;">
+    <div id="game"></div>
+  </main>
   <script>
 (function() {
   const container = document.getElementById('game');
@@ -320,11 +365,11 @@
 
   // --- RESIZE ---
   function resize() {
-    const maxW = window.innerWidth;
-    const maxH = window.innerHeight - 48;
+    const maxW = window.innerWidth - 32;
+    const maxH = window.innerHeight - 220;
     const tileW = Math.floor(maxW / COLS);
     const tileH = Math.floor(maxH / ROWS);
-    TILE = Math.min(tileW, tileH);
+    TILE = Math.max(16, Math.min(tileW, tileH));
     SIZE = Math.round(TILE * 0.6);
     canvas.width = TILE * COLS;
     canvas.height = TILE * ROWS;
