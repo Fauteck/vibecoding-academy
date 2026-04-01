@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontakt - Vibecoding Academy</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230f0f1a'/%3E%3Ctext x='2' y='23' font-family='monospace' font-size='20' font-weight='bold' fill='%237c3aed'%3E%26lt;%3C/text%3E%3Ctext x='18' y='23' font-family='monospace' font-size='20' font-weight='bold' fill='%2306b6d4'%3E%26gt;%3C/text%3E%3Cpath d='M17 8 L13 17 L18 17 L15 26' stroke='url(%23g)' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23c4b5fd'/%3E%3Cstop offset='1' stop-color='%2306b6d4'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E">
+  <meta name="description" content="Kontakt - Vibecoding Academy. Lassen Sie uns über Ihre Herausforderungen sprechen.">
+  <meta property="og:title" content="Kontakt - Vibecoding Academy">
+  <meta property="og:description" content="Kontakt - Vibecoding Academy. Lassen Sie uns über Ihre Herausforderungen sprechen.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://fauteck.github.io/vibecoding-academy/kontakt/">
+  <meta property="og:locale" content="de_DE">
+  <meta name="theme-color" content="#5B8BD6">
+  <!-- Bootstrap 5.3.2 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+        crossorigin="anonymous">
+  <!-- Font Awesome 6.4.2 -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="../css/nav.css">
+  <style>
+    :root {
+      --primary-color:   #5B8BD6;
+      --secondary-color: #3D5A8C;
+      --success-color:   #5CC6A7;
+      --danger-color:    #D46B6B;
+      --warning-color:   #D4A55B;
+      --info-color:      #6BB8D4;
+      --bg-page:         #EEF2F7;
+      --bg-card:         rgba(255, 255, 255, 0.85);
+      --text-primary:    #2D3748;
+      --text-muted:      #7A8599;
+      --border-color:    #D4DCE8;
+      --border-radius-card: 10px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background:
+        linear-gradient(rgba(238, 242, 247, 0.45), rgba(238, 242, 247, 0.45)),
+        url('../images/content-bg.jpg') top center/cover no-repeat fixed,
+        var(--bg-page);
+      color: var(--text-primary);
+      min-height: 100vh;
+    }
+
+    /* ── Page Content ───────────────────────────────── */
+    .page-wrapper {
+      padding-top: 80px;
+      padding-bottom: 3rem;
+    }
+    @media (max-width: 991.98px) {
+      .page-wrapper { padding-top: 1.5rem; }
+    }
+
+    /* ── Section Label ──────────────────────────────── */
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--success-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .page-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+    }
+
+    .page-subtitle {
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 600px;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── Contact Cards ──────────────────────────────── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+    @media (max-width: 575.98px) {
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+
+    .contact-card {
+      background: #fff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius-card);
+      padding: 1.5rem;
+      transition: box-shadow 0.2s;
+    }
+    .contact-card:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    }
+
+    .contact-card .card-icon {
+      font-size: 1.4rem;
+      color: var(--success-color);
+      margin-bottom: 0.75rem;
+    }
+
+    .contact-card .card-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .contact-card .card-value {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+    .contact-card .card-value a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+    .contact-card .card-value a:hover {
+      color: var(--primary-color);
+    }
+
+    /* ── CTA Button ─────────────────────────────────── */
+    .cta-btn {
+      display: inline-block;
+      padding: 0.7rem 1.5rem;
+      background: var(--success-color);
+      color: #fff;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: opacity 0.2s;
+    }
+    .cta-btn:hover {
+      opacity: 0.85;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!--  Desktop Navbar (>992px)                              -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <nav class="navbar navbar-expand d-none d-lg-flex">
+    <div class="container-fluid">
+      <a href="https://fauteck.github.io/website/" class="navbar-back-link" aria-label="Zurück zu niklasfauteck.de">
+        <i class="fas fa-house me-1"></i> niklasfauteck.de
+      </a>
+      <span class="navbar-back-separator">|</span>
+      <a class="navbar-brand" href="../">
+        <i class="fas fa-code me-1"></i> Vibecoding Academy
+      </a>
+      <div class="d-flex align-items-center gap-1">
+        <a class="navbar-link" href="../#workshop">Workshop</a>
+        <a class="navbar-link" href="../wiki/">Wiki</a>
+        <a class="navbar-link" href="../projekte/">Projekte</a>
+        <a class="navbar-link" href="../ueber-mich/">Coach</a>
+        <a class="navbar-link active" href="../kontakt/">Kontakt</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!--  Mobile Top Bar (<=992px)                             -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="mobile-topbar d-lg-none">
+    <a href="https://fauteck.github.io/website/" class="mobile-topbar-btn" aria-label="Zurück zu niklasfauteck.de">
+      <i class="fas fa-arrow-left"></i>
+    </a>
+    <a class="mobile-topbar-brand" href="../">
+      <i class="fas fa-code me-1"></i> Vibecoding Academy
+    </a>
+    <span style="width: 32px;"></span>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!--  Page Content                                         -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="page-wrapper">
+    <div class="container" style="max-width: 800px;">
+
+      <p class="section-label">Kontakt</p>
+      <h1 class="page-title">Lassen Sie uns sprechen</h1>
+      <p class="page-subtitle">
+        Sie suchen einen Projektmanager Digitalisierung &amp; Coach für Digitale
+        Transformation und KI-gestütztes Vibecoding für Ihr Projekt? Lassen Sie uns über
+        Ihre Herausforderungen sprechen.
+      </p>
+
+      <!-- Contact Cards Grid -->
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="card-icon"><i class="fab fa-linkedin-in"></i></div>
+          <div class="card-title">LinkedIn</div>
+          <div class="card-value">
+            <a href="https://www.linkedin.com/in/fauteck" target="_blank" rel="noopener">linkedin.com/in/fauteck</a>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div class="card-icon"><i class="fab fa-github"></i></div>
+          <div class="card-title">GitHub</div>
+          <div class="card-value">
+            <a href="https://github.com/Fauteck" target="_blank" rel="noopener">github.com/Fauteck</a>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div class="card-icon"><i class="fab fa-mastodon"></i></div>
+          <div class="card-title">Mastodon</div>
+          <div class="card-value">
+            <a href="https://bonn.social/@fauteck" target="_blank" rel="noopener">bonn.social/@fauteck</a>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div class="card-icon"><i class="fas fa-envelope"></i></div>
+          <div class="card-title">E-Mail</div>
+          <div class="card-value">
+            <a href="mailto:me@fauteck.eu">me@fauteck.eu</a>
+          </div>
+        </div>
+      </div>
+
+      <a href="mailto:me@fauteck.eu?subject=Kontaktanfrage" class="cta-btn">
+        Nachricht senden &rarr;
+      </a>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!--  Footer                                               -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <footer style="background: #f8f9fa; border-top: 1px solid #e2e8f0; padding: 2rem 1rem; text-align: center;">
+    <div class="container">
+      <p style="color: #2D3748; font-size: 0.9rem; margin-bottom: 0.75rem;">
+        Niklas Fauteck &middot; Vibecoding Academy &middot; 2026
+      </p>
+      <p style="margin-bottom: 0.5rem;">
+        <a href="../kontakt/" style="color: #5CC6A7; text-decoration: none; font-weight: 600;">Kontakt</a>
+      </p>
+      <p style="font-size: 0.8rem; color: #7a8599; margin-bottom: 0;">
+        <a href="../impressum.html" style="color: #7a8599; text-decoration: none;">Impressum</a>
+        <span style="margin: 0 0.3rem;">&middot;</span>
+        <a href="../datenschutz.html" style="color: #7a8599; text-decoration: none;">Datenschutz</a>
+        <span style="margin: 0 0.3rem;">&middot;</span>
+        <a href="../agb.html" style="color: #7a8599; text-decoration: none;">AGB</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!--  Mobile Bottom Navigation (<=992px)                   -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <nav class="bottom-nav d-lg-none">
+    <a class="bottom-nav-item" href="../#workshop">
+      <i class="fas fa-chalkboard-user"></i>
+      <span>Workshop</span>
+    </a>
+    <a class="bottom-nav-item" href="../wiki/">
+      <i class="fas fa-book"></i>
+      <span>Wiki</span>
+    </a>
+    <a class="bottom-nav-item" href="../projekte/">
+      <i class="fas fa-rocket"></i>
+      <span>Projekte</span>
+    </a>
+    <a class="bottom-nav-item" href="../ueber-mich/">
+      <i class="fas fa-user"></i>
+      <span>Coach</span>
+    </a>
+    <a class="bottom-nav-item active" href="../kontakt/">
+      <i class="fas fa-envelope"></i>
+      <span>Kontakt</span>
+    </a>
+  </nav>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+          crossorigin="anonymous"></script>
+</body>
+</html>
