@@ -1,0 +1,19 @@
+/* ── Unified Footer ──────────────────────────────── */
+
+.footer {
+  background: var(--secondary-color, #3D5A8C);
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.85rem;
+  margin-top: 3rem;
+}
+
+.footer a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: #fff;
+}
