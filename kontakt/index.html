@@ -258,6 +258,7 @@
         <a class="site-nav-link" href="../wiki/">Wiki</a>
         <a class="site-nav-link" href="../projekte/">Projekte</a>
         <a class="site-nav-link" href="../ueber-mich/">Coach</a>
+              <a class="site-nav-cta" href="../kontakt/">Workshop anfragen</a>
       </div>
       <button class="site-nav-hamburger" aria-label="Menü" aria-expanded="false"
               onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');this.setAttribute('aria-expanded',this.classList.contains('open'))">
@@ -268,6 +269,7 @@
         <a class="site-nav-link" href="../wiki/">Wiki</a>
         <a class="site-nav-link" href="../projekte/">Projekte</a>
         <a class="site-nav-link" href="../ueber-mich/">Coach</a>
+              <a class="site-nav-cta" href="../kontakt/">Workshop anfragen</a>
       </div>
     </div>
   </nav>
@@ -316,7 +318,7 @@
           <div class="card-icon"><i class="fas fa-envelope"></i></div>
           <div class="card-title">E-Mail</div>
           <div class="card-value">
-            <a href="mailto:me@fauteck.eu">me@fauteck.eu</a>
+            <a href="mailto:ki@fauteck.eu">ki@fauteck.eu</a>
           </div>
         </div>
 
@@ -331,7 +333,7 @@
 
       <!-- Contact Form -->
       <div class="contact-form-section">
-        <h2><i class="fas fa-paper-plane me-2"></i>Nachricht senden</h2>
+        <h2><i class="fas fa-paper-plane me-2"></i>Workshop-Fit-Check starten</h2>
         <form class="contact-form" id="contactForm" novalidate>
           <div class="form-row">
             <div class="form-group">
@@ -401,7 +403,7 @@
             <textarea id="cf-message" name="message" required placeholder="Beschreibe kurz, woran du arbeitest und was du dir vom Workshop erhoffst."></textarea>
           </div>
           <button type="submit" class="cta-btn">
-            Nachricht senden &rarr;
+            Workshop anfragen
           </button>
           <div class="form-success" id="formSuccess">
             <i class="fas fa-check me-1"></i> Dein E-Mail-Programm wurde geöffnet. Sende die E-Mail ab, um deine Anfrage abzuschließen.
@@ -451,7 +453,7 @@
       }
 
       var body = 'Name: ' + name + '\nE-Mail: ' + email + fitCheck + '\n\nNachricht:\n' + message;
-      var mailto = 'mailto:me@fauteck.eu'
+      var mailto = 'mailto:ki@fauteck.eu'
         + '?subject=' + encodeURIComponent(subject)
         + '&body='    + encodeURIComponent(body);
 
