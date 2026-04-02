@@ -146,6 +146,75 @@
       color: #fff;
     }
 
+    /* ── Contact Form ──────────────────────────────── */
+    .contact-form-section {
+      margin-top: 1rem;
+    }
+    .contact-form-section h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 1.25rem;
+    }
+    .contact-form {
+      background: var(--bg-card);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius-card);
+      padding: 1.75rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.4rem;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.6rem 0.85rem;
+      font-family: inherit;
+      font-size: 0.9rem;
+      color: var(--text-primary);
+      background: #fff;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(91, 139, 214, 0.15);
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+    @media (max-width: 575.98px) {
+      .form-row { grid-template-columns: 1fr; gap: 0; }
+    }
+    .form-success {
+      display: none;
+      padding: 0.75rem 1rem;
+      background: rgba(92, 198, 167, 0.12);
+      border: 1px solid var(--success-color);
+      border-radius: 6px;
+      color: var(--text-primary);
+      font-size: 0.9rem;
+      margin-top: 1rem;
+    }
+
   </style>
 </head>
 <body>
@@ -232,9 +301,36 @@
         </div>
       </div>
 
-      <a href="mailto:me@fauteck.eu?subject=Workshop-Anfrage" class="cta-btn">
-        Workshop für mein Team anfragen &rarr;
-      </a>
+      <!-- Contact Form -->
+      <div class="contact-form-section">
+        <h2><i class="fas fa-paper-plane me-2"></i>Nachricht senden</h2>
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cf-name">Name *</label>
+              <input type="text" id="cf-name" name="name" required autocomplete="name" placeholder="Dein Name">
+            </div>
+            <div class="form-group">
+              <label for="cf-email">E-Mail *</label>
+              <input type="email" id="cf-email" name="email" required autocomplete="email" placeholder="deine@email.de">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="cf-subject">Betreff</label>
+            <input type="text" id="cf-subject" name="subject" value="Workshop-Anfrage" placeholder="Betreff">
+          </div>
+          <div class="form-group">
+            <label for="cf-message">Nachricht *</label>
+            <textarea id="cf-message" name="message" required placeholder="Beschreibe kurz, woran du arbeitest und was du dir vom Workshop erhoffst."></textarea>
+          </div>
+          <button type="submit" class="cta-btn">
+            Nachricht senden &rarr;
+          </button>
+          <div class="form-success" id="formSuccess">
+            <i class="fas fa-check me-1"></i> Dein E-Mail-Programm wurde geöffnet. Sende die E-Mail ab, um deine Anfrage abzuschließen.
+          </div>
+        </form>
+      </div>
 
     </div>
   </div>
@@ -253,5 +349,24 @@
 
   <!-- Bootstrap JS Bundle -->
   <script src="../vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (!this.checkValidity()) { this.reportValidity(); return; }
+
+      var name    = document.getElementById('cf-name').value.trim();
+      var email   = document.getElementById('cf-email').value.trim();
+      var subject = document.getElementById('cf-subject').value.trim() || 'Workshop-Anfrage';
+      var message = document.getElementById('cf-message').value.trim();
+
+      var body = 'Name: ' + name + '\nE-Mail: ' + email + '\n\n' + message;
+      var mailto = 'mailto:me@fauteck.eu'
+        + '?subject=' + encodeURIComponent(subject)
+        + '&body='    + encodeURIComponent(body);
+
+      window.location.href = mailto;
+      document.getElementById('formSuccess').style.display = 'block';
+    });
+  </script>
 </body>
 </html>
