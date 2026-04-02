@@ -215,15 +215,68 @@
     @media (max-width: 575.98px) {
       .form-row { grid-template-columns: 1fr; gap: 0; }
     }
-    .form-success {
-      display: none;
+    /* ── Form Status Messages ─────────────────────── */
+    .form-status {
       padding: 0.75rem 1rem;
-      background: rgba(92, 198, 167, 0.12);
-      border: 1px solid var(--success-color);
       border-radius: 6px;
-      color: var(--text-primary);
       font-size: 0.9rem;
       margin-top: 1rem;
+    }
+    .form-submitting {
+      background: rgba(107, 184, 212, 0.12);
+      border: 1px solid var(--info-color);
+      color: var(--text-primary);
+    }
+    .form-success {
+      background: rgba(92, 198, 167, 0.12);
+      border: 1px solid var(--success-color);
+      color: var(--text-primary);
+    }
+    .form-error {
+      background: rgba(212, 107, 107, 0.12);
+      border: 1px solid var(--danger-color);
+      color: var(--text-primary);
+    }
+    .form-fallback {
+      background: rgba(212, 165, 91, 0.12);
+      border: 1px solid var(--warning-color);
+      color: var(--text-primary);
+    }
+
+    /* ── Privacy Checkbox ──────────────────────────── */
+    .privacy-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      line-height: 1.5;
+    }
+    .privacy-label input[type="checkbox"] {
+      width: auto;
+      margin-top: 0.2rem;
+      flex-shrink: 0;
+    }
+    .privacy-label a {
+      color: var(--primary-color);
+    }
+
+    /* ── Disabled submit state ─────────────────────── */
+    .cta-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    /* ── Alternative contact link ──────────────────── */
+    .form-alt-contact {
+      margin-top: 0.75rem;
+      margin-bottom: 0;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+    .form-alt-contact a {
+      color: var(--primary-color);
     }
 
   </style>
@@ -294,6 +347,10 @@
       <div class="contact-form-section">
         <h2><i class="fas fa-paper-plane me-2"></i>Workshop-Fit-Check starten</h2>
         <form class="contact-form" id="contactForm" novalidate>
+          <!-- Web3Forms (öffentlicher Formular-Identifier, kein Secret) -->
+          <input type="hidden" name="access_key" value="0a89d474-1e3d-432d-823b-169f47bdfa93">
+          <input type="hidden" name="from_name" value="Vibecoding Academy Kontaktformular">
+          <input type="checkbox" name="botcheck" style="display:none!important" tabindex="-1" autocomplete="off">
           <div class="form-row">
             <div class="form-group">
               <label for="cf-name">Name *</label>
@@ -361,11 +418,29 @@
             <label for="cf-message">Nachricht *</label>
             <textarea id="cf-message" name="message" required placeholder="Beschreibe kurz, woran du arbeitest und was du dir vom Workshop erhoffst."></textarea>
           </div>
+          <div class="form-group form-privacy">
+            <label class="privacy-label">
+              <input type="checkbox" id="cf-privacy" required>
+              <span>Ich habe die <a href="../datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zu.&nbsp;*</span>
+            </label>
+          </div>
           <button type="submit" class="cta-btn">
             Workshop anfragen
           </button>
-          <div class="form-success" id="formSuccess">
-            <i class="fas fa-check me-1"></i> Dein E-Mail-Programm wurde geöffnet. Sende die E-Mail ab, um deine Anfrage abzuschließen.
+          <p class="form-alt-contact">
+            <small>Alternativ: <a href="mailto:ki@fauteck.eu">Direkt per E-Mail schreiben</a></small>
+          </p>
+          <div class="form-status form-submitting" id="formSubmitting" style="display:none">
+            <i class="fas fa-spinner fa-spin me-1"></i> Nachricht wird gesendet&hellip;
+          </div>
+          <div class="form-status form-success" id="formSuccess" style="display:none">
+            <i class="fas fa-check-circle me-1"></i> Vielen Dank! Deine Nachricht wurde erfolgreich gesendet. Wir melden uns in Kürze.
+          </div>
+          <div class="form-status form-error" id="formError" style="display:none">
+            <i class="fas fa-exclamation-triangle me-1"></i> <span id="formErrorText">Beim Senden ist ein Fehler aufgetreten.</span>
+          </div>
+          <div class="form-status form-fallback" id="formFallback" style="display:none">
+            <i class="fas fa-envelope me-1"></i> Die automatische Übermittlung ist derzeit nicht möglich. Dein E-Mail-Programm wurde geöffnet&nbsp;&mdash; bitte sende die E-Mail manuell ab.
           </div>
         </form>
       </div>
@@ -382,37 +457,117 @@
   <script src="../vendor/bootstrap/bootstrap.bundle.min.js"></script>
   <script src="../js/components.js"></script>
   <script>
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      if (!this.checkValidity()) { this.reportValidity(); return; }
+    (function () {
+      'use strict';
 
-      var name     = document.getElementById('cf-name').value.trim();
-      var email    = document.getElementById('cf-email').value.trim();
-      var subject  = document.getElementById('cf-subject').value.trim() || 'Workshop-Fit-Check';
-      var message  = document.getElementById('cf-message').value.trim();
+      var form      = document.getElementById('contactForm');
+      var btnSubmit = form.querySelector('button[type="submit"]');
+      var btnText   = btnSubmit.innerHTML;
 
-      var teamsize = document.getElementById('cf-teamsize').value;
-      var goal     = document.getElementById('cf-goal').value;
-      var data     = document.getElementById('cf-data').value;
-      var format   = document.getElementById('cf-format').value;
+      var elSubmitting = document.getElementById('formSubmitting');
+      var elSuccess    = document.getElementById('formSuccess');
+      var elError      = document.getElementById('formError');
+      var elErrorText  = document.getElementById('formErrorText');
+      var elFallback   = document.getElementById('formFallback');
 
-      var fitCheck = '';
-      if (teamsize || goal || data || format) {
-        fitCheck = '\n\n── Workshop-Fit-Check ──';
-        if (teamsize) fitCheck += '\nTeamgröße: ' + teamsize;
-        if (goal)     fitCheck += '\nZiel: ' + goal;
-        if (data)     fitCheck += '\nDaten: ' + data;
-        if (format)   fitCheck += '\nFormat: ' + format;
+      function hideAllStatus() {
+        elSubmitting.style.display = 'none';
+        elSuccess.style.display    = 'none';
+        elError.style.display      = 'none';
+        elFallback.style.display   = 'none';
       }
 
-      var body = 'Name: ' + name + '\nE-Mail: ' + email + fitCheck + '\n\nNachricht:\n' + message;
-      var mailto = 'mailto:ki@fauteck.eu'
-        + '?subject=' + encodeURIComponent(subject)
-        + '&body='    + encodeURIComponent(body);
+      function setSubmitting(active) {
+        btnSubmit.disabled = active;
+        if (active) {
+          btnSubmit.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i> Senden\u2026';
+          hideAllStatus();
+          elSubmitting.style.display = 'block';
+        } else {
+          btnSubmit.innerHTML = btnText;
+          elSubmitting.style.display = 'none';
+        }
+      }
 
-      window.location.href = mailto;
-      document.getElementById('formSuccess').style.display = 'block';
-    });
+      function buildMailtoUrl() {
+        var name     = document.getElementById('cf-name').value.trim();
+        var email    = document.getElementById('cf-email').value.trim();
+        var subject  = document.getElementById('cf-subject').value.trim() || 'Workshop-Fit-Check';
+        var message  = document.getElementById('cf-message').value.trim();
+
+        var teamsize = document.getElementById('cf-teamsize').value;
+        var goal     = document.getElementById('cf-goal').value;
+        var data     = document.getElementById('cf-data').value;
+        var format   = document.getElementById('cf-format').value;
+
+        var fitCheck = '';
+        if (teamsize || goal || data || format) {
+          fitCheck = '\n\n\u2500\u2500 Workshop-Fit-Check \u2500\u2500';
+          if (teamsize) fitCheck += '\nTeamgr\u00f6\u00dfe: ' + teamsize;
+          if (goal)     fitCheck += '\nZiel: ' + goal;
+          if (data)     fitCheck += '\nDaten: ' + data;
+          if (format)   fitCheck += '\nFormat: ' + format;
+        }
+
+        var body = 'Name: ' + name + '\nE-Mail: ' + email + fitCheck + '\n\nNachricht:\n' + message;
+        return 'mailto:ki@fauteck.eu'
+          + '?subject=' + encodeURIComponent(subject)
+          + '&body='    + encodeURIComponent(body);
+      }
+
+      function triggerMailtoFallback() {
+        window.location.href = buildMailtoUrl();
+        hideAllStatus();
+        elFallback.style.display = 'block';
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (!form.checkValidity()) { form.reportValidity(); return; }
+
+        /* Kein fetch-Support → direkt Mailto */
+        if (typeof fetch === 'undefined') { triggerMailtoFallback(); return; }
+
+        setSubmitting(true);
+
+        var formData = new FormData(form);
+
+        /* Timeout via AbortController (8 s) */
+        var controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
+        var timeoutId  = null;
+        if (controller) {
+          timeoutId = setTimeout(function () { controller.abort(); }, 8000);
+        }
+
+        var opts = { method: 'POST', body: formData };
+        if (controller) opts.signal = controller.signal;
+
+        fetch('https://api.web3forms.com/submit', opts)
+          .then(function (res) {
+            if (timeoutId) clearTimeout(timeoutId);
+            return res.json();
+          })
+          .then(function (result) {
+            setSubmitting(false);
+            if (result.success) {
+              hideAllStatus();
+              elSuccess.style.display = 'block';
+              form.reset();
+            } else {
+              hideAllStatus();
+              elErrorText.textContent =
+                (result.message || 'Unbekannter Fehler.') +
+                ' Du kannst es erneut versuchen oder uns direkt per E-Mail kontaktieren.';
+              elError.style.display = 'block';
+            }
+          })
+          .catch(function () {
+            if (timeoutId) clearTimeout(timeoutId);
+            setSubmitting(false);
+            triggerMailtoFallback();
+          });
+      });
+    })();
   </script>
 </body>
 </html>
