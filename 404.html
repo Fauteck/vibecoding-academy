@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <base href="/vibecoding-academy/">
+  <title>Seite nicht gefunden – Vibecoding Academy</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230f0f1a'/%3E%3Ctext x='2' y='23' font-family='monospace' font-size='20' font-weight='bold' fill='%237c3aed'%3E%26lt;%3C/text%3E%3Ctext x='18' y='23' font-family='monospace' font-size='20' font-weight='bold' fill='%2306b6d4'%3E%26gt;%3C/text%3E%3Cpath d='M17 8 L13 17 L18 17 L15 26' stroke='url(%23g)' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23c4b5fd'/%3E%3Cstop offset='1' stop-color='%2306b6d4'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#5B8BD6">
+
+  <script>
+    (function () {
+      var base = '/vibecoding-academy/';
+      var path = window.location.pathname;
+      var normalized = path.replace(/\/index\.html$/, '/');
+      if (!normalized.endsWith('/')) normalized += '/';
+
+      var redirects = {};
+      redirects[base + 'ideen/'] = base + 'projekte/';
+      redirects[base + 'pong/'] = base + 'apps/pong/';
+      redirects[base + 'gta/'] = base + 'apps/gta/';
+      redirects[base + 'wochenendplanung/'] = base + 'apps/wochenendplanung/';
+
+      if (redirects[normalized]) {
+        window.location.replace(redirects[normalized]);
+      }
+    })();
+  </script>
+
+  <link href="./vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./vendor/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="./css/nav.css">
+  <link rel="stylesheet" href="./css/footer.css">
+
+  <style>
+    @font-face {
+      font-family: 'Font Awesome 6 Free';
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Font Awesome 6 Brands';
+      font-display: swap;
+    }
+
+    :root {
+      --primary-color:   #5B8BD6;
+      --secondary-color: #3D5A8C;
+      --success-color:   #5CC6A7;
+      --danger-color:    #D46B6B;
+      --warning-color:   #D4A55B;
+      --info-color:      #6BB8D4;
+      --bg-page:         #EEF2F7;
+      --bg-card:         rgba(255, 255, 255, 0.72);
+      --text-primary:    #2D3748;
+      --text-muted:      #6E7B91;
+      --border-color:    #D4DCE8;
+      --border-radius-card: 12px;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background:
+        linear-gradient(rgba(238, 242, 247, 0.45), rgba(238, 242, 247, 0.45)),
+        url('./images/content-bg.jpg') top center/cover no-repeat fixed,
+        var(--bg-page);
+      color: var(--text-primary);
+      min-height: 100vh;
+      position: relative;
+    }
+
+    .error-card {
+      border-radius: var(--border-radius-card);
+      border: 1px solid var(--border-color);
+      background: var(--bg-card);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .error-code {
+      font-size: 6rem;
+      font-weight: 800;
+      color: var(--primary-color);
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+
+    .error-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 1rem 0 0.5rem;
+      color: var(--text-primary);
+    }
+
+    .error-text {
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      max-width: 440px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .error-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+    }
+
+    .error-link {
+      display: inline-block;
+      padding: 0.55rem 1.2rem;
+      background: var(--primary-color);
+      color: #fff !important;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.2s ease;
+      min-height: 44px;
+      line-height: 1.6;
+    }
+
+    .error-link:hover {
+      background: var(--secondary-color);
+      color: #fff !important;
+    }
+
+    .error-link-secondary {
+      background: transparent;
+      color: var(--primary-color) !important;
+      border: 1.5px solid var(--primary-color);
+    }
+
+    .error-link-secondary:hover {
+      background: var(--primary-color);
+      color: #fff !important;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav" role="navigation" aria-label="Hauptnavigation">
+    <div class="site-nav-inner">
+      <a class="site-nav-brand" href="./">
+        <span class="site-nav-brand-name">Vibecoding Academy</span>
+        <span class="site-nav-brand-subtitle">mit Niklas Fauteck</span>
+      </a>
+      <div class="site-nav-links">
+        <a class="site-nav-link" href="./">Workshop</a>
+        <a class="site-nav-link" href="./wiki/">Wiki</a>
+        <a class="site-nav-link" href="./projekte/">Projekte</a>
+        <a class="site-nav-link" href="./ueber-mich/">Coach</a>
+        <a class="site-nav-cta" href="./kontakt/">Workshop anfragen</a>
+      </div>
+      <button class="site-nav-hamburger" aria-label="Menü" aria-expanded="false"
+              onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');this.setAttribute('aria-expanded',this.classList.contains('open'))">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="site-nav-dropdown">
+        <a class="site-nav-link" href="./">Workshop</a>
+        <a class="site-nav-link" href="./wiki/">Wiki</a>
+        <a class="site-nav-link" href="./projekte/">Projekte</a>
+        <a class="site-nav-link" href="./ueber-mich/">Coach</a>
+        <a class="site-nav-cta" href="./kontakt/">Workshop anfragen</a>
+      </div>
+    </div>
+  </nav>
+
+  <main style="max-width: 640px; margin: 3rem auto; padding: 0 1.5rem;">
+    <div class="error-card">
+      <div class="error-code">404</div>
+      <h1 class="error-title">Seite nicht gefunden</h1>
+      <p class="error-text">
+        Die angeforderte Seite existiert nicht oder wurde verschoben. Nutze die Links unten, um zur richtigen Stelle zu gelangen.
+      </p>
+      <div class="error-links">
+        <a href="./" class="error-link">
+          <i class="fas fa-home me-1"></i> Startseite
+        </a>
+        <a href="./wiki/" class="error-link error-link-secondary">
+          <i class="fas fa-book me-1"></i> Wiki
+        </a>
+        <a href="./projekte/" class="error-link error-link-secondary">
+          <i class="fas fa-code me-1"></i> Projekte
+        </a>
+        <a href="./kontakt/" class="error-link error-link-secondary">
+          <i class="fas fa-envelope me-1"></i> Kontakt
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer" style="margin-bottom: 1.5rem;">
+    <a href="./kontakt/" style="font-weight: 600; font-size: 1.1rem; display: block; margin-bottom: 0.5rem;">Kontakt</a>
+    <a href="./impressum.html">Impressum</a>
+    <span style="margin: 0 0.3rem;">&middot;</span>
+    <a href="./datenschutz.html">Datenschutz</a>
+    <span style="margin: 0 0.3rem;">&middot;</span>
+    <a href="./agb.html">AGB</a>
+  </footer>
+
+  <script src="./vendor/bootstrap/bootstrap.bundle.min.js"></script>
+</body>
+</html>
