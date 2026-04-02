@@ -182,7 +182,8 @@
       margin-bottom: 0.4rem;
     }
     .form-group input,
-    .form-group textarea {
+    .form-group textarea,
+    .form-group select {
       width: 100%;
       padding: 0.6rem 0.85rem;
       font-family: inherit;
@@ -193,11 +194,31 @@
       border-radius: 6px;
       transition: border-color 0.2s;
     }
+    .form-group select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%237A8599' d='M2 4l4 4 4-4'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.85rem center;
+      padding-right: 2.2rem;
+      cursor: pointer;
+    }
     .form-group input:focus,
-    .form-group textarea:focus {
+    .form-group textarea:focus,
+    .form-group select:focus {
       outline: none;
       border-color: var(--primary-color);
       box-shadow: 0 0 0 3px rgba(91, 139, 214, 0.15);
+    }
+    .fit-check-heading {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 0.75rem 0 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-color);
+    }
+    .fit-check-heading i {
+      color: var(--primary-color);
     }
     .form-group textarea {
       resize: vertical;
@@ -324,8 +345,57 @@
           </div>
           <div class="form-group">
             <label for="cf-subject">Betreff</label>
-            <input type="text" id="cf-subject" name="subject" value="Workshop-Anfrage" placeholder="Betreff">
+            <input type="text" id="cf-subject" name="subject" value="Workshop-Fit-Check" placeholder="Betreff">
           </div>
+
+          <!-- Workshop-Fit-Check -->
+          <p class="fit-check-heading"><i class="fas fa-clipboard-check me-2"></i>Workshop-Fit-Check</p>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cf-teamsize">Teamgröße</label>
+              <select id="cf-teamsize" name="teamsize">
+                <option value="">-- Bitte wählen --</option>
+                <option>Einzelperson</option>
+                <option>2–5 Personen</option>
+                <option>6–10 Personen</option>
+                <option>Mehr als 10</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="cf-goal">Workshop-Ziel</label>
+              <select id="cf-goal" name="goal">
+                <option value="">-- Bitte wählen --</option>
+                <option>Prototyp bauen</option>
+                <option>Team befähigen (Enablement)</option>
+                <option>Prozesse mit KI optimieren</option>
+                <option>Innovationsworkshop / Ideenfindung</option>
+                <option>Noch unklar – Beratung gewünscht</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cf-data">Daten-Sensibilität</label>
+              <select id="cf-data" name="data">
+                <option value="">-- Bitte wählen --</option>
+                <option>Öffentliche / unkritische Daten</option>
+                <option>Interne Unternehmensdaten</option>
+                <option>Personenbezogene / sensible Daten</option>
+                <option>Noch unklar</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="cf-format">Formatwunsch</label>
+              <select id="cf-format" name="format">
+                <option value="">-- Bitte wählen --</option>
+                <option>Remote (Video)</option>
+                <option>Vor Ort</option>
+                <option>Hybrid</option>
+                <option>Noch offen</option>
+              </select>
+            </div>
+          </div>
+
           <div class="form-group">
             <label for="cf-message">Nachricht *</label>
             <textarea id="cf-message" name="message" required placeholder="Beschreibe kurz, woran du arbeitest und was du dir vom Workshop erhoffst."></textarea>
@@ -361,12 +431,26 @@
       e.preventDefault();
       if (!this.checkValidity()) { this.reportValidity(); return; }
 
-      var name    = document.getElementById('cf-name').value.trim();
-      var email   = document.getElementById('cf-email').value.trim();
-      var subject = document.getElementById('cf-subject').value.trim() || 'Workshop-Anfrage';
-      var message = document.getElementById('cf-message').value.trim();
+      var name     = document.getElementById('cf-name').value.trim();
+      var email    = document.getElementById('cf-email').value.trim();
+      var subject  = document.getElementById('cf-subject').value.trim() || 'Workshop-Fit-Check';
+      var message  = document.getElementById('cf-message').value.trim();
 
-      var body = 'Name: ' + name + '\nE-Mail: ' + email + '\n\n' + message;
+      var teamsize = document.getElementById('cf-teamsize').value;
+      var goal     = document.getElementById('cf-goal').value;
+      var data     = document.getElementById('cf-data').value;
+      var format   = document.getElementById('cf-format').value;
+
+      var fitCheck = '';
+      if (teamsize || goal || data || format) {
+        fitCheck = '\n\n── Workshop-Fit-Check ──';
+        if (teamsize) fitCheck += '\nTeamgröße: ' + teamsize;
+        if (goal)     fitCheck += '\nZiel: ' + goal;
+        if (data)     fitCheck += '\nDaten: ' + data;
+        if (format)   fitCheck += '\nFormat: ' + format;
+      }
+
+      var body = 'Name: ' + name + '\nE-Mail: ' + email + fitCheck + '\n\nNachricht:\n' + message;
       var mailto = 'mailto:me@fauteck.eu'
         + '?subject=' + encodeURIComponent(subject)
         + '&body='    + encodeURIComponent(body);
