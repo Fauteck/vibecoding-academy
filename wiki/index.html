@@ -27,6 +27,14 @@
         linear-gradient(rgba(238, 242, 247, 0.45), rgba(238, 242, 247, 0.45)),
         url('../images/content-bg.jpg') top center/cover no-repeat fixed,
         #EEF2F7;
+      background:
+        linear-gradient(rgba(238, 242, 247, 0.45), rgba(238, 242, 247, 0.45)),
+        image-set(
+          url('../images/content-bg.avif') type('image/avif'),
+          url('../images/content-bg.webp') type('image/webp'),
+          url('../images/content-bg.jpg') type('image/jpeg')
+        ) top center/cover no-repeat fixed,
+        #EEF2F7;
       color: #222;
       min-height: 100vh;
       position: relative;
