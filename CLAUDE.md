@@ -35,7 +35,7 @@ vibecoding-academy/
 
 - Kein Build-Prozess, kein Bundler, kein Package-Manager
 - CSS und JavaScript sind inline in den HTML-Dateien
-- Externe Abhängigkeiten ausschließlich via CDN (Bootstrap 5.3.2, Font Awesome 6.4.2)
+- Externe Abhängigkeiten lokal im `/vendor`-Verzeichnis (Bootstrap 5.3.2, Font Awesome 6.4.2)
 
 ### Neues Projekt hinzufügen
 
@@ -88,7 +88,7 @@ vibecoding-academy/
 - Externe JavaScript-/CSS-Dateien anlegen, die projektübergreifend geteilt werden (jedes Projekt bleibt selbstständig)
 - Frameworks einführen (kein React, Vue, Angular etc.)
 - Serverseitige Komponenten vorschlagen (kein Node.js, Python etc.)
-- CDN-Links ohne Subresource Integrity (SRI) Hashes einbinden
+- Externe CDN-Links einbinden (alle Abhängigkeiten werden lokal aus `/vendor` geladen)
 
 ---
 
@@ -114,7 +114,7 @@ Vor einem Merge in `main` muss gelten:
 - Responsive Design funktioniert (Desktop + Mobil)
 - Keine Debug-Ausgaben (`console.log`, `alert`) im finalen Code
 - Keine temporären Workarounds
-- CDN-Links haben Integrity-Attribute (SRI)
+- Abhängigkeiten werden aus `/vendor` geladen (keine externen CDN-Aufrufe)
 - Zugänglichkeit: `alt`-Attribute bei Bildern, `aria-label` bei Icon-Buttons
 
 > **Hinweis:** Es gibt kein CI — Prüfung erfolgt manuell vor dem Merge.
@@ -125,7 +125,7 @@ Vor einem Merge in `main` muss gelten:
 
 - Keine Secrets im Code oder Repo (dieses Projekt benötigt keine)
 - Keine `.env`-Dateien (rein statisches Projekt)
-- CDN-Einbindungen immer mit `integrity` und `crossorigin="anonymous"`
+- Keine externen CDN-Einbindungen — Abhängigkeiten liegen lokal im `/vendor`-Verzeichnis
 - Externe Links mit `rel="noopener"` versehen
 
 ---
@@ -135,7 +135,7 @@ Vor einem Merge in `main` muss gelten:
 Dieses Repo hat kein Backend und keine API. OWASP gilt **sinngemäß**:
 
 - **Input-Validation**: Benutzereingaben in Spielen clientseitig validieren
-- **Supply Chain**: CDN-Abhängigkeiten mit SRI-Hashes absichern
+- **Supply Chain**: Abhängigkeiten lokal im `/vendor`-Verzeichnis — keine externe Supply Chain
 - **XSS-Prävention**: Kein `innerHTML` mit unkontrollierten Daten, `textContent` bevorzugen
 - **Secrets**: Keine API-Keys oder Credentials im Frontend-Code
 
@@ -232,31 +232,28 @@ Jede `README.md` in diesem Repository folgt dieser Gliederung. Abschnitte, die n
 > **Zweck:** Einheitliches Design aller Fauteck-Webanwendungen.
 > Dieses Projekt nutzt Bootstrap 5.3 mit anwendungsspezifischem CSS.
 
-### Externe Abhängigkeiten
+### Lokale Abhängigkeiten (`/vendor`)
 
-Jede HTML-Datei bindet im `<head>` ein:
+Bootstrap und Font Awesome werden **lokal** aus dem `/vendor`-Verzeichnis geladen (keine externen CDN-Aufrufe).
+
+Jede HTML-Datei bindet im `<head>` ein (Pfade relativ zur jeweiligen Datei):
 
 ```html
 <!-- Bootstrap 5.3.2 -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-      crossorigin="anonymous">
+<link href="./vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
 
 <!-- Font Awesome 6.4.2 -->
-<link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-      crossorigin="anonymous" referrerpolicy="no-referrer">
+<link rel="stylesheet" href="./vendor/fontawesome/css/all.min.css">
 ```
 
 Vor `</body>`:
 
 ```html
 <!-- Bootstrap JS Bundle (inkl. Popper.js) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
+<script src="./vendor/bootstrap/bootstrap.bundle.min.js"></script>
 ```
+
+> **Hinweis:** Für Dateien in Unterordnern (z. B. `apps/pong/`) relative Pfade anpassen: `../../vendor/...`
 
 ### Farbpalette (Design Tokens)
 
