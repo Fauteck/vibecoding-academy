@@ -1,0 +1,73 @@
+/* ── Design Tokens & Base Styles ─────────────────── */
+
+:root {
+  --primary-color:      #5B8BD6;
+  --secondary-color:    #3D5A8C;
+  --success-color:      #5CC6A7;
+  --danger-color:       #D46B6B;
+  --warning-color:      #D4A55B;
+  --info-color:         #6BB8D4;
+  --bg-page:            #EEF2F7;
+  --bg-card:            rgba(255, 255, 255, 0.85);
+  --text-primary:       #2D3748;
+  --text-muted:         #7A8599;
+  --border-color:       #D4DCE8;
+  --border-radius-card: 10px;
+}
+
+/* ── Reset ──────────────────────────────────────── */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── Base ───────────────────────────────────────── */
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+/* ── Common Card ────────────────────────────────── */
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-card);
+  backdrop-filter: blur(6px);
+}
+
+/* ── Section Header (legal pages, etc.) ─────────── */
+
+.section-header {
+  border-left: 4px solid var(--primary-color);
+  padding-left: 0.75rem;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+}
+
+.section-header:first-child { margin-top: 0; }
+
+/* ── Page Wrapper ───────────────────────────────── */
+
+.page-wrapper {
+  padding-top: 80px;
+  padding-bottom: 3rem;
+}
+
+@media (max-width: 991.98px) {
+  .page-wrapper { padding-top: 1.5rem; }
+  body { background-attachment: scroll; }
+}
+
+/* ── Footer Inline-Style Consolidation ──────────── */
+
+.footer-contact-link {
+  font-weight: 600;
+  font-size: 1.1rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.footer-sep {
+  margin: 0 0.3rem;
+}

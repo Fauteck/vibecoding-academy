@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" data-depth="0">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,8 +19,9 @@
 
   <link href="./vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="./vendor/fontawesome/css/all.min.css">
-  <link rel="stylesheet" href="css/nav.css">
-  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="./css/tokens.css">
+  <link rel="stylesheet" href="./css/nav.css">
+  <link rel="stylesheet" href="./css/footer.css">
   <link rel="preload" as="image" href="./images/content-bg.jpg">
 
   <style>
@@ -34,30 +35,18 @@
     }
 
     :root {
-      --primary-color:   #5B8BD6;
-      --secondary-color: #3D5A8C;
-      --success-color:   #5CC6A7;
-      --danger-color:    #D46B6B;
-      --warning-color:   #D4A55B;
-      --info-color:      #6BB8D4;
-      --bg-page:         #EEF2F7;
-      --bg-card:         rgba(255, 255, 255, 0.72);
-      --text-primary:    #2D3748;
-      --text-muted:      #6E7B91;
-      --border-color:    #D4DCE8;
+      --bg-card:            rgba(255, 255, 255, 0.72);
+      --text-muted:         #6E7B91;
       --border-radius-card: 12px;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background:
         linear-gradient(rgba(238, 242, 247, 0.45), rgba(238, 242, 247, 0.45)),
         url('./images/content-bg.jpg') top center/cover no-repeat fixed,
         var(--bg-page);
-      color: var(--text-primary);
-      min-height: 100vh;
       position: relative;
     }
 
@@ -586,32 +575,8 @@
 </head>
 <body>
 
-  <nav class="site-nav" role="navigation" aria-label="Hauptnavigation">
-    <div class="site-nav-inner">
-      <a class="site-nav-brand" href="./">
-        <span class="site-nav-brand-name">Vibecoding Academy</span>
-        <span class="site-nav-brand-subtitle">mit Niklas Fauteck</span>
-      </a>
-      <div class="site-nav-links">
-        <a class="site-nav-link active" href="./">Workshop</a>
-        <a class="site-nav-link" href="./wiki/">Wiki</a>
-        <a class="site-nav-link" href="./projekte/">Projekte</a>
-        <a class="site-nav-link" href="./ueber-mich/">Coach</a>
-        <a class="site-nav-cta" href="./kontakt/">Workshop anfragen</a>
-      </div>
-      <button class="site-nav-hamburger" aria-label="Menü" aria-expanded="false"
-              onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');this.setAttribute('aria-expanded',this.classList.contains('open'))">
-        <span></span><span></span><span></span>
-      </button>
-      <div class="site-nav-dropdown">
-        <a class="site-nav-link" href="./">Workshop</a>
-        <a class="site-nav-link" href="./wiki/">Wiki</a>
-        <a class="site-nav-link" href="./projekte/">Projekte</a>
-        <a class="site-nav-link" href="./ueber-mich/">Coach</a>
-        <a class="site-nav-cta" href="./kontakt/">Workshop anfragen</a>
-      </div>
-    </div>
-  </nav>
+  <nav id="site-nav"></nav>
+  <noscript><a href="./">Startseite</a> | <a href="./projekte/">Projekte</a> | <a href="./kontakt/">Kontakt</a></noscript>
 
   <div class="hero-section">
     <div class="hero-inner">
@@ -970,15 +935,9 @@
 
   </main>
 
-  <footer class="footer" style="margin-bottom: 1.5rem;">
-    <a href="./kontakt/" style="font-weight: 600; font-size: 1.1rem; display: block; margin-bottom: 0.5rem;">Kontakt</a>
-    <a href="./impressum.html">Impressum</a>
-    <span style="margin: 0 0.3rem;">&middot;</span>
-    <a href="./datenschutz.html">Datenschutz</a>
-    <span style="margin: 0 0.3rem;">&middot;</span>
-    <a href="./agb.html">AGB</a>
-  </footer>
+  <footer id="site-footer"></footer>
 
   <script src="./vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="./js/components.js"></script>
 </body>
 </html>
