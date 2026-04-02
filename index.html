@@ -182,24 +182,6 @@
       color: var(--secondary-color);
     }
 
-    .overview-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 0.7rem;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .overview-list li {
-      background: rgba(91,139,214,0.07);
-      border: 1px solid rgba(91,139,214,0.12);
-      border-radius: 10px;
-      padding: 0.8rem 0.9rem;
-      font-size: 0.92rem;
-      color: var(--text-primary);
-      line-height: 1.45;
-    }
 
     .highlight-list li,
     .plain-list li {
@@ -212,7 +194,8 @@
     }
 
     .audience-grid .card,
-    .benefit-grid .card {
+    .benefit-grid .card,
+    .overview-grid .card {
       height: 100%;
     }
 
@@ -465,9 +448,6 @@
         height: 128px;
       }
 
-      .overview-list {
-        grid-template-columns: 1fr;
-      }
     }
 
   </style>
@@ -527,28 +507,48 @@
     <div class="overview-box" id="angebot">
       <h2><i class="fas fa-binoculars me-2"></i>Der Workshop auf einen Blick</h2>
       <p class="subtle-note mt-0 mb-3">Klarer Rahmen, konkretes Ergebnis, direkt anwendbar im Arbeitsalltag.</p>
-      <ul class="overview-list">
-        <li>
-          <strong>Format</strong><br>
-          Kompakter Workshop für Teams oder Einzelpersonen, remote oder vor Ort.
-        </li>
-        <li>
-          <strong>Dauer</strong><br>
-          Je nach Zielsetzung als fokussiertes Kurzformat oder als intensiver Halbtages- bzw. Tagesworkshop.
-        </li>
-        <li>
-          <strong>Teilnehmerzahl</strong><br>
-          Geeignet für Einzelpersonen, kleine Teams und interdisziplinäre Gruppen.
-        </li>
-        <li>
-          <strong>Ergebnis</strong><br>
-          Ein konkretes Arbeitsergebnis, mit dem du direkt weiterarbeiten kannst.
-        </li>
-        <li>
-          <strong>Anfrageprozess</strong><br>
-          Du schilderst kurz deinen Kontext und dein Ziel. Danach klären wir Format, Teilnehmerkreis und Schwerpunkt des Workshops und du erhältst ein passendes Angebot.
-        </li>
-      </ul>
+      <div class="row g-3 overview-grid">
+        <div class="col-md-6">
+          <div class="card h-100">
+            <div class="card-body">
+              <strong>Format</strong><br>
+              <small class="text-muted">Kompakter Workshop für Teams oder Einzelpersonen, remote oder vor Ort.</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card h-100">
+            <div class="card-body">
+              <strong>Dauer</strong><br>
+              <small class="text-muted">Je nach Zielsetzung als fokussiertes Kurzformat oder als intensiver Halbtages- bzw. Tagesworkshop.</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card h-100">
+            <div class="card-body">
+              <strong>Teilnehmerzahl</strong><br>
+              <small class="text-muted">Geeignet für Einzelpersonen, kleine Teams und interdisziplinäre Gruppen.</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card h-100">
+            <div class="card-body">
+              <strong>Ergebnis</strong><br>
+              <small class="text-muted">Ein konkretes Arbeitsergebnis, mit dem du direkt weiterarbeiten kannst.</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="card">
+            <div class="card-body">
+              <strong>Anfrageprozess</strong><br>
+              <small class="text-muted">Du schilderst kurz deinen Kontext und dein Ziel. Danach klären wir Format, Teilnehmerkreis und Schwerpunkt des Workshops und du erhältst ein passendes Angebot.</small>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div id="workshop"></div>
