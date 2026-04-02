@@ -51,6 +51,13 @@
     }
     @media (max-width: 991.98px) {
       .page-wrapper { padding-top: 1.5rem; }
+      body { background-attachment: scroll; }
+      .about-card,
+      .skill-card {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        background: rgba(255, 255, 255, 0.88);
+      }
     }
 
     /* ── Avatar ──────────────────────────────────────── */
@@ -221,7 +228,9 @@
       <!-- Profile Header -->
       <div class="text-center mb-4">
         <div class="avatar-wrapper">
-          <img src="../images/niklas-fauteck.jpg" alt="Niklas Fauteck">
+          <img src="../images/niklas-fauteck.jpg" alt="Niklas Fauteck"
+               loading="lazy" decoding="async" width="300" height="200"
+               fetchpriority="low">
         </div>
         <h1 class="profile-name">Niklas Fauteck</h1>
         <p class="profile-tagline">Digitale Transformation · Projektmanagement · KI-gestütztes Vibecoding</p>
