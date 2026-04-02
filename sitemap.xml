@@ -2,30 +2,47 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://fauteck.github.io/vibecoding-academy/</loc>
+    <lastmod>2026-04-02</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://fauteck.github.io/vibecoding-academy/apps/pong/</loc>
+    <lastmod>2026-04-02</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fauteck.github.io/vibecoding-academy/apps/gta/</loc>
+    <lastmod>2026-04-02</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fauteck.github.io/vibecoding-academy/apps/wochenendplanung/</loc>
+    <lastmod>2026-04-02</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fauteck.github.io/vibecoding-academy/wiki/</loc>
+    <lastmod>2026-04-02</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://fauteck.github.io/vibecoding-academy/projekte/viewer.html</loc>
-    <priority>0.6</priority>
+    <loc>https://fauteck.github.io/vibecoding-academy/projekte/</loc>
+    <lastmod>2026-04-02</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://fauteck.github.io/vibecoding-academy/ueber-mich/</loc>
+    <lastmod>2026-04-02</lastmod>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://fauteck.github.io/vibecoding-academy/kontakt/</loc>
+    <lastmod>2026-04-02</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://fauteck.github.io/vibecoding-academy/hosting/</loc>
+    <lastmod>2026-04-02</lastmod>
+    <priority>0.5</priority>
   </url>
 </urlset>
