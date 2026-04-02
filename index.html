@@ -450,6 +450,40 @@
 
     }
 
+    /* Excluded / "Not this" card variant */
+    .excluded-card {
+      border: 2px solid rgba(212, 107, 107, 0.4);
+      background: rgba(212, 107, 107, 0.06);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .excluded-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 150%;
+      height: 2px;
+      background: rgba(212, 107, 107, 0.25);
+      transform-origin: top left;
+      transform: rotate(25deg);
+      pointer-events: none;
+    }
+
+    .excluded-card .excluded-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(212, 107, 107, 0.12);
+      color: var(--danger-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      margin: 0 auto 0.75rem;
+    }
+
   </style>
 </head>
 <body>
@@ -689,9 +723,32 @@
         </h2>
         <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#workshopAccordion">
           <div class="accordion-body">
-            <p>Dieser Workshop ist <strong>kein</strong> klassischer Programmierkurs.</p>
-            <p>Er ist <strong>keine</strong> vollständige Ausbildung in Softwareentwicklung.</p>
-            <p>Und er ist <strong>nicht</strong> dafür gedacht, sofort große Enterprise-Software zu bauen.</p>
+            <div class="row g-3 mb-3">
+              <div class="col-md-4">
+                <div class="card excluded-card h-100">
+                  <div class="card-body text-center">
+                    <div class="excluded-icon" aria-hidden="true"><i class="fas fa-xmark"></i></div>
+                    Dieser Workshop ist <strong>kein</strong> klassischer Programmierkurs.
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card excluded-card h-100">
+                  <div class="card-body text-center">
+                    <div class="excluded-icon" aria-hidden="true"><i class="fas fa-xmark"></i></div>
+                    Er ist <strong>keine</strong> vollständige Ausbildung in Softwareentwicklung.
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card excluded-card h-100">
+                  <div class="card-body text-center">
+                    <div class="excluded-icon" aria-hidden="true"><i class="fas fa-xmark"></i></div>
+                    Und er ist <strong>nicht</strong> dafür gedacht, sofort große Enterprise-Software zu bauen.
+                  </div>
+                </div>
+              </div>
+            </div>
             <p class="mb-0">
               Er ist für etwas anderes gemacht: schnell ausprobieren, sichtbar machen, testen, lernen und bessere Entscheidungen treffen.
             </p>
