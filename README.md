@@ -30,7 +30,7 @@ Rein statische Website ohne Backend, Build-Prozess oder Datenbank. Jedes Projekt
 ```
 Browser  ──>  GitHub Pages  ──>  Statische HTML-Dateien
                                   (CSS + JS inline)
-                                  (Bootstrap + Font Awesome via CDN)
+                                  (Bootstrap + Font Awesome lokal aus /vendor)
 ```
 
 ---
@@ -70,8 +70,7 @@ Keine Konfiguration erforderlich. Alle Einstellungen (Farben, Schriften, Breakpo
 
 | Maßnahme | Umsetzung |
 |----------|-----------|
-| **SRI-Hashes** | Alle CDN-Einbindungen (Bootstrap, Font Awesome) mit `integrity`-Attribut |
-| **CORS** | CDN-Links mit `crossorigin="anonymous"` |
+| **Lokale Abhängigkeiten** | Bootstrap und Font Awesome lokal aus `/vendor` — keine externen CDN-Aufrufe |
 | **Externe Links** | Mit `rel="noopener"` versehen |
 | **Keine Secrets** | Kein Backend, keine API-Keys, keine `.env`-Dateien |
 | **XSS-Prävention** | `textContent` statt `innerHTML` mit unkontrollierten Daten |
