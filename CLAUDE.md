@@ -23,6 +23,12 @@ Jedes Projekt ist eine **selbstständige HTML-Datei** in einem eigenen Unterordn
 vibecoding-academy/
 ├── index.html              # Landing Page
 ├── robots.txt              # Crawler-Blocking
+├── css/                    # Gemeinsame Stylesheets
+│   ├── tokens.css          # Design Tokens, Reset, Basis-Styles
+│   ├── nav.css             # Navigation-Styles
+│   └── footer.css          # Footer-Styles
+├── js/                     # Gemeinsame Skripte
+│   └── components.js       # Navigation & Footer (JS-Injection)
 ├── apps/                   # Fertige Projekte
 │   ├── pong/index.html     # Pong-Spiel
 │   ├── gta/index.html      # GTA-Parodie
@@ -34,16 +40,20 @@ vibecoding-academy/
 ```
 
 - Kein Build-Prozess, kein Bundler, kein Package-Manager
-- CSS und JavaScript sind inline in den HTML-Dateien
+- **Gemeinsame Layout-Assets** (`css/`, `js/`) für Navigation, Footer, Design Tokens und Basis-Styles
+- Seitenspezifische Styles bleiben inline in den HTML-Dateien
+- Spiel-/App-Logik bleibt selbstständig inline in der jeweiligen HTML-Datei
 - Externe Abhängigkeiten lokal im `/vendor`-Verzeichnis (Bootstrap 5.3.2, Font Awesome 6.4.2)
+- Jede Seite setzt `<html data-depth="0|1|2">` für die korrekte relative Pfadauflösung durch `js/components.js`
 
 ### Neues Projekt hinzufügen
 
 1. Unterordner in `apps/` anlegen mit eigener `index.html` (z. B. `apps/snake/index.html`)
-2. Einheitliche Navigation einbauen (Desktop-Navbar mit Dropdowns, Mobile Bottom Nav mit Offcanvas)
-3. Projekt-Card in der Haupt-`index.html` im Bereich „Ergebnisse" eintragen
-4. Dropdown-Einträge in der Navigation aller bestehenden Seiten ergänzen
-5. Committen & pushen — GitHub Pages deployt automatisch
+2. `<html data-depth="2">` setzen, `css/tokens.css`, `css/nav.css`, `css/footer.css` einbinden (relative Pfade: `../../css/...`)
+3. `<nav id="site-nav"></nav>` und `<footer id="site-footer"></footer>` als Platzhalter einfügen
+4. `js/components.js` vor `</body>` einbinden (`../../js/components.js`)
+5. Projekt-Card in der Haupt-`index.html` im Bereich „Ergebnisse" eintragen
+6. Committen & pushen — GitHub Pages deployt automatisch
 
 ---
 
@@ -85,10 +95,13 @@ vibecoding-academy/
 ### Die KI darf NICHT
 
 - Build-Tools, Package-Manager oder Bundler einführen (kein npm, webpack, Vite etc.)
-- Externe JavaScript-/CSS-Dateien anlegen, die projektübergreifend geteilt werden (jedes Projekt bleibt selbstständig)
 - Frameworks einführen (kein React, Vue, Angular etc.)
 - Serverseitige Komponenten vorschlagen (kein Node.js, Python etc.)
 - Externe CDN-Links einbinden (alle Abhängigkeiten werden lokal aus `/vendor` geladen)
+- Spiel-/App-Logik in geteilte Dateien auslagern (Spiele bleiben selbstständig)
+
+> **Hinweis:** Gemeinsame Layout-Assets (Navigation, Footer, Design Tokens) liegen zentral in `css/` und `js/`.
+> Nur Spiel-/App-spezifische Logik und Styles bleiben inline in der jeweiligen HTML-Datei.
 
 ---
 
