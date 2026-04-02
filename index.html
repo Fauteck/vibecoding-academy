@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="./css/tokens.css">
   <link rel="stylesheet" href="./css/nav.css">
   <link rel="stylesheet" href="./css/footer.css">
+  <link rel="preload" as="image" href="./images/content-bg.avif" type="image/avif">
   <link rel="preload" as="image" href="./images/content-bg.jpg">
 
   <style>
@@ -46,6 +47,14 @@
       background:
         linear-gradient(rgba(238, 242, 247, 0.45), rgba(238, 242, 247, 0.45)),
         url('./images/content-bg.jpg') top center/cover no-repeat fixed,
+        var(--bg-page);
+      background:
+        linear-gradient(rgba(238, 242, 247, 0.45), rgba(238, 242, 247, 0.45)),
+        image-set(
+          url('./images/content-bg.avif') type('image/avif'),
+          url('./images/content-bg.webp') type('image/webp'),
+          url('./images/content-bg.jpg') type('image/jpeg')
+        ) top center/cover no-repeat fixed,
         var(--bg-page);
       position: relative;
     }
@@ -894,9 +903,21 @@
       <div class="coach-teaser-card">
         <div class="coach-layout">
           <div class="coach-avatar-wrapper">
-            <img src="./images/niklas-fauteck.jpg" alt="Niklas Fauteck"
-                 loading="lazy" decoding="async" width="300" height="200"
-                 fetchpriority="low">
+            <picture>
+              <source type="image/avif"
+                      srcset="./images/niklas-fauteck-200w.avif 200w,
+                             ./images/niklas-fauteck-300w.avif 300w,
+                             ./images/niklas-fauteck-400w.avif 400w"
+                      sizes="(max-width: 991.98px) 128px, 150px">
+              <source type="image/webp"
+                      srcset="./images/niklas-fauteck-200w.webp 200w,
+                             ./images/niklas-fauteck-300w.webp 300w,
+                             ./images/niklas-fauteck-400w.webp 400w"
+                      sizes="(max-width: 991.98px) 128px, 150px">
+              <img src="./images/niklas-fauteck-300w.jpg" alt="Niklas Fauteck"
+                   loading="lazy" decoding="async" width="300" height="300"
+                   fetchpriority="low">
+            </picture>
           </div>
 
           <div>

@@ -23,6 +23,14 @@
         linear-gradient(rgba(238, 242, 247, 0.45), rgba(238, 242, 247, 0.45)),
         url('images/content-bg.jpg') top center/cover no-repeat fixed,
         var(--bg-page);
+      background:
+        linear-gradient(rgba(238, 242, 247, 0.45), rgba(238, 242, 247, 0.45)),
+        image-set(
+          url('images/content-bg.avif') type('image/avif'),
+          url('images/content-bg.webp') type('image/webp'),
+          url('images/content-bg.jpg') type('image/jpeg')
+        ) top center/cover no-repeat fixed,
+        var(--bg-page);
     }
 
     @media (max-width: 991.98px) {
