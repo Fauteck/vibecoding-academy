@@ -46,6 +46,16 @@ vibecoding-academy/
 - Externe Abhängigkeiten lokal im `/vendor`-Verzeichnis (Bootstrap 5.3.2, Font Awesome 6.4.2)
 - Jede Seite setzt `<html data-depth="0|1|2">` für die korrekte relative Pfadauflösung durch `js/components.js`
 
+### Weiterführende Dokumentation
+
+Detaillierte Architektur- und Workflow-Dokumentation (LLM-optimiert mit absoluten Pfaden und Code-Beispielen):
+
+| Dokument | Inhalt |
+|----------|--------|
+| [docs/INDEX.md](docs/INDEX.md) | Dokumentations-Hub, Datei-Schnellreferenz, Verzeichnisstruktur |
+| [docs/architektur.md](docs/architektur.md) | Shared Components, Pfadauflösung, CSS-Kette, Design Tokens |
+| [docs/arbeitsablaeufe.md](docs/arbeitsablaeufe.md) | Schritt-für-Schritt-Anleitungen, HTML-Templates, häufige Aufgaben |
+
 ### Neues Projekt hinzufügen
 
 1. Unterordner in `apps/` anlegen mit eigener `index.html` (z. B. `apps/snake/index.html`)
