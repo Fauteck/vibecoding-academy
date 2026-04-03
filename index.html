@@ -210,7 +210,8 @@
     }
 
     .audience-icon,
-    .benefit-icon {
+    .benefit-icon,
+    .takeaway-icon {
       color: var(--primary-color);
       font-size: 1.1rem;
       margin-right: 0.45rem;
@@ -417,35 +418,18 @@
       contain-intrinsic-size: auto 250px;
     }
 
-    .takeaways-card {
-      background: var(--bg-card);
-      backdrop-filter: blur(10px);
-      border: 1px solid var(--border-color);
-      border-radius: var(--border-radius-card);
-      padding: 1.5rem 1.35rem;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
-    }
-
-    .takeaway-item {
-      display: flex;
-      align-items: baseline;
-      gap: 0.75rem;
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      padding: 0.6rem 0;
-    }
-
-    .takeaway-item:not(:last-child) {
-      border-bottom: 1px solid var(--border-color);
-    }
-
-    .takeaway-item::before {
-      content: '\f00c';
-      font-family: 'Font Awesome 6 Free';
-      font-weight: 900;
+    .takeaway-check-icon {
+      width: 32px;
+      height: 32px;
+      min-width: 32px;
+      border-radius: 50%;
+      background: rgba(92, 198, 167, 0.15);
       color: var(--success-color);
-      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      margin-top: 0.15rem;
     }
 
     .cta-box {
@@ -648,7 +632,8 @@
       <h2><i class="fas fa-bolt me-2"></i>Was diesen Workshop anders macht</h2>
       <p class="mb-2">Die meisten KI-Workshops enden mit Folien und dem Gefühl: „Interessant — aber was mache ich jetzt damit?"</p>
       <p class="mb-2"><strong>Dieser Workshop endet mit einem Prototyp auf deinem Bildschirm.</strong></p>
-      <p class="mb-0">Stell dir vor, du musst deine Idee nicht mehr erklären, sondern klickbar zeigen. Du arbeitest mit echten KI-Tools an einer eigenen Idee. Du probierst aus, machst Fehler, verbesserst — und verstehst genau dadurch, was mit KI-Prototyping in deinem Kontext sinnvoll machbar ist und was nicht. <strong>Idee rein. Prototyp raus.</strong> So einfach ist das Prinzip.</p>
+      <p class="mb-2">Stell dir vor, du musst deine Idee nicht mehr erklären, sondern klickbar zeigen. Du arbeitest mit echten KI-Tools an einer eigenen Idee. Du probierst aus, machst Fehler, verbesserst — und verstehst genau dadurch, was mit KI-Prototyping in deinem Kontext sinnvoll machbar ist und was nicht.</p>
+      <p class="mb-0"><strong>Idee rein. Prototyp raus.</strong> So einfach ist das Prinzip.</p>
     </div>
 
     <div class="overview-box" id="angebot">
@@ -687,12 +672,6 @@
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="text-center mb-4">
-      <a href="#angebot" class="hero-link" style="color: var(--primary-color); font-size: 0.95rem;">
-        <i class="fas fa-arrow-down me-1"></i>Ablauf ansehen
-      </a>
     </div>
 
     <div id="workshop"></div>
@@ -757,12 +736,40 @@
         </h2>
         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#workshopAccordion">
           <div class="accordion-body">
-            <ol class="mb-0">
-              <li class="mb-2"><strong>Einen präsentierbaren Prototyp</strong> — gebaut von dir, basierend auf deiner Idee. Kein Template, kein Screenshot. Etwas, das du am nächsten Tag zeigen kannst.</li>
-              <li class="mb-2"><strong>Echtes KI-Verständnis</strong> — nicht aus einem Vortrag, sondern aus 4 Stunden eigener Erfahrung. Du weißt, welche Prompts funktionieren und welche nicht.</li>
-              <li class="mb-2"><strong>Klarheit über Grenzen</strong> — du weißt, was heute realistisch ist und wo KI (noch) versagt. Das verhindert teure Fehleinschätzungen.</li>
-              <li><strong>Einen konkreten Plan</strong> — nächste Schritte für dein Projekt, priorisiert und realistisch. Kein vages „man könnte mal...".</li>
-            </ol>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <strong><i class="fas fa-laptop-code takeaway-icon"></i>Einen präsentierbaren Prototyp</strong><br>
+                    <small class="text-muted">Gebaut von dir, basierend auf deiner Idee. Kein Template, kein Screenshot. Etwas, das du am nächsten Tag zeigen kannst.</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <strong><i class="fas fa-brain takeaway-icon"></i>Echtes KI-Verständnis</strong><br>
+                    <small class="text-muted">Nicht aus einem Vortrag, sondern aus 4 Stunden eigener Erfahrung. Du weißt, welche Prompts funktionieren und welche nicht.</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <strong><i class="fas fa-compass takeaway-icon"></i>Klarheit über Grenzen</strong><br>
+                    <small class="text-muted">Du weißt, was heute realistisch ist und wo KI (noch) versagt. Das verhindert teure Fehleinschätzungen.</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <strong><i class="fas fa-map takeaway-icon"></i>Einen konkreten Plan</strong><br>
+                    <small class="text-muted">Nächste Schritte für dein Projekt, priorisiert und realistisch. Kein vages „man könnte mal...".</small>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -885,10 +892,46 @@
       <h5><i class="fas fa-lightbulb me-2"></i>Drei Dinge, die bleiben</h5>
     </div>
 
-    <div class="takeaways-card mb-4">
-      <div class="takeaway-item"><strong>Du hast etwas Echtes gebaut.</strong><br>Keinen Screenshot. Keinen Foliensatz. Einen funktionierenden Prototyp, den du morgen zeigen kannst.</div>
-      <div class="takeaway-item"><strong>Du verstehst, warum es funktioniert.</strong><br>Und wo die Grenzen liegen. Du triffst ab jetzt bessere Entscheidungen über KI-Einsatz.</div>
-      <div class="takeaway-item"><strong>Du weißt, was als Nächstes kommt.</strong><br>Mit einem konkreten Plan — nicht mit einem vagen Gefühl.</div>
+    <div class="row g-3 mb-4">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body d-flex align-items-start gap-3">
+            <span class="takeaway-check-icon">
+              <i class="fas fa-check"></i>
+            </span>
+            <div>
+              <strong class="d-block mb-1">Du hast etwas Echtes gebaut.</strong>
+              <span class="text-muted" style="font-weight: 400;">Keinen Screenshot. Keinen Foliensatz. Einen funktionierenden Prototyp, den du morgen zeigen kannst.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body d-flex align-items-start gap-3">
+            <span class="takeaway-check-icon">
+              <i class="fas fa-check"></i>
+            </span>
+            <div>
+              <strong class="d-block mb-1">Du verstehst, warum es funktioniert.</strong>
+              <span class="text-muted" style="font-weight: 400;">Und wo die Grenzen liegen. Du triffst ab jetzt bessere Entscheidungen über KI-Einsatz.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body d-flex align-items-start gap-3">
+            <span class="takeaway-check-icon">
+              <i class="fas fa-check"></i>
+            </span>
+            <div>
+              <strong class="d-block mb-1">Du weißt, was als Nächstes kommt.</strong>
+              <span class="text-muted" style="font-weight: 400;">Mit einem konkreten Plan — nicht mit einem vagen Gefühl.</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="cta-box mb-4">
