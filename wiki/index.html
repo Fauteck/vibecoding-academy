@@ -173,6 +173,35 @@
       text-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
     }
 
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+      margin-top: 1.35rem;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      padding: 0.82rem 1.45rem;
+      background: #fff;
+      color: var(--secondary-color);
+      font-weight: 700;
+      font-size: 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+      transition: transform 0.2s, box-shadow 0.2s;
+      will-change: transform;
+    }
+
+    .hero-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.16);
+      color: var(--secondary-color);
+    }
+
     .wiki-intro-card {
       background: rgba(255, 255, 255, 0.85);
       backdrop-filter: blur(8px);
@@ -629,6 +658,11 @@
       <p class="mx-auto" style="max-width: 600px;">
         Handout und Lernpfad durch die wichtigsten Grundlagen, Methoden und Grenzen des Vibecodings.
       </p>
+      <div class="hero-actions">
+        <a href="../kontakt/" class="hero-cta">
+          <i class="fas fa-envelope me-2"></i>Workshop anfragen
+        </a>
+      </div>
     </div>
   </div>
 
