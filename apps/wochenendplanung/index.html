@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="de" data-depth="2">
+<html lang="de">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Wochenendplanung - Vibecoding Academy</title>
   <meta name="description" content="Wochenendplanung-App – erstellt im Vibecoding-Workshop mit KI-Unterstützung.">
-  <link rel="canonical" href="https://fauteck.github.io/vibecoding-academy/apps/wochenendplanung/">
   <meta property="og:title" content="Wochenendplanung - Vibecoding Academy">
   <meta property="og:description" content="Wochenendplanung-App – erstellt im Vibecoding-Workshop mit KI-Unterstützung.">
   <meta property="og:type" content="website">
@@ -13,15 +12,44 @@
   <meta property="og:locale" content="de_DE">
   <meta name="theme-color" content="#5B8BD6">
 
-  <link href="../../vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="../../vendor/fontawesome/css/all.min.css">
-  <link rel="stylesheet" href="../../css/tokens.css">
+  <!-- Bootstrap 5.3.2 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+        crossorigin="anonymous">
+
+  <!-- Font Awesome 6.4.2 -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+
   <link rel="stylesheet" href="../../css/nav.css">
-  <link rel="stylesheet" href="../../css/footer.css">
   <style>
+    /* ── Design Tokens ────────────────────────────────── */
+    :root {
+      --primary-color:   #5B8BD6;
+      --secondary-color: #3D5A8C;
+      --success-color:   #5CC6A7;
+      --danger-color:    #D46B6B;
+      --warning-color:   #D4A55B;
+      --info-color:      #6BB8D4;
+      --bg-page:         #EEF2F7;
+      --bg-card:         rgba(255, 255, 255, 0.85);
+      --text-primary:    #2D3748;
+      --text-muted:      #7A8599;
+      --border-color:    #D4DCE8;
+      --border-radius-card: 10px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: var(--bg-page);
+      color: var(--text-primary);
       padding-top: 48px;
+      min-height: 100vh;
     }
 
     /* ── Page Header ────────────────────────────────── */
@@ -107,14 +135,6 @@
     .desktop-table { display: block; }
     .mobile-cards { display: none; }
 
-    @media (max-width: 991.98px) {
-      .plan-card {
-        backdrop-filter: none;
-        -webkit-backdrop-filter: none;
-        background: rgba(255, 255, 255, 0.88);
-      }
-    }
-
     @media (max-width: 768px) {
       .desktop-table { display: none; }
       .mobile-cards { display: block; }
@@ -145,13 +165,83 @@
       color: var(--text-muted); font-size: 0.78rem;
       border-top: 1px solid var(--border-color);
     }
-
   </style>
 </head>
 <body>
 
-  <nav id="site-nav"></nav>
-  <noscript><a href="../../">Startseite</a> | <a href="../../projekte/">Projekte</a> | <a href="../../kontakt/">Kontakt</a></noscript>
+  <!-- Desktop Navbar (>992px) -->
+  <nav class="navbar navbar-expand d-none d-lg-flex">
+    <div class="container-fluid">
+      <a href="https://fauteck.github.io/website/" class="navbar-back-link" aria-label="Zurück zu niklasfauteck.de">
+        <i class="fas fa-house me-1"></i> niklasfauteck.de
+      </a>
+      <span class="navbar-back-separator">|</span>
+      <a class="navbar-brand" href="../../">
+        <i class="fas fa-code me-1"></i> Vibecoding Academy
+      </a>
+      <div class="d-flex align-items-center gap-1">
+        <a class="navbar-link" href="../../#workshop">Workshop</a>
+        <a class="navbar-link" href="../../wiki/">Wiki</a>
+        <div class="dropdown">
+          <a class="navbar-link dropdown-toggle active" href="../../projekte/" role="button" data-bs-toggle="dropdown" aria-expanded="false">Projekte</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="../../apps/pong/">Pong</a></li>
+            <li><a class="dropdown-item" href="../../apps/gta/">Grand Thomas Auto 6</a></li>
+            <li><a class="dropdown-item active" href="../../apps/wochenendplanung/">Wochenendplanung</a></li>
+            <li><a class="dropdown-item" href="../../apps/blog/">KI-Blog</a></li>
+          </ul>
+        </div>
+        <a class="navbar-link" href="../../ueber-mich/">Coach</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Top Bar (<=992px) -->
+  <div class="mobile-topbar d-lg-none">
+    <a href="https://fauteck.github.io/website/" class="mobile-topbar-btn" aria-label="Zurück zu niklasfauteck.de">
+      <i class="fas fa-arrow-left"></i>
+    </a>
+    <a class="mobile-topbar-brand" href="../../">
+      <i class="fas fa-code me-1"></i> Vibecoding Academy
+    </a>
+    <span style="width: 32px;"></span>
+  </div>
+
+  <!-- Mobile Offcanvas: Projekte -->
+  <div class="offcanvas offcanvas-bottom nav-sheet" tabindex="-1" id="projekteSheet" style="height: auto; max-height: 70vh;">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title"><i class="fas fa-rocket me-2"></i>Projekte</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body p-0">
+      <div class="list-group list-group-flush">
+        <a href="../../apps/pong/" class="list-group-item list-group-item-action">Pong</a>
+        <a href="../../apps/gta/" class="list-group-item list-group-item-action">Grand Thomas Auto 6</a>
+        <a href="../../apps/wochenendplanung/" class="list-group-item list-group-item-action active">Wochenendplanung</a>
+        <a href="../../apps/blog/" class="list-group-item list-group-item-action">KI-Blog</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Bottom Navigation (<=992px) -->
+  <nav class="bottom-nav d-lg-none">
+    <a class="bottom-nav-item" href="../../#workshop">
+      <i class="fas fa-chalkboard-user"></i>
+      <span>Workshop</span>
+    </a>
+    <a class="bottom-nav-item" href="../../wiki/">
+      <i class="fas fa-book"></i>
+      <span>Wiki</span>
+    </a>
+    <button class="bottom-nav-item" data-bs-toggle="offcanvas" data-bs-target="#projekteSheet">
+      <i class="fas fa-rocket"></i>
+      <span>Projekte</span>
+    </button>
+    <a class="bottom-nav-item" href="../../ueber-mich/">
+      <i class="fas fa-user"></i>
+      <span>Coach</span>
+    </a>
+  </nav>
 
   <!-- ══════════════════════════════════════════════════ -->
   <!--  Page Header                                      -->
@@ -245,10 +335,19 @@
   <!-- ══════════════════════════════════════════════════ -->
   <!--  Footer                                           -->
   <!-- ══════════════════════════════════════════════════ -->
-  <footer id="site-footer"></footer>
+  <footer class="site-footer">
+    Vibecoding Academy &middot; Wochenenddienst-Planung
+    <div class="d-flex justify-content-center gap-3 mt-1">
+      <a href="../../impressum.html" style="color: var(--text-muted); text-decoration: none;">Impressum</a>
+      <a href="../../datenschutz.html" style="color: var(--text-muted); text-decoration: none;">Datenschutz</a>
+      <a href="../../agb.html" style="color: var(--text-muted); text-decoration: none;">AGB</a>
+    </div>
+  </footer>
 
-  <script src="../../vendor/bootstrap/bootstrap.bundle.min.js"></script>
-  <script src="../../js/components.js"></script>
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+          crossorigin="anonymous"></script>
 
   <script>
   (function () {
