@@ -11,7 +11,12 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://fauteck.github.io/vibecoding-academy/projekte/viewer.html">
   <meta property="og:locale" content="de_DE">
+  <meta property="og:image" content="https://fauteck.github.io/vibecoding-academy/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta name="theme-color" content="#5B8BD6">
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self';">
   <link href="../vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../vendor/fontawesome/css/all.min.css">
   <link rel="stylesheet" href="../css/nav.css">
@@ -80,11 +85,10 @@
   <nav id="idea-nav-top" class="idea-nav idea-nav-top" style="display:none;"></nav>
   <div id="content"><div class="loading">Laden...</div></div>
   <nav id="idea-nav" class="idea-nav" style="display:none;"></nav>
-  <script src="https://cdn.jsdelivr.net/npm/marked@15.0.7/marked.min.js"
-          integrity="sha384-H+hy9ULve6xfxRkWIh/YOtvDdpXgV2fmAGQkIDTxIgZwNoaoBal14Di2YTMR6MzR"
-          crossorigin="anonymous"></script>
+  <script src="../vendor/marked/marked.min.js" defer></script>
+  <script src="../vendor/dompurify/purify.min.js" defer></script>
   <script>
-    (function() {
+    document.addEventListener('DOMContentLoaded', function() {
       var ideas = [
         { file: 'flappybird.md', title: 'Flappy Bird', emoji: '\uD83D\uDC26' },
         { file: 'memory.md', title: 'Memory', emoji: '\uD83C\uDCCF' },
@@ -138,14 +142,14 @@
           return res.text();
         })
         .then(function(text) {
-          el.innerHTML = marked.parse(text);
+          el.innerHTML = DOMPurify.sanitize(marked.parse(text));
           var h1 = el.querySelector('h1');
           if (h1) document.title = h1.textContent + ' - Vibecoding Academy';
         })
         .catch(function() {
           el.innerHTML = '<div class="error">Die Datei konnte nicht geladen werden.</div>';
         });
-    })();
+    });
   </script>
   <!-- Bootstrap JS Bundle -->
   <script src="../vendor/bootstrap/bootstrap.bundle.min.js"></script>
