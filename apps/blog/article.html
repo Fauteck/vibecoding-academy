@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="de" data-depth="2">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artikel – KI-Blog – Vibecoding Academy</title>
+  <meta name="theme-color" content="#5B8BD6">
+
+  <link href="../../vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../vendor/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="../../css/tokens.css">
+  <link rel="stylesheet" href="../../css/nav.css">
+  <link rel="stylesheet" href="../../css/footer.css">
+
+  <style>
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg-page);
+    }
+
+    /* ── Back Link ──────────────────────────────────────────── */
+    .back-link {
+      color: var(--primary-color); text-decoration: none;
+      font-size: 0.875rem; font-weight: 600;
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      transition: color 0.15s;
+    }
+    .back-link:hover { color: var(--secondary-color); }
+
+    /* ── Article Hero Image ─────────────────────────────────── */
+    .article-hero-img {
+      width: 100%; max-height: 420px; object-fit: cover;
+      border-radius: 12px; display: block; margin-bottom: 1.75rem;
+    }
+
+    /* ── Article Header ─────────────────────────────────────── */
+    .article-category-badge {
+      display: inline-block; font-size: 0.7rem; font-weight: 700;
+      padding: 0.22em 0.75em; border-radius: 20px; letter-spacing: 0.06em;
+      text-transform: uppercase; background: rgba(91,139,214,0.15);
+      color: var(--primary-color); margin-bottom: 0.75rem;
+    }
+    .article-title {
+      font-size: clamp(1.5rem, 4vw, 2.4rem); font-weight: 800;
+      line-height: 1.18; color: var(--text-primary); margin-bottom: 0.5rem;
+    }
+    .article-subtitle {
+      font-size: 1.05rem; color: var(--text-muted); line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+    .article-meta {
+      display: flex; flex-wrap: wrap; gap: 0.4rem 1rem;
+      font-size: 0.82rem; color: var(--text-muted);
+      padding: 0.75rem 0; border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color); margin-bottom: 1.75rem;
+    }
+    .article-meta-item { display: flex; align-items: center; gap: 0.35rem; }
+    .article-meta-item i { color: var(--primary-color); }
+
+    /* ── Article Body Typography ────────────────────────────── */
+    .article-body {
+      font-size: 1rem; line-height: 1.82; color: var(--text-primary);
+    }
+    .article-body h2 {
+      font-size: 1.45rem; font-weight: 700; margin: 2rem 0 0.75rem;
+      color: var(--secondary-color);
+      padding-bottom: 0.35rem; border-bottom: 2px solid var(--border-color);
+    }
+    .article-body h3 {
+      font-size: 1.15rem; font-weight: 700; margin: 1.5rem 0 0.5rem;
+      color: var(--text-primary);
+    }
+    .article-body p { margin-bottom: 1.2rem; }
+    .article-body ul, .article-body ol {
+      margin-bottom: 1.2rem; padding-left: 1.6rem;
+    }
+    .article-body li { margin-bottom: 0.35rem; }
+    .article-body a { color: var(--primary-color); }
+    .article-body a:hover { color: var(--secondary-color); }
+    .article-body strong { font-weight: 700; }
+    .article-body blockquote {
+      border-left: 4px solid var(--primary-color);
+      margin: 1.5rem 0; padding: 0.75rem 1.25rem;
+      background: rgba(91,139,214,0.07); border-radius: 0 6px 6px 0;
+      color: var(--text-muted); font-style: italic;
+    }
+
+    /* ── Sidebar ────────────────────────────────────────────── */
+    .sidebar-widget {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius-card);
+      padding: 1.2rem; margin-bottom: 1rem;
+    }
+    .sidebar-widget-title {
+      font-size: 0.85rem; font-weight: 700; color: var(--secondary-color);
+      text-transform: uppercase; letter-spacing: 0.06em;
+      border-bottom: 2px solid var(--primary-color);
+      padding-bottom: 0.5rem; margin-bottom: 0.9rem;
+    }
+    .event-item {
+      padding: 0.65rem 0; border-bottom: 1px solid var(--border-color);
+      display: flex; gap: 0.75rem; align-items: flex-start;
+    }
+    .event-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .event-date-badge {
+      background: var(--primary-color); color: #fff;
+      border-radius: 6px; padding: 0.3rem 0.5rem;
+      font-size: 0.72rem; font-weight: 700; line-height: 1.2;
+      text-align: center; min-width: 42px; flex-shrink: 0;
+    }
+    .event-date-badge .ev-day { font-size: 1.1rem; font-weight: 800; display: block; }
+    .event-info-title { font-size: 0.85rem; font-weight: 600; color: var(--text-primary); line-height: 1.3; }
+    .event-info-meta  { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.1rem; }
+
+    /* ── Not-Found State ────────────────────────────────────── */
+    .not-found {
+      text-align: center; padding: 5rem 1rem; color: var(--text-muted);
+    }
+    .not-found i { display: block; margin-bottom: 1.25rem; opacity: 0.3; }
+    .not-found h4 { color: var(--text-primary); margin-bottom: 0.5rem; }
+
+    /* ── Responsive ─────────────────────────────────────────── */
+    @media (max-width: 991.98px) {
+      .article-hero-img { max-height: 260px; border-radius: 8px; }
+    }
+    @media (max-width: 575.98px) {
+      .article-hero-img { max-height: 200px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="site-nav"></nav>
+  <noscript><a href="../../">Startseite</a> | <a href="../../projekte/">Projekte</a> | <a href="../../kontakt/">Kontakt</a></noscript>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!--  Main Content                                          -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <main class="container-fluid px-3 py-4" style="max-width: 1200px; margin: 0 auto;">
+
+    <!-- Back Link -->
+    <a href="index.html" class="back-link mb-3 d-inline-flex">
+      <i class="fas fa-arrow-left"></i> Zurück zur Übersicht
+    </a>
+
+    <!-- Not Found State -->
+    <div class="not-found d-none" id="not-found">
+      <i class="fas fa-file-circle-xmark fa-3x"></i>
+      <h4>Artikel nicht gefunden</h4>
+      <p class="small">Der gesuchte Artikel existiert nicht oder wurde gelöscht.</p>
+      <a href="index.html" class="btn btn-primary btn-sm mt-2">
+        <i class="fas fa-arrow-left me-1"></i> Zur Übersicht
+      </a>
+    </div>
+
+    <!-- Article + Sidebar row -->
+    <div class="row g-4" id="content-row">
+
+      <!-- Article Column -->
+      <div class="col-lg-8" id="article-col">
+        <!-- JS renders here -->
+      </div>
+
+      <!-- Sidebar -->
+      <div class="col-lg-4">
+
+        <!-- Events Widget -->
+        <div class="sidebar-widget">
+          <div class="sidebar-widget-title"><i class="fas fa-calendar-days me-2"></i>Veranstaltungen</div>
+          <div id="events-list">
+            <p class="text-muted small mb-0">Keine bevorstehenden Termine.</p>
+          </div>
+        </div>
+
+        <!-- Back to overview -->
+        <div class="sidebar-widget text-center">
+          <a href="index.html" class="btn w-100 btn-sm"
+             style="background: var(--primary-color); color: #fff; border: none;">
+            <i class="fas fa-list me-1"></i> Alle Artikel
+          </a>
+        </div>
+
+        <!-- Admin link -->
+        <div class="sidebar-widget text-center">
+          <a href="admin.html" class="btn btn-outline-secondary w-100 btn-sm">
+            <i class="fas fa-pen-to-square me-1"></i> Admin-Bereich
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="../../vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="../../js/components.js"></script>
+
+  <script>
+  (function () {
+    'use strict';
+
+    var POSTS_KEY  = 'vibeblog_posts';
+    var EVENTS_KEY = 'vibeblog_events';
+
+    /* ── Storage ──────────────────────────────────────────── */
+    function loadPosts() {
+      try { var d = JSON.parse(localStorage.getItem(POSTS_KEY)); return Array.isArray(d) ? d : []; }
+      catch (e) { return []; }
+    }
+    function loadEvents() {
+      try { var d = JSON.parse(localStorage.getItem(EVENTS_KEY)); return Array.isArray(d) ? d : []; }
+      catch (e) { return []; }
+    }
+
+    /* ── Utilities ────────────────────────────────────────── */
+    function formatDate(iso) {
+      if (!iso) return '';
+      return new Date(iso).toLocaleDateString('de-DE', { year: 'numeric', month: 'long', day: 'numeric' });
+    }
+    function formatEventDate(dateStr) {
+      var d = new Date(dateStr + 'T12:00:00');
+      return {
+        day:   d.toLocaleDateString('de-DE', { day: '2-digit' }),
+        month: d.toLocaleDateString('de-DE', { month: 'short' })
+      };
+    }
+    function readTime(html) {
+      var text  = html.replace(/<[^>]+>/g, ' ');
+      var words = text.trim().split(/\s+/).filter(Boolean).length;
+      return Math.max(1, Math.round(words / 200)) + ' Min. Lesezeit';
+    }
+    function escHtml(s) {
+      return (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+    function escAttr(s) { return escHtml(s).replace(/"/g, '&quot;'); }
+
+    /* ── URL Parameter ────────────────────────────────────── */
+    function getArticleId() {
+      var params = new URLSearchParams(window.location.search);
+      var id = params.get('id') || '';
+      return /^[a-zA-Z0-9_\-]+$/.test(id) ? id : null;
+    }
+
+    /* ── Render Article ───────────────────────────────────── */
+    function renderArticle(post) {
+      var col = document.getElementById('article-col');
+
+      // Update page title
+      document.title = escHtml(post.title) + ' – KI-Blog – Vibecoding Academy';
+
+      var heroHtml = '';
+      if (post.heroImage) {
+        heroHtml = '<img class="article-hero-img" src="' + escAttr(post.heroImage) + '" alt="' + escAttr(post.title) + '">';
+      }
+
+      var headerHtml =
+        '<span class="article-category-badge">KI-Blog</span>' +
+        '<h1 class="article-title">' + escHtml(post.title) + '</h1>' +
+        (post.subtitle ? '<p class="article-subtitle">' + escHtml(post.subtitle) + '</p>' : '') +
+        '<div class="article-meta">' +
+          '<div class="article-meta-item"><i class="fas fa-user"></i>' + escHtml(post.author || 'Redaktion') + '</div>' +
+          '<div class="article-meta-item"><i class="fas fa-calendar"></i>' + formatDate(post.publishedAt) + '</div>' +
+          '<div class="article-meta-item"><i class="fas fa-clock"></i>' + readTime(post.content) + '</div>' +
+        '</div>';
+
+      col.innerHTML = heroHtml + headerHtml;
+
+      // Render article body — content is own localStorage HTML, not from URL
+      var bodyDiv = document.createElement('div');
+      bodyDiv.className = 'article-body';
+      bodyDiv.innerHTML = post.content || '';
+      col.appendChild(bodyDiv);
+    }
+
+    /* ── Render Events Sidebar ────────────────────────────── */
+    function renderEvents() {
+      var container = document.getElementById('events-list');
+      var today     = new Date().toISOString().slice(0, 10);
+      var events    = loadEvents()
+        .filter(function (e) { return e.date >= today; })
+        .sort(function (a, b) { return a.date.localeCompare(b.date); })
+        .slice(0, 5);
+
+      if (events.length === 0) {
+        container.innerHTML = '<p class="text-muted small mb-0">Keine bevorstehenden Termine.</p>';
+        return;
+      }
+
+      container.innerHTML = '';
+      events.forEach(function (ev) {
+        var fd  = formatEventDate(ev.date);
+        var div = document.createElement('div');
+        div.className = 'event-item';
+
+        var badge = document.createElement('div');
+        badge.className = 'event-date-badge';
+        badge.innerHTML = '<span class="ev-day">' + escHtml(fd.day) + '</span>' + escHtml(fd.month);
+
+        var info  = document.createElement('div');
+        var title = document.createElement('div');
+        title.className = 'event-info-title';
+        title.textContent = ev.title;
+
+        var meta = document.createElement('div');
+        meta.className = 'event-info-meta';
+        var parts = [];
+        if (ev.time) parts.push(ev.time + ' Uhr');
+        if (ev.location) parts.push(ev.location);
+        meta.textContent = parts.join(' · ');
+
+        info.appendChild(title);
+        if (parts.length) info.appendChild(meta);
+
+        if (ev.link) {
+          var wrap = document.createElement('a');
+          wrap.href = ev.link;
+          wrap.target = '_blank';
+          wrap.rel = 'noopener';
+          wrap.style.textDecoration = 'none';
+          wrap.appendChild(badge);
+          div.appendChild(wrap);
+        } else {
+          div.appendChild(badge);
+        }
+        div.appendChild(info);
+        container.appendChild(div);
+      });
+    }
+
+    /* ── Main ─────────────────────────────────────────────── */
+    var id = getArticleId();
+
+    if (!id) {
+      document.getElementById('not-found').classList.remove('d-none');
+      document.getElementById('content-row').classList.add('d-none');
+    } else {
+      var posts = loadPosts();
+      var post  = null;
+      for (var i = 0; i < posts.length; i++) {
+        if (posts[i].id === id) { post = posts[i]; break; }
+      }
+
+      if (!post || post.status !== 'published') {
+        document.getElementById('not-found').classList.remove('d-none');
+        document.getElementById('content-row').classList.add('d-none');
+      } else {
+        renderArticle(post);
+        renderEvents();
+      }
+    }
+
+  }());
+  </script>
+
+</body>
+</html>

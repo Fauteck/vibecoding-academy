@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="de" data-depth="2">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KI-Blog – Vibecoding Academy</title>
+  <meta name="description" content="Gedanken, Projekte und Erkenntnisse rund um KI-gestützte Webentwicklung.">
+  <meta property="og:title" content="KI-Blog – Vibecoding Academy">
+  <meta property="og:description" content="Gedanken, Projekte und Erkenntnisse rund um KI-gestützte Webentwicklung.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://fauteck.github.io/vibecoding-academy/apps/blog/">
+  <meta property="og:locale" content="de_DE">
+  <meta name="theme-color" content="#5B8BD6">
+
+  <link href="../../vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../vendor/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="../../css/tokens.css">
+  <link rel="stylesheet" href="../../css/nav.css">
+  <link rel="stylesheet" href="../../css/footer.css">
+
+  <style>
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg-page);
+    }
+
+    /* ── Page Header ────────────────────────────────────────── */
+    .page-header {
+      background: linear-gradient(135deg, #3D5A8C 0%, #5B8BD6 50%, #6BB8D4 100%);
+      padding: 2.5rem 1.5rem 2rem;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .page-header h1 {
+      color: #fff;
+      font-weight: 800;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      margin-bottom: 0.4rem;
+    }
+    .page-header p {
+      color: rgba(255,255,255,0.88);
+      font-size: 1rem;
+      margin: 0;
+    }
+
+    /* ── Hero Featured Article ──────────────────────────────── */
+    .blog-hero {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 1.75rem;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      text-decoration: none;
+      display: block;
+    }
+    .blog-hero:hover { transform: scale(1.01); box-shadow: 0 8px 32px rgba(0,0,0,0.18); }
+    .blog-hero-img {
+      width: 100%; height: 400px; object-fit: cover; display: block;
+    }
+    .blog-hero-placeholder {
+      width: 100%; height: 400px;
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .blog-hero-placeholder i { font-size: 5rem; color: rgba(255,255,255,0.25); }
+    .blog-hero-overlay {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 2.5rem 1.75rem 1.5rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0) 100%);
+    }
+    .blog-hero-badge {
+      display: inline-block; font-size: 0.7rem; font-weight: 700;
+      padding: 0.2em 0.7em; border-radius: 20px; letter-spacing: 0.06em;
+      text-transform: uppercase; background: var(--primary-color); color: #fff;
+      margin-bottom: 0.6rem;
+    }
+    .blog-hero-title {
+      font-size: clamp(1.4rem, 3vw, 2.1rem); font-weight: 800; color: #fff;
+      line-height: 1.2; margin-bottom: 0.5rem;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.4);
+    }
+    .blog-hero-subtitle {
+      font-size: 0.95rem; color: rgba(255,255,255,0.82); margin-bottom: 0.5rem;
+    }
+    .blog-hero-meta { color: rgba(255,255,255,0.65); font-size: 0.8rem; }
+    .blog-hero-meta span + span::before { content: ' · '; }
+
+    /* ── Article Cards ──────────────────────────────────────── */
+    .article-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-left: 3px solid transparent;
+      border-radius: var(--border-radius-card);
+      padding: 1.2rem;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-left-color 0.15s ease;
+      text-decoration: none;
+      display: block;
+      color: inherit;
+      height: 100%;
+    }
+    .article-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      border-left-color: var(--primary-color);
+      color: inherit;
+    }
+    .article-card-badge {
+      display: inline-block; font-size: 0.68rem; font-weight: 700;
+      padding: 0.18em 0.65em; border-radius: 20px; letter-spacing: 0.05em;
+      text-transform: uppercase; margin-bottom: 0.55rem;
+    }
+    .badge-blue  { background: rgba(91,139,214,0.15); color: var(--primary-color); }
+    .badge-green { background: rgba(92,198,167,0.15); color: var(--success-color); }
+    .badge-amber { background: rgba(212,165,91,0.15);  color: var(--warning-color); }
+    .badge-cyan  { background: rgba(107,184,212,0.15); color: var(--info-color); }
+
+    .article-card-title {
+      font-weight: 700; font-size: 0.98rem; color: var(--text-primary);
+      margin-bottom: 0.4rem; line-height: 1.35;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .article-card-excerpt {
+      font-size: 0.855rem; color: var(--text-muted); line-height: 1.55;
+      display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+      margin-bottom: 0.75rem;
+    }
+    .article-card-meta { font-size: 0.77rem; color: var(--text-muted); }
+    .article-card-meta span + span::before { content: ' · '; }
+
+    /* ── Sidebar ────────────────────────────────────────────── */
+    .sidebar-widget {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius-card);
+      padding: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    .sidebar-widget-title {
+      font-size: 0.85rem; font-weight: 700; color: var(--secondary-color);
+      text-transform: uppercase; letter-spacing: 0.06em;
+      border-bottom: 2px solid var(--primary-color);
+      padding-bottom: 0.5rem; margin-bottom: 0.9rem;
+    }
+
+    /* ── Events ─────────────────────────────────────────────── */
+    .event-item {
+      padding: 0.65rem 0;
+      border-bottom: 1px solid var(--border-color);
+      display: flex; gap: 0.75rem; align-items: flex-start;
+    }
+    .event-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .event-date-badge {
+      background: var(--primary-color); color: #fff;
+      border-radius: 6px; padding: 0.3rem 0.5rem;
+      font-size: 0.72rem; font-weight: 700; line-height: 1.2;
+      text-align: center; min-width: 42px; flex-shrink: 0;
+    }
+    .event-date-badge .ev-day { font-size: 1.1rem; font-weight: 800; display: block; }
+    .event-info-title { font-size: 0.85rem; font-weight: 600; color: var(--text-primary); line-height: 1.3; }
+    .event-info-meta { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.1rem; }
+
+    /* ── Empty States ────────────────────────────────────────── */
+    .empty-state {
+      text-align: center; padding: 3rem 1rem; color: var(--text-muted);
+    }
+    .empty-state i { display: block; margin-bottom: 1rem; opacity: 0.35; }
+    .empty-state h5 { color: var(--text-primary); margin-bottom: 0.5rem; }
+
+    /* ── Responsive ─────────────────────────────────────────── */
+    @media (max-width: 991.98px) {
+      .blog-hero-img, .blog-hero-placeholder { height: 260px; }
+      .blog-hero-title { font-size: 1.3rem; }
+      .page-header { padding: 2rem 1rem 1.5rem; }
+    }
+    @media (max-width: 575.98px) {
+      .blog-hero-img, .blog-hero-placeholder { height: 200px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="site-nav"></nav>
+  <noscript><a href="../../">Startseite</a> | <a href="../../projekte/">Projekte</a> | <a href="../../kontakt/">Kontakt</a></noscript>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!--  Page Header                                           -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="page-header">
+    <h1><i class="fas fa-newspaper me-2"></i>KI-Blog</h1>
+    <p>Gedanken, Projekte &amp; Erkenntnisse rund um KI-gestützte Entwicklung</p>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!--  Main Content                                          -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <main class="container-fluid px-3 pb-4" style="max-width: 1200px; margin: 0 auto;">
+    <div class="row g-4">
+
+      <!-- ── Hauptspalte ── -->
+      <div class="col-lg-8">
+
+        <!-- Featured Hero Article -->
+        <div id="hero-article"></div>
+
+        <!-- Section label (only shown when there are non-featured articles) -->
+        <div id="more-label" class="d-none mb-3">
+          <h6 class="text-muted fw-semibold" style="font-size: 0.78rem; letter-spacing: 0.07em; text-transform: uppercase;">
+            Weitere Artikel
+          </h6>
+        </div>
+
+        <!-- Articles Grid -->
+        <div class="row g-3" id="articles-grid"></div>
+
+        <!-- Empty State -->
+        <div class="empty-state d-none" id="empty-state">
+          <i class="fas fa-pen-nib fa-3x"></i>
+          <h5>Noch keine Artikel vorhanden</h5>
+          <p class="small">Wechsle zum <a href="admin.html" style="color: var(--primary-color);">Admin-Bereich</a>, um den ersten Artikel zu veröffentlichen.</p>
+        </div>
+
+      </div>
+
+      <!-- ── Sidebar ── -->
+      <div class="col-lg-4">
+
+        <!-- Admin-Link Widget -->
+        <div class="sidebar-widget">
+          <a href="admin.html" class="btn w-100 fw-semibold"
+             style="background: var(--primary-color); color: #fff; border: none;">
+            <i class="fas fa-pen-nib me-2"></i>Artikel schreiben
+          </a>
+        </div>
+
+        <!-- Events Widget -->
+        <div class="sidebar-widget">
+          <div class="sidebar-widget-title"><i class="fas fa-calendar-days me-2"></i>Veranstaltungen</div>
+          <div id="events-list">
+            <p class="text-muted small mb-0">Keine bevorstehenden Termine.</p>
+          </div>
+        </div>
+
+        <!-- RSS Widget -->
+        <div class="sidebar-widget">
+          <div class="sidebar-widget-title"><i class="fas fa-rss me-2"></i>RSS-Feed</div>
+          <p class="small mb-2" style="color: var(--text-muted);">
+            Abonniere den Blog und erhalte neue Artikel automatisch.
+          </p>
+          <a href="admin.html#rss" class="btn btn-outline-secondary btn-sm w-100">
+            <i class="fas fa-download me-1"></i> feed.xml herunterladen
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="../../vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="../../js/components.js"></script>
+
+  <script>
+  (function () {
+    'use strict';
+
+    var POSTS_KEY  = 'vibeblog_posts';
+    var EVENTS_KEY = 'vibeblog_events';
+
+    /* ── Storage ──────────────────────────────────────────── */
+    function loadPosts() {
+      try { var d = JSON.parse(localStorage.getItem(POSTS_KEY)); return Array.isArray(d) ? d : []; }
+      catch (e) { return []; }
+    }
+    function savePosts(arr) { localStorage.setItem(POSTS_KEY, JSON.stringify(arr)); }
+    function loadEvents() {
+      try { var d = JSON.parse(localStorage.getItem(EVENTS_KEY)); return Array.isArray(d) ? d : []; }
+      catch (e) { return []; }
+    }
+    function saveEvents(arr) { localStorage.setItem(EVENTS_KEY, JSON.stringify(arr)); }
+
+    /* ── Utilities ────────────────────────────────────────── */
+    function formatDate(iso) {
+      if (!iso) return '';
+      return new Date(iso).toLocaleDateString('de-DE', { year: 'numeric', month: 'long', day: 'numeric' });
+    }
+    function formatEventDate(dateStr) {
+      var d = new Date(dateStr + 'T12:00:00');
+      return {
+        day:   d.toLocaleDateString('de-DE', { day: '2-digit' }),
+        month: d.toLocaleDateString('de-DE', { month: 'short' })
+      };
+    }
+    function readTime(html) {
+      var text  = html.replace(/<[^>]+>/g, ' ');
+      var words = text.trim().split(/\s+/).filter(Boolean).length;
+      return Math.max(1, Math.round(words / 200)) + ' Min.';
+    }
+    var BADGES = ['badge-blue', 'badge-green', 'badge-amber', 'badge-cyan'];
+    var BADGE_LABELS = ['KI', 'Projekt', 'Workshop', 'Tipp'];
+    function badgeClass(idx) { return BADGES[idx % BADGES.length]; }
+    function badgeLabel(idx) { return BADGE_LABELS[idx % BADGE_LABELS.length]; }
+
+    /* ── Sample Data Seeding ──────────────────────────────── */
+    function seedSampleData() {
+      if (localStorage.getItem(POSTS_KEY) !== null) return;
+
+      var now = new Date().toISOString();
+      var posts = [
+        {
+          id: '1', title: 'Willkommen beim KI-Blog der Vibecoding Academy',
+          subtitle: 'Wie KI die Softwareentwicklung verändert',
+          excerpt: 'Erfahre, wie wir mit KI-Unterstützung in kürzester Zeit funktionierende Prototypen entwickeln – und was das für die Zukunft des Programmierens bedeutet.',
+          content: '<h2>Herzlich willkommen!</h2><p>Dies ist der offizielle Blog der <strong>Vibecoding Academy</strong> – dem Ort, an dem KI auf Softwareentwicklung trifft.</p><p>In diesem Blog berichten wir über unsere Erfahrungen mit KI-Tools, zeigen fertige Projekte aus unseren Workshops und teilen Gedanken zur Zukunft des Programmierens.</p><h2>Was ist Vibecoding?</h2><p>Vibecoding ist eine neue Art der Softwareentwicklung: Du beschreibst, was du willst, und die KI hilft dir dabei, es in die Realität umzusetzen. Kein stundenlages Debuggen, kein Stack Overflow – einfach beschreiben und bauen.</p><p>Wir freuen uns, dass du dabei bist!</p>',
+          author: 'Niklas Fauteck', heroImage: '', status: 'published',
+          publishedAt: now, createdAt: now, updatedAt: now
+        },
+        {
+          id: '2', title: 'Was ist Vibecoding? Eine Einführung',
+          subtitle: 'Die neue Art, Software zu entwickeln',
+          excerpt: 'Vibecoding bedeutet: Du beschreibst, was du willst – die KI setzt es um. Wir erklären das Konzept und zeigen, warum es die Entwicklungsarbeit revolutioniert.',
+          content: '<h2>Vibecoding einfach erklärt</h2><p>Der Begriff <strong>Vibecoding</strong> beschreibt eine Arbeitsweise, bei der Entwicklerinnen und Entwickler primär auf natürlichsprachliche Beschreibungen setzen, um Software zu erstellen.</p><p>Anstatt jede Zeile Code manuell zu schreiben, kommuniziert man mit einer KI und beschreibt das gewünschte Ergebnis. Die KI übernimmt die technische Umsetzung.</p><h2>Vorteile</h2><ul><li>Schnellerer Prototypenbau</li><li>Niedrigere Einstiegshürde</li><li>Mehr Fokus auf Ideen statt Syntax</li><li>Lernen durch Tun und Beobachten</li></ul><p>In unseren Workshops zeigen wir, wie das in der Praxis aussieht.</p>',
+          author: 'Niklas Fauteck', heroImage: '', status: 'published',
+          publishedAt: now, createdAt: now, updatedAt: now
+        },
+        {
+          id: '3', title: 'Unser erstes Projekt: Pong in 20 Minuten',
+          subtitle: 'Vom leeren Editor zum spielbaren Spiel',
+          excerpt: 'Im ersten Workshop haben wir das klassische Pong-Spiel mit KI-Unterstützung entwickelt. Hier zeigen wir, wie das in weniger als 20 Minuten möglich war.',
+          content: '<h2>Pong – das perfekte Einstiegsprojekt</h2><p>Für den ersten Workshop haben wir Pong gewählt: ein einfaches, ikonisches Spiel, dessen Logik leicht verständlich ist.</p><p>Das Ziel: In <strong>20 Minuten</strong> ein spielbares Pong-Spiel entwickeln – mit KI-Unterstützung.</p><h2>So lief der Workshop</h2><ol><li>Wir haben das Spielprinzip in natürlicher Sprache beschrieben</li><li>Die KI hat einen ersten Entwurf generiert</li><li>Wir haben gemeinsam Anpassungen vorgenommen</li><li>Das Ergebnis war spielbereit!</li></ol><p>Das fertige Spiel ist übrigens <a href="../pong/">hier ausprobierbar</a>.</p>',
+          author: 'Workshop-Team', heroImage: '', status: 'published',
+          publishedAt: now, createdAt: now, updatedAt: now
+        }
+      ];
+
+      var next1 = new Date();
+      next1.setDate(next1.getDate() + 14);
+      var next2 = new Date();
+      next2.setDate(next2.getDate() + 28);
+
+      var events = [
+        {
+          id: 'e1', title: 'Vibecoding Workshop – Grundlagen',
+          date: next1.toISOString().slice(0, 10), time: '10:00',
+          location: 'Köln, RTL', description: 'Einstieg in KI-gestützte Webentwicklung', link: ''
+        },
+        {
+          id: 'e2', title: 'Vibecoding Workshop – Fortgeschrittene',
+          date: next2.toISOString().slice(0, 10), time: '14:00',
+          location: 'Köln, RTL', description: 'Komplexere Projekte mit KI entwickeln', link: ''
+        }
+      ];
+
+      savePosts(posts);
+      saveEvents(events);
+    }
+
+    /* ── Render: Featured Hero ────────────────────────────── */
+    function renderHero(post, idx) {
+      var container = document.getElementById('hero-article');
+      var href = 'article.html?id=' + encodeURIComponent(post.id);
+
+      var imgHtml = post.heroImage
+        ? '<img class="blog-hero-img" src="' + escAttr(post.heroImage) + '" alt="' + escAttr(post.title) + '">'
+        : '<div class="blog-hero-placeholder"><i class="fas fa-newspaper"></i></div>';
+
+      var a = document.createElement('a');
+      a.href = href;
+      a.className = 'blog-hero';
+      a.setAttribute('aria-label', post.title);
+      a.innerHTML =
+        imgHtml +
+        '<div class="blog-hero-overlay">' +
+          '<span class="blog-hero-badge">' + escHtml(badgeLabel(idx)) + '</span>' +
+          '<div class="blog-hero-title">' + escHtml(post.title) + '</div>' +
+          (post.subtitle ? '<div class="blog-hero-subtitle">' + escHtml(post.subtitle) + '</div>' : '') +
+          '<div class="blog-hero-meta">' +
+            '<span>' + escHtml(post.author || 'Redaktion') + '</span>' +
+            '<span>' + formatDate(post.publishedAt) + '</span>' +
+            '<span>' + readTime(post.content) + ' Lesezeit</span>' +
+          '</div>' +
+        '</div>';
+
+      container.appendChild(a);
+    }
+
+    /* ── Render: Article Grid ─────────────────────────────── */
+    function renderGrid(posts) {
+      var grid = document.getElementById('articles-grid');
+      grid.innerHTML = '';
+      if (posts.length === 0) return;
+
+      document.getElementById('more-label').classList.remove('d-none');
+
+      posts.forEach(function (post, i) {
+        var href = 'article.html?id=' + encodeURIComponent(post.id);
+        var col = document.createElement('div');
+        col.className = 'col-md-6';
+
+        var a = document.createElement('a');
+        a.href = href;
+        a.className = 'article-card';
+
+        var badgeCls = badgeClass(i + 1);
+        var badgeTxt = badgeLabel(i + 1);
+
+        a.innerHTML =
+          '<span class="article-card-badge ' + badgeCls + '">' + escHtml(badgeTxt) + '</span>' +
+          '<div class="article-card-title">' + escHtml(post.title) + '</div>' +
+          '<div class="article-card-excerpt">' + escHtml(post.excerpt || '') + '</div>' +
+          '<div class="article-card-meta">' +
+            '<span>' + escHtml(post.author || 'Redaktion') + '</span>' +
+            '<span>' + formatDate(post.publishedAt) + '</span>' +
+            '<span>' + readTime(post.content) + '</span>' +
+          '</div>';
+
+        col.appendChild(a);
+        grid.appendChild(col);
+      });
+    }
+
+    /* ── Render: Events Sidebar ───────────────────────────── */
+    function renderEvents() {
+      var container = document.getElementById('events-list');
+      var today     = new Date().toISOString().slice(0, 10);
+      var events    = loadEvents()
+        .filter(function (e) { return e.date >= today; })
+        .sort(function (a, b) { return a.date.localeCompare(b.date); })
+        .slice(0, 5);
+
+      if (events.length === 0) {
+        container.innerHTML = '<p class="text-muted small mb-0">Keine bevorstehenden Termine.</p>';
+        return;
+      }
+
+      container.innerHTML = '';
+      events.forEach(function (ev) {
+        var fd  = formatEventDate(ev.date);
+        var div = document.createElement('div');
+        div.className = 'event-item';
+
+        var badge = document.createElement('div');
+        badge.className = 'event-date-badge';
+        badge.innerHTML = '<span class="ev-day">' + escHtml(fd.day) + '</span>' + escHtml(fd.month);
+
+        var info = document.createElement('div');
+        var title = document.createElement('div');
+        title.className = 'event-info-title';
+        title.textContent = ev.title;
+
+        var meta = document.createElement('div');
+        meta.className = 'event-info-meta';
+        var metaParts = [];
+        if (ev.time) metaParts.push(ev.time + ' Uhr');
+        if (ev.location) metaParts.push(ev.location);
+        meta.textContent = metaParts.join(' · ');
+
+        info.appendChild(title);
+        if (metaParts.length) info.appendChild(meta);
+
+        if (ev.link) {
+          var wrap = document.createElement('a');
+          wrap.href = ev.link;
+          wrap.target = '_blank';
+          wrap.rel = 'noopener';
+          wrap.style.textDecoration = 'none';
+          wrap.appendChild(badge);
+          div.appendChild(wrap);
+        } else {
+          div.appendChild(badge);
+        }
+        div.appendChild(info);
+        container.appendChild(div);
+      });
+    }
+
+    /* ── Escape helpers ───────────────────────────────────── */
+    function escHtml(s) {
+      return (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+    function escAttr(s) {
+      return escHtml(s).replace(/"/g, '&quot;');
+    }
+
+    /* ── Main ─────────────────────────────────────────────── */
+    seedSampleData();
+
+    var published = loadPosts().filter(function (p) { return p.status === 'published'; });
+
+    if (published.length === 0) {
+      document.getElementById('empty-state').classList.remove('d-none');
+    } else {
+      renderHero(published[0], 0);
+      if (published.length > 1) renderGrid(published.slice(1));
+    }
+
+    renderEvents();
+
+  }());
+  </script>
+
+</body>
+</html>
