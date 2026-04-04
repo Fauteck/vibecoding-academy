@@ -15,9 +15,15 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Vibecoding Academy – Workshop">
   <meta name="twitter:description" content="Baue mit KI funktionierende Prototypen – auch ohne Programmiererfahrung. Praxisnaher Workshop für kleine Web-Apps, interne Tools und erste Produktideen.">
+  <meta property="og:image" content="https://fauteck.github.io/vibecoding-academy/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta name="theme-color" content="#5B8BD6">
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self';">
 
-  <link href="./vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <link rel="preload" href="./vendor/bootstrap/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="./vendor/bootstrap/bootstrap.min.css"></noscript>
   <link rel="stylesheet" href="./vendor/fontawesome/css/all.min.css">
   <link rel="stylesheet" href="./css/tokens.css">
   <link rel="stylesheet" href="./css/nav.css">

@@ -34,8 +34,12 @@
     for (var i = 0; i < navLinks.length; i++) {
       var link = navLinks[i];
       var cls = 'site-nav-link';
-      if (container === 'desktop' && link.key === activeKey) cls += ' active';
-      html += '<a class="' + cls + '" href="' + prefix + link.href + '">' + link.label + '</a>';
+      var ariaCurrent = '';
+      if (container === 'desktop' && link.key === activeKey) {
+        cls += ' active';
+        ariaCurrent = ' aria-current="page"';
+      }
+      html += '<a class="' + cls + '"' + ariaCurrent + ' href="' + prefix + link.href + '">' + link.label + '</a>';
     }
     html += '<a class="site-nav-cta" href="' + prefix + ctaLink.href + '">' + ctaLink.label + '</a>';
     return html;
