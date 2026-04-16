@@ -173,7 +173,22 @@ Das [Workshop-Handout](https://fauteck.github.io/vibecoding-academy/wiki/) behan
 
 ## Lizenz
 
-Alle Rechte vorbehalten. &copy; Niklas Fauteck
+Eigener Quellcode und Inhalte: Alle Rechte vorbehalten. &copy; Niklas Fauteck
+
+### Drittanbieter-Komponenten
+
+Dieses Projekt verwendet Open-Source-Bibliotheken und Assets:
+
+| Komponente | Version | Lizenz |
+|---|---|---|
+| Bootstrap | 5.3.2 | MIT |
+| Popper.js | (im Bootstrap Bundle) | MIT |
+| Font Awesome Free | 6.4.2 | Icons: CC BY 4.0 / Fonts: SIL OFL 1.1 / Code: MIT |
+| JetBrains Mono | — | SIL OFL 1.1 |
+| marked.js | 15.0.7 | MIT |
+| DOMPurify | 3.3.3 | Apache 2.0 / MPL 2.0 |
+
+Vollständige Lizenztexte und Copyright-Hinweise: [NOTICE.md](NOTICE.md)
 
 ---
 
