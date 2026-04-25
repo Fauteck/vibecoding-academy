@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" data-depth="2">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,7 +20,9 @@
   <link href="../../vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
   <!-- Font Awesome 6.4.2 -->
   <link rel="stylesheet" href="../../vendor/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="../../css/tokens.css">
   <link rel="stylesheet" href="../../css/nav.css">
+  <link rel="stylesheet" href="../../css/footer.css">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: system-ui, sans-serif; background: #111; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding-top: 48px; }
@@ -197,14 +199,7 @@
   </script>
   <!-- Bootstrap JS Bundle -->
   <script src="../../vendor/bootstrap/bootstrap.bundle.min.js"></script>
-
-  <!-- ══════════════════════════════════════════════════ -->
-  <!--  Footer                                           -->
-  <!-- ══════════════════════════════════════════════════ -->
-  <footer style="width:100%; text-align:center; padding:0.6rem; background:#1a1a2e; font-size:0.75rem; color:rgba(255,255,255,0.45);">
-    <a href="../../impressum.html" style="color:rgba(255,255,255,0.55); text-decoration:none; margin:0 0.5rem;">Impressum</a>
-    <a href="../../datenschutz.html" style="color:rgba(255,255,255,0.55); text-decoration:none; margin:0 0.5rem;">Datenschutz</a>
-    <a href="../../agb.html" style="color:rgba(255,255,255,0.55); text-decoration:none; margin:0 0.5rem;">AGB</a>
-  </footer>
+  <footer id="site-footer"></footer>
+  <script src="../../js/components.js"></script>
 </body>
 </html>

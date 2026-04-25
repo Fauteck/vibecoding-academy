@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" data-depth="2">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,7 +21,9 @@
   <!-- Font Awesome 6.4.2 -->
   <link rel="stylesheet" href="../../vendor/fontawesome/css/all.min.css">
 
+  <link rel="stylesheet" href="../../css/tokens.css">
   <link rel="stylesheet" href="../../css/nav.css">
+  <link rel="stylesheet" href="../../css/footer.css">
   <style>
     /* ── Design Tokens ────────────────────────────────── */
     :root {
@@ -156,12 +158,6 @@
     .stat-besetzt strong { color: var(--text-muted); }
     .stat-total strong { color: var(--primary-color); }
 
-    /* ── Footer ─────────────────────────────────────── */
-    .site-footer {
-      text-align: center; padding: 1.5rem 1rem; margin-top: 2rem;
-      color: var(--text-muted); font-size: 0.78rem;
-      border-top: 1px solid var(--border-color);
-    }
   </style>
 </head>
 <body>
@@ -329,17 +325,7 @@
   <!-- ══════════════════════════════════════════════════ -->
   <div class="toast-container" id="toast-container"></div>
 
-  <!-- ══════════════════════════════════════════════════ -->
-  <!--  Footer                                           -->
-  <!-- ══════════════════════════════════════════════════ -->
-  <footer class="site-footer">
-    Vibecoding Academy &middot; Wochenenddienst-Planung
-    <div class="d-flex justify-content-center gap-3 mt-1">
-      <a href="../../impressum.html" style="color: var(--text-muted); text-decoration: none;">Impressum</a>
-      <a href="../../datenschutz.html" style="color: var(--text-muted); text-decoration: none;">Datenschutz</a>
-      <a href="../../agb.html" style="color: var(--text-muted); text-decoration: none;">AGB</a>
-    </div>
-  </footer>
+  <footer id="site-footer"></footer>
 
   <!-- Bootstrap JS Bundle -->
   <script src="../../vendor/bootstrap/bootstrap.bundle.min.js"></script>
@@ -748,5 +734,6 @@
 
   })();
   </script>
+  <script src="../../js/components.js"></script>
 </body>
 </html>
