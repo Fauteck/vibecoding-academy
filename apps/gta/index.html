@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" data-depth="2">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -20,7 +20,9 @@
   <link href="../../vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
   <!-- Font Awesome 6.4.2 -->
   <link rel="stylesheet" href="../../vendor/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="../../css/tokens.css">
   <link rel="stylesheet" href="../../css/nav.css">
+  <link rel="stylesheet" href="../../css/footer.css">
   <style>
     @font-face { font-family: 'JetBrains Mono'; src: url('fonts/JetBrainsMono-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
     @font-face { font-family: 'JetBrains Mono'; src: url('fonts/JetBrainsMono-Bold.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
@@ -777,13 +779,7 @@
   <!-- Bootstrap JS Bundle -->
   <script src="../../vendor/bootstrap/bootstrap.bundle.min.js"></script>
 
-  <!-- ══════════════════════════════════════════════════ -->
-  <!--  Footer                                           -->
-  <!-- ══════════════════════════════════════════════════ -->
-  <footer style="width:100%; text-align:center; padding:0.6rem; background:#0f0f1a; font-size:0.75rem; color:rgba(255,255,255,0.35);">
-    <a href="../../impressum.html" style="color:rgba(255,255,255,0.5); text-decoration:none; margin:0 0.5rem;">Impressum</a>
-    <a href="../../datenschutz.html" style="color:rgba(255,255,255,0.5); text-decoration:none; margin:0 0.5rem;">Datenschutz</a>
-    <a href="../../agb.html" style="color:rgba(255,255,255,0.5); text-decoration:none; margin:0 0.5rem;">AGB</a>
-  </footer>
+  <footer id="site-footer"></footer>
+  <script src="../../js/components.js"></script>
 </body>
 </html>

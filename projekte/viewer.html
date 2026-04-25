@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" data-depth="1">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,6 +19,7 @@
         content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://api.web3forms.com">
   <link href="../vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../vendor/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="../css/tokens.css">
   <link rel="stylesheet" href="../css/nav.css">
   <link rel="stylesheet" href="../css/footer.css">
   <style>
@@ -56,32 +57,7 @@
   </style>
 </head>
 <body>
-  <nav class="site-nav" role="navigation" aria-label="Hauptnavigation">
-    <div class="site-nav-inner">
-      <a class="site-nav-brand" href="../">
-        <span class="site-nav-brand-name">Vibecoding Academy</span>
-        <span class="site-nav-brand-subtitle">mit Niklas Fauteck</span>
-      </a>
-      <div class="site-nav-links">
-        <a class="site-nav-link" href="../">Workshop</a>
-        <a class="site-nav-link" href="../wiki/">Wiki</a>
-        <a class="site-nav-link active" aria-current="page" href="../projekte/">Projekte</a>
-        <a class="site-nav-link" href="../ueber-mich/">Coach</a>
-              <a class="site-nav-cta" href="../kontakt/">Workshop anfragen</a>
-      </div>
-      <button class="site-nav-hamburger" aria-label="Menü" aria-expanded="false"
-              data-toggle="hamburger">
-        <span></span><span></span><span></span>
-      </button>
-      <div class="site-nav-dropdown">
-        <a class="site-nav-link" href="../">Workshop</a>
-        <a class="site-nav-link" href="../wiki/">Wiki</a>
-        <a class="site-nav-link" href="../projekte/">Projekte</a>
-        <a class="site-nav-link" href="../ueber-mich/">Coach</a>
-              <a class="site-nav-cta" href="../kontakt/">Workshop anfragen</a>
-      </div>
-    </div>
-  </nav>
+  <nav id="site-nav"></nav>
   <nav id="idea-nav-top" class="idea-nav idea-nav-top" style="display:none;"></nav>
   <div id="content"><div class="loading">Laden...</div></div>
   <nav id="idea-nav" class="idea-nav" style="display:none;"></nav>
@@ -154,17 +130,7 @@
   </script>
   <!-- Bootstrap JS Bundle -->
   <script src="../vendor/bootstrap/bootstrap.bundle.min.js"></script>
-
-  <!-- ══════════════════════════════════════════════════ -->
-  <!--  Footer                                           -->
-  <!-- ══════════════════════════════════════════════════ -->
-  <footer class="footer" style="margin-bottom: 1.5rem;">
-    <a href="../kontakt/" style="font-weight: 600; font-size: 1.1rem; display: block; margin-bottom: 0.5rem;">Kontakt</a>
-    <a href="../impressum.html">Impressum</a>
-    <span style="margin: 0 0.3rem;">&middot;</span>
-    <a href="../datenschutz.html">Datenschutz</a>
-    <span style="margin: 0 0.3rem;">&middot;</span>
-    <a href="../agb.html">AGB</a>
-  </footer>
+  <footer id="site-footer"></footer>
+  <script src="../js/components.js"></script>
 </body>
 </html>
