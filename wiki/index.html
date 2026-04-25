@@ -14,9 +14,9 @@
   <meta property="og:image" content="https://fauteck.github.io/vibecoding-academy/images/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta name="theme-color" content="#5B8BD6">
+  <meta name="theme-color" content="var(--primary-color)">
   <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://api.web3forms.com">
+        content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
   <link href="../vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../vendor/fontawesome/css/all.min.css">
@@ -31,7 +31,7 @@
       background:
         linear-gradient(rgba(238, 242, 247, 0.45), rgba(238, 242, 247, 0.45)),
         url('../images/content-bg.jpg') top center/cover no-repeat fixed,
-        #EEF2F7;
+        var(--bg-page);
       background:
         linear-gradient(rgba(238, 242, 247, 0.45), rgba(238, 242, 247, 0.45)),
         image-set(
@@ -39,7 +39,7 @@
           url('../images/content-bg.webp') type('image/webp'),
           url('../images/content-bg.jpg') type('image/jpeg')
         ) top center/cover no-repeat fixed,
-        #EEF2F7;
+        var(--bg-page);
       color: #222;
       min-height: 100vh;
       position: relative;
@@ -51,8 +51,8 @@
       left: 0;
       height: 3px;
       width: 0%;
-      background: linear-gradient(90deg, #5CC6A7, #5B8BD6);
-      z-index: 1050;
+      background: linear-gradient(90deg, var(--success-color), var(--primary-color));
+      z-index: var(--z-modal);
       transition: width 0.1s linear;
       pointer-events: none;
     }
@@ -71,7 +71,7 @@
       border-bottom: 1px solid #e2e8f0;
       padding: 0.4rem 1rem;
       font-size: 0.8rem;
-      color: #7A8599;
+      color: var(--text-muted);
       transform: translateY(-100%);
       opacity: 0;
       transition: transform 0.25s ease, opacity 0.25s ease;
@@ -100,7 +100,7 @@
     }
 
     #breadcrumb-bar .breadcrumb-section {
-      color: #3D5A8C;
+      color: var(--secondary-color);
       font-weight: 600;
       white-space: nowrap;
       overflow: hidden;
@@ -109,7 +109,7 @@
     }
 
     #breadcrumb-bar i {
-      color: #5B8BD6;
+      color: var(--primary-color);
       font-size: 0.7rem;
     }
 
@@ -117,12 +117,12 @@
       position: fixed;
       bottom: 2rem;
       right: 2rem;
-      z-index: 1040;
+      z-index: var(--z-dropdown);
       width: 44px;
       height: 44px;
       border-radius: 50%;
       border: none;
-      background: linear-gradient(135deg, #5B8BD6, #3D5A8C);
+      background: var(--gradient-nav);
       color: #fff;
       font-size: 1.1rem;
       cursor: pointer;
@@ -141,7 +141,7 @@
     }
 
     #back-to-top:hover {
-      background: linear-gradient(135deg, #3D5A8C, #2c4570);
+      background: linear-gradient(135deg, var(--secondary-color), #2c4570);
     }
 
     @media (max-width: 991.98px) {
@@ -150,19 +150,19 @@
 
     #content {
       max-width: 860px;
-      margin: 2rem auto;
-      padding: 0 1rem;
+      margin: var(--space-6) auto;
+      padding: 0 var(--space-4);
       line-height: 1.7;
     }
 
     .hero-section {
       background:
         linear-gradient(135deg, rgba(61, 90, 140, 0.3) 0%, rgba(91, 139, 214, 0.15) 100%),
-        linear-gradient(135deg, #5B8BD6 0%, #6BB8D4 35%, #7DD4C8 55%, #A89BD4 100%);
+        linear-gradient(135deg, var(--primary-color) 0%, #6BB8D4 35%, #7DD4C8 55%, #A89BD4 100%);
       padding: 3rem 1.5rem 2.5rem;
       text-align: center;
-      border-radius: 0 0 10px 10px;
-      margin-bottom: 1.5rem;
+      border-radius: 0 0 var(--border-radius-card) var(--border-radius-card);
+      margin-bottom: var(--space-5);
     }
 
     .hero-section h1 {
@@ -227,12 +227,12 @@
       border-radius: 12px;
       box-shadow: 0 1px 4px rgba(0,0,0,0.06);
       margin-bottom: 1.5rem;
-      border-left: 4px solid #5B8BD6;
+      border-left: 4px solid var(--primary-color);
       overflow: hidden;
     }
 
     .wiki-section:nth-child(even of .wiki-section) {
-      border-left-color: #3D5A8C;
+      border-left-color: var(--secondary-color);
     }
 
     .section-toggle {
@@ -262,7 +262,7 @@
     }
 
     .section-toggle-icon {
-      color: #7A8599;
+      color: var(--text-muted);
       font-size: 0.9rem;
       transition: transform 0.25s ease;
       flex-shrink: 0;
@@ -287,7 +287,7 @@
       display: inline-block;
       width: 8px;
       height: 8px;
-      background: #5B8BD6;
+      background: var(--primary-color);
       border-radius: 2px;
       flex-shrink: 0;
     }
@@ -335,10 +335,10 @@
     pre {
       background: #1e1e2e;
       color: #cdd6f4;
-      padding: 1rem;
+      padding: var(--space-4);
       border-radius: 6px;
       overflow-x: auto;
-      margin-bottom: 1rem;
+      margin-bottom: var(--space-4);
     }
 
     pre code {
@@ -352,7 +352,7 @@
       border-left: 4px solid #3498db;
       background: #f0f6fc;
       padding: 1rem 1.2rem;
-      margin: 1rem 0;
+      margin: var(--space-4) 0;
       border-radius: 0 6px 6px 0;
       color: #2c3e50;
     }
@@ -362,9 +362,9 @@
     .toc {
       background: rgba(248, 249, 250, 0.85);
       border: 1px solid #e9ecef;
-      border-radius: 10px;
+      border-radius: var(--border-radius-card);
       padding: 1.25rem 1.4rem;
-      margin: 1.5rem 0 0;
+      margin: var(--space-5) 0 0;
     }
 
     .toc-title {
@@ -384,7 +384,7 @@
     .toc-group-title {
       font-size: 0.95rem;
       font-weight: 700;
-      color: #3D5A8C;
+      color: var(--secondary-color);
       margin-bottom: 0.35rem;
     }
 
@@ -404,14 +404,14 @@
       font-weight: 700;
       letter-spacing: 0.02em;
       text-transform: uppercase;
-      color: #5B8BD6;
+      color: var(--primary-color);
       margin-bottom: 0.75rem;
     }
 
     .highlight-box {
-      border-radius: 10px;
+      border-radius: var(--border-radius-card);
       padding: 1rem 1.2rem;
-      margin: 1rem 0;
+      margin: var(--space-4) 0;
     }
 
     .highlight-box p:last-child { margin-bottom: 0; }
@@ -421,9 +421,9 @@
     .highlight-yellow { background: #fff9e6; border: 1px solid #f0dca0; }
 
     .info-box {
-      border-radius: 10px;
+      border-radius: var(--border-radius-card);
       padding: 1rem 1.2rem;
-      margin: 1rem 0;
+      margin: var(--space-4) 0;
       display: flex;
       gap: 0.75rem;
       align-items: flex-start;
@@ -452,29 +452,29 @@
     }
 
     .info-box.tip { background: #eaf7ee; border: 1px solid #c3e6cb; }
-    .info-box.tip .info-icon { background: #5CC6A7; }
+    .info-box.tip .info-icon { background: var(--success-color); }
     .info-box.tip .info-label { color: #2d8a5e; }
 
     .info-box.warning { background: #fff9e6; border: 1px solid #f0dca0; }
-    .info-box.warning .info-icon { background: #D4A55B; }
+    .info-box.warning .info-icon { background: var(--warning-color); }
     .info-box.warning .info-label { color: #96722e; }
 
     .info-box.example { background: #f0f6fc; border: 1px solid #b8d4e8; }
-    .info-box.example .info-icon { background: #5B8BD6; }
-    .info-box.example .info-label { color: #3D5A8C; }
+    .info-box.example .info-icon { background: var(--primary-color); }
+    .info-box.example .info-label { color: var(--secondary-color); }
 
     .info-box.danger { background: #fdf0f0; border: 1px solid #e8b8b8; }
-    .info-box.danger .info-icon { background: #D46B6B; }
+    .info-box.danger .info-icon { background: var(--danger-color); }
     .info-box.danger .info-label { color: #a04040; }
 
     .badge-soft {
       display: inline-block;
       padding: 0.25rem 0.55rem;
-      border-radius: 999px;
+      border-radius: var(--border-radius-pill);
       font-size: 0.78rem;
       font-weight: 700;
       background: #eef4ff;
-      color: #3D5A8C;
+      color: var(--secondary-color);
       margin-bottom: 0.8rem;
     }
 
@@ -496,7 +496,7 @@
       position: absolute;
       left: 0;
       top: 0.1rem;
-      color: #5CC6A7;
+      color: var(--success-color);
       font-size: 0.85rem;
     }
 
@@ -517,13 +517,13 @@
       font-family: inherit;
     }
 
-    .collapsible-toggle:hover { color: #5B8BD6; }
+    .collapsible-toggle:hover { color: var(--primary-color); }
 
     .collapsible-toggle .toggle-icon {
       font-size: 0.8rem;
-      color: #7A8599;
+      color: var(--text-muted);
       transition: transform 0.25s;
-      margin-left: 1rem;
+      margin-left: var(--space-4);
       flex-shrink: 0;
     }
 
@@ -543,7 +543,7 @@
 
     .back-link {
       display: inline-block;
-      margin-top: 0.5rem;
+      margin-top: var(--space-2);
       color: #3498db;
       text-decoration: none;
       font-weight: 600;
@@ -1446,28 +1446,28 @@
 
   <script>
     (function() {
-      var progressBar = document.getElementById('reading-progress');
-      var breadcrumbBar = document.getElementById('breadcrumb-bar');
-      var breadcrumbSection = document.getElementById('breadcrumb-section');
-      var backToTop = document.getElementById('back-to-top');
+      const progressBar = document.getElementById('reading-progress');
+      const breadcrumbBar = document.getElementById('breadcrumb-bar');
+      const breadcrumbSection = document.getElementById('breadcrumb-section');
+      const backToTop = document.getElementById('back-to-top');
 
-      var sections = Array.from(document.querySelectorAll('.wiki-section h2[id]'));
-      var sectionToggles = document.querySelectorAll('.section-toggle');
-      var innerToggles = document.querySelectorAll('.collapsible-toggle');
+      const sections = Array.from(document.querySelectorAll('.wiki-section h2[id]'));
+      const sectionToggles = document.querySelectorAll('.section-toggle');
+      const innerToggles = document.querySelectorAll('.collapsible-toggle');
 
-      var ticking = false;
+      let ticking = false;
 
       function openSectionById(id) {
         if (!id) return;
-        var target = document.getElementById(id);
+        const target = document.getElementById(id);
         if (!target) return;
 
-        var section = target.closest('.wiki-section');
+        const section = target.closest('.wiki-section');
         if (!section) return;
 
-        var toggle = section.querySelector('.section-toggle');
-        var bodyId = toggle ? toggle.getAttribute('aria-controls') : null;
-        var body = bodyId ? document.getElementById(bodyId) : null;
+        const toggle = section.querySelector('.section-toggle');
+        const bodyId = toggle ? toggle.getAttribute('aria-controls') : null;
+        const body = bodyId ? document.getElementById(bodyId) : null;
 
         if (toggle && body) {
           toggle.setAttribute('aria-expanded', 'true');
@@ -1480,9 +1480,9 @@
         ticking = true;
 
         requestAnimationFrame(function() {
-          var scrollTop = window.scrollY;
-          var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-          var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+          const scrollTop = window.scrollY;
+          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
           progressBar.style.width = Math.min(progress, 100) + '%';
 
           if (scrollTop > 280) {
@@ -1491,8 +1491,8 @@
             breadcrumbBar.classList.remove('visible');
           }
 
-          var currentSection = 'Einleitung';
-          for (var i = sections.length - 1; i >= 0; i--) {
+          let currentSection = 'Einleitung';
+          for (let i = sections.length - 1; i >= 0; i--) {
             if (sections[i].getBoundingClientRect().top <= 140) {
               currentSection = sections[i].textContent;
               break;
@@ -1518,9 +1518,9 @@
 
       sectionToggles.forEach(function(toggle) {
         toggle.addEventListener('click', function() {
-          var expanded = this.getAttribute('aria-expanded') === 'true';
-          var bodyId = this.getAttribute('aria-controls');
-          var body = document.getElementById(bodyId);
+          const expanded = this.getAttribute('aria-expanded') === 'true';
+          const bodyId = this.getAttribute('aria-controls');
+          const body = document.getElementById(bodyId);
 
           if (expanded) {
             this.setAttribute('aria-expanded', 'false');
@@ -1534,9 +1534,9 @@
 
       innerToggles.forEach(function(toggle) {
         toggle.addEventListener('click', function() {
-          var expanded = this.getAttribute('aria-expanded') === 'true';
-          var bodyId = this.getAttribute('aria-controls');
-          var body = document.getElementById(bodyId);
+          const expanded = this.getAttribute('aria-expanded') === 'true';
+          const bodyId = this.getAttribute('aria-controls');
+          const body = document.getElementById(bodyId);
 
           if (expanded) {
             this.setAttribute('aria-expanded', 'false');
@@ -1550,7 +1550,7 @@
 
       document.querySelectorAll('.toc a[href^="#"]').forEach(function(link) {
         link.addEventListener('click', function() {
-          var id = this.getAttribute('href').slice(1);
+          const id = this.getAttribute('href').slice(1);
           setTimeout(function() {
             openSectionById(id);
           }, 10);
