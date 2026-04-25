@@ -5,10 +5,10 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1030;
+  z-index: var(--z-nav, 1030);
   background: #fff;
   border-bottom: 1px solid var(--border-color, #D4DCE8);
-  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: var(--shadow-sm, 0 1px 8px rgba(0, 0, 0, 0.04));
 }
 
 .site-nav-inner {
@@ -27,7 +27,7 @@
   display: flex;
   flex-direction: column;
   line-height: 1.2;
-  transition: color 0.2s ease;
+  transition: color var(--transition-fast, 0.2s ease);
 }
 
 .site-nav-brand-name {
@@ -66,7 +66,7 @@
   color: var(--text-muted, #7A8599);
   font-size: 0.9rem;
   font-weight: 500;
-  transition: color 0.2s ease;
+  transition: color var(--transition-fast, 0.2s ease);
 }
 
 .site-nav-link:hover,
@@ -93,7 +93,7 @@
   height: 1px;
   background: var(--secondary-color, #3D5A8C);
   border-radius: 1px;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition: transform var(--transition-fast, 0.2s ease), opacity var(--transition-fast, 0.2s ease);
 }
 
 /* Hamburger → X animation */
@@ -117,7 +117,7 @@
   right: 0;
   background: #fff;
   border-bottom: 1px solid var(--border-color, #D4DCE8);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  box-shadow: var(--shadow-md, 0 4px 12px rgba(0, 0, 0, 0.06));
   padding: 0.5rem 0;
 }
 
@@ -156,9 +156,9 @@ body {
   color: #fff !important;
   font-size: 0.85rem;
   font-weight: 600;
-  border-radius: 6px;
+  border-radius: var(--border-radius-button, 6px);
   text-decoration: none;
-  transition: opacity 0.2s ease;
+  transition: opacity var(--transition-fast, 0.2s ease);
   white-space: nowrap;
 }
 

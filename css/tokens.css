@@ -1,6 +1,7 @@
 /* ── Design Tokens & Base Styles ─────────────────── */
 
 :root {
+  /* ── Colors ──────────────────────────────────────── */
   --primary-color:      #5B8BD6;
   --secondary-color:    #3D5A8C;
   --success-color:      #5CC6A7;
@@ -12,14 +13,46 @@
   --text-primary:       #2D3748;
   --text-muted:         #7A8599;
   --border-color:       #D4DCE8;
-  --border-radius-card: 10px;
+
+  /* ── Border Radii ────────────────────────────────── */
+  --border-radius-card:   10px;
+  --border-radius-button: 6px;
+  --border-radius-pill:   999px;
+
+  /* ── Spacing Scale (4 px grid) ───────────────────── */
+  --space-1: 0.25rem;  /* 4px  */
+  --space-2: 0.5rem;   /* 8px  */
+  --space-3: 0.75rem;  /* 12px */
+  --space-4: 1rem;     /* 16px */
+  --space-5: 1.5rem;   /* 24px */
+  --space-6: 2rem;     /* 32px */
+  --space-7: 3rem;     /* 48px */
+
+  /* ── Shadow Scale ────────────────────────────────── */
+  --shadow-sm: 0 1px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.08);
+
+  /* ── Transitions ─────────────────────────────────── */
+  --transition-fast:   0.2s ease;
+  --transition-medium: 0.3s ease;
+
+  /* ── Z-Index Scale ───────────────────────────────── */
+  --z-nav:      1030;
+  --z-dropdown: 1040;
+  --z-modal:    1050;
+  --z-toast:    1060;
+
+  /* ── Gradient Presets ────────────────────────────── */
+  --gradient-nav:  linear-gradient(135deg, #5B8BD6, #3D5A8C);
+  --gradient-hero: linear-gradient(135deg, rgba(61, 90, 140, 0.22), rgba(91, 139, 214, 0.15));
 }
 
-/* ── Reset ──────────────────────────────────────── */
+/* ── Reset ───────────────────────────────────────── */
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* ── Base ───────────────────────────────────────── */
+/* ── Base ────────────────────────────────────────── */
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -27,7 +60,15 @@ body {
   min-height: 100vh;
 }
 
-/* ── Common Card ────────────────────────────────── */
+/* ── Focus Visible ───────────────────────────────── */
+
+:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* ── Common Card ─────────────────────────────────── */
 
 .card {
   background: var(--bg-card);
@@ -36,26 +77,26 @@ body {
   backdrop-filter: blur(6px);
 }
 
-/* ── Section Header (legal pages, etc.) ─────────── */
+/* ── Section Header ──────────────────────────────── */
 
 .section-header {
   border-left: 4px solid var(--primary-color);
-  padding-left: 0.75rem;
-  margin-bottom: 1rem;
-  margin-top: 2rem;
+  padding-left: var(--space-3);
+  margin-bottom: var(--space-4);
+  margin-top: var(--space-6);
 }
 
 .section-header:first-child { margin-top: 0; }
 
-/* ── Page Wrapper ───────────────────────────────── */
+/* ── Page Wrapper ────────────────────────────────── */
 
 .page-wrapper {
   padding-top: 80px;
-  padding-bottom: 3rem;
+  padding-bottom: var(--space-7);
 }
 
 @media (max-width: 991.98px) {
-  .page-wrapper { padding-top: 1.5rem; }
+  .page-wrapper { padding-top: var(--space-5); }
   body { background-attachment: scroll; }
   .card {
     backdrop-filter: none;
@@ -64,15 +105,15 @@ body {
   }
 }
 
-/* ── Footer Inline-Style Consolidation ──────────── */
+/* ── Footer Inline-Style Consolidation ───────────── */
 
 .footer-contact-link {
   font-weight: 600;
   font-size: 1.1rem;
   display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--space-2);
 }
 
 .footer-sep {
-  margin: 0 0.3rem;
+  margin: 0 var(--space-1);
 }
