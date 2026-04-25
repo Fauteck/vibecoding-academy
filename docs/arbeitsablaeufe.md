@@ -1,22 +1,22 @@
-# Arbeitsabläufe & Häufige Aufgaben
+# Workflows & Common Tasks
 
-> Zurück zum [Dokumentations-Index](INDEX.md)
+> Back to [Documentation Index](INDEX.md)
 
 ---
 
-## Neue App erstellen (depth=2)
+## Create a New App (depth=2)
 
-### Schritt-für-Schritt
+### Step by Step
 
-1. **Ordner anlegen:** `apps/<name>/index.html`
-2. **`data-depth="2"`** im `<html>`-Tag setzen
-3. **CSS/JS einbinden** mit Prefix `../../` (siehe Template unten)
-4. **Nav/Footer-Platzhalter** einfügen: `<nav id="site-nav"></nav>` und `<footer id="site-footer"></footer>`
-5. **Seitenspezifische Styles/Logik** inline in `<style>` und `<script>`
-6. **Projekt-Card** in `/home/user/vibecoding-academy/index.html` im Bereich "Ergebnisse" eintragen
-7. **Committen & Pushen** — GitHub Pages deployt automatisch
+1. **Create folder:** `apps/<name>/index.html`
+2. **Set `data-depth="2"`** in the `<html>` tag
+3. **Include CSS/JS** with prefix `../../` (see template below)
+4. **Insert nav/footer placeholders:** `<nav id="site-nav"></nav>` and `<footer id="site-footer"></footer>`
+5. **Page-specific styles/logic** inline in `<style>` and `<script>`
+6. **Add project card** in `/home/user/vibecoding-academy/index.html` in the "Ergebnisse" section
+7. **Commit & push** — GitHub Pages deploys automatically
 
-### Vollständiges HTML-Template (Copy-Paste)
+### Full HTML Template (Copy-Paste)
 
 ```html
 <!DOCTYPE html>
@@ -25,19 +25,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>APP-NAME — Vibecoding Academy</title>
-    <meta name="description" content="BESCHREIBUNG">
+    <meta name="description" content="DESCRIPTION">
 
-    <!-- Vendor (lokal) -->
+    <!-- Vendor (local) -->
     <link href="../../vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../vendor/fontawesome/css/all.min.css">
 
-    <!-- Gemeinsame Styles -->
+    <!-- Shared styles -->
     <link rel="stylesheet" href="../../css/tokens.css">
     <link rel="stylesheet" href="../../css/nav.css">
     <link rel="stylesheet" href="../../css/footer.css">
 
     <style>
-        /* Seitenspezifische Styles hier */
+        /* Page-specific styles here */
     </style>
 </head>
 <body>
@@ -45,7 +45,7 @@
 
     <main class="page-wrapper">
         <div class="container">
-            <!-- Seiteninhalt hier -->
+            <!-- Page content here -->
         </div>
     </main>
 
@@ -53,11 +53,11 @@
 
     <!-- Vendor JS -->
     <script src="../../vendor/bootstrap/bootstrap.bundle.min.js"></script>
-    <!-- Shared Components (Nav & Footer Injection) -->
+    <!-- Shared components (nav & footer injection) -->
     <script src="../../js/components.js"></script>
 
     <script>
-        /* Seitenspezifische Logik hier (z. B. Spiellogik als IIFE) */
+        /* Page-specific logic here (e.g. game logic as IIFE) */
     </script>
 </body>
 </html>
@@ -65,18 +65,18 @@
 
 ---
 
-## Neue Bereichsseite erstellen (depth=1)
+## Create a New Section Page (depth=1)
 
-Für Seiten in einem Unterordner direkt unter Root (z. B. `wiki/`, `ueber-mich/`):
+For pages in a subfolder directly under root (e.g., `wiki/`, `ueber-mich/`):
 
-1. **Ordner anlegen:** `<bereich>/index.html`
-2. **`data-depth="1"`** setzen
-3. **Pfad-Prefix:** `../` für alle Vendor/CSS/JS-Einbindungen
-4. Rest wie oben (Nav/Footer-Platzhalter, components.js)
+1. **Create folder:** `<section>/index.html`
+2. **Set `data-depth="1"`**
+3. **Path prefix:** `../` for all vendor/CSS/JS includes
+4. Rest as above (nav/footer placeholders, components.js)
 
 ```html
 <html lang="de" data-depth="1">
-<!-- Pfade mit ../ statt ../../ -->
+<!-- Paths with ../ instead of ../../ -->
 <link href="../vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="../css/tokens.css">
 <!-- ... -->
@@ -85,13 +85,13 @@ Für Seiten in einem Unterordner direkt unter Root (z. B. `wiki/`, `ueber-mich/`
 
 ---
 
-## Neue Root-Seite erstellen (depth=0)
+## Create a New Root Page (depth=0)
 
-Für Seiten direkt im Repository-Root (z. B. `impressum.html`):
+For pages directly in the repository root (e.g., `impressum.html`):
 
-1. **Datei anlegen:** `<name>.html` im Root
-2. **`data-depth="0"`** setzen
-3. **Pfad-Prefix:** `./` für alle Einbindungen
+1. **Create file:** `<name>.html` in root
+2. **Set `data-depth="0"`**
+3. **Path prefix:** `./` for all includes
 
 ```html
 <html lang="de" data-depth="0">
@@ -103,80 +103,82 @@ Für Seiten direkt im Repository-Root (z. B. `impressum.html`):
 
 ---
 
-## Navigation ändern
+## Change Navigation
 
-**Datei:** `/home/user/vibecoding-academy/js/components.js`
+**File:** `/home/user/vibecoding-academy/js/components.js`
 
-| Was | Zeilen | Beschreibung |
-|-----|--------|--------------|
-| Links hinzufügen/ändern | 11–16 | Objekt zu `navLinks`-Array hinzufügen: `{ href: 'pfad/', label: 'Text', key: 'key' }` |
-| CTA-Button ändern | 17 | `ctaLink`-Objekt anpassen |
-| Aktive Erkennung | 20–29 | Neuen Regex-Fall für den neuen Bereich hinzufügen |
+| What | Lines | Description |
+|------|-------|-------------|
+| Add/change links | 11–16 | Add object to `navLinks` array: `{ href: 'path/', label: 'Text', key: 'key' }` |
+| Change CTA button | 17 | Adjust `ctaLink` object |
+| Active detection | 20–29 | Add new regex case for the new section |
 
-> **ACHTUNG:** Änderungen an der Navigation betreffen **alle Seiten** gleichzeitig, da `components.js` global eingebunden ist.
+> **WARNING:** Navigation changes affect **all pages** simultaneously since `components.js` is included globally.
 
-**Beispiel — Neuen Link hinzufügen:**
+**Example — Add a new link:**
 
 ```javascript
-// Zeile 11-16 in components.js
+// Lines 11-16 in components.js
 var navLinks = [
     { href: '',            label: 'Workshop',  key: 'workshop' },
     { href: 'wiki/',       label: 'Wiki',      key: 'wiki' },
     { href: 'projekte/',   label: 'Projekte',  key: 'projekte' },
     { href: 'ueber-mich/', label: 'Coach',     key: 'ueber-mich' },
-    { href: 'neu/',        label: 'Neu',       key: 'neu' }       // ← Neuer Link
+    { href: 'new/',        label: 'New',       key: 'new' }       // ← New link
 ];
 
-// Zeile 20-29: Aktive Erkennung ergänzen
-else if (/\/neu\//.test(path)) activeKey = 'neu';                  // ← Neue Erkennung
+// Lines 20-29: add active detection
+else if (/\/new\//.test(path)) activeKey = 'new';                 // ← New detection
 ```
 
 ---
 
-## Design Token ändern
+## Change Design Tokens
 
-**Datei:** `/home/user/vibecoding-academy/css/tokens.css` (Zeile 3–16)
+**File:** `/home/user/vibecoding-academy/css/tokens.css` (lines 3–50)
 
-> **ACHTUNG:** Token-Änderungen wirken **global auf alle Seiten**.
+> **WARNING:** Token changes take effect **globally on all pages**.
 
-Alle Farben und Radien sind als CSS Custom Properties in `:root` definiert. Änderung in `tokens.css` reicht — kein weiterer Eingriff nötig.
+All colors, spacing, shadows, and radii are defined as CSS custom properties in `:root`. Changing `tokens.css` is sufficient — no further intervention needed.
 
----
-
-## Neues Spielkonzept hinzufügen
-
-1. **Markdown-Datei anlegen:** `/home/user/vibecoding-academy/projekte/<name>.md`
-2. **Format** (Vorlage: `/home/user/vibecoding-academy/projekte/pong.md`):
-   - Spielbeschreibung
-   - Regeln & Mechanik
-   - Steuerung
-   - Technische Details (Canvas/DOM, Farben, Responsive)
-   - CSS-Vorgaben
-   - JavaScript-Struktur
-3. **Viewer** zeigt die Datei automatisch an (`projekte/viewer.html?file=<name>.md`)
+For rationale and accessibility implications of each token, see [DESIGN.md](../DESIGN.md).
 
 ---
 
-## Projekt-Card zur Landing Page hinzufügen
+## Add a New Game Concept
 
-**Datei:** `/home/user/vibecoding-academy/index.html`
+1. **Create Markdown file:** `/home/user/vibecoding-academy/projekte/<name>.md`
+2. **Format** (template: `/home/user/vibecoding-academy/projekte/pong.md`):
+   - Game description
+   - Rules & mechanics
+   - Controls
+   - Technical details (Canvas/DOM, colors, responsive)
+   - CSS guidelines
+   - JavaScript structure
+3. **Viewer** displays the file automatically (`projekte/viewer.html?file=<name>.md`)
 
-Im Bereich "Ergebnisse" eine neue Card einfügen. Bestehende Cards als Vorlage nutzen — Struktur mit Bootstrap-Grid (`.col-md-6` oder `.col-lg-4`), `.card`-Klasse und Link zur App.
+---
+
+## Add a Project Card to the Landing Page
+
+**File:** `/home/user/vibecoding-academy/index.html`
+
+Insert a new card in the "Ergebnisse" section. Use existing cards as a template — structure with Bootstrap grid (`.col-md-6` or `.col-lg-4`), `.card` class, and link to the app.
 
 ---
 
 ## Deployment
 
-| Aktion | Befehl / Prozess |
+| Action | Command / Process |
 |--------|------------------|
-| **Deployen** | `git push origin main` — GitHub Pages deployt automatisch |
-| **Rollback** | Revert-Commit auf `main` pushen |
-| **Live-URL** | `https://fauteck.github.io/vibecoding-academy/` |
-| **Kein Build-Schritt** | HTML-Dateien werden direkt ausgeliefert |
+| **Deploy** | `git push origin main` — GitHub Pages deploys automatically |
+| **Rollback** | Push a revert commit to `main` |
+| **Live URL** | `https://fauteck.github.io/vibecoding-academy/` |
+| **No build step** | HTML files are served directly |
 
 ---
 
-## Lokale Entwicklung
+## Local Development
 
 ```bash
 cd /home/user/vibecoding-academy
@@ -184,4 +186,4 @@ python3 -m http.server 8000
 # → http://localhost:8000
 ```
 
-Kein `npm install`, kein Build-Prozess. Einfach einen lokalen HTTP-Server starten.
+No `npm install`, no build process. Just start a local HTTP server.
