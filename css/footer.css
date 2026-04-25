@@ -4,9 +4,9 @@
   background: var(--secondary-color, #3D5A8C);
   color: rgba(255, 255, 255, 0.7);
   text-align: center;
-  padding: 1.5rem;
+  padding: var(--space-5, 1.5rem);
   font-size: 0.85rem;
-  margin-top: 3rem;
+  margin-top: var(--space-7, 3rem);
 }
 
 .footer a {
