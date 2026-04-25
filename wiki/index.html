@@ -1446,28 +1446,28 @@
 
   <script>
     (function() {
-      var progressBar = document.getElementById('reading-progress');
-      var breadcrumbBar = document.getElementById('breadcrumb-bar');
-      var breadcrumbSection = document.getElementById('breadcrumb-section');
-      var backToTop = document.getElementById('back-to-top');
+      const progressBar = document.getElementById('reading-progress');
+      const breadcrumbBar = document.getElementById('breadcrumb-bar');
+      const breadcrumbSection = document.getElementById('breadcrumb-section');
+      const backToTop = document.getElementById('back-to-top');
 
-      var sections = Array.from(document.querySelectorAll('.wiki-section h2[id]'));
-      var sectionToggles = document.querySelectorAll('.section-toggle');
-      var innerToggles = document.querySelectorAll('.collapsible-toggle');
+      const sections = Array.from(document.querySelectorAll('.wiki-section h2[id]'));
+      const sectionToggles = document.querySelectorAll('.section-toggle');
+      const innerToggles = document.querySelectorAll('.collapsible-toggle');
 
-      var ticking = false;
+      let ticking = false;
 
       function openSectionById(id) {
         if (!id) return;
-        var target = document.getElementById(id);
+        const target = document.getElementById(id);
         if (!target) return;
 
-        var section = target.closest('.wiki-section');
+        const section = target.closest('.wiki-section');
         if (!section) return;
 
-        var toggle = section.querySelector('.section-toggle');
-        var bodyId = toggle ? toggle.getAttribute('aria-controls') : null;
-        var body = bodyId ? document.getElementById(bodyId) : null;
+        const toggle = section.querySelector('.section-toggle');
+        const bodyId = toggle ? toggle.getAttribute('aria-controls') : null;
+        const body = bodyId ? document.getElementById(bodyId) : null;
 
         if (toggle && body) {
           toggle.setAttribute('aria-expanded', 'true');
@@ -1480,9 +1480,9 @@
         ticking = true;
 
         requestAnimationFrame(function() {
-          var scrollTop = window.scrollY;
-          var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-          var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+          const scrollTop = window.scrollY;
+          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
           progressBar.style.width = Math.min(progress, 100) + '%';
 
           if (scrollTop > 280) {
@@ -1491,8 +1491,8 @@
             breadcrumbBar.classList.remove('visible');
           }
 
-          var currentSection = 'Einleitung';
-          for (var i = sections.length - 1; i >= 0; i--) {
+          let currentSection = 'Einleitung';
+          for (let i = sections.length - 1; i >= 0; i--) {
             if (sections[i].getBoundingClientRect().top <= 140) {
               currentSection = sections[i].textContent;
               break;
@@ -1518,9 +1518,9 @@
 
       sectionToggles.forEach(function(toggle) {
         toggle.addEventListener('click', function() {
-          var expanded = this.getAttribute('aria-expanded') === 'true';
-          var bodyId = this.getAttribute('aria-controls');
-          var body = document.getElementById(bodyId);
+          const expanded = this.getAttribute('aria-expanded') === 'true';
+          const bodyId = this.getAttribute('aria-controls');
+          const body = document.getElementById(bodyId);
 
           if (expanded) {
             this.setAttribute('aria-expanded', 'false');
@@ -1534,9 +1534,9 @@
 
       innerToggles.forEach(function(toggle) {
         toggle.addEventListener('click', function() {
-          var expanded = this.getAttribute('aria-expanded') === 'true';
-          var bodyId = this.getAttribute('aria-controls');
-          var body = document.getElementById(bodyId);
+          const expanded = this.getAttribute('aria-expanded') === 'true';
+          const bodyId = this.getAttribute('aria-controls');
+          const body = document.getElementById(bodyId);
 
           if (expanded) {
             this.setAttribute('aria-expanded', 'false');
@@ -1550,7 +1550,7 @@
 
       document.querySelectorAll('.toc a[href^="#"]').forEach(function(link) {
         link.addEventListener('click', function() {
-          var id = this.getAttribute('href').slice(1);
+          const id = this.getAttribute('href').slice(1);
           setTimeout(function() {
             openSectionById(id);
           }, 10);

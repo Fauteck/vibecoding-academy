@@ -335,10 +335,10 @@
     'use strict';
 
     /* ── Konfiguration ────────────────────────────── */
-    var STORAGE_KEY = 'wochenendplanung_assignments';
-    var YEAR = 2026;
+    const STORAGE_KEY = 'wochenendplanung_assignments';
+    const YEAR = 2026;
 
-    var EMPLOYEES = [
+    const EMPLOYEES = [
       { id: 1, name: 'Max Mustermann' },
       { id: 2, name: 'Anna Beispiel' },
       { id: 3, name: 'Thomas Schmidt' },
@@ -352,31 +352,31 @@
     ];
 
     /* ── DOM-Referenzen ───────────────────────────── */
-    var employeeSelect = document.getElementById('employee-select');
-    var weekendSelect = document.getElementById('weekend-select');
-    var form = document.getElementById('assignment-form');
-    var tableBody = document.getElementById('table-body');
-    var mobileCards = document.getElementById('mobile-cards');
-    var filterVacant = document.getElementById('filter-vacant');
-    var filterHidePast = document.getElementById('filter-hide-past');
-    var statsRow = document.getElementById('stats-row');
-    var toastContainer = document.getElementById('toast-container');
+    const employeeSelect = document.getElementById('employee-select');
+    const weekendSelect = document.getElementById('weekend-select');
+    const form = document.getElementById('assignment-form');
+    const tableBody = document.getElementById('table-body');
+    const mobileCards = document.getElementById('mobile-cards');
+    const filterVacant = document.getElementById('filter-vacant');
+    const filterHidePast = document.getElementById('filter-hide-past');
+    const statsRow = document.getElementById('stats-row');
+    const toastContainer = document.getElementById('toast-container');
 
     /* ── Hilfsfunktionen ──────────────────────────── */
 
     /** ISO 8601 Kalenderwoche berechnen */
     function getISOWeek(date) {
-      var d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
-      var dayNum = d.getUTCDay() || 7;
+      const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+      const dayNum = d.getUTCDay() || 7;
       d.setUTCDate(d.getUTCDate() + 4 - dayNum);
-      var yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+      const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
       return Math.ceil(((d - yearStart) / 86400000 + 1) / 7);
     }
 
     /** Datum als TT.MM.JJJJ formatieren */
     function formatDate(date) {
-      var d = date.getDate().toString();
-      var m = (date.getMonth() + 1).toString();
+      let d = date.getDate().toString();
+      let m = (date.getMonth() + 1).toString();
       if (d.length < 2) d = '0' + d;
       if (m.length < 2) m = '0' + m;
       return d + '.' + m + '.' + date.getFullYear();
@@ -384,16 +384,16 @@
 
     /** Prüfen ob ein Wochenende in der Vergangenheit liegt */
     function isPast(endDate) {
-      var today = new Date();
+      const today = new Date();
       today.setHours(0, 0, 0, 0);
       return endDate < today;
     }
 
     /* ── Wochenenden generieren ───────────────────── */
     function generateWeekends(year) {
-      var weekends = [];
-      var id = 1;
-      var date = new Date(year, 0, 1);
+      const weekends = [];
+      let id = 1;
+      const date = new Date(year, 0, 1);
 
       // Zum ersten Samstag springen
       while (date.getDay() !== 6) {
@@ -401,8 +401,8 @@
       }
 
       while (date.getFullYear() === year) {
-        var saturday = new Date(date);
-        var sunday = new Date(date);
+        const saturday = new Date(date);
+        const sunday = new Date(date);
         sunday.setDate(sunday.getDate() + 1);
 
         weekends.push({
@@ -422,11 +422,11 @@
     }
 
     /* ── State ────────────────────────────────────── */
-    var weekends = generateWeekends(YEAR);
+    const weekends = generateWeekends(YEAR);
 
     /** Zuweisungen aus localStorage laden */
     function loadAssignments() {
-      var data;
+      let data;
       try {
         data = JSON.parse(localStorage.getItem(STORAGE_KEY));
       } catch (e) {
@@ -434,13 +434,13 @@
       }
       if (!Array.isArray(data)) return;
 
-      var map = {};
-      for (var i = 0; i < data.length; i++) {
+      const map = {};
+      for (let i = 0; i < data.length; i++) {
         map[data[i].weekendId] = data[i];
       }
 
-      for (var j = 0; j < weekends.length; j++) {
-        var w = weekends[j];
+      for (let j = 0; j < weekends.length; j++) {
+        const w = weekends[j];
         if (map[w.id]) {
           w.assignedEmployeeId = map[w.id].employeeId;
           w.assignedEmployeeName = map[w.id].employeeName;
@@ -451,9 +451,9 @@
 
     /** Zuweisungen in localStorage speichern */
     function saveAssignments() {
-      var data = [];
-      for (var i = 0; i < weekends.length; i++) {
-        var w = weekends[i];
+      const data = [];
+      for (let i = 0; i < weekends.length; i++) {
+        const w = weekends[i];
         if (w.status === 'assigned') {
           data.push({
             weekendId: w.id,
@@ -469,8 +469,8 @@
 
     /** Mitarbeiter-Dropdown befüllen */
     function renderEmployeeSelect() {
-      for (var i = 0; i < EMPLOYEES.length; i++) {
-        var opt = document.createElement('option');
+      for (let i = 0; i < EMPLOYEES.length; i++) {
+        const opt = document.createElement('option');
         opt.value = EMPLOYEES[i].id;
         opt.textContent = EMPLOYEES[i].name;
         employeeSelect.appendChild(opt);
@@ -480,17 +480,17 @@
     /** Wochenend-Dropdown aktualisieren (nur vakante) */
     function renderWeekendSelect() {
       // Aktuelle Auswahl merken
-      var currentVal = weekendSelect.value;
+      const currentVal = weekendSelect.value;
 
       // Alle Optionen entfernen außer Placeholder
       while (weekendSelect.options.length > 1) {
         weekendSelect.remove(1);
       }
 
-      for (var i = 0; i < weekends.length; i++) {
-        var w = weekends[i];
+      for (let i = 0; i < weekends.length; i++) {
+        const w = weekends[i];
         if (w.status === 'vacant' && !isPast(w.endDate)) {
-          var opt = document.createElement('option');
+          const opt = document.createElement('option');
           opt.value = w.id;
           opt.textContent = 'KW ' + w.calendarWeek + ' — ' + formatDate(w.startDate) + ' / ' + formatDate(w.endDate);
           weekendSelect.appendChild(opt);
@@ -506,37 +506,37 @@
 
     /** Statistik rendern */
     function renderStats() {
-      var total = weekends.length;
-      var vacant = 0;
-      var assigned = 0;
+      const total = weekends.length;
+      let vacant = 0;
+      let assigned = 0;
 
-      for (var i = 0; i < weekends.length; i++) {
+      for (let i = 0; i < weekends.length; i++) {
         if (weekends[i].status === 'vacant') vacant++;
         else assigned++;
       }
 
       statsRow.innerHTML = '';
 
-      var stats = [
+      const stats = [
         { cls: 'stat-total', icon: 'fa-calendar', label: 'Gesamt', val: total },
         { cls: 'stat-vakant', icon: 'fa-calendar-check', label: 'Vakant', val: vacant },
         { cls: 'stat-besetzt', icon: 'fa-calendar-xmark', label: 'Besetzt', val: assigned }
       ];
 
-      for (var j = 0; j < stats.length; j++) {
-        var s = stats[j];
-        var div = document.createElement('div');
+      for (let j = 0; j < stats.length; j++) {
+        const s = stats[j];
+        const div = document.createElement('div');
         div.className = 'stat-badge ' + s.cls;
 
-        var icon = document.createElement('i');
+        const icon = document.createElement('i');
         icon.className = 'fas ' + s.icon;
         div.appendChild(icon);
 
-        var strong = document.createElement('strong');
+        const strong = document.createElement('strong');
         strong.textContent = s.val;
         div.appendChild(strong);
 
-        var span = document.createElement('span');
+        const span = document.createElement('span');
         span.textContent = s.label;
         div.appendChild(span);
 
@@ -546,8 +546,8 @@
 
     /** Übersichtstabelle rendern */
     function renderOverview() {
-      var showVacantOnly = filterVacant.checked;
-      var hidePast = filterHidePast.checked;
+      const showVacantOnly = filterVacant.checked;
+      const hidePast = filterHidePast.checked;
 
       // Desktop-Tabelle
       tableBody.innerHTML = '';
@@ -555,27 +555,27 @@
       // Mobile-Karten
       mobileCards.innerHTML = '';
 
-      for (var i = 0; i < weekends.length; i++) {
-        var w = weekends[i];
-        var past = isPast(w.endDate);
+      for (let i = 0; i < weekends.length; i++) {
+        const w = weekends[i];
+        const past = isPast(w.endDate);
 
         if (showVacantOnly && w.status !== 'vacant') continue;
         if (hidePast && past) continue;
 
         // ── Tabellenzeile ──
-        var tr = document.createElement('tr');
+        const tr = document.createElement('tr');
         if (past) tr.className = 'is-past';
 
-        var tdKw = document.createElement('td');
+        const tdKw = document.createElement('td');
         tdKw.textContent = 'KW ' + w.calendarWeek;
         tr.appendChild(tdKw);
 
-        var tdDate = document.createElement('td');
+        const tdDate = document.createElement('td');
         tdDate.textContent = formatDate(w.startDate) + ' – ' + formatDate(w.endDate);
         tr.appendChild(tdDate);
 
-        var tdStatus = document.createElement('td');
-        var badge = document.createElement('span');
+        const tdStatus = document.createElement('td');
+        const badge = document.createElement('span');
         if (w.status === 'vacant') {
           badge.className = 'badge-vakant';
           badge.textContent = 'Vakant';
@@ -586,36 +586,36 @@
         tdStatus.appendChild(badge);
         tr.appendChild(tdStatus);
 
-        var tdPerson = document.createElement('td');
+        const tdPerson = document.createElement('td');
         tdPerson.textContent = w.assignedEmployeeName || '–';
         tr.appendChild(tdPerson);
 
         tableBody.appendChild(tr);
 
         // ── Mobile-Karte ──
-        var card = document.createElement('div');
+        const card = document.createElement('div');
         card.className = 'weekend-card';
         if (past) card.className += ' is-past';
 
-        var left = document.createElement('div');
+        const left = document.createElement('div');
         left.className = 'weekend-card-left';
 
-        var kwDiv = document.createElement('div');
+        const kwDiv = document.createElement('div');
         kwDiv.className = 'weekend-card-kw';
         kwDiv.textContent = 'KW ' + w.calendarWeek;
         left.appendChild(kwDiv);
 
-        var dateDiv = document.createElement('div');
+        const dateDiv = document.createElement('div');
         dateDiv.className = 'weekend-card-date';
         dateDiv.textContent = formatDate(w.startDate) + ' – ' + formatDate(w.endDate);
         left.appendChild(dateDiv);
 
         card.appendChild(left);
 
-        var right = document.createElement('div');
+        const right = document.createElement('div');
         right.className = 'weekend-card-right';
 
-        var mbadge = document.createElement('span');
+        const mbadge = document.createElement('span');
         if (w.status === 'vacant') {
           mbadge.className = 'badge-vakant';
           mbadge.textContent = 'Vakant';
@@ -626,7 +626,7 @@
         right.appendChild(mbadge);
 
         if (w.assignedEmployeeName) {
-          var personDiv = document.createElement('div');
+          const personDiv = document.createElement('div');
           personDiv.className = 'weekend-card-person';
           personDiv.textContent = w.assignedEmployeeName;
           right.appendChild(personDiv);
@@ -639,21 +639,21 @@
 
     /* ── Toast-Benachrichtigungen ─────────────────── */
     function showToast(message, type) {
-      var bgClass = type === 'success' ? 'bg-success' : 'bg-danger';
+      const bgClass = type === 'success' ? 'bg-success' : 'bg-danger';
 
-      var toastEl = document.createElement('div');
+      const toastEl = document.createElement('div');
       toastEl.className = 'toast align-items-center text-white ' + bgClass + ' border-0';
       toastEl.setAttribute('role', 'alert');
 
-      var flex = document.createElement('div');
+      const flex = document.createElement('div');
       flex.className = 'd-flex';
 
-      var body = document.createElement('div');
+      const body = document.createElement('div');
       body.className = 'toast-body';
       body.textContent = message;
       flex.appendChild(body);
 
-      var closeBtn = document.createElement('button');
+      const closeBtn = document.createElement('button');
       closeBtn.type = 'button';
       closeBtn.className = 'btn-close btn-close-white me-2 m-auto';
       closeBtn.setAttribute('data-bs-dismiss', 'toast');
@@ -663,7 +663,7 @@
       toastEl.appendChild(flex);
       toastContainer.appendChild(toastEl);
 
-      var toast = new bootstrap.Toast(toastEl, { delay: 3000 });
+      const toast = new bootstrap.Toast(toastEl, { delay: 3000 });
       toast.show();
 
       toastEl.addEventListener('hidden.bs.toast', function () {
@@ -675,8 +675,8 @@
     function handleSubmit(e) {
       e.preventDefault();
 
-      var empId = parseInt(employeeSelect.value, 10);
-      var weekendId = parseInt(weekendSelect.value, 10);
+      const empId = parseInt(employeeSelect.value, 10);
+      const weekendId = parseInt(weekendSelect.value, 10);
 
       if (!empId || !weekendId) {
         showToast('Bitte Kollege und Wochenende auswählen.', 'error');
@@ -684,14 +684,14 @@
       }
 
       // Mitarbeiter finden
-      var employee = null;
-      for (var i = 0; i < EMPLOYEES.length; i++) {
+      let employee = null;
+      for (let i = 0; i < EMPLOYEES.length; i++) {
         if (EMPLOYEES[i].id === empId) { employee = EMPLOYEES[i]; break; }
       }
 
       // Wochenende finden und prüfen
-      var weekend = null;
-      for (var j = 0; j < weekends.length; j++) {
+      let weekend = null;
+      for (let j = 0; j < weekends.length; j++) {
         if (weekends[j].id === weekendId) { weekend = weekends[j]; break; }
       }
 
