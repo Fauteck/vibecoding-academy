@@ -184,6 +184,7 @@ Dieses Projekt verwendet Open-Source-Bibliotheken und Assets:
 | Bootstrap | 5.3.2 | MIT |
 | Popper.js | (im Bootstrap Bundle) | MIT |
 | Font Awesome Free | 6.4.2 | Icons: CC BY 4.0 / Fonts: SIL OFL 1.1 / Code: MIT |
+| IBM Plex Sans | — | SIL OFL 1.1 |
 | JetBrains Mono | — | SIL OFL 1.1 |
 | marked.js | 15.0.7 | MIT |
 | DOMPurify | 3.3.3 | Apache 2.0 / MPL 2.0 |

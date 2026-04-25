@@ -378,7 +378,7 @@ Before `</body>`:
 ### Typography
 
 ```css
-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+font-family: 'IBM Plex Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 ```
 
 ### Responsive Breakpoints
