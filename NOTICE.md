@@ -42,6 +42,18 @@ Vendor-Pfad: `/vendor/fontawesome/`
 
 ---
 
+## IBM Plex Sans (Variable Font)
+
+Copyright 2017 IBM Corp. — https://github.com/IBM/plex
+
+Licensed under the SIL Open Font License 1.1.
+https://scripts.sil.org/OFL
+
+Bezogen über: https://fontsource.org/fonts/ibm-plex-sans
+Vendor-Pfad: `/vendor/ibm-plex-sans/`
+
+---
+
 ## JetBrains Mono
 
 Copyright 2020 The JetBrains Mono Project Authors

@@ -48,8 +48,8 @@ tokens:
       usage: "CTA button text, footer link hover, card base"
   typography:
     font-family:
-      value: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
-      usage: "all text — system font stack, no external loading"
+      value: "'IBM Plex Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+      usage: "all text — IBM Plex Sans variable font, loaded from /vendor; system stack as fallback"
     font-size-base:
       value: "1rem"
       usage: "body text baseline (= 16px)"
@@ -219,8 +219,8 @@ accessibility:
 The design system rests on three principles:
 
 1. **Static simplicity** — No build pipeline, no CSS preprocessor. Every token is a CSS custom property in `css/tokens.css`. A single file change propagates globally.
-2. **System fonts only** — No web font loading. The `'Segoe UI'` stack renders natively without a network request, improving performance and offline reliability.
-3. **Glassmorphism on desktop, solid on mobile** — Cards use `backdrop-filter: blur()` on desktop for a layered, airy feel. The effect is disabled below 991.98 px via a media query to preserve mobile performance and battery life.
+2. **Self-hosted variable font** — IBM Plex Sans is loaded as a WOFF2 variable font from `/vendor/ibm-plex-sans/`. The Segoe UI system stack is kept as a fallback. The variable font covers weights 100–900 with a single file, so no extra requests for bold or italic.
+3. **Selective glassmorphism** — `backdrop-filter: blur()` is only used on elements that sit directly over the hero background image (hero badges, KPI pills, coach/intro cards). Base `.card` components use a near-opaque white background instead. The effect is disabled below 991.98 px.
 
 ---
 
@@ -239,7 +239,7 @@ The palette is derived from the hero background image (`images/content-bg.jpg`),
 | `--warning-color` | `#D4A55B` | Caution |
 | `--info-color` | `#6BB8D4` | Informational |
 | `--bg-page` | `#EEF2F7` | Page surface |
-| `--bg-card` | `rgba(255,255,255,0.85)` | Card surface (glassmorphism) |
+| `--bg-card` | `rgba(255,255,255,0.92)` | Card surface (near-opaque) |
 | `--text-primary` | `#2D3748` | Body text |
 | `--text-muted` | `#7A8599` | Secondary labels |
 | `--border-color` | `#D4DCE8` | Dividers, borders |
@@ -260,9 +260,9 @@ Start every new app with the base tokens. Override only when the app's visual co
 
 ## Typography
 
-**Font stack:** `'Segoe UI', Tahoma, Geneva, Verdana, sans-serif`
+**Font stack:** `'IBM Plex Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif`
 
-The stack is ordered for Windows-first rendering — Segoe UI is native on all modern Windows systems. Tahoma and Verdana provide fallbacks designed for screen legibility. Geneva covers older macOS where Segoe is unavailable. No font file is downloaded.
+IBM Plex Sans is a humanist sans-serif designed by Mike Abbink for IBM. It provides optical warmth and clarity at UI sizes while remaining neutral enough for data-dense layouts. The variable font file covers weights 100–900 and normal/italic in two WOFF2 files (`latin-wght-normal.woff2`, `latin-wght-italic.woff2`), both served from `/vendor/ibm-plex-sans/`. The system font stack (Segoe UI, Tahoma, Verdana) is the fallback in case the font is unavailable.
 
 | Token | Value | Context |
 |---|---|---|
