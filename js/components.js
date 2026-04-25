@@ -74,6 +74,15 @@
     });
   }
 
+  /* ── Static Hamburger Buttons (data-toggle="hamburger") ── */
+  document.querySelectorAll('[data-toggle="hamburger"]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      btn.classList.toggle('open');
+      btn.nextElementSibling.classList.toggle('open');
+      btn.setAttribute('aria-expanded', btn.classList.contains('open'));
+    });
+  });
+
   /* ── Render Footer ────────────────────────────── */
   var footerEl = document.getElementById('site-footer');
   if (footerEl) {
