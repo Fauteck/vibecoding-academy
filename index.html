@@ -130,7 +130,7 @@
       border: 1px solid rgba(255,255,255,0.2);
       color: #fff;
       padding: 0.62rem 0.95rem;
-      border-radius: 999px;
+      border-radius: var(--border-radius-pill);
       font-size: 0.9rem;
       font-weight: 600;
       backdrop-filter: blur(6px);
@@ -155,7 +155,7 @@
       border-radius: 8px;
       text-decoration: none;
       box-shadow: 0 4px 15px rgba(0,0,0,0.12);
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
       will-change: transform;
     }
 
@@ -168,11 +168,11 @@
     .hero-link {
       display: inline-flex;
       align-items: center;
-      gap: 0.25rem;
+      gap: var(--space-1);
       color: rgba(255,255,255,0.95);
       text-decoration: none;
       font-weight: 600;
-      padding: 0.5rem 0.25rem;
+      padding: var(--space-2) var(--space-1);
     }
 
     .hero-link:hover {
@@ -322,7 +322,7 @@
       display: block;
       text-decoration: none;
       color: inherit;
-      transition: transform 0.2s ease;
+      transition: transform var(--transition-fast);
       will-change: transform;
     }
 
@@ -372,7 +372,7 @@
       font-size: 1.35rem;
       font-weight: 700;
       color: var(--secondary-color);
-      margin-bottom: 0.25rem;
+      margin-bottom: var(--space-1);
     }
 
     .coach-tagline {
@@ -383,7 +383,7 @@
     .coach-meta {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
+      gap: var(--space-2);
       margin-bottom: 0.95rem;
     }
 
@@ -392,7 +392,7 @@
       align-items: center;
       gap: 0.35rem;
       padding: 0.42rem 0.72rem;
-      border-radius: 999px;
+      border-radius: var(--border-radius-pill);
       background: rgba(91,139,214,0.1);
       border: 1px solid rgba(91,139,214,0.15);
       color: var(--secondary-color);
