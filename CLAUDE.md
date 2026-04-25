@@ -1,227 +1,227 @@
-# CLAUDE.md — Verbindliche Regeln für KI-gestützte Entwicklung
+# CLAUDE.md — Binding Rules for AI-Assisted Development
 
-> **Geltung:** Dieses Dokument ist die **alleinstehende, verbindliche Regelbasis** dieses Repositories.
-> Es ersetzt zusätzliche KI-/Design-/README-Regeldateien.
+> **Scope:** This document is the **sole, authoritative rule base** for this repository.
+> It supersedes any additional AI/design/README rule files.
 
 ---
 
-## Projektübersicht
+## Project Overview
 
-**Vibecoding Academy** ist ein Workshop- und Showcase-Projekt für KI-gestütztes Web-Coding.
-Es zeigt den Weg von der Idee bis zur fertigen Web-Anwendung mit KI-Tools.
+**Vibecoding Academy** is a workshop and showcase project for AI-assisted web coding.
+It demonstrates the journey from idea to finished web application using AI tools.
 
-- **Typ:** Rein statische Website (HTML, CSS, JavaScript) — kein Backend, keine Datenbank
-- **Deployment:** GitHub Pages (automatisch bei Push auf `main`)
+- **Type:** Purely static website (HTML, CSS, JavaScript) — no backend, no database
+- **Deployment:** GitHub Pages (automatic on push to `main`)
 - **Live:** https://fauteck.github.io/vibecoding-academy/
-- **Inhalt:** Landing Page, fertige Apps (Pong, GTA-Parodie, Wochenendplanung), Spielkonzepte, Wiki/Handout
+- **Content:** Landing page, finished apps (Pong, GTA parody, Weekend planner), game concepts, Wiki/Handout
 
-### Architektur
+### Architecture
 
-Jedes Projekt ist eine **selbstständige HTML-Datei** in einem eigenen Unterordner:
+Each project is a **self-contained HTML file** in its own subfolder:
 
 ```
 vibecoding-academy/
-├── index.html              # Landing Page
-├── robots.txt              # Crawler-Blocking
-├── css/                    # Gemeinsame Stylesheets
-│   ├── tokens.css          # Design Tokens, Reset, Basis-Styles
-│   ├── nav.css             # Navigation-Styles
-│   └── footer.css          # Footer-Styles
-├── js/                     # Gemeinsame Skripte
-│   └── components.js       # Navigation & Footer (JS-Injection)
-├── apps/                   # Fertige Projekte
-│   ├── pong/index.html     # Pong-Spiel
-│   ├── gta/index.html      # GTA-Parodie
-│   └── wochenendplanung/index.html  # Wochenendplanung
-├── wiki/                   # Workshop-Materialien
-│   ├── index.html          # Workshop-Handout
-│   └── beispiel-claude.md  # Beispiel CLAUDE.md
-└── ideen/                  # Spielkonzepte (Markdown)
+├── index.html              # Landing page
+├── robots.txt              # Crawler blocking
+├── css/                    # Shared stylesheets
+│   ├── tokens.css          # Design tokens, reset, base styles
+│   ├── nav.css             # Navigation styles
+│   └── footer.css          # Footer styles
+├── js/                     # Shared scripts
+│   └── components.js       # Navigation & footer (JS injection)
+├── apps/                   # Finished projects
+│   ├── pong/index.html     # Pong game
+│   ├── gta/index.html      # GTA parody
+│   └── wochenendplanung/index.html  # Weekend planner
+├── wiki/                   # Workshop materials
+│   ├── index.html          # Workshop handout
+│   └── beispiel-claude.md  # Example CLAUDE.md
+└── ideen/                  # Game concepts (Markdown)
 ```
 
-- Kein Build-Prozess, kein Bundler, kein Package-Manager
-- **Gemeinsame Layout-Assets** (`css/`, `js/`) für Navigation, Footer, Design Tokens und Basis-Styles
-- Seitenspezifische Styles bleiben inline in den HTML-Dateien
-- Spiel-/App-Logik bleibt selbstständig inline in der jeweiligen HTML-Datei
-- Externe Abhängigkeiten lokal im `/vendor`-Verzeichnis (Bootstrap 5.3.2, Font Awesome 6.4.2)
-- Jede Seite setzt `<html data-depth="0|1|2">` für die korrekte relative Pfadauflösung durch `js/components.js`
+- No build process, no bundler, no package manager
+- **Shared layout assets** (`css/`, `js/`) for navigation, footer, design tokens, and base styles
+- Page-specific styles stay inline in HTML files
+- Game/app logic stays self-contained inline in each HTML file
+- External dependencies stored locally in `/vendor` (Bootstrap 5.3.2, Font Awesome 6.4.2)
+- Each page sets `<html data-depth="0|1|2">` for correct relative path resolution via `js/components.js`
 
-### Weiterführende Dokumentation
+### Further Documentation
 
-Detaillierte Architektur- und Workflow-Dokumentation (LLM-optimiert mit absoluten Pfaden und Code-Beispielen):
+Detailed architecture and workflow documentation (LLM-optimized with absolute paths and code examples):
 
-| Dokument | Inhalt |
-|----------|--------|
-| [docs/INDEX.md](docs/INDEX.md) | Dokumentations-Hub, Datei-Schnellreferenz, Verzeichnisstruktur |
-| [docs/architektur.md](docs/architektur.md) | Shared Components, Pfadauflösung, CSS-Kette, Design Tokens |
-| [docs/arbeitsablaeufe.md](docs/arbeitsablaeufe.md) | Schritt-für-Schritt-Anleitungen, HTML-Templates, häufige Aufgaben |
+| Document | Content |
+|----------|---------|
+| [docs/INDEX.md](docs/INDEX.md) | Documentation hub, file quick reference, directory structure |
+| [docs/architektur.md](docs/architektur.md) | Shared components, path resolution, CSS chain, design tokens |
+| [docs/arbeitsablaeufe.md](docs/arbeitsablaeufe.md) | Step-by-step guides, HTML templates, common tasks |
+| [DESIGN.md](DESIGN.md) | Design system — tokens, rationale, accessibility, components |
 
-### Neues Projekt hinzufügen
+### Adding a New Project
 
-1. Unterordner in `apps/` anlegen mit eigener `index.html` (z. B. `apps/snake/index.html`)
-2. `<html data-depth="2">` setzen, `css/tokens.css`, `css/nav.css`, `css/footer.css` einbinden (relative Pfade: `../../css/...`)
-3. `<nav id="site-nav"></nav>` und `<footer id="site-footer"></footer>` als Platzhalter einfügen
-4. `js/components.js` vor `</body>` einbinden (`../../js/components.js`)
-5. Projekt-Card in der Haupt-`index.html` im Bereich „Ergebnisse" eintragen
-6. Committen & pushen — GitHub Pages deployt automatisch
+1. Create a subfolder in `apps/` with its own `index.html` (e.g., `apps/snake/index.html`)
+2. Set `<html data-depth="2">`, include `css/tokens.css`, `css/nav.css`, `css/footer.css` (relative paths: `../../css/...`)
+3. Insert `<nav id="site-nav"></nav>` and `<footer id="site-footer"></footer>` as placeholders
+4. Include `js/components.js` before `</body>` (`../../js/components.js`)
+5. Add a project card to the "Ergebnisse" section in the main `index.html`
+6. Commit & push — GitHub Pages deploys automatically
 
 ---
 
-## Inhaltsverzeichnis
+## Table of Contents
 
-1. [Grundprinzipien](#1-grundprinzipien)
-2. [Arbeitsweise bei langen Sessions (API-Stabilität)](#2-arbeitsweise-bei-langen-sessions-api-stabilität)
-3. [Erlaubt / Nicht erlaubt](#3-erlaubt--nicht-erlaubt)
+1. [Core Principles](#1-core-principles)
+2. [Working Style for Long Sessions (API Stability)](#2-working-style-for-long-sessions-api-stability)
+3. [Allowed / Not Allowed](#3-allowed--not-allowed)
 4. [Branching, Merge, Reviews](#4-branching-merge-reviews)
-5. [Qualitätsanforderungen (Gates)](#5-qualitätsanforderungen-gates)
+5. [Quality Requirements (Gates)](#5-quality-requirements-gates)
 6. [Security & Secrets](#6-security--secrets)
 7. [OWASP Top 10](#7-owasp-top-10)
 8. [robots.txt](#8-robotstxt)
 9. [Build & Deployment](#9-build--deployment)
 10. [Definition of Done](#10-definition-of-done)
-11. [Dokumentationspflicht](#11-dokumentationspflicht)
-12. [README-Struktur (Vorlage)](#12-readme-struktur-vorlage)
+11. [Documentation Requirements](#11-documentation-requirements)
+12. [README Structure (Template)](#12-readme-structure-template)
 13. [Design System](#13-design-system)
 
 ---
 
-## 1. Grundprinzipien
+## 1. Core Principles
 
-- **GitOps first**: Die Live-Website wird ausschließlich über Git-Pushes auf `main` aktualisiert (GitHub Pages).
-- **Keine manuellen Deployments**: Änderungen gehen immer über Code-Change → Commit → Push.
-- **Reproduzierbarkeit**: Der `main`-Branch spiegelt stets den Live-Stand wider.
-- **Selbstständige Projekte**: Jedes Spiel/Projekt ist eine eigenständige HTML-Datei — keine geteilten Build-Artefakte.
-
----
-
-## 2. Arbeitsweise bei langen Sessions (API-Stabilität)
-
-> Ziel: Stream-Timeouts (`Stream idle timeout — partial response received`)
-> vermeiden. Ursache sind einzelne lange Operationen ohne Zwischenoutput,
-> nicht die Anzahl paralleler Tool-Calls.
-
-### Output klein halten
-
-- Bash-Ausgaben filtern: `head -n 100`, `tail -n 100`, `grep -E '...'`,
-  `wc -l` statt vollständiger Logs/Dumps.
-- Große Dateien segmentweise lesen (`Read` mit `offset`/`limit`),
-  nicht komplett.
-- Keine `find . | ...`-Dumps ganzer Projektbäume — gezielte
-  `find`/`rg`-Queries mit Pfadfiltern.
-
-### Lange Läufe nicht synchron blockieren
-
-- Builds, Tests, Installationen als Background-Task starten
-  (`run_in_background: true`), nicht im Vordergrund abwarten.
-- Für Bash-Calls realistische Timeouts setzen; hängende Prozesse sollen
-  schnell abbrechen statt still den Stream zu blockieren.
-- Keine `sleep`-Schleifen oder Poll-Busy-Waits im Hauptstrang.
-
-### Kontext schützen
-
-- Für breite Codebase-Recherche (>3 Queries, unklarer Scope) den
-  `Explore`-Subagent nutzen — er kapselt große Suchergebnisse und liefert
-  nur eine Zusammenfassung zurück.
-- Für Design-Entscheidungen den `Plan`-Subagent nutzen, bevor umfangreich
-  editiert wird.
-
-### Effizient statt vorsichtig
-
-- Unabhängige Tool-Calls in einer Nachricht parallel ausführen (z. B.
-  mehrere `Read`s oder `grep`s) — das reduziert die Gesamtzeit und damit
-  die Timeout-Wahrscheinlichkeit.
-- Sequentiell nur, wenn ein Call vom Ergebnis des vorherigen abhängt.
-
-### Große Aufgaben strukturieren
-
-- Aufgaben mit vielen Dateiänderungen (>10 Dateien oder >3 logisch
-  getrennte Teilschritte) in nachvollziehbare Teilschritte zerlegen,
-  jeden Schritt als abgeschlossene Einheit mit Zwischenergebnis.
-- `TodoWrite` verwenden, um Fortschritt sichtbar zu halten und nach
-  Unterbrechungen nahtlos weiterarbeiten zu können.
+- **GitOps first**: The live website is updated exclusively via Git pushes to `main` (GitHub Pages).
+- **No manual deployments**: Changes always go through Code Change → Commit → Push.
+- **Reproducibility**: The `main` branch always reflects the live state.
+- **Self-contained projects**: Each game/project is a standalone HTML file — no shared build artifacts.
 
 ---
 
-## 3. Erlaubt / Nicht erlaubt
+## 2. Working Style for Long Sessions (API Stability)
 
-### Die KI darf
+> Goal: Avoid stream timeouts (`Stream idle timeout — partial response received`).
+> The cause is single long operations without intermediate output,
+> not the number of parallel tool calls.
 
-- Code ändern und refactoren (im Rahmen bestehender Architektur)
-- Neue Projekte als selbstständige HTML-Dateien in Unterordnern anlegen
-- Dateien erstellen/ändern (inkl. Doku)
-- Bestehende Spielkonzepte (Markdown in `ideen/`) erweitern
+### Keep Output Small
 
-### Die KI darf NICHT
+- Filter bash output: `head -n 100`, `tail -n 100`, `grep -E '...'`,
+  `wc -l` instead of full logs/dumps.
+- Read large files in segments (`Read` with `offset`/`limit`),
+  not completely.
+- No `find . | ...` dumps of entire project trees — use targeted
+  `find`/`rg` queries with path filters.
 
-- Build-Tools, Package-Manager oder Bundler einführen (kein npm, webpack, Vite etc.)
-- Frameworks einführen (kein React, Vue, Angular etc.)
-- Serverseitige Komponenten vorschlagen (kein Node.js, Python etc.)
-- Externe CDN-Links einbinden (alle Abhängigkeiten werden lokal aus `/vendor` geladen)
-- Spiel-/App-Logik in geteilte Dateien auslagern (Spiele bleiben selbstständig)
+### Don't Block Synchronously on Long Runs
 
-> **Hinweis:** Gemeinsame Layout-Assets (Navigation, Footer, Design Tokens) liegen zentral in `css/` und `js/`.
-> Nur Spiel-/App-spezifische Logik und Styles bleiben inline in der jeweiligen HTML-Datei.
+- Start builds, tests, installations as background tasks
+  (`run_in_background: true`), don't wait in the foreground.
+- Set realistic timeouts for bash calls; hanging processes should
+  abort quickly rather than silently blocking the stream.
+- No `sleep` loops or poll-busy-waits in the main thread.
+
+### Protect Context
+
+- For broad codebase research (> 3 queries, unclear scope) use the
+  `Explore` subagent — it encapsulates large search results and returns
+  only a summary.
+- For design decisions use the `Plan` subagent before making extensive edits.
+
+### Efficient, Not Cautious
+
+- Run independent tool calls in parallel in one message (e.g.,
+  multiple `Read`s or `grep`s) — this reduces total time and thus
+  the probability of timeout.
+- Sequential only when one call depends on the result of the previous.
+
+### Structure Large Tasks
+
+- Break tasks with many file changes (> 10 files or > 3 logically
+  separate sub-steps) into clear sub-steps, each as a self-contained
+  unit with an intermediate result.
+- Use `TodoWrite` to keep progress visible and resume seamlessly
+  after interruptions.
+
+---
+
+## 3. Allowed / Not Allowed
+
+### The AI May
+
+- Change and refactor code (within the existing architecture)
+- Create new projects as self-contained HTML files in subfolders
+- Create/modify files (including documentation)
+- Extend existing game concepts (Markdown in `ideen/`)
+
+### The AI May NOT
+
+- Introduce build tools, package managers, or bundlers (no npm, webpack, Vite, etc.)
+- Introduce frameworks (no React, Vue, Angular, etc.)
+- Propose server-side components (no Node.js, Python, etc.)
+- Include external CDN links (all dependencies are loaded locally from `/vendor`)
+- Extract game/app logic into shared files (games remain self-contained)
+
+> **Note:** Shared layout assets (navigation, footer, design tokens) live centrally in `css/` and `js/`.
+> Only game/app-specific logic and styles stay inline in each HTML file.
 
 ---
 
 ## 4. Branching, Merge, Reviews
 
-- Entwicklung auf Feature-/Fix-Branches
-- Merge via Pull Request
-- `main` ist releasefähig/produktionsnah und geschützt
-- GitHub Pages deployt automatisch aus `main`
+- Development on feature/fix branches
+- Merge via pull request
+- `main` is release-ready/production-grade and protected
+- GitHub Pages deploys automatically from `main`
 
-Empfohlene Branch-Benennung: `feature/...`, `fix/...`, `chore/...`
+Recommended branch naming: `feature/...`, `fix/...`, `chore/...`
 
-PR enthält: Zweck, Scope, betroffene Projekte/Spiele
+PR contains: Purpose, scope, affected projects/games
 
 ---
 
-## 5. Qualitätsanforderungen (Gates)
+## 5. Quality Requirements (Gates)
 
-Vor einem Merge in `main` muss gelten:
+Before merging into `main`:
 
-- HTML ist valide und wohlgeformt
-- Keine kaputten Links (interne Navigation)
-- Responsive Design funktioniert (Desktop + Mobil)
-- Keine Debug-Ausgaben (`console.log`, `alert`) im finalen Code
-- Keine temporären Workarounds
-- Abhängigkeiten werden aus `/vendor` geladen (keine externen CDN-Aufrufe)
-- Zugänglichkeit: `alt`-Attribute bei Bildern, `aria-label` bei Icon-Buttons
+- HTML is valid and well-formed
+- No broken links (internal navigation)
+- Responsive design works (desktop + mobile)
+- No debug output (`console.log`, `alert`) in final code
+- No temporary workarounds
+- Dependencies are loaded from `/vendor` (no external CDN calls)
+- Accessibility: `alt` attributes on images, `aria-label` on icon-only buttons
 
-> **Hinweis:** Es gibt kein CI — Prüfung erfolgt manuell vor dem Merge.
+> **Note:** There is no CI — checks are performed manually before merge.
 
 ---
 
 ## 6. Security & Secrets
 
-- Keine Secrets im Code oder Repo (dieses Projekt benötigt keine)
-- Keine `.env`-Dateien (rein statisches Projekt)
-- Keine externen CDN-Einbindungen — Abhängigkeiten liegen lokal im `/vendor`-Verzeichnis
-- Externe Links mit `rel="noopener"` versehen
+- No secrets in code or repo (this project requires none)
+- No `.env` files (purely static project)
+- No external CDN inclusions — dependencies are stored locally in `/vendor`
+- External links must include `rel="noopener"`
 
 ---
 
 ## 7. OWASP Top 10
 
-Dieses Repo hat kein Backend und keine API. OWASP gilt **sinngemäß**:
+This repo has no backend and no API. OWASP applies **by analogy**:
 
-- **Input-Validation**: Benutzereingaben in Spielen clientseitig validieren
-- **Supply Chain**: Abhängigkeiten lokal im `/vendor`-Verzeichnis — keine externe Supply Chain
-- **XSS-Prävention**: Kein `innerHTML` mit unkontrollierten Daten, `textContent` bevorzugen
-- **Secrets**: Keine API-Keys oder Credentials im Frontend-Code
+- **Input Validation**: Validate user input in games client-side
+- **Supply Chain**: Dependencies in `/vendor` — no external supply chain
+- **XSS Prevention**: No `innerHTML` with uncontrolled data; prefer `textContent`
+- **Secrets**: No API keys or credentials in frontend code
 
 ---
 
 ## 8. robots.txt
 
-Die `robots.txt` ist vorhanden und blockiert alle Suchmaschinen sowie KI-Crawler:
+The `robots.txt` is present and blocks all search engines and AI crawlers:
 
-- Datei ist versioniert im Repository-Root
-- Keine manuellen Änderungen außerhalb von Git
-- Blockierte Crawler: `*` (alle), sowie explizit GPTBot, ChatGPT-User, Google-Extended, anthropic-ai, ClaudeBot, Claude-Web, CCBot, Bytespider, PerplexityBot u. a.
+- File is versioned in the repository root
+- No manual changes outside of Git
+- Blocked crawlers: `*` (all), plus explicitly GPTBot, ChatGPT-User, Google-Extended, anthropic-ai, ClaudeBot, Claude-Web, CCBot, Bytespider, PerplexityBot, and others
 
-> `robots.txt` ist **kein Sicherheitsmechanismus** — es ist eine höfliche Bitte an Crawler.
+> `robots.txt` is **not a security mechanism** — it is a polite request to crawlers.
 
 ---
 
@@ -229,86 +229,87 @@ Die `robots.txt` ist vorhanden und blockiert alle Suchmaschinen sowie KI-Crawler
 
 ### Deployment
 
-- **Kein Build-Prozess** — die HTML-Dateien werden direkt ausgeliefert
-- **GitHub Pages** deployt automatisch bei Push auf `main`
-- Kein Docker, kein GHCR, kein Self-Hosted Runner
+- **No build process** — HTML files are served directly
+- **GitHub Pages** deploys automatically on push to `main`
+- No Docker, no GHCR, no self-hosted runner
 
 ### Rollback
 
-- Rollback durch Revert-Commit auf `main` oder Rücksetzen auf vorherigen Commit
-- GitHub Pages aktualisiert sich automatisch
+- Rollback via revert commit on `main` or reset to a previous commit
+- GitHub Pages updates automatically
 
 ---
 
 ## 10. Definition of Done
 
-Eine Änderung ist „done", wenn:
+A change is "done" when:
 
-- Code umgesetzt und in HTML-Datei eingebettet
-- Manuell getestet (Desktop + Mobil, verschiedene Browser)
-- Responsive Design intakt
-- README aktualisiert (falls neues Projekt oder strukturelle Änderung)
-- Haupt-`index.html` aktualisiert (falls neues Projekt)
-- PR reviewed und gemerged
-- GitHub Pages Deployment erfolgreich (Seite erreichbar)
-
----
-
-## 11. Dokumentationspflicht
-
-Bei jeder Änderung, die in Produktion gehen kann:
-
-- README prüfen/aktualisieren
-- Änderungen nachvollziehbar im PR beschreiben
-- Bei neuen Projekten: Projekt-Card in `index.html` eintragen
+- Code implemented and embedded in HTML file
+- Manually tested (desktop + mobile, multiple browsers)
+- Responsive design intact
+- README updated (if new project or structural change)
+- Main `index.html` updated (if new project)
+- PR reviewed and merged
+- GitHub Pages deployment successful (page reachable)
 
 ---
 
-## 12. README-Struktur (Vorlage)
+## 11. Documentation Requirements
 
-Jede `README.md` in diesem Repository folgt dieser Gliederung. Abschnitte, die nicht zutreffen, werden weggelassen — die Reihenfolge bleibt gleich.
+For every change that can go to production:
 
-### Grundprinzipien für READMEs
+- Check/update README
+- Describe changes clearly in the PR
+- For new projects: add project card to `index.html`
 
-- **Deutsch** — alle READMEs auf Deutsch
-- **Selbsterklärend** — Setup & Betrieb müssen ohne Zusatzdoku möglich sein
-- **Kein Fülltext** — jeder Abschnitt hat einen klaren Zweck
-- **Tabellen > Fließtext**
-- **ASCII-Diagramme > Keine Diagramme** — keine externen Bilder
+---
 
-### Verbindliche Gliederung
+## 12. README Structure (Template)
 
-| # | Abschnitt | Pflicht | Bedingung für Optional |
-|---|-----------|---------|------------------------|
-| 1 | Header mit Badges | **Ja** | — |
-| 2 | Benutzeroberfläche | Nein | Nur bei Apps mit UI |
-| 3 | Feature-Übersicht | **Ja** | — |
-| 4 | Architektur | **Ja** | — |
-| 5 | Voraussetzungen | **Ja** | — |
-| 6 | Installation / Schnellstart | **Ja** | — |
-| 7 | Reverse-Proxy-Einrichtung | Nein | Nur bei spezieller Proxy-Config |
-| 8 | Konfiguration | **Ja** | — |
-| 9 | API-Referenz | Nein | Pflicht bei eigenen APIs |
-| 10 | Datenbankschema | Nein | Empfohlen bei eigenen DBs |
-| 11 | Sicherheitsaspekte | **Ja** | — |
-| 12 | Technologie-Stack | **Ja** | — |
-| 13 | Projektstruktur | Nein | Empfohlen bei Monorepos |
-| 14 | Entwicklung | **Ja** | — |
-| 15 | Versionierung | Nein | Empfohlen |
-| 16 | Lizenz | **Ja** | — |
+Every `README.md` in this repository follows this outline. Sections that do not apply are omitted — the order remains the same.
+
+### Principles for READMEs
+
+- **English** — all READMEs in English
+- **Self-explanatory** — setup and operation must be possible without additional docs
+- **No filler text** — every section has a clear purpose
+- **Tables > prose**
+- **ASCII diagrams > no diagrams** — no external images
+
+### Mandatory Structure
+
+| # | Section | Required | Condition for Optional |
+|---|---------|----------|------------------------|
+| 1 | Header with badges | **Yes** | — |
+| 2 | User interface | No | Only for apps with UI |
+| 3 | Feature overview | **Yes** | — |
+| 4 | Architecture | **Yes** | — |
+| 5 | Prerequisites | **Yes** | — |
+| 6 | Installation / Quick start | **Yes** | — |
+| 7 | Reverse proxy setup | No | Only for special proxy config |
+| 8 | Configuration | **Yes** | — |
+| 9 | API reference | No | Required if own APIs |
+| 10 | Database schema | No | Recommended for own DBs |
+| 11 | Security aspects | **Yes** | — |
+| 12 | Technology stack | **Yes** | — |
+| 13 | Project structure | No | Recommended for monorepos |
+| 14 | Development | **Yes** | — |
+| 15 | Versioning | No | Recommended |
+| 16 | License | **Yes** | — |
 
 ---
 
 ## 13. Design System
 
-> **Zweck:** Einheitliches Design aller Fauteck-Webanwendungen.
-> Dieses Projekt nutzt Bootstrap 5.3 mit anwendungsspezifischem CSS.
+> **Purpose:** Consistent design across all Fauteck web applications.
+> This project uses Bootstrap 5.3 with application-specific CSS.
+> **Full specification:** See [DESIGN.md](DESIGN.md)
 
-### Lokale Abhängigkeiten (`/vendor`)
+### Local Dependencies (`/vendor`)
 
-Bootstrap und Font Awesome werden **lokal** aus dem `/vendor`-Verzeichnis geladen (keine externen CDN-Aufrufe).
+Bootstrap and Font Awesome are loaded **locally** from the `/vendor` directory (no external CDN calls).
 
-Jede HTML-Datei bindet im `<head>` ein (Pfade relativ zur jeweiligen Datei):
+Each HTML file includes in `<head>` (paths relative to the file):
 
 ```html
 <!-- Bootstrap 5.3.2 -->
@@ -318,36 +319,35 @@ Jede HTML-Datei bindet im `<head>` ein (Pfade relativ zur jeweiligen Datei):
 <link rel="stylesheet" href="./vendor/fontawesome/css/all.min.css">
 ```
 
-Vor `</body>`:
+Before `</body>`:
 
 ```html
-<!-- Bootstrap JS Bundle (inkl. Popper.js) -->
+<!-- Bootstrap JS Bundle (incl. Popper.js) -->
 <script src="./vendor/bootstrap/bootstrap.bundle.min.js"></script>
 ```
 
-> **Hinweis:** Für Dateien in Unterordnern (z. B. `apps/pong/`) relative Pfade anpassen: `../../vendor/...`
+> **Note:** For files in subfolders (e.g., `apps/pong/`) adjust relative paths: `../../vendor/...`
 
-### Farbpalette (Design Tokens)
+### Color Palette (Design Tokens)
 
 ```css
 :root {
-    --primary-color:   #5B8BD6;   /* Akzentfarbe, Links, Borders (passend zu content-bg.jpg) */
-    --secondary-color: #3D5A8C;   /* Navbar, Footer */
-    --success-color:   #5CC6A7;   /* Positive Werte, Erfolg (Türkis-Grün) */
-    --danger-color:    #D46B6B;   /* Fehler, Negative Werte */
-    --warning-color:   #D4A55B;   /* Warnungen */
-    --info-color:      #6BB8D4;   /* Info-Hinweise (Cyan/Türkis) */
-    --bg-page:         #EEF2F7;   /* Seitenhintergrund (Blau-Weiß) */
-    --bg-card:         rgba(255, 255, 255, 0.85); /* Kartenhintergrund (halbtransparent) */
-    --text-primary:    #2D3748;   /* Primärer Text */
-    --text-muted:      #7A8599;   /* Gedimmter Text (Blau-Grau) */
-    --border-color:    #D4DCE8;   /* Rahmenfarbe (bläulich) */
+    --primary-color:   #5B8BD6;   /* Accent, links, borders */
+    --secondary-color: #3D5A8C;   /* Navbar, footer */
+    --success-color:   #5CC6A7;   /* Positive values, success */
+    --danger-color:    #D46B6B;   /* Errors, negative values */
+    --warning-color:   #D4A55B;   /* Warnings */
+    --info-color:      #6BB8D4;   /* Info hints */
+    --bg-page:         #EEF2F7;   /* Page background */
+    --bg-card:         rgba(255, 255, 255, 0.85); /* Card background */
+    --text-primary:    #2D3748;   /* Primary text */
+    --text-muted:      #7A8599;   /* Muted text */
+    --border-color:    #D4DCE8;   /* Border color */
     --border-radius-card: 10px;
-    --border-radius-kpi:  12px;
 }
 ```
 
-### Typografie
+### Typography
 
 ```css
 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -355,47 +355,42 @@ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
 ### Responsive Breakpoints
 
-| Breakpoint | Breite | Verhalten |
+| Breakpoint | Width | Behavior |
 |---|---|---|
-| Desktop | > 992 px | Desktop-Navbar sichtbar; Mobile-Elemente ausgeblendet |
-| Tablet/Mobil | <= 992 px | Mobile Top Bar + Bottom Nav sichtbar |
-| Tablet | <= 768 px | Buttons: min 44 px Touch-Ziele; reduziertes Padding |
-| Smartphone | <= 576 px | Engeres Layout, kleinere Überschriften |
+| Desktop | > 968 px | Desktop navbar visible; hamburger hidden |
+| Mobile | ≤ 968 px | Hamburger menu; dropdown navigation |
+| Small mobile | ≤ 600 px | Tighter nav inner padding |
+| Glassmorphism off | ≤ 992 px | backdrop-filter disabled; card background becomes solid |
 
 ### Navigation
 
-- **Desktop (> 992 px):** Sticky Navbar mit Gradient (`#5B8BD6` → `#3D5A8C`)
-- **Mobil (<= 992 px):** Fixed Top Bar (56 px) + Fixed Bottom Nav (60 px)
-- Body erhält automatisch `padding-top: 56px` und `padding-bottom: 60px` auf Mobilgeräten
+- **Desktop (> 968 px):** Sticky white navbar with `--shadow-sm`, brand left, links + CTA right
+- **Mobile (≤ 968 px):** Hamburger button; tap opens full-width dropdown with `--shadow-md`
+- Body automatically gets `padding-top: 4.5rem` via `nav.css`
 
-### Komponenten
+### Components
 
-| Klasse | Einsatzort |
+| Class | Usage |
 |---|---|
-| `.navbar` | Desktop-Navbar (Gradient-Hintergrund) |
-| `.mobile-topbar` | Mobile Kopfleiste |
-| `.bottom-nav` | Mobile Bottom-Navigation |
-| `.bottom-nav-item.active` | Aktiver Tab |
-| `.fab-btn` | Floating Action Button (mobil) |
-| `.flash-messages` | Toast-Benachrichtigungen |
-| `.footer` | Footer-Bereich |
-| `.kpi-grid` | Responsives KPI-Raster |
-| `.kpi-card` | KPI-Karte |
-| `.section-header` | Abschnittsüberschrift mit Akzent-Linie |
-| `.card` | Standard-Karte |
+| `.card` | Standard card (glassmorphism on desktop, solid on mobile) |
+| `.section-header` | Section heading with primary-color left border |
+| `.site-nav` | Sticky top navigation bar |
+| `.site-nav-cta` | Call-to-action button in navbar |
+| `.footer` | Footer area |
+| `.page-wrapper` | Main content wrapper with top/bottom padding |
 
 ---
 
-## Kompatibilität mit anderen KI-Tools
+## Compatibility with Other AI Tools
 
-Diese Datei heißt `CLAUDE.md` und wird von Claude Code automatisch erkannt.
+This file is named `CLAUDE.md` and is automatically recognized by Claude Code.
 
-| Tool | Erwarteter Pfad |
+| Tool | Expected Path |
 |---|---|
-| Claude Code | `CLAUDE.md` (Repository-Root) |
+| Claude Code | `CLAUDE.md` (repository root) |
 | GitHub Copilot | `.github/copilot-instructions.md` |
-| Cursor | `.cursor/rules` oder `.cursorrules` |
+| Cursor | `.cursor/rules` or `.cursorrules` |
 | Windsurf | `.windsurfrules` |
 | Cline | `.clinerules` |
 
-Empfehlung: Symlinks oder Kopien der `CLAUDE.md` unter den jeweiligen Pfaden anlegen, damit alle Tools dieselben Regeln verwenden.
+Recommendation: Create symlinks or copies of `CLAUDE.md` at the respective paths so all tools use the same rules.
