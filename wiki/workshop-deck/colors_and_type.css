@@ -1,0 +1,221 @@
+/* ──────────────────────────────────────────────────────────────
+   Vibecoding Academy — Colors & Type
+   Source of truth: Fauteck/vibecoding-academy/css/tokens.css
+   Reformatted as foundational + semantic CSS variables.
+   ────────────────────────────────────────────────────────────── */
+
+/* ── IBM Plex Sans (variable, self-hosted) ─────────────────── */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  src: url('../../vendor/ibm-plex-sans/latin-wght-normal.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'IBM Plex Sans';
+  src: url('../../vendor/ibm-plex-sans/latin-wght-italic.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  /* ── BASE COLOR TOKENS ──────────────────────────────────── */
+  --primary-color:   #5B8BD6;   /* accent, links, borders, CTA bg */
+  --secondary-color: #3D5A8C;   /* navbar, footer, brand anchor */
+  --success-color:   #5CC6A7;
+  --danger-color:    #D46B6B;
+  --warning-color:   #D4A55B;
+  --info-color:      #6BB8D4;
+
+  --bg-page:         #EEF2F7;
+  --bg-card:         rgba(255, 255, 255, 0.92);
+  --bg-card-mobile:  rgba(255, 255, 255, 0.88);
+  --bg-white:        #FFFFFF;
+
+  --text-primary:    #2D3748;   /* body + headings */
+  --text-muted:      #7A8599;   /* secondary labels */
+  --text-on-dark:    rgba(255, 255, 255, 0.7);
+  --text-on-dark-strong: rgba(255, 255, 255, 0.95);
+
+  --border-color:    #D4DCE8;
+
+  /* ── SEMANTIC FOREGROUND/BACKGROUND ALIASES ────────────── */
+  --fg1: var(--text-primary);
+  --fg2: var(--text-muted);
+  --fg-brand: var(--secondary-color);
+  --fg-accent: var(--primary-color);
+
+  --bg1: var(--bg-page);
+  --bg2: var(--bg-card);
+
+  /* ── TYPOGRAPHY: BASE ──────────────────────────────────── */
+  --font-sans: 'IBM Plex Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --font-size-xs:    0.75rem;   /* 12px — nav subtitle */
+  --font-size-sm:    0.85rem;   /* 13.6px — footer, CTA, small */
+  --font-size-nav:   0.9rem;    /* 14.4px — nav links */
+  --font-size-base:  1rem;      /* 16px — body */
+  --font-size-md:    1.1rem;    /* 17.6px — emphasized body */
+  --font-size-lg:    1.5rem;    /* 24px — brand */
+  --font-size-xl:    1.8rem;    /* 28.8px — page title */
+  --font-size-display: clamp(2rem, 4.2vw, 3rem); /* hero h1 */
+
+  --font-weight-regular:  400;
+  --font-weight-medium:   500;
+  --font-weight-semibold: 600;
+  --font-weight-bold:     700;
+  --font-weight-black:    800;
+
+  --line-height-tight: 1.08;
+  --line-height-base:  1.5;
+  --line-height-loose: 1.75;
+
+  --tracking-tight:    -0.02em;  /* brand, hero h1 */
+  --tracking-wide:     0.05em;   /* uppercase subtitles */
+  --tracking-label:    0.15em;   /* small section labels */
+
+  /* ── BORDERS / RADII ───────────────────────────────────── */
+  --radius-card:   10px;
+  --radius-button: 6px;
+  --radius-pill:   999px;
+
+  /* ── SHADOWS ───────────────────────────────────────────── */
+  --shadow-sm: 0 1px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --shadow-focus-ring: 0 0 0 3px rgba(91, 139, 214, 0.15);
+
+  /* ── SPACING (4px grid) ────────────────────────────────── */
+  --space-1: 0.25rem;  /*  4px */
+  --space-2: 0.5rem;   /*  8px */
+  --space-3: 0.75rem;  /* 12px */
+  --space-4: 1rem;     /* 16px */
+  --space-5: 1.5rem;   /* 24px */
+  --space-6: 2rem;     /* 32px */
+  --space-7: 3rem;     /* 48px */
+
+  /* ── MOTION ────────────────────────────────────────────── */
+  --transition-fast:   0.2s ease;
+  --transition-medium: 0.3s ease;
+
+  /* ── Z-INDEX SCALE ─────────────────────────────────────── */
+  --z-nav:      1030;
+  --z-dropdown: 1040;
+  --z-modal:    1050;
+  --z-toast:    1060;
+
+  /* ── GRADIENTS ─────────────────────────────────────────── */
+  --gradient-nav:  linear-gradient(135deg, #5B8BD6, #3D5A8C);
+  --gradient-hero: linear-gradient(135deg, rgba(61,90,140,0.22), rgba(91,139,214,0.15));
+  --gradient-cta-soft: linear-gradient(135deg, rgba(91,139,214,0.12), rgba(92,198,167,0.12));
+}
+
+/* ──────────────────────────────────────────────────────────────
+   SEMANTIC TYPE STYLES
+   Apply these classes (or copy the rules) instead of restyling
+   each h1/h2 from scratch.
+   ────────────────────────────────────────────────────────────── */
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: var(--fg1);
+}
+
+.t-display,
+.hero h1 {
+  font-size: var(--font-size-display);
+  font-weight: var(--font-weight-black);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--tracking-tight);
+  color: #fff;
+}
+
+.t-h1 {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--fg1);
+}
+
+.t-h2 {
+  font-size: 1.4rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--fg1);
+}
+
+.t-h3 {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bold);
+  color: var(--fg-brand);
+}
+
+.t-section-title {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bold);
+  color: var(--fg-brand);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.t-brand-name {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-brand);
+}
+
+.t-brand-subtitle {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--fg2);
+}
+
+.t-section-label {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--fg-accent);
+}
+
+.t-lead {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-loose);
+  color: var(--fg1);
+}
+
+.t-body {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-loose);
+  color: var(--fg1);
+}
+
+.t-muted {
+  color: var(--fg2);
+  font-size: var(--font-size-sm);
+}
+
+.t-mono {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: rgba(91, 139, 214, 0.08);
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+}
+
+a { color: var(--fg-accent); text-decoration: none; }
+a:hover { color: var(--fg-brand); }
+
+:focus-visible {
+  outline: 2px solid var(--fg-accent);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
