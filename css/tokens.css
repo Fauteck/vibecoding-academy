@@ -27,10 +27,24 @@
   --warning-color:      #D4A55B;
   --info-color:         #6BB8D4;
   --bg-page:            #EEF2F7;
-  --bg-card:            rgba(255, 255, 255, 0.92);
+  --bg-card:            rgba(255, 255, 255, 0.78);
+  --bg-card-solid:      #FFFFFF;
   --text-primary:       #2D3748;
   --text-muted:         #7A8599;
   --border-color:       #D4DCE8;
+
+  /* ── Typography Weights & Tracking ───────────────── */
+  --font-weight-regular:  400;
+  --font-weight-medium:   500;
+  --font-weight-semibold: 600;
+  --font-weight-bold:     700;
+  --font-weight-black:    800;
+  --tracking-display:    -0.04em;
+  --tracking-tight:      -0.02em;
+  --tracking-label:       0.15em;
+
+  /* ── Glassmorphism ───────────────────────────────── */
+  --card-blur:          blur(16px) saturate(1.4);
 
   /* ── Border Radii ────────────────────────────────── */
   --border-radius-card:   10px;
@@ -90,6 +104,8 @@ body {
 
 .card {
   background: var(--bg-card);
+  backdrop-filter: var(--card-blur);
+  -webkit-backdrop-filter: var(--card-blur);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-card);
 }
@@ -105,6 +121,56 @@ body {
 
 .section-header:first-child { margin-top: 0; }
 
+/*
+ * Numbered section header — auto-numbered eyebrow + larger title.
+ * Usage:
+ *   <div class="numbered-sections">
+ *     <div class="section-header numbered">
+ *       <span class="section-eyebrow">Was du mitnimmst</span>
+ *       <h2 class="section-title-lg">…</h2>
+ *     </div>
+ *   </div>
+ * The "01 — " prefix is generated via CSS counters on .numbered-sections.
+ */
+.numbered-sections { counter-reset: section-num; }
+
+.section-header.numbered {
+  counter-increment: section-num;
+  border-left: none;
+  padding: 0;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-radius: 0;
+  margin-bottom: var(--space-5);
+}
+
+.section-header.numbered .section-eyebrow {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: var(--space-2);
+}
+
+.section-header.numbered .section-eyebrow::before {
+  content: counter(section-num, decimal-leading-zero) "  —  ";
+  color: var(--primary-color);
+  font-weight: var(--font-weight-bold);
+}
+
+.section-header.numbered .section-title-lg,
+.section-header.numbered h2 {
+  font-size: 1.6rem;
+  font-weight: var(--font-weight-black);
+  letter-spacing: var(--tracking-tight);
+  line-height: 1.15;
+  color: var(--text-primary);
+  margin: 0;
+}
+
 /* ── Page Wrapper ────────────────────────────────── */
 
 .page-wrapper {
@@ -117,6 +183,17 @@ body {
   body { background-attachment: scroll; }
   .card {
     background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
   }
 }
 
