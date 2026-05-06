@@ -73,6 +73,28 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
+    /* ── Project Tile Icon ─────────────────────────────────── */
+    .tile-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(91,139,214,0.12), rgba(107,184,212,0.18));
+      color: var(--primary-color);
+      font-size: 1.75rem;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+    a.card:hover .tile-icon {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, rgba(91,139,214,0.22), rgba(107,184,212,0.28));
+    }
+    @media (prefers-reduced-motion: reduce) {
+      a.card:hover .tile-icon { transform: none; }
+    }
+
 
     /* ── Hero ──────────────────────────────────────────────── */
     .hero-section {
@@ -147,19 +169,20 @@
     </div>
   </div>
 
-  <main class="container-fluid py-3" style="max-width: 900px; margin: 0 auto;">
+  <main class="container-fluid py-3 numbered-sections" style="max-width: 900px; margin: 0 auto;">
 
     <!-- Ergebnisse -->
-    <div class="section-header" id="ergebnisse">
-      <h5><i class="fas fa-rocket me-2"></i>Ergebnisse</h5>
-      <p class="text-muted small mb-0 mt-1">Fertige Projekte aus dem Workshop zum Ausprobieren</p>
+    <div class="section-header numbered" id="ergebnisse">
+      <span class="section-eyebrow">Ergebnisse</span>
+      <h2 class="section-title-lg">Fertige Projekte aus dem Workshop</h2>
+      <p class="text-muted small mb-0 mt-2">Zum Ausprobieren — alle direkt im Browser, ohne Installation.</p>
     </div>
 
     <div class="row g-3 mb-4">
       <div class="col-md-4 col-sm-6">
         <a class="card text-decoration-none h-100" href="../apps/pong/">
           <div class="card-body text-center">
-            <div class="fs-1 mb-2">🏓</div>
+            <div class="tile-icon"><i class="fas fa-table-tennis-paddle-ball" aria-hidden="true"></i></div>
             <h6 class="card-title">Pong</h6>
             <p class="card-text text-muted small">Klassisches Pong-Spiel: Spieler gegen KI</p>
           </div>
@@ -168,7 +191,7 @@
       <div class="col-md-4 col-sm-6">
         <a class="card text-decoration-none h-100" href="../apps/gta/">
           <div class="card-body text-center">
-            <div class="fs-1 mb-2">🚗</div>
+            <div class="tile-icon"><i class="fas fa-car-side" aria-hidden="true"></i></div>
             <h6 class="card-title">Grand Thomas Auto 6</h6>
             <p class="card-text text-muted small">GTA-Parodie im RTL-Sendezentrum</p>
           </div>
@@ -177,7 +200,7 @@
       <div class="col-md-4 col-sm-6">
         <a class="card text-decoration-none h-100" href="../apps/wochenendplanung/">
           <div class="card-body text-center">
-            <div class="fs-1 mb-2">📅</div>
+            <div class="tile-icon"><i class="fas fa-calendar-week" aria-hidden="true"></i></div>
             <h6 class="card-title">Wochenendplanung</h6>
             <p class="card-text text-muted small">Wochenenddienst-Planung und Übersicht</p>
           </div>
@@ -186,7 +209,7 @@
       <div class="col-md-4 col-sm-6">
         <a class="card text-decoration-none h-100" href="../apps/blog/">
           <div class="card-body text-center">
-            <div class="fs-1 mb-2">📰</div>
+            <div class="tile-icon"><i class="fas fa-newspaper" aria-hidden="true"></i></div>
             <h6 class="card-title">KI-Blog</h6>
             <p class="card-text text-muted small">Redaktionsblog mit KI-Unterstützung erstellt</p>
           </div>
@@ -195,7 +218,7 @@
       <div class="col-md-4 col-sm-6">
         <a class="card text-decoration-none h-100" href="../kontakt/" style="border: 2px dashed var(--primary-color);">
           <div class="card-body text-center d-flex flex-column justify-content-center">
-            <div class="fs-1 mb-2">🚀</div>
+            <div class="tile-icon"><i class="fas fa-rocket" aria-hidden="true"></i></div>
             <h6 class="card-title">Dein Anwendungsfall</h6>
             <p class="card-text small" style="color: var(--text-muted);">Im Workshop entsteht ein erster Prototyp für euren echten Use Case</p>
             <span class="mt-auto" style="color: var(--primary-color); font-weight: 600; font-size: 0.9rem;">
@@ -207,16 +230,17 @@
     </div>
 
     <!-- Ideen & Konzepte -->
-    <div class="section-header mt-4" id="ideen">
-      <h5><i class="fas fa-lightbulb me-2"></i>Ideen &amp; Konzepte</h5>
-      <p class="text-muted small mb-0 mt-1">Konzeptvorlagen als Startpunkt für eigene Projekte</p>
+    <div class="section-header numbered mt-5" id="ideen">
+      <span class="section-eyebrow">Ideen &amp; Konzepte</span>
+      <h2 class="section-title-lg">Vorlagen für eigene Projekte</h2>
+      <p class="text-muted small mb-0 mt-2">Konzeptvorlagen als Startpunkt — im Workshop bauen wir gemeinsam daraus etwas Lauffähiges.</p>
     </div>
 
     <div class="row g-3 mb-4">
       <div class="col-md-4 col-sm-6">
         <a class="card text-decoration-none h-100" href="viewer.html?file=flappybird.md">
           <div class="card-body text-center">
-            <div class="fs-1 mb-2">🐦</div>
+            <div class="tile-icon"><i class="fas fa-feather" aria-hidden="true"></i></div>
             <h6 class="card-title">Flappy Bird</h6>
             <p class="card-text text-muted small">Fliege durch die Lücken zwischen den Röhren</p>
           </div>
@@ -225,7 +249,7 @@
       <div class="col-md-4 col-sm-6">
         <a class="card text-decoration-none h-100" href="viewer.html?file=memory.md">
           <div class="card-body text-center">
-            <div class="fs-1 mb-2">🃏</div>
+            <div class="tile-icon"><i class="fas fa-clone" aria-hidden="true"></i></div>
             <h6 class="card-title">Memory</h6>
             <p class="card-text text-muted small">Finde alle passenden Kartenpaare</p>
           </div>
@@ -234,7 +258,7 @@
       <div class="col-md-4 col-sm-6">
         <a class="card text-decoration-none h-100" href="viewer.html?file=minesweeper.md">
           <div class="card-body text-center">
-            <div class="fs-1 mb-2">💣</div>
+            <div class="tile-icon"><i class="fas fa-bomb" aria-hidden="true"></i></div>
             <h6 class="card-title">Minesweeper</h6>
             <p class="card-text text-muted small">Decke das Feld auf, ohne eine Mine zu treffen</p>
           </div>
@@ -243,7 +267,7 @@
       <div class="col-md-4 col-sm-6">
         <a class="card text-decoration-none h-100" href="viewer.html?file=pong.md">
           <div class="card-body text-center">
-            <div class="fs-1 mb-2">🏓</div>
+            <div class="tile-icon"><i class="fas fa-table-tennis-paddle-ball" aria-hidden="true"></i></div>
             <h6 class="card-title">Pong</h6>
             <p class="card-text text-muted small">Klassisches Pong-Spiel: Spieler gegen KI</p>
           </div>
@@ -252,7 +276,7 @@
       <div class="col-md-4 col-sm-6">
         <a class="card text-decoration-none h-100" href="viewer.html?file=snake.md">
           <div class="card-body text-center">
-            <div class="fs-1 mb-2">🐍</div>
+            <div class="tile-icon"><i class="fas fa-staff-snake" aria-hidden="true"></i></div>
             <h6 class="card-title">Snake</h6>
             <p class="card-text text-muted small">Sammle Futter und werde immer länger</p>
           </div>
@@ -261,7 +285,7 @@
       <div class="col-md-4 col-sm-6">
         <a class="card text-decoration-none h-100" href="viewer.html?file=solitaire.md">
           <div class="card-body text-center">
-            <div class="fs-1 mb-2">🂡</div>
+            <div class="tile-icon"><i class="fas fa-spade" aria-hidden="true"></i></div>
             <h6 class="card-title">Solitär</h6>
             <p class="card-text text-muted small">Klassisches Klondike-Kartenspiel</p>
           </div>
@@ -270,7 +294,7 @@
       <div class="col-md-4 col-sm-6">
         <a class="card text-decoration-none h-100" href="viewer.html?file=sudoku.md">
           <div class="card-body text-center">
-            <div class="fs-1 mb-2">🔢</div>
+            <div class="tile-icon"><i class="fas fa-table-cells" aria-hidden="true"></i></div>
             <h6 class="card-title">Sudoku</h6>
             <p class="card-text text-muted small">Fülle das 9x9-Gitter mit den richtigen Zahlen</p>
           </div>
@@ -279,7 +303,7 @@
       <div class="col-md-4 col-sm-6">
         <a class="card text-decoration-none h-100" href="viewer.html?file=tetris.md">
           <div class="card-body text-center">
-            <div class="fs-1 mb-2">🧱</div>
+            <div class="tile-icon"><i class="fas fa-shapes" aria-hidden="true"></i></div>
             <h6 class="card-title">Tetris</h6>
             <p class="card-text text-muted small">Stapele fallende Blöcke zu vollen Reihen</p>
           </div>
@@ -288,7 +312,7 @@
       <div class="col-md-4 col-sm-6">
         <a class="card text-decoration-none h-100" href="viewer.html?file=tictactoe.md">
           <div class="card-body text-center">
-            <div class="fs-1 mb-2">❌</div>
+            <div class="tile-icon"><i class="fas fa-xmark" aria-hidden="true"></i></div>
             <h6 class="card-title">Tic-Tac-Toe</h6>
             <p class="card-text text-muted small">Drei in einer Reihe gewinnt</p>
           </div>
@@ -297,7 +321,7 @@
       <div class="col-md-4 col-sm-6">
         <a class="card text-decoration-none h-100" href="viewer.html?file=haushaltsbuch.md">
           <div class="card-body text-center">
-            <div class="fs-1 mb-2">📒</div>
+            <div class="tile-icon"><i class="fas fa-book" aria-hidden="true"></i></div>
             <h6 class="card-title">Haushaltsbuch</h6>
             <p class="card-text text-muted small">Einfache Eingaben-/Ausgaben-App für den Haushalt</p>
           </div>

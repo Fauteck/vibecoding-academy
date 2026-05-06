@@ -131,11 +131,20 @@
       text-decoration: none;
       font-weight: 600;
       font-size: 0.95rem;
-      transition: opacity 0.2s;
+      transition: transform var(--transition-fast),
+                  box-shadow var(--transition-fast),
+                  background-color var(--transition-fast);
     }
-    .cta-btn:hover {
-      opacity: 0.85;
+    .cta-btn:hover,
+    .cta-btn:focus-visible {
+      background: var(--secondary-color);
       color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(91, 139, 214, 0.35);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .cta-btn:hover,
+      .cta-btn:focus-visible { transform: none; }
     }
 
     /* ── Contact Form ──────────────────────────────── */

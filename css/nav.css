@@ -158,14 +158,24 @@ body {
   font-weight: 600;
   border-radius: var(--border-radius-button, 6px);
   text-decoration: none;
-  transition: opacity var(--transition-fast, 0.2s ease);
+  transition: transform var(--transition-fast, 0.2s ease),
+              box-shadow var(--transition-fast, 0.2s ease),
+              background-color var(--transition-fast, 0.2s ease);
   white-space: nowrap;
 }
 
-.site-nav-cta:hover {
-  opacity: 0.85;
+.site-nav-cta:hover,
+.site-nav-cta:focus-visible {
+  background: var(--secondary-color, #3D5A8C);
   color: #fff !important;
   text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(91, 139, 214, 0.35);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-nav-cta:hover,
+  .site-nav-cta:focus-visible { transform: none; }
 }
 
 /* ── Responsive ──────────────────────────────────── */
