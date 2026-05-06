@@ -13,6 +13,7 @@
 | [DESIGN.md](../DESIGN.md) | Design system — tokens, rationale, accessibility, components |
 | [docs/architektur.md](architektur.md) | Shared components, path resolution, CSS chain, design tokens |
 | [docs/arbeitsablaeufe.md](arbeitsablaeufe.md) | Step-by-step guides for common tasks |
+| [docs/SKILL.md](SKILL.md) | AI-skill manifest — brand quick-reference, token & helper-class entry points |
 | [README.md](../README.md) | Project overview, features, tech stack |
 
 ---
@@ -22,10 +23,12 @@
 | Absolute Path | Purpose | Lines |
 |---------------|---------|-------|
 | `/home/user/vibecoding-academy/js/components.js` | Navigation & footer injection (all pages) | 90 |
-| `/home/user/vibecoding-academy/css/tokens.css` | Design tokens, CSS reset, base styles | ~110 |
+| `/home/user/vibecoding-academy/css/tokens.css` | Design tokens, CSS reset, base styles | ~250 |
+| `/home/user/vibecoding-academy/css/typography.css` | Semantic `.t-*` type helper classes (opt-in per page) | ~80 |
 | `/home/user/vibecoding-academy/css/nav.css` | Navigation styles (desktop + mobile) | 193 |
 | `/home/user/vibecoding-academy/css/footer.css` | Footer styles | 19 |
 | `/home/user/vibecoding-academy/DESIGN.md` | Design system specification | — |
+| `/home/user/vibecoding-academy/docs/SKILL.md` | AI-skill manifest (brand + token entry points) | — |
 | `/home/user/vibecoding-academy/index.html` | Landing page | 959 |
 
 ---
@@ -47,6 +50,7 @@
 │
 ├── css/                                # Shared stylesheets
 │   ├── tokens.css                      #   Design tokens + reset
+│   ├── typography.css                  #   Opt-in .t-* type helpers
 │   ├── nav.css                         #   Navigation (desktop + mobile)
 │   └── footer.css                      #   Footer
 │
@@ -98,5 +102,6 @@
 └── docs/                               # LLM-optimised documentation
     ├── INDEX.md                        #   ← You are here
     ├── architektur.md                  #   Architecture & components
-    └── arbeitsablaeufe.md              #   Workflows & tasks
+    ├── arbeitsablaeufe.md              #   Workflows & tasks
+    └── SKILL.md                        #   AI-skill manifest
 ```

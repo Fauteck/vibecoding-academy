@@ -78,6 +78,48 @@
   /* ── Gradient Presets ────────────────────────────── */
   --gradient-nav:  linear-gradient(135deg, #5B8BD6, #3D5A8C);
   --gradient-hero: linear-gradient(135deg, rgba(61, 90, 140, 0.22), rgba(91, 139, 214, 0.15));
+
+  /* ── Typography Scale (added from design system) ─── */
+  --font-sans:         'IBM Plex Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-mono:         'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --font-size-xs:      0.75rem;   /* 12px   — nav subtitle, labels */
+  --font-size-sm:      0.85rem;   /* 13.6px — footer, CTA, small */
+  --font-size-nav:     0.9rem;    /* 14.4px — nav links */
+  --font-size-base:    1rem;      /* 16px   — body */
+  --font-size-md:      1.1rem;    /* 17.6px — emphasized body, lead */
+  --font-size-lg:      1.5rem;    /* 24px   — brand */
+  --font-size-xl:      1.8rem;    /* 28.8px — page title */
+  --font-size-display: clamp(2rem, 4.2vw, 3rem);
+
+  --line-height-tight: 1.08;
+  --line-height-base:  1.5;
+  --line-height-loose: 1.75;
+
+  --tracking-wide:     0.05em;    /* uppercase nav subtitles */
+
+  /* ── Semantic Foreground / Background Aliases ────── */
+  --fg1:        var(--text-primary);
+  --fg2:        var(--text-muted);
+  --fg-brand:   var(--secondary-color);
+  --fg-accent:  var(--primary-color);
+  --bg1:        var(--bg-page);
+  --bg2:        var(--bg-card);
+
+  /* ── Extra Surfaces / On-Dark Text ───────────────── */
+  --bg-card-mobile:       rgba(255, 255, 255, 0.88);
+  --bg-white:             #FFFFFF;
+  --text-on-dark:         rgba(255, 255, 255, 0.7);
+  --text-on-dark-strong:  rgba(255, 255, 255, 0.95);
+
+  /* ── Extra Shadow / Gradient ─────────────────────── */
+  --shadow-focus-ring: 0 0 0 3px rgba(91, 139, 214, 0.15);
+  --gradient-cta-soft: linear-gradient(135deg, rgba(91, 139, 214, 0.12), rgba(92, 198, 167, 0.12));
+
+  /* ── Radius Aliases (shorter names from design system) ── */
+  --radius-card:   var(--border-radius-card);
+  --radius-button: var(--border-radius-button);
+  --radius-pill:   var(--border-radius-pill);
 }
 
 /* ── Reset ───────────────────────────────────────── */

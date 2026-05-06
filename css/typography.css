@@ -1,0 +1,79 @@
+/* ──────────────────────────────────────────────────────────────
+   Vibecoding Academy — Semantic Type Helpers
+   Apply these classes (or copy the rules) instead of restyling
+   each h1/h2 from scratch.
+   Source: design-system bundle (colors_and_type.css).
+   Depends on tokens.css for font-family, font-size, color, weight,
+   tracking and line-height variables.
+   ────────────────────────────────────────────────────────────── */
+
+.t-display,
+.hero h1 {
+  font-size: var(--font-size-display);
+  font-weight: var(--font-weight-black);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--tracking-display);
+  color: #fff;
+}
+
+.t-h1 { font-size: var(--font-size-xl); font-weight: var(--font-weight-bold); color: var(--fg1); }
+.t-h2 { font-size: 1.4rem;              font-weight: var(--font-weight-bold); color: var(--fg1); }
+.t-h3 { font-size: var(--font-size-md); font-weight: var(--font-weight-bold); color: var(--fg-brand); }
+
+.t-section-title {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bold);
+  color: var(--fg-brand);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.t-brand-name {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-brand);
+}
+
+.t-brand-subtitle {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--fg2);
+}
+
+.t-section-label {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--fg-accent);
+}
+
+.t-lead {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-loose);
+  color: var(--fg1);
+}
+
+.t-body {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-loose);
+  color: var(--fg1);
+}
+
+.t-muted {
+  font-size: var(--font-size-sm);
+  color: var(--fg2);
+}
+
+.t-mono {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: rgba(91, 139, 214, 0.08);
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+}
