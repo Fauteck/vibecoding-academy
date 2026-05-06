@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'">
+<title>Vibecoding Academy — Workshop Deck</title>
+<link rel="icon" type="image/svg+xml" href="logo.svg">
+<link rel="stylesheet" href="colors_and_type.css">
+<script src="deck-stage.js"></script>
+
+<style>
+  /* ── Editorial × Terminal ──────────────────────────── */
+  :root {
+    --ink:        #0E1422;
+    --ink-2:      #1B2336;
+    --paper:      #F5F1E8;   /* warmes Editorial-Papier */
+    --paper-2:    #ECE6D6;
+    --rule:       #0E1422;
+    --accent:     #5B8BD6;
+    --accent-2:   #6BB8D4;
+    --term-bg:    #0A0E1A;
+    --term-fg:    #C8D4EE;
+    --term-dim:   #5A6B8C;
+    --term-green: #7DD3A8;
+    --term-pink:  #E89BB5;
+  }
+
+  html, body { background: #0a0e1a; }
+  deck-stage { background: #0a0e1a; }
+
+  /* ── Slide-Basis ───────────────────────────────────── */
+  .slide {
+    width: 1920px;
+    height: 1080px;
+    box-sizing: border-box;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── Editorial-Marker (oben) ───────────────────────── */
+  .head {
+    height: 72px;
+    border-bottom: 1.5px solid var(--rule);
+    display: flex;
+    align-items: center;
+    padding: 0 80px;
+    font-family: var(--font-mono);
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink);
+    gap: 32px;
+    flex-shrink: 0;
+  }
+  .head .dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; }
+  .head .sep { flex: 1; height: 1px; background: var(--rule); opacity: 0.2; }
+  .head .num { color: var(--ink); font-weight: 700; }
+  .head .lbl { color: var(--ink); opacity: 0.6; }
+
+  /* ── Footer-Marker ─────────────────────────────────── */
+  .foot {
+    height: 56px;
+    border-top: 1.5px solid var(--rule);
+    display: flex;
+    align-items: center;
+    padding: 0 80px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+    opacity: 0.7;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+
+  /* ── Body-Slot ─────────────────────────────────────── */
+  .body {
+    flex: 1;
+    padding: 64px 80px;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  /* ── Editorial-Headlines ───────────────────────────── */
+  .display {
+    font-size: 220px;
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -0.055em;
+    color: var(--ink);
+    text-wrap: balance;
+    margin: 0;
+    font-feature-settings: "ss01";
+  }
+  .h1 {
+    font-size: 168px;
+    font-weight: 800;
+    line-height: 0.92;
+    letter-spacing: -0.05em;
+    color: var(--ink);
+    margin: 0;
+    text-wrap: balance;
+  }
+  .h2 {
+    font-size: 112px;
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    color: var(--ink);
+    margin: 0;
+    text-wrap: balance;
+  }
+  .h3 {
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin: 0;
+  }
+  .lead {
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--ink-2);
+    max-width: 1200px;
+    text-wrap: pretty;
+  }
+  .body-text {
+    font-size: 24px;
+    line-height: 1.5;
+    color: var(--ink-2);
+    max-width: 1100px;
+    text-wrap: pretty;
+  }
+
+  /* ── Akzent-Wort Underline ─────────────────────────── */
+  .ink-accent {
+    color: var(--accent);
+    font-style: normal;
+  }
+  .ink-mark {
+    background: linear-gradient(180deg, transparent 60%, rgba(91,139,214,0.35) 60%);
+    padding: 0 0.05em;
+  }
+
+  /* ── Editorial-Caption ─────────────────────────────── */
+  .caption {
+    font-family: var(--font-mono);
+    font-size: 16px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink);
+    opacity: 0.7;
+  }
+  .caption .sq { display: inline-block; width: 8px; height: 8px; background: var(--accent); margin-right: 12px; transform: translateY(-2px); }
+
+  /* ── Terminal-Block (Hero auf vielen Slides) ──────── */
+  .term {
+    background: var(--term-bg);
+    color: var(--term-fg);
+    font-family: var(--font-mono);
+    font-size: 22px;
+    line-height: 1.55;
+    padding: 36px 44px;
+    border-radius: 10px;
+    border: 1px solid #1B2742;
+    position: relative;
+    overflow: hidden;
+  }
+  .term::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 36px;
+    background: #0E1530;
+    border-bottom: 1px solid #1B2742;
+  }
+  .term::after {
+    content: "● ● ●";
+    position: absolute;
+    top: 7px; left: 14px;
+    color: #2C3654;
+    font-size: 14px;
+    letter-spacing: 4px;
+  }
+  .term .term-title {
+    position: absolute;
+    top: 9px; right: 16px;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--term-dim);
+  }
+  .term .inner {
+    margin-top: 28px;
+  }
+  .term .prompt { color: var(--term-green); }
+  .term .dim    { color: var(--term-dim); }
+  .term .pink   { color: var(--term-pink); }
+  .term .blue   { color: var(--accent-2); }
+  .term .out    { color: var(--term-fg); }
+  .term .cursor {
+    display: inline-block;
+    width: 12px; height: 24px;
+    background: var(--term-green);
+    vertical-align: -4px;
+    margin-left: 4px;
+    animation: blink 1s steps(2) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  /* ── Layout-Helfer ─────────────────────────────────── */
+  .grow { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+  .center { align-items: center; justify-content: center; text-align: center; }
+  .end    { justify-content: flex-end; }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .grid-2-sm { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+
+  .stack-sm > * + * { margin-top: 24px; }
+  .stack-md > * + * { margin-top: 40px; }
+  .stack-lg > * + * { margin-top: 64px; }
+
+  /* ── Editorial-Numbered List ───────────────────────── */
+  .num-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    counter-reset: nlist;
+  }
+  .num-list li {
+    counter-increment: nlist;
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 36px;
+    padding: 32px 0;
+    border-bottom: 1px solid rgba(14,20,34,0.18);
+    align-items: baseline;
+  }
+  .num-list li:last-child { border-bottom: 0; }
+  .num-list li::before {
+    content: "0" counter(nlist);
+    font-family: var(--font-mono);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+  .num-list h4 {
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin: 0 0 8px;
+    line-height: 1.1;
+  }
+  .num-list p {
+    font-size: 22px;
+    line-height: 1.5;
+    color: var(--ink-2);
+    margin: 0;
+    max-width: 900px;
+  }
+
+  /* ── Cover ─────────────────────────────────────────── */
+  .cover { background: var(--paper); }
+  .cover .body {
+    padding: 64px 80px 0;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 0;
+  }
+  .cover .top-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-family: var(--font-mono);
+    font-size: 16px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .cover .top-meta .right { text-align: right; opacity: 0.7; }
+  .cover .top-meta .right strong { display: block; opacity: 1; font-weight: 700; }
+  .cover .display {
+    align-self: end;
+    font-size: 280px;
+    line-height: 0.86;
+    letter-spacing: -0.06em;
+  }
+  .cover .display .ink-accent { color: var(--accent); }
+  .cover .bottom {
+    padding-bottom: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-top: 1.5px solid var(--rule);
+    padding-top: 32px;
+    margin-top: 48px;
+  }
+  .cover .bottom .who {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .cover .bottom .who small {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    margin-top: 6px;
+  }
+  .cover .bottom .barcode {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    opacity: 0.7;
+    text-align: right;
+  }
+  .cover .bottom .barcode .lines {
+    display: block;
+    margin-top: 8px;
+    height: 22px;
+    background-image: repeating-linear-gradient(90deg,
+      var(--ink) 0 2px, transparent 2px 4px,
+      var(--ink) 4px 5px, transparent 5px 9px,
+      var(--ink) 9px 12px, transparent 12px 14px);
+  }
+
+  /* ── Mantra-Slide ──────────────────────────────────── */
+  .mantra-slide .body { padding: 0 80px; justify-content: center; }
+  .mantra-line {
+    font-size: 280px;
+    font-weight: 800;
+    letter-spacing: -0.06em;
+    line-height: 0.9;
+    color: var(--ink);
+  }
+  .mantra-line + .mantra-line { color: var(--accent); margin-top: 8px; }
+
+  /* ── Section-Divider (Vollbild Tinte) ──────────────── */
+  .section-slide {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .section-slide .head { color: var(--paper); border-bottom-color: var(--paper); }
+  .section-slide .head .num { color: var(--paper); }
+  .section-slide .head .lbl { color: var(--paper); opacity: 0.6; }
+  .section-slide .head .sep { background: var(--paper); }
+  .section-slide .head .dot { background: var(--accent-2); }
+  .section-slide .foot { color: var(--paper); border-top-color: var(--paper); opacity: 0.7; }
+  .section-slide .display { color: var(--paper); }
+  .section-slide .display .ink-accent { color: var(--accent-2); }
+  .section-slide .lead { color: rgba(245,241,232,0.75); }
+  .section-slide .caption { color: var(--paper); opacity: 0.7; }
+
+  /* ── Pull Quote ────────────────────────────────────── */
+  .quote-slide .body { padding: 80px; }
+  .quote-mark {
+    font-family: var(--font-mono);
+    font-size: 220px;
+    color: var(--accent);
+    line-height: 0.7;
+    margin-bottom: -20px;
+  }
+  .quote {
+    font-size: 96px;
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    color: var(--ink);
+    text-wrap: balance;
+    max-width: 1500px;
+  }
+  .quote-attr {
+    margin-top: 56px;
+    font-family: var(--font-mono);
+    font-size: 18px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink);
+    opacity: 0.7;
+  }
+
+  /* ── Coach ─────────────────────────────────────────── */
+  .coach-grid {
+    display: grid;
+    grid-template-columns: 520px 1fr;
+    gap: 80px;
+    align-items: stretch;
+    flex: 1;
+  }
+  .coach-photo {
+    width: 520px; height: 100%;
+    overflow: hidden;
+    background: var(--ink);
+    position: relative;
+  }
+  .coach-photo img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    filter: grayscale(0.15) contrast(1.05);
+  }
+  .coach-photo::after {
+    content: "NF / 01";
+    position: absolute;
+    bottom: 16px; left: 16px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    color: var(--paper);
+    background: rgba(14,20,34,0.6);
+    padding: 6px 10px;
+  }
+  .coach-tags {
+    display: flex; flex-wrap: wrap; gap: 0;
+    border-top: 1px solid var(--rule);
+    margin-top: 32px;
+  }
+  .coach-tags span {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 14px 0;
+    margin-right: 32px;
+    color: var(--ink);
+  }
+  .coach-tags span::before { content: "// "; color: var(--accent); }
+
+  /* ── Stats ─────────────────────────────────────────── */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1.5px solid var(--rule);
+    border-bottom: 1.5px solid var(--rule);
+  }
+  .stats-row .stat {
+    padding: 56px 32px;
+    border-right: 1px solid rgba(14,20,34,0.18);
+  }
+  .stats-row .stat:last-child { border-right: 0; }
+  .stats-row .stat .n {
+    font-size: 168px;
+    font-weight: 800;
+    letter-spacing: -0.055em;
+    line-height: 0.9;
+    color: var(--ink);
+    font-feature-settings: "tnum";
+    display: block;
+    margin-bottom: 20px;
+  }
+  .stats-row .stat .n.accent { color: var(--accent); }
+  .stats-row .stat .l {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+    line-height: 1.5;
+    max-width: 240px;
+  }
+
+  /* ── Closing CTA ───────────────────────────────────── */
+  .closing-slide { background: var(--ink); color: var(--paper); }
+  .closing-slide .head { color: var(--paper); border-bottom-color: var(--paper); }
+  .closing-slide .head .num { color: var(--paper); }
+  .closing-slide .head .lbl { color: var(--paper); opacity: 0.6; }
+  .closing-slide .head .sep { background: var(--paper); }
+  .closing-slide .head .dot { background: var(--accent-2); }
+  .closing-slide .foot { color: var(--paper); border-top-color: var(--paper); opacity: 0.7; }
+  .closing-slide .display { color: var(--paper); }
+  .closing-slide .display .ink-accent { color: var(--accent-2); }
+  .closing-slide .lead { color: rgba(245,241,232,0.78); }
+  .closing-slide .caption { color: var(--paper); opacity: 0.7; }
+  .closing-slide .term { background: #050811; border-color: #182242; }
+  .closing-slide .term::before { background: #0B1228; border-color: #182242; }
+
+  /* ── Antithese-Karten ──────────────────────────────── */
+  .anti-pro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 1.5px solid var(--rule);
+  }
+  .ap-cell {
+    padding: 56px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    min-height: 480px;
+  }
+  .ap-cell.anti {
+    background: transparent;
+    border-right: 1.5px solid var(--rule);
+    color: var(--ink-2);
+  }
+  .ap-cell.pro {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .ap-tag {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .ap-cell.anti .ap-tag { color: var(--ink); opacity: 0.5; }
+  .ap-cell.pro  .ap-tag { color: var(--accent-2); }
+  .ap-statement {
+    font-size: 56px;
+    line-height: 1.05;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .ap-cell.anti .ap-statement {
+    text-decoration: line-through;
+    text-decoration-color: rgba(212,107,107,0.5);
+    text-decoration-thickness: 4px;
+    color: var(--ink-2);
+    opacity: 0.7;
+  }
+  .ap-detail { font-size: 22px; line-height: 1.55; opacity: 0.85; max-width: 480px; }
+</style>
+</head>
+<body>
+
+<deck-stage>
+
+  <!-- ════════ 01 — COVER ════════ -->
+  <section class="slide cover" data-screen-label="01 Cover">
+    <div class="body">
+      <div class="top-meta">
+        <div>VIBECODING ACADEMY <span style="opacity:.5">/</span> WORKSHOP DECK</div>
+        <div class="right"><strong>Vol. 01 · 2026</strong>Mit Niklas Fauteck</div>
+      </div>
+      <h1 class="display">Erst<br>bauen.<br><span class="ink-accent">Dann</span> wissen.</h1>
+      <div class="bottom">
+        <div class="who">Niklas Fauteck<small>Coach · Digitale Transformation</small></div>
+        <div class="barcode">academy.niklasfauteck.de<span class="lines"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ 02 — MANTRA ════════ -->
+  <section class="slide mantra-slide" data-screen-label="02 Mantra">
+    <div class="head">
+      <span class="dot"></span>
+      <span class="num">02 / 13</span>
+      <span class="lbl">Manifest</span>
+      <span class="sep"></span>
+      <span class="lbl">Vibecoding Academy</span>
+    </div>
+    <div class="body">
+      <p class="caption" style="margin-bottom: 32px;"><span class="sq"></span>Worum es geht</p>
+      <div class="mantra-line">Idee rein.</div>
+      <div class="mantra-line">Prototyp raus.</div>
+    </div>
+    <div class="foot"><span>NF · Workshop Deck</span><span>02 / 13</span></div>
+  </section>
+
+  <!-- ════════ 03 — PROBLEM ════════ -->
+  <section class="slide" data-screen-label="03 Problem">
+    <div class="head">
+      <span class="dot"></span><span class="num">03 / 13</span>
+      <span class="lbl">Ausgangslage</span>
+      <span class="sep"></span><span class="lbl">Teil I — Warum</span>
+    </div>
+    <div class="body grow stack-md">
+      <p class="caption"><span class="sq"></span>Kapitel 01 — Das Problem</p>
+      <h2 class="h1">Die meisten KI-Workshops enden mit&nbsp;<span class="ink-mark">Folien.</span></h2>
+      <p class="lead" style="margin-top: 24px;">„Interessant — aber was mache ich jetzt damit?" Genau diese Lücke schließt dieser Workshop. <span class="ink-accent" style="font-weight:600">Er endet mit einem Prototyp auf deinem Bildschirm.</span></p>
+    </div>
+    <div class="foot"><span>NF · Workshop Deck</span><span>03 / 13</span></div>
+  </section>
+
+  <!-- ════════ 04 — VS ════════ -->
+  <section class="slide" data-screen-label="04 Anti vs Pro">
+    <div class="head">
+      <span class="dot"></span><span class="num">04 / 13</span>
+      <span class="lbl">Differenzierung</span>
+      <span class="sep"></span><span class="lbl">Teil I — Warum</span>
+    </div>
+    <div class="body grow">
+      <p class="caption" style="margin-bottom: 32px;"><span class="sq"></span>Kapitel 02 — Was anders ist</p>
+      <div class="anti-pro">
+        <div class="ap-cell anti">
+          <span class="ap-tag">// Üblich</span>
+          <h3 class="ap-statement">Theorie. Tools. Best&nbsp;Practices. Slides.</h3>
+          <p class="ap-detail">Am Ende: Notizen, Vorsätze, ein neues Tool zum Ausprobieren — irgendwann.</p>
+        </div>
+        <div class="ap-cell pro">
+          <span class="ap-tag">// Bei uns</span>
+          <h3 class="ap-statement">Ein laufender Prototyp. Heute. Von dir gebaut.</h3>
+          <p class="ap-detail">Am Ende: ein klickbares Demo aus deinem echten Use Case. Ohne eine Zeile Code.</p>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>NF · Workshop Deck</span><span>04 / 13</span></div>
+  </section>
+
+  <!-- ════════ 05 — SECTION DIVIDER: ABLAUF ════════ -->
+  <section class="slide section-slide" data-screen-label="05 Section · Ablauf">
+    <div class="head">
+      <span class="dot"></span><span class="num">05 / 13</span>
+      <span class="lbl">Teil II</span>
+      <span class="sep"></span><span class="lbl">Ablauf</span>
+    </div>
+    <div class="body grow">
+      <p class="caption" style="margin-bottom: 48px;"><span class="sq" style="background:var(--accent-2)"></span>Teil II — Der Ablauf</p>
+      <h1 class="display" style="font-size: 220px;">Wie&nbsp;dein<br>Workshop<br><span class="ink-accent">abläuft.</span></h1>
+    </div>
+    <div class="foot"><span>NF · Workshop Deck</span><span>05 / 13</span></div>
+  </section>
+
+  <!-- ════════ 06 — STEPS (Editorial-Liste) ════════ -->
+  <section class="slide" data-screen-label="06 Schritte">
+    <div class="head">
+      <span class="dot"></span><span class="num">06 / 13</span>
+      <span class="lbl">Methode</span>
+      <span class="sep"></span><span class="lbl">Teil II — Ablauf</span>
+    </div>
+    <div class="body grow">
+      <p class="caption" style="margin-bottom: 24px;"><span class="sq"></span>Kapitel 03 — Fünf Schritte, ein halber Tag</p>
+      <h3 class="h3" style="margin-bottom: 24px;">Vom leeren Bildschirm zum laufenden Prototyp.</h3>
+      <ol class="num-list">
+        <li>
+          <div>
+            <h4>Idee schärfen</h4>
+            <p>Wir starten mit deinem echten Anwendungsfall. Kein Spielprojekt — etwas, das dir oder deinem Team hilft.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h4>Mit der KI sprechen</h4>
+            <p>Du lernst, wie du Anforderungen so formulierst, dass aus Worten erste lauffähige Bausteine werden.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h4>Erstes Bild bauen &amp; iterieren</h4>
+            <p>Layout, Struktur, erste Interaktionen — live im Browser. Dann die kleinen Schleifen, mit denen Profis arbeiten.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h4>Mitnehmen &amp; weiterbauen</h4>
+            <p>Code, Prompts, Vorlagen — alles bleibt bei dir. Inklusive Cheat-Sheet für die Woche danach.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+    <div class="foot"><span>NF · Workshop Deck</span><span>06 / 13</span></div>
+  </section>
+
+  <!-- ════════ 07 — TERMINAL DEMO ════════ -->
+  <section class="slide" data-screen-label="07 Terminal Demo">
+    <div class="head">
+      <span class="dot"></span><span class="num">07 / 13</span>
+      <span class="lbl">So fühlt es sich an</span>
+      <span class="sep"></span><span class="lbl">Teil II — Ablauf</span>
+    </div>
+    <div class="body grow">
+      <p class="caption" style="margin-bottom: 24px;"><span class="sq"></span>Kapitel 04 — Live im Workshop</p>
+      <h3 class="h3" style="margin-bottom: 36px;">Du sprichst. Die&nbsp;KI baut. Du klickst.</h3>
+      <div class="term">
+        <span class="term-title">vibecoding · session-01</span>
+        <div class="inner">
+          <div><span class="prompt">~/idee &gt;</span> <span class="out">„Ich brauche eine kleine App, die unsere Wochenenddienste plant."</span></div>
+          <div><span class="dim">  → Anforderung erkannt. Erstelle Grundgerüst…</span></div>
+          <div><span class="prompt">~/idee &gt;</span> <span class="out">„Jeder Mitarbeiter sieht nur seine Schichten."</span></div>
+          <div><span class="dim">  → Rolle „mitarbeiter" hinzugefügt. UI angepasst.</span></div>
+          <div><span class="prompt">~/idee &gt;</span> <span class="out">„Mach das Ganze in <span class="blue">Marken­blau</span>."</span></div>
+          <div><span class="dim">  → Theme aktualisiert. <span class="pink">Vorschau bereit.</span></span></div>
+          <div style="margin-top: 18px;"><span class="prompt">~/idee &gt;</span><span class="cursor"></span></div>
+        </div>
+      </div>
+      <p class="body-text" style="margin-top: 32px;">Was du tust, ist sprechen und entscheiden. Was die KI tut, ist tippen. Was am Ende dasteht, ist <em class="ink-accent" style="font-weight:600">deins.</em></p>
+    </div>
+    <div class="foot"><span>NF · Workshop Deck</span><span>07 / 13</span></div>
+  </section>
+
+  <!-- ════════ 08 — DREI DINGE (Editorial Liste) ════════ -->
+  <section class="slide" data-screen-label="08 Drei Dinge">
+    <div class="head">
+      <span class="dot"></span><span class="num">08 / 13</span>
+      <span class="lbl">Ergebnis</span>
+      <span class="sep"></span><span class="lbl">Teil III — Was bleibt</span>
+    </div>
+    <div class="body grow">
+      <p class="caption" style="margin-bottom: 24px;"><span class="sq"></span>Kapitel 05 — Was du mitnimmst</p>
+      <h2 class="h2" style="margin-bottom: 48px;">Drei Dinge, die <span class="ink-mark">bleiben.</span></h2>
+      <div class="grid-3" style="margin-top: 16px;">
+        <div>
+          <div style="font-family:var(--font-mono); font-size: 22px; letter-spacing:.18em; color: var(--accent); font-weight: 700; margin-bottom: 16px;">// 01</div>
+          <h3 style="font-size: 40px; font-weight: 700; letter-spacing:-.02em; margin: 0 0 12px;">Ein lauffähiger Prototyp</h3>
+          <p style="font-size: 22px; line-height: 1.5; color: var(--ink-2); margin: 0;">Aus deinem echten Anwendungsfall. Im Browser klickbar, teilbar, weiterentwickelbar.</p>
+        </div>
+        <div>
+          <div style="font-family:var(--font-mono); font-size: 22px; letter-spacing:.18em; color: var(--accent); font-weight: 700; margin-bottom: 16px;">// 02</div>
+          <h3 style="font-size: 40px; font-weight: 700; letter-spacing:-.02em; margin: 0 0 12px;">Eine Methode</h3>
+          <p style="font-size: 22px; line-height: 1.5; color: var(--ink-2); margin: 0;">Nicht „dieser eine Workshop" — eine Arbeitsweise, die du auf neue Ideen anwenden kannst.</p>
+        </div>
+        <div>
+          <div style="font-family:var(--font-mono); font-size: 22px; letter-spacing:.18em; color: var(--accent); font-weight: 700; margin-bottom: 16px;">// 03</div>
+          <h3 style="font-size: 40px; font-weight: 700; letter-spacing:-.02em; margin: 0 0 12px;">Eine ehrliche Einschätzung</h3>
+          <p style="font-size: 22px; line-height: 1.5; color: var(--ink-2); margin: 0;">Was KI heute kann — und wo sie noch nicht trägt. Damit du im Alltag bessere Entscheidungen triffst.</p>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>NF · Workshop Deck</span><span>08 / 13</span></div>
+  </section>
+
+  <!-- ════════ 09 — FORMAT KENNZAHLEN ════════ -->
+  <section class="slide" data-screen-label="09 Format">
+    <div class="head">
+      <span class="dot"></span><span class="num">09 / 13</span>
+      <span class="lbl">Format</span>
+      <span class="sep"></span><span class="lbl">Teil IV — Praktisches</span>
+    </div>
+    <div class="body grow">
+      <p class="caption" style="margin-bottom: 24px;"><span class="sq"></span>Kapitel 06 — Format auf einen Blick</p>
+      <h2 class="h2" style="margin-bottom: 56px;">Klein. Konkret.<br>Im echten <span class="ink-accent">Tempo.</span></h2>
+      <div class="stats-row">
+        <div class="stat"><span class="n accent">4–12</span><span class="l">Personen pro Workshop</span></div>
+        <div class="stat"><span class="n">½</span><span class="l">Tag bis ganztägig — wie es passt</span></div>
+        <div class="stat"><span class="n">1</span><span class="l">Prototyp pro Person oder Team</span></div>
+        <div class="stat"><span class="n">0</span><span class="l">Zeilen Code, die du tippen musst</span></div>
+      </div>
+    </div>
+    <div class="foot"><span>NF · Workshop Deck</span><span>09 / 13</span></div>
+  </section>
+
+  <!-- ════════ 10 — PULL QUOTE ════════ -->
+  <section class="slide quote-slide" data-screen-label="10 Pull Quote">
+    <div class="head">
+      <span class="dot"></span><span class="num">10 / 13</span>
+      <span class="lbl">Zwischenton</span>
+      <span class="sep"></span><span class="lbl">Vibecoding Academy</span>
+    </div>
+    <div class="body grow">
+      <div class="quote-mark">"</div>
+      <p class="quote">Der Wert liegt nicht darin, schneller etwas zu bauen — sondern&nbsp;etwas, <span class="ink-accent">das wirklich passt.</span></p>
+      <div class="quote-attr">— Niklas Fauteck · Coach</div>
+    </div>
+    <div class="foot"><span>NF · Workshop Deck</span><span>10 / 13</span></div>
+  </section>
+
+  <!-- ════════ 11 — COACH ════════ -->
+  <section class="slide" data-screen-label="11 Coach">
+    <div class="head">
+      <span class="dot"></span><span class="num">11 / 13</span>
+      <span class="lbl">Wer das macht</span>
+      <span class="sep"></span><span class="lbl">Teil V — Coach</span>
+    </div>
+    <div class="body grow" style="padding: 0 80px 64px;">
+      <p class="caption" style="margin: 32px 0 32px;"><span class="sq"></span>Kapitel 07 — Dein Coach</p>
+      <div class="coach-grid">
+        <div class="coach-photo"><img src="../../images/niklas-fauteck.jpg" alt="Niklas Fauteck"></div>
+        <div style="display: flex; flex-direction: column; justify-content: center;">
+          <h2 class="h2" style="font-size: 96px; margin-bottom: 24px;">Niklas<br>Fauteck.</h2>
+          <p class="lead" style="font-size: 26px; margin-bottom: 20px;">Head of Digital Transformation Kommunikation bei <strong>RTL Deutschland</strong>. Arbeitet seit Jahren an der Schnittstelle von Kommunikation, Business und Technologie.</p>
+          <p class="body-text" style="font-size: 22px;">Hat eigene KI-Tools für seine Familie gebaut, bevor es Mode wurde. Kennt beide Sprachen — die der Fachbereiche und die der Entwicklung. Übersetzt zwischen den Welten.</p>
+          <div class="coach-tags">
+            <span>Digitale Transformation</span>
+            <span>KI &amp; Automatisierung</span>
+            <span>Vibecoding</span>
+            <span>Schnittstellen</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>NF · Workshop Deck</span><span>11 / 13</span></div>
+  </section>
+
+  <!-- ════════ 12 — FÜR WEN ════════ -->
+  <section class="slide" data-screen-label="12 Für wen">
+    <div class="head">
+      <span class="dot"></span><span class="num">12 / 13</span>
+      <span class="lbl">Zielgruppe</span>
+      <span class="sep"></span><span class="lbl">Teil VI — Für dich?</span>
+    </div>
+    <div class="body grow">
+      <p class="caption" style="margin-bottom: 24px;"><span class="sq"></span>Kapitel 08 — Für wen das hier ist</p>
+      <h2 class="h2" style="margin-bottom: 24px;">Wenn du eines davon&nbsp;<span class="ink-mark">bist.</span></h2>
+      <ol class="num-list" style="margin-top: 16px;">
+        <li>
+          <div>
+            <h4>Fachbereiche &amp; Product</h4>
+            <p>Du erkennst Prozesse, in denen KI helfen würde — möchtest aber nicht auf die nächste IT-Roadmap warten.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h4>Redaktionen &amp; Content-Teams</h4>
+            <p>Du willst eigene kleine Tools bauen, die zu deinem redaktionellen Alltag passen — statt Standard-Software zu beugen.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h4>Innovation &amp; Strategie</h4>
+            <p>Du suchst greifbare Beispiele für KI-Mehrwert — nicht für die Geschäftsleitung, sondern für dich selbst.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+    <div class="foot"><span>NF · Workshop Deck</span><span>12 / 13</span></div>
+  </section>
+
+  <!-- ════════ 13 — CLOSING ════════ -->
+  <section class="slide closing-slide" data-screen-label="13 Closing">
+    <div class="head">
+      <span class="dot"></span><span class="num">13 / 13</span>
+      <span class="lbl">Lass uns sprechen</span>
+      <span class="sep"></span><span class="lbl">Schluss</span>
+    </div>
+    <div class="body grow">
+      <p class="caption" style="margin-bottom: 32px;"><span class="sq" style="background:var(--accent-2)"></span>Nächster Schritt</p>
+      <h1 class="display" style="font-size: 220px; margin-bottom: 56px;">Bring deinen<br>Anwendungs­fall&nbsp;<span class="ink-accent">mit.</span></h1>
+      <div class="grid-2" style="align-items: end;">
+        <p class="lead" style="font-size: 28px; max-width: 720px;">Keine Warteliste. Keine Newsletter-Anmeldung. Nur eine kurze Nachricht.</p>
+        <div class="term" style="max-width: 720px;">
+          <span class="term-title">contact · workshop</span>
+          <div class="inner">
+            <div><span class="dim">$</span> <span class="prompt">mail</span> <span class="out">ki@fauteck.eu</span></div>
+            <div><span class="dim">$</span> <span class="prompt">open</span> <span class="blue">academy.niklasfauteck.de</span></div>
+            <div><span class="dim">$</span> <span class="prompt">say</span> <span class="pink">„Ich habe diese Idee…"</span><span class="cursor"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>NF · Workshop Deck</span><span>13 / 13 · ENDE</span></div>
+  </section>
+
+</deck-stage>
+
+</body>
+</html>
