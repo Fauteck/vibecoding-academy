@@ -32,11 +32,12 @@ vibecoding-academy/
 ├── apps/                   # Finished projects
 │   ├── pong/index.html     # Pong game
 │   ├── gta/index.html      # GTA parody
-│   └── wochenendplanung/index.html  # Weekend planner
+│   ├── wochenendplanung/index.html  # Weekend planner
+│   └── blog/index.html     # AI blog (+ article.html)
 ├── wiki/                   # Workshop materials
 │   ├── index.html          # Workshop handout
 │   └── beispiel-claude.md  # Example CLAUDE.md
-└── ideen/                  # Game concepts (Markdown)
+└── projekte/               # Game concepts (Markdown) + viewer.html
 ```
 
 - No build process, no bundler, no package manager
@@ -149,7 +150,7 @@ Detailed architecture and workflow documentation (LLM-optimized with absolute pa
 - Change and refactor code (within the existing architecture)
 - Create new projects as self-contained HTML files in subfolders
 - Create/modify files (including documentation)
-- Extend existing game concepts (Markdown in `ideen/`)
+- Extend existing game concepts (Markdown in `projekte/`)
 
 ### The AI May NOT
 
@@ -358,6 +359,9 @@ Before `</body>`:
 
 ### Color Palette (Design Tokens)
 
+> **Single source of truth:** `css/tokens.css` defines the authoritative token values.
+> The excerpt below is a quick reference only — if values differ, `css/tokens.css` wins.
+
 ```css
 :root {
     --primary-color:   #5B8BD6;   /* Accent, links, borders */
@@ -367,7 +371,7 @@ Before `</body>`:
     --warning-color:   #D4A55B;   /* Warnings */
     --info-color:      #6BB8D4;   /* Info hints */
     --bg-page:         #EEF2F7;   /* Page background */
-    --bg-card:         rgba(255, 255, 255, 0.85); /* Card background */
+    --bg-card:         rgba(255, 255, 255, 0.78); /* Card background */
     --text-primary:    #2D3748;   /* Primary text */
     --text-muted:      #7A8599;   /* Muted text */
     --border-color:    #D4DCE8;   /* Border color */

@@ -84,7 +84,7 @@ Complete variable reference — see [DESIGN.md](../DESIGN.md) for rationale and 
 | `--warning-color` | `#D4A55B` | Warnings |
 | `--info-color` | `#6BB8D4` | Info hints |
 | `--bg-page` | `#EEF2F7` | Page background |
-| `--bg-card` | `rgba(255,255,255,0.85)` | Card background (semi-transparent) |
+| `--bg-card` | `rgba(255,255,255,0.78)` | Card background (semi-transparent) |
 | `--text-primary` | `#2D3748` | Primary text |
 | `--text-muted` | `#7A8599` | Muted text |
 | `--border-color` | `#D4DCE8` | Border color |
