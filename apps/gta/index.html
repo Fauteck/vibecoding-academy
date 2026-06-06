@@ -198,19 +198,19 @@
   const container = document.getElementById('game');
   container.innerHTML = `
     <div class="gta-game">
-      <canvas id="gta-canvas" width="400" height="400"></canvas>
+      <canvas id="gta-canvas" width="400" height="400" aria-label="Grand Thomas Auto – Spielfeld">Dein Browser unterstützt das Canvas-Element nicht.</canvas>
       <div class="gta-controls">
         <div class="gta-dpad">
-          <div class="gta-dpad-row"><button class="gta-btn" data-dir="up">&#9650;</button></div>
+          <div class="gta-dpad-row"><button class="gta-btn" data-dir="up" aria-label="Nach oben bewegen">&#9650;</button></div>
           <div class="gta-dpad-row">
-            <button class="gta-btn" data-dir="left">&#9664;</button>
-            <button class="gta-btn" data-dir="down">&#9660;</button>
-            <button class="gta-btn" data-dir="right">&#9654;</button>
+            <button class="gta-btn" data-dir="left" aria-label="Nach links bewegen">&#9664;</button>
+            <button class="gta-btn" data-dir="down" aria-label="Nach unten bewegen">&#9660;</button>
+            <button class="gta-btn" data-dir="right" aria-label="Nach rechts bewegen">&#9654;</button>
           </div>
         </div>
         <div class="gta-actions">
-          <button class="gta-btn-coffee" id="gta-coffee-btn">&#9749;</button>
-          <button class="gta-btn-talk" id="gta-talk-btn">E</button>
+          <button class="gta-btn-coffee" id="gta-coffee-btn" aria-label="Kaffee trinken">&#9749;</button>
+          <button class="gta-btn-talk" id="gta-talk-btn" aria-label="Sprechen">E</button>
         </div>
       </div>
       <div class="gta-kb-hint" id="gta-kb-hint">

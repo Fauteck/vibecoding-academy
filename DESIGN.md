@@ -29,7 +29,7 @@ tokens:
       value: "#EEF2F7"
       usage: "page background"
     bg-card:
-      value: "rgba(255, 255, 255, 0.85)"
+      value: "rgba(255, 255, 255, 0.78)"
       usage: "card background on desktop — semi-transparent for glassmorphism"
     bg-card-mobile:
       value: "rgba(255, 255, 255, 0.88)"
@@ -239,7 +239,7 @@ The palette is derived from the hero background image (`images/content-bg.jpg`),
 | `--warning-color` | `#D4A55B` | Caution |
 | `--info-color` | `#6BB8D4` | Informational |
 | `--bg-page` | `#EEF2F7` | Page surface |
-| `--bg-card` | `rgba(255,255,255,0.92)` | Card surface (near-opaque) |
+| `--bg-card` | `rgba(255,255,255,0.78)` | Card surface (semi-transparent) |
 | `--text-primary` | `#2D3748` | Body text |
 | `--text-muted` | `#7A8599` | Secondary labels |
 | `--border-color` | `#D4DCE8` | Dividers, borders |

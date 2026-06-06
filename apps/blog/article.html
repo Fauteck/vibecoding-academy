@@ -6,7 +6,7 @@
   <title>Artikel – KI-Blog – Vibecoding Academy</title>
   <meta name="theme-color" content="#5B8BD6">
   <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://api.web3forms.com">
+        content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'">
 
   <link href="../../vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../../vendor/fontawesome/css/all.min.css">
@@ -200,6 +200,7 @@
 
   <script src="../../vendor/bootstrap/bootstrap.bundle.min.js"></script>
   <script src="../../js/components.js"></script>
+  <script src="../../vendor/dompurify/purify.min.js"></script>
 
   <script>
   (function () {
@@ -271,10 +272,11 @@
 
       col.innerHTML = heroHtml + headerHtml;
 
-      // Render article body — content is own localStorage HTML, not from URL
+      // Render article body — sanitized before injection (localStorage is shared
+      // across all same-origin apps on github.io, so treat content as untrusted)
       var bodyDiv = document.createElement('div');
       bodyDiv.className = 'article-body';
-      bodyDiv.innerHTML = post.content || '';
+      bodyDiv.innerHTML = DOMPurify.sanitize(post.content || '');
       col.appendChild(bodyDiv);
     }
 
