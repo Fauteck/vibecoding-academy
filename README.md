@@ -1,12 +1,12 @@
 # Vibecoding Academy
 
-[![GitHub Pages](https://img.shields.io/badge/Live-GitHub%20Pages-blue)](https://fauteck.github.io/vibecoding-academy/)
+[![Live](https://img.shields.io/badge/Live-academy.niklasfauteck.de-blue)](https://academy.niklasfauteck.de/)
 [![HTML](https://img.shields.io/badge/HTML-statisch-orange)]()
 [![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3.2-purple)](https://getbootstrap.com/)
 
 KI-gestütztes Web-Coding -- von der Idee bis zum Release.
 
-**Live:** [fauteck.github.io/vibecoding-academy](https://fauteck.github.io/vibecoding-academy/)
+**Live:** [academy.niklasfauteck.de](https://academy.niklasfauteck.de/)
 
 ---
 
@@ -147,19 +147,19 @@ vibecoding-academy/
 
 | Projekt | Link | Beschreibung |
 |---------|------|-------------|
-| Pong | [apps/pong/](https://fauteck.github.io/vibecoding-academy/apps/pong/) | Klassisches Pong-Spiel: Spieler gegen KI |
-| Grand Thomas Auto 6 | [apps/gta/](https://fauteck.github.io/vibecoding-academy/apps/gta/) | GTA-Parodie im RTL-Sendezentrum |
-| Wochenendplanung | [apps/wochenendplanung/](https://fauteck.github.io/vibecoding-academy/apps/wochenendplanung/) | Wochenenddienst-Planung und Übersicht |
+| Pong | [apps/pong/](https://academy.niklasfauteck.de/apps/pong/) | Klassisches Pong-Spiel: Spieler gegen KI |
+| Grand Thomas Auto 6 | [apps/gta/](https://academy.niklasfauteck.de/apps/gta/) | GTA-Parodie im RTL-Sendezentrum |
+| Wochenendplanung | [apps/wochenendplanung/](https://academy.niklasfauteck.de/apps/wochenendplanung/) | Wochenenddienst-Planung und Übersicht |
 
 ### Spielkonzepte
 
-Konzepte und Spielideen als Markdown-Dateien in `projekte/`, abrufbar über den [Konzept-Viewer](https://fauteck.github.io/vibecoding-academy/projekte/viewer.html):
+Konzepte und Spielideen als Markdown-Dateien in `projekte/`, abrufbar über den [Konzept-Viewer](https://academy.niklasfauteck.de/projekte/viewer.html):
 
 Flappy Bird, Haushaltsbuch, Memory, Minesweeper, Pong, Snake, Solitär, Sudoku, Tetris, Tic-Tac-Toe
 
 ### Workshop-Handout
 
-Das [Workshop-Handout](https://fauteck.github.io/vibecoding-academy/wiki/) behandelt:
+Das [Workshop-Handout](https://academy.niklasfauteck.de/wiki/) behandelt:
 
 - Was ist Vibecoding und wie funktioniert die Zusammenarbeit mit KI
 - Paradigmenwechsel: Eigene Tools statt Massenprodukte
