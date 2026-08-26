@@ -45,28 +45,47 @@ Each project is a **self-contained HTML file** in its own subfolder:
 ```
 vibecoding-academy/
 ├── index.html              # Landing page
+├── 404.html                # Error page
+├── impressum.html          # Legal notice
+├── datenschutz.html        # Privacy policy
+├── agb.html                # Terms of service
 ├── robots.txt              # Crawler blocking
+├── CNAME                   # academy.niklasfauteck.de
+├── CLAUDE.md               # This file — the binding rule base
+├── DESIGN.md               # Design system
+├── README.md               # Project README
+├── NOTICE.md               # Third-party licences
 ├── css/                    # Shared stylesheets
 │   ├── tokens.css          # Design tokens, reset, base styles
+│   ├── typography.css      # Opt-in .t-* type helpers — currently loaded by no page
+│   ├── hero.css            # Shared hero section, action row and CTA
 │   ├── nav.css             # Navigation styles
 │   └── footer.css          # Footer styles
 ├── js/                     # Shared scripts
-│   └── components.js       # Navigation & footer (JS injection)
-├── images/                 # Optimised assets (avif/webp/jpg)
-├── vendor/                 # Bootstrap 5.3.2, Font Awesome 6.4.2 (local)
+│   └── components.js       # Navigation, footer & skip link (JS injection)
+├── images/                 # Optimised assets (avif/webp/jpg) + og-image.png
+├── vendor/                 # Local dependencies — no CDN
+│   ├── bootstrap/          # Bootstrap 5.3.2
+│   ├── fontawesome/        # Font Awesome 6.4.2 (woff2 only)
+│   ├── ibm-plex-sans/      # Variable font, wght 100–700
+│   ├── marked/             # Markdown parser (projekte/viewer.html)
+│   └── dompurify/          # HTML sanitiser (projekte/viewer.html)
 ├── apps/                   # Finished projects
 │   ├── pong/index.html     # Pong game
-│   ├── gta/index.html      # GTA parody
+│   ├── gta/index.html      # GTA parody (+ fonts/)
 │   ├── wochenendplanung/index.html  # Weekend planner
 │   └── blog/index.html     # AI blog (+ article.html)
 ├── wiki/                   # Workshop materials
 │   ├── index.html          # Workshop handout
-│   └── beispiel-claude.md  # Example CLAUDE.md
-├── projekte/               # Game concepts (Markdown) + viewer.html
+│   ├── beispiel-claude.md  # Example CLAUDE.md
+│   └── workshop-deck/      # Presentation deck — own palette and type;
+│                           # alignment with the design system is still open
+├── projekte/               # Game concepts (Markdown) + index.html + viewer.html
 ├── kontakt/                # Contact page
 ├── ueber-mich/             # About page
 ├── hosting/                # Hosting comparison page
-└── CNAME                   # academy.niklasfauteck.de
+├── docs/                   # LLM-optimised documentation
+└── .claude/skills/         # Skill definitions — the only path Claude Code loads
 ```
 
 > The tree lists the top-level directories completely. It is hand-maintained and

@@ -6,6 +6,20 @@
 <meta http-equiv="Content-Security-Policy"
       content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'">
 <title>Vibecoding Academy — Workshop Deck</title>
+  <meta name="twitter:image" content="https://academy.niklasfauteck.de/images/og-image.png">
+  <meta name="twitter:description" content="Das Präsentations-Deck zum Vibecoding-Workshop mit Niklas Fauteck: von der Idee zur fertigen Web-App.">
+  <meta name="twitter:title" content="Vibecoding Academy — Workshop Deck">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image" content="https://academy.niklasfauteck.de/images/og-image.png">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:url" content="https://academy.niklasfauteck.de/wiki/workshop-deck/">
+  <meta property="og:type" content="website">
+  <meta property="og:description" content="Das Präsentations-Deck zum Vibecoding-Workshop mit Niklas Fauteck: von der Idee zur fertigen Web-App.">
+  <meta property="og:title" content="Vibecoding Academy — Workshop Deck">
+  <link rel="canonical" href="https://academy.niklasfauteck.de/wiki/workshop-deck/">
+  <meta name="description" content="Das Präsentations-Deck zum Vibecoding-Workshop mit Niklas Fauteck: von der Idee zur fertigen Web-App.">
 <link rel="icon" type="image/svg+xml" href="logo.svg">
 <link rel="stylesheet" href="colors_and_type.css">
 <script src="deck-stage.js"></script>
@@ -409,6 +423,10 @@
     background: var(--ink);
     position: relative;
   }
+  /* <picture> ist von Haus aus inline — ohne das greift height:100% am Bild ins Leere. */
+  .coach-photo picture {
+    display: block; width: 100%; height: 100%;
+  }
   .coach-photo img {
     width: 100%; height: 100%; object-fit: cover; display: block;
     filter: grayscale(0.15) contrast(1.05);
@@ -771,7 +789,14 @@
     <div class="body grow" style="padding: 0 80px 64px;">
       <p class="caption" style="margin: 32px 0 32px;"><span class="sq"></span>Kapitel 07 — Dein Coach</p>
       <div class="coach-grid">
-        <div class="coach-photo"><img src="../../images/niklas-fauteck.jpg" alt="Niklas Fauteck"></div>
+        <div class="coach-photo">
+          <picture>
+            <source type="image/avif" srcset="../../images/niklas-fauteck-1537w.avif">
+            <source type="image/webp" srcset="../../images/niklas-fauteck-1537w.webp">
+            <img src="../../images/niklas-fauteck.jpg" alt="Niklas Fauteck"
+                 loading="lazy" decoding="async" width="1537" height="1024">
+          </picture>
+        </div>
         <div style="display: flex; flex-direction: column; justify-content: center;">
           <h2 class="h2" style="font-size: 96px; margin-bottom: 24px;">Niklas<br>Fauteck.</h2>
           <p class="lead" style="font-size: 26px; margin-bottom: 20px;">Head of Digital Transformation Kommunikation bei <strong>RTL Deutschland</strong>. Arbeitet seit Jahren an der Schnittstelle von Kommunikation, Business und Technologie.</p>

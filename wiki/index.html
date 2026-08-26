@@ -1,9 +1,13 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" data-depth="1">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Wiki – Vibecoding Academy</title>
+  <meta name="twitter:image" content="https://academy.niklasfauteck.de/images/og-image.png">
+  <meta name="twitter:description" content="Handout und Lernpfad durch die wichtigsten Grundlagen, Methoden und Grenzen des Vibecodings.">
+  <meta name="twitter:title" content="Wiki – Vibecoding Academy">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="description" content="Handout und Lernpfad durch die wichtigsten Grundlagen, Methoden und Grenzen des Vibecodings.">
   <link rel="canonical" href="https://academy.niklasfauteck.de/wiki/">
   <meta property="og:title" content="Wiki – Vibecoding Academy">
@@ -23,6 +27,7 @@
   <link rel="stylesheet" href="../css/tokens.css">
   <link rel="stylesheet" href="../css/nav.css">
   <link rel="stylesheet" href="../css/footer.css">
+  <link rel="stylesheet" href="../css/hero.css">
 
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -54,6 +59,10 @@
       width: 0%;
       background: linear-gradient(90deg, var(--success-color), var(--primary-color));
       z-index: var(--z-modal);
+      /*
+       * Bewusst kein --transition-*-Token: der Lesefortschritt folgt dem
+       * Scrollen und braucht lineares Nachziehen, keine ease-Kurve.
+       */
       transition: width 0.1s linear;
       pointer-events: none;
     }
@@ -74,7 +83,7 @@
       color: var(--text-muted);
       transform: translateY(-100%);
       opacity: 0;
-      transition: transform 0.25s ease, opacity 0.25s ease;
+      transition: transform var(--transition-fast), opacity var(--transition-fast);
     }
 
     #breadcrumb-bar.visible {
@@ -129,7 +138,7 @@
       box-shadow: 0 3px 10px rgba(0,0,0,0.2);
       opacity: 0;
       transform: translateY(20px);
-      transition: opacity 0.3s, transform 0.3s, background 0.2s;
+      transition: opacity var(--transition-medium), transform var(--transition-medium), background var(--transition-fast);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -155,57 +164,11 @@
       line-height: 1.7;
     }
 
-    .hero-section {
-      background:
-        linear-gradient(135deg, rgba(61, 90, 140, 0.3) 0%, rgba(91, 139, 214, 0.15) 100%),
-        linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-      padding: 3rem 1.5rem 2.5rem;
-      text-align: center;
-      border-radius: 0 0 var(--border-radius-card) var(--border-radius-card);
-      margin-bottom: var(--space-5);
-    }
 
-    .hero-section h1 {
-      color: #ffffff;
-      font-weight: 800;
-      font-size: clamp(2rem, 5vw, 3rem);
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-      margin-bottom: 0.5rem;
-    }
 
-    .hero-section p {
-      color: rgba(255, 255, 255, 0.9);
-      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
-    }
 
-    .hero-actions {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 0.9rem;
-      flex-wrap: wrap;
-      margin-top: 1.35rem;
-    }
 
-    .hero-cta {
-      display: inline-block;
-      padding: 0.82rem 1.45rem;
-      background: #fff;
-      color: var(--secondary-color);
-      font-weight: 700;
-      font-size: 1rem;
-      border-radius: 8px;
-      text-decoration: none;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.12);
-      transition: transform 0.2s, box-shadow 0.2s;
-      will-change: transform;
-    }
 
-    .hero-cta:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.16);
-      color: var(--secondary-color);
-    }
 
     .wiki-intro-card {
       background: rgba(255, 255, 255, 0.85);
@@ -264,7 +227,7 @@
     .section-toggle-icon {
       color: var(--text-muted);
       font-size: 0.9rem;
-      transition: transform 0.25s ease;
+      transition: transform var(--transition-fast);
       flex-shrink: 0;
     }
 
@@ -302,7 +265,7 @@
     .wiki-section-body {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.35s ease;
+      transition: max-height var(--transition-medium);
     }
 
     .wiki-section-body.open {
@@ -522,7 +485,7 @@
     .collapsible-toggle .toggle-icon {
       font-size: 0.8rem;
       color: var(--text-muted);
-      transition: transform 0.25s;
+      transition: transform var(--transition-fast);
       margin-left: var(--space-4);
       flex-shrink: 0;
     }
@@ -534,7 +497,7 @@
     .collapsible-body {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.35s ease;
+      transition: max-height var(--transition-medium);
     }
 
     .collapsible-body.open {
@@ -552,10 +515,6 @@
     .back-link:hover { text-decoration: underline; }
 
     @media (max-width: 991.98px) {
-      .hero-section {
-        padding: 2.5rem 1rem 2rem;
-        border-radius: 0;
-      }
       body { background-attachment: scroll; }
       .wiki-intro-card,
       .wiki-section {
@@ -627,32 +586,7 @@
     <i class="fas fa-arrow-up" aria-hidden="true"></i>
   </button>
 
-  <nav class="site-nav" role="navigation" aria-label="Hauptnavigation">
-    <div class="site-nav-inner">
-      <a class="site-nav-brand" href="../">
-        <span class="site-nav-brand-name">Vibecoding Academy</span>
-        <span class="site-nav-brand-subtitle">mit Niklas Fauteck</span>
-      </a>
-      <div class="site-nav-links">
-        <a class="site-nav-link" href="../">Workshop</a>
-        <a class="site-nav-link active" aria-current="page" href="../wiki/">Wiki</a>
-        <a class="site-nav-link" href="../projekte/">Projekte</a>
-        <a class="site-nav-link" href="../ueber-mich/">Coach</a>
-              <a class="site-nav-cta" href="../kontakt/">Workshop anfragen</a>
-      </div>
-      <button class="site-nav-hamburger" aria-label="Menü" aria-expanded="false"
-              data-toggle="hamburger">
-        <span></span><span></span><span></span>
-      </button>
-      <div class="site-nav-dropdown">
-        <a class="site-nav-link" href="../">Workshop</a>
-        <a class="site-nav-link" href="../wiki/">Wiki</a>
-        <a class="site-nav-link" href="../projekte/">Projekte</a>
-        <a class="site-nav-link" href="../ueber-mich/">Coach</a>
-              <a class="site-nav-cta" href="../kontakt/">Workshop anfragen</a>
-      </div>
-    </div>
-  </nav>
+  <nav id="site-nav"></nav>
 
   <div class="hero-section">
     <div style="max-width: 900px; margin: 0 auto;">
@@ -1433,16 +1367,10 @@
 
   </main>
 
-  <footer class="footer" style="margin-bottom: 1.5rem;">
-    <a href="../kontakt/" style="font-weight: 600; font-size: 1.1rem; display: block; margin-bottom: 0.5rem;">Kontakt</a>
-    <a href="../impressum.html">Impressum</a>
-    <span style="margin: 0 0.3rem;">&middot;</span>
-    <a href="../datenschutz.html">Datenschutz</a>
-    <span style="margin: 0 0.3rem;">&middot;</span>
-    <a href="../agb.html">AGB</a>
-  </footer>
+  <footer id="site-footer"></footer>
 
   <script src="../vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="../js/components.js"></script>
 
   <script>
     (function() {

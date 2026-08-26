@@ -21,10 +21,11 @@
 
 | Absolute Path | Purpose | Lines |
 |---------------|---------|-------|
-| `/home/user/vibecoding-academy/js/components.js` | Navigation & footer injection (all pages) | 90 |
-| `/home/user/vibecoding-academy/css/tokens.css` | Design tokens, CSS reset, base styles | ~250 |
-| `/home/user/vibecoding-academy/css/typography.css` | Semantic `.t-*` type helper classes (opt-in per page) | ~80 |
-| `/home/user/vibecoding-academy/css/nav.css` | Navigation styles (desktop + mobile) | 193 |
+| `/home/user/vibecoding-academy/js/components.js` | Navigation, footer & skip link injection (all pages) | 96 |
+| `/home/user/vibecoding-academy/css/tokens.css` | Design tokens, CSS reset, base styles | 317 |
+| `/home/user/vibecoding-academy/css/typography.css` | Semantic `.t-*` type helpers — **loaded by no page**, see ARC-2-103 | 79 |
+| `/home/user/vibecoding-academy/css/hero.css` | Shared hero section, action row and CTA | 96 |
+| `/home/user/vibecoding-academy/css/nav.css` | Navigation styles (desktop + mobile) | 207 |
 | `/home/user/vibecoding-academy/css/footer.css` | Footer styles | 19 |
 | `/home/user/vibecoding-academy/DESIGN.md` | Design system specification | — |
 | `/home/user/vibecoding-academy/index.html` | Landing page | 959 |
@@ -39,8 +40,8 @@
 ├── CLAUDE.md                           # Governance & rules
 ├── DESIGN.md                           # Design system
 ├── README.md                           # Project README
+├── NOTICE.md                           # Third-party licences
 ├── robots.txt                          # Crawler blocking
-├── sitemap.xml                         # Sitemap
 ├── 404.html                            # Error page
 ├── impressum.html                      # Legal notice (depth=0)
 ├── datenschutz.html                    # Privacy policy (depth=0)
@@ -48,7 +49,8 @@
 │
 ├── css/                                # Shared stylesheets
 │   ├── tokens.css                      #   Design tokens + reset
-│   ├── typography.css                  #   Opt-in .t-* type helpers
+│   ├── typography.css                  #   Opt-in .t-* type helpers (loaded by no page)
+│   ├── hero.css                        #   Hero section, action row, CTA
 │   ├── nav.css                         #   Navigation (desktop + mobile)
 │   └── footer.css                      #   Footer
 │
@@ -58,11 +60,13 @@
 ├── apps/                               # Finished projects (depth=2)
 │   ├── pong/index.html                 #   Pong game
 │   ├── gta/index.html                  #   GTA parody (+ fonts/)
-│   └── wochenendplanung/index.html     #   Weekend planner
+│   ├── wochenendplanung/index.html     #   Weekend planner
+│   └── blog/index.html                 #   AI blog (+ article.html)
 │
 ├── wiki/                               # Workshop materials (depth=1)
 │   ├── index.html                      #   Workshop handout
-│   └── beispiel-claude.md             #   Example CLAUDE.md
+│   ├── beispiel-claude.md              #   Example CLAUDE.md
+│   └── workshop-deck/index.html        #   Presentation deck (own palette/type)
 │
 ├── projekte/                           # Game concepts (depth=1)
 │   ├── index.html                      #   Overview page
@@ -84,22 +88,29 @@
 ├── kontakt/                            # Contact page (depth=1)
 │   └── index.html
 │
-├── hosting/                            # Hosting info
+├── hosting/                            # Hosting comparison (depth=1)
+│   └── index.html
 │
 ├── images/                             # Static images
 │   ├── content-bg.jpg                  #   Background image
-│   └── ...
+│   ├── og-image.png                    #   Link preview, 1200x630
+│   └── ...                             #   niklas-fauteck-* in avif/webp/jpg
 │
 ├── vendor/                             # Local dependencies
 │   ├── bootstrap/                      #   Bootstrap 5.3.2
 │   │   ├── bootstrap.min.css
 │   │   └── bootstrap.bundle.min.js
-│   └── fontawesome/                    #   Font Awesome 6.4.2
-│       └── css/all.min.css
+│   ├── fontawesome/                    #   Font Awesome 6.4.2 (woff2 only)
+│   │   └── css/all.min.css
+│   ├── ibm-plex-sans/                  #   Variable font, wght 100-700
+│   ├── marked/                         #   Markdown parser
+│   └── dompurify/                      #   HTML sanitiser
 │
 └── docs/                               # LLM-optimised documentation
     ├── INDEX.md                        #   ← You are here
     ├── architektur.md                  #   Architecture & components
-    ├── arbeitsablaeufe.md              #   Workflows & tasks
-    └── SKILL.md                        #   AI-skill manifest
+    └── arbeitsablaeufe.md              #   Workflows & tasks
+
+.claude/skills/                         # Only path Claude Code loads skills from
+└── vibecoding-academy-design/SKILL.md  #   Design guardrails for generated UI
 ```
