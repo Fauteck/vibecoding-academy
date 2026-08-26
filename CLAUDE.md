@@ -103,8 +103,9 @@ Detailed architecture and workflow documentation (LLM-optimized with absolute pa
 9. [Build & Deployment](#9-build--deployment)
 10. [Definition of Done](#10-definition-of-done)
 11. [Documentation Requirements](#11-documentation-requirements)
-12. [README Structure (Template)](#12-readme-structure-template)
-13. [Design System](#13-design-system)
+12. [Doku-Hygiene](#12-doku-hygiene)
+13. [README Structure (Template)](#13-readme-structure-template)
+14. [Design System](#14-design-system)
 
 ---
 
@@ -314,7 +315,30 @@ For every change that can go to production:
 
 ---
 
-## 12. README Structure (Template)
+## 12. Doku-Hygiene
+
+Doku veraltet an drei Stellen, und alle drei sind Aussagen, die nichts
+nachrechnet: die **Kopie** (eine abgeleitete Seite wiederholt einen Fakt,
+dessen Heimat woanders liegt), die **Sollens-Regel** (ein Regelwerk
+behauptet eine Praxis, die so nicht gelebt wird) und die **handgepflegte
+Aufzählung** (eine Tabelle spiegelt eine Menge aus dem Code).
+
+Verbindlich vor Doku-Änderungen und bei jedem Aufräum-Durchgang: Notiz
+**„Behauptungen, die niemand prüft"** im Todoteck-Projekt `llm-wiki`
+(per `search`/`get_note`) — Gegenmittel je Sorte und Prüfliste.
+
+Kurzfassung für dieses Repo:
+
+- Eine Regel hier beschreibt, was **tatsächlich passiert**. Weicht sie von
+  der Praxis ab, wird die Regel korrigiert — nicht die Praxis behauptet.
+- Was sich aus dem Code aufzählen lässt (Modul-, Route-, Tabellenlisten,
+  Verzeichnisbäume), gehört in einen Test, nicht in Prosa.
+- Status („X von Y umgesetzt", „noch kein PR") gehört nach Todoteck oder in
+  git — nicht in eine Datei, die beim Erledigen niemand anfasst.
+
+---
+
+## 13. README Structure (Template)
 
 Every `README.md` in this repository follows this outline. Sections that do not apply are omitted — the order remains the same.
 
@@ -349,7 +373,7 @@ Every `README.md` in this repository follows this outline. Sections that do not 
 
 ---
 
-## 13. Design System
+## 14. Design System
 
 > **Purpose:** Consistent design across all Fauteck web applications.
 > This project uses Bootstrap 5.3 with application-specific CSS.
