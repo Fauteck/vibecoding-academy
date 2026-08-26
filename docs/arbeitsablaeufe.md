@@ -173,7 +173,7 @@ Insert a new card in the "Ergebnisse" section. Use existing cards as a template 
 |--------|------------------|
 | **Deploy** | `git push origin main` — GitHub Pages deploys automatically |
 | **Rollback** | Push a revert commit to `main` |
-| **Live URL** | `https://fauteck.github.io/vibecoding-academy/` |
+| **Live URL** | `https://academy.niklasfauteck.de/` |
 | **No build step** | HTML files are served directly |
 
 ---

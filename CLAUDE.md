@@ -33,7 +33,9 @@ It demonstrates the journey from idea to finished web application using AI tools
 
 - **Type:** Purely static website (HTML, CSS, JavaScript) — no backend, no database
 - **Deployment:** GitHub Pages (automatic on push to `main`)
-- **Live:** https://fauteck.github.io/vibecoding-academy/
+- **Live:** https://academy.niklasfauteck.de/ — eigene Domain via `CNAME` im
+  Repository-Root. Die alte Adresse `fauteck.github.io/vibecoding-academy/`
+  leitet dorthin um und gilt nicht mehr als kanonisch.
 - **Content:** Landing page, finished apps (Pong, GTA parody, Weekend planner), game concepts, Wiki/Handout
 
 ### Architecture
@@ -50,6 +52,8 @@ vibecoding-academy/
 │   └── footer.css          # Footer styles
 ├── js/                     # Shared scripts
 │   └── components.js       # Navigation & footer (JS injection)
+├── images/                 # Optimised assets (avif/webp/jpg)
+├── vendor/                 # Bootstrap 5.3.2, Font Awesome 6.4.2 (local)
 ├── apps/                   # Finished projects
 │   ├── pong/index.html     # Pong game
 │   ├── gta/index.html      # GTA parody
@@ -58,8 +62,15 @@ vibecoding-academy/
 ├── wiki/                   # Workshop materials
 │   ├── index.html          # Workshop handout
 │   └── beispiel-claude.md  # Example CLAUDE.md
-└── projekte/               # Game concepts (Markdown) + viewer.html
+├── projekte/               # Game concepts (Markdown) + viewer.html
+├── kontakt/                # Contact page
+├── ueber-mich/             # About page
+├── hosting/                # Hosting comparison page
+└── CNAME                   # academy.niklasfauteck.de
 ```
+
+> The tree lists the top-level directories completely. It is hand-maintained and
+> nothing checks it — when a directory is added, this block is part of the change.
 
 - No build process, no bundler, no package manager
 - **Shared layout assets** (`css/`, `js/`) for navigation, footer, design tokens, and base styles
@@ -78,6 +89,18 @@ Detailed architecture and workflow documentation (LLM-optimized with absolute pa
 | [docs/architektur.md](docs/architektur.md) | Shared components, path resolution, CSS chain, design tokens |
 | [docs/arbeitsablaeufe.md](docs/arbeitsablaeufe.md) | Step-by-step guides, HTML templates, common tasks |
 | [DESIGN.md](DESIGN.md) | Design system — tokens, rationale, accessibility, components |
+
+> **Skill statt Doku:** Die Design-Leitplanken für generierte Oberflächen liegen
+> als Skill unter `.claude/skills/vibecoding-academy-design/SKILL.md`. Bis
+> 2026-08-26 lagen sie als `docs/SKILL.md` — dort hat Claude Code sie nie
+> geladen, erkannt wird nur `.claude/skills/<name>/SKILL.md`. Eine
+> Skill-Definition, die nicht geladen wird, ist keine Regel, sondern ein Text.
+
+> **Nicht mehr hier:** Der Vorschlagskatalog für visuelle Verbesserungen lag bis
+> 2026-08-26 als `docs/QUICK_WINS.md` im Repo. Die sieben offenen Punkte liegen
+> jetzt als Unteraufgaben der Todoteck-Aufgabe **„vibecoding-academy: Visuelle
+> Quick Wins"** (Projekt Home Lab) — ein Backlog gehört in ein Werkzeug, das
+> abhaken kann.
 
 ### Adding a New Project
 

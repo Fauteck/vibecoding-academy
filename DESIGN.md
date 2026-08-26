@@ -4,7 +4,7 @@
 version: "1.0.0"
 updated: "2026-04-25"
 project: "Vibecoding Academy"
-url: "https://fauteck.github.io/vibecoding-academy/"
+url: "https://academy.niklasfauteck.de/"
 tokens:
   colors:
     primary:
