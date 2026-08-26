@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Artikel – KI-Blog – Vibecoding Academy</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%233D5A8C'/%3E%3Ctext x='2' y='23' font-family='monospace' font-size='20' font-weight='bold' fill='%23ffffff'%3E%26lt;%3C/text%3E%3Ctext x='18' y='23' font-family='monospace' font-size='20' font-weight='bold' fill='%23ffffff'%3E%26gt;%3C/text%3E%3Cpath d='M17 8 L13 17 L18 17 L15 26' stroke='url(%23g)' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%235B8BD6'/%3E%3Cstop offset='1' stop-color='%236BB8D4'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E">
   <meta name="theme-color" content="#5B8BD6">
   <meta http-equiv="Content-Security-Policy"
         content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'">
@@ -144,16 +145,16 @@
 
     <!-- Back Link -->
     <a href="index.html" class="back-link mb-3 d-inline-flex">
-      <i class="fas fa-arrow-left"></i> Zurück zur Übersicht
+      <i class="fas fa-arrow-left" aria-hidden="true"></i> Zurück zur Übersicht
     </a>
 
     <!-- Not Found State -->
     <div class="not-found d-none" id="not-found">
-      <i class="fas fa-file-circle-xmark fa-3x"></i>
+      <i class="fas fa-file-circle-xmark fa-3x" aria-hidden="true"></i>
       <h4>Artikel nicht gefunden</h4>
       <p class="small">Der gesuchte Artikel existiert nicht oder wurde gelöscht.</p>
       <a href="index.html" class="btn btn-primary btn-sm mt-2">
-        <i class="fas fa-arrow-left me-1"></i> Zur Übersicht
+        <i class="fas fa-arrow-left me-1" aria-hidden="true"></i> Zur Übersicht
       </a>
     </div>
 
@@ -170,7 +171,7 @@
 
         <!-- Events Widget -->
         <div class="sidebar-widget">
-          <div class="sidebar-widget-title"><i class="fas fa-calendar-days me-2"></i>Veranstaltungen</div>
+          <div class="sidebar-widget-title"><i class="fas fa-calendar-days me-2" aria-hidden="true"></i>Veranstaltungen</div>
           <div id="events-list">
             <p class="text-muted small mb-0">Keine bevorstehenden Termine.</p>
           </div>
@@ -180,14 +181,14 @@
         <div class="sidebar-widget text-center">
           <a href="index.html" class="btn w-100 btn-sm"
              style="background: var(--primary-color); color: #fff; border: none;">
-            <i class="fas fa-list me-1"></i> Alle Artikel
+            <i class="fas fa-list me-1" aria-hidden="true"></i> Alle Artikel
           </a>
         </div>
 
         <!-- Admin link -->
         <div class="sidebar-widget text-center">
           <a href="admin.html" class="btn btn-outline-secondary w-100 btn-sm">
-            <i class="fas fa-pen-to-square me-1"></i> Admin-Bereich
+            <i class="fas fa-pen-to-square me-1" aria-hidden="true"></i> Admin-Bereich
           </a>
         </div>
 
@@ -265,9 +266,9 @@
         '<h1 class="article-title">' + escHtml(post.title) + '</h1>' +
         (post.subtitle ? '<p class="article-subtitle">' + escHtml(post.subtitle) + '</p>' : '') +
         '<div class="article-meta">' +
-          '<div class="article-meta-item"><i class="fas fa-user"></i>' + escHtml(post.author || 'Redaktion') + '</div>' +
-          '<div class="article-meta-item"><i class="fas fa-calendar"></i>' + formatDate(post.publishedAt) + '</div>' +
-          '<div class="article-meta-item"><i class="fas fa-clock"></i>' + readTime(post.content) + '</div>' +
+          '<div class="article-meta-item"><i class="fas fa-user" aria-hidden="true"></i>' + escHtml(post.author || 'Redaktion') + '</div>' +
+          '<div class="article-meta-item"><i class="fas fa-calendar" aria-hidden="true"></i>' + formatDate(post.publishedAt) + '</div>' +
+          '<div class="article-meta-item"><i class="fas fa-clock" aria-hidden="true"></i>' + readTime(post.content) + '</div>' +
         '</div>';
 
       col.innerHTML = heroHtml + headerHtml;

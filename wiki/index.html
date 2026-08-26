@@ -42,6 +42,7 @@
         var(--bg-page);
       color: #222;
       min-height: 100vh;
+      min-height: 100dvh;
       position: relative;
     }
 
@@ -65,7 +66,7 @@
       position: fixed;
       left: 0;
       right: 0;
-      z-index: 1025;
+      z-index: var(--z-subnav);
       background: rgba(255,255,255,0.97);
       border-bottom: 1px solid #e2e8f0;
       padding: 0.4rem 1rem;
@@ -610,19 +611,20 @@
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#content">Zum Inhalt springen</a>
   <div id="reading-progress" aria-hidden="true"></div>
 
   <div id="breadcrumb-bar" aria-label="Leseposition">
     <div class="breadcrumb-inner">
-      <i class="fas fa-book-open"></i>
+      <i class="fas fa-book-open" aria-hidden="true"></i>
       <span>Wiki</span>
-      <i class="fas fa-chevron-right"></i>
+      <i class="fas fa-chevron-right" aria-hidden="true"></i>
       <span class="breadcrumb-section" id="breadcrumb-section">Einleitung</span>
     </div>
   </div>
 
   <button id="back-to-top" aria-label="Zurück nach oben" title="Zurück nach oben">
-    <i class="fas fa-arrow-up"></i>
+    <i class="fas fa-arrow-up" aria-hidden="true"></i>
   </button>
 
   <nav class="site-nav" role="navigation" aria-label="Hauptnavigation">
@@ -660,16 +662,16 @@
       </p>
       <div class="hero-actions">
         <a href="../kontakt/" class="hero-cta">
-          <i class="fas fa-envelope me-2"></i>Workshop anfragen
+          <i class="fas fa-envelope me-2" aria-hidden="true"></i>Workshop anfragen
         </a>
         <a href="workshop-deck/" class="hero-cta hero-cta-secondary">
-          <i class="fas fa-display me-2"></i>Workshop-Deck ansehen
+          <i class="fas fa-display me-2" aria-hidden="true"></i>Workshop-Deck ansehen
         </a>
       </div>
     </div>
   </div>
 
-  <main id="content">
+  <main id="content" tabindex="-1">
 
     <div class="wiki-intro-card">
       <p class="intro-text">
@@ -727,10 +729,10 @@
       <button class="section-toggle" aria-expanded="false" aria-controls="section-orientierung">
         <div class="section-toggle-row">
           <div class="section-toggle-text">
-            <div class="section-kicker"><i class="fas fa-seedling"></i> Lernpfad</div>
+            <div class="section-kicker"><i class="fas fa-seedling" aria-hidden="true"></i> Lernpfad</div>
             <h2 id="orientierung">1. Orientierung</h2>
           </div>
-          <i class="fas fa-chevron-right section-toggle-icon"></i>
+          <i class="fas fa-chevron-right section-toggle-icon" aria-hidden="true"></i>
         </div>
       </button>
       <div class="wiki-section-body" id="section-orientierung">
@@ -755,7 +757,7 @@
 
           <button class="collapsible-toggle" aria-expanded="false" aria-controls="orientierung-body">
             <span>Mehr zur Einordnung</span>
-            <i class="fas fa-chevron-right toggle-icon"></i>
+            <i class="fas fa-chevron-right toggle-icon" aria-hidden="true"></i>
           </button>
           <div class="collapsible-body" id="orientierung-body">
             <h3>Was Vibecoding gut kann</h3>
@@ -793,10 +795,10 @@
       <button class="section-toggle" aria-expanded="false" aria-controls="section-setup">
         <div class="section-toggle-row">
           <div class="section-toggle-text">
-            <div class="section-kicker"><i class="fas fa-laptop-code"></i> Lernpfad</div>
+            <div class="section-kicker"><i class="fas fa-laptop-code" aria-hidden="true"></i> Lernpfad</div>
             <h2 id="setup">2. Setup</h2>
           </div>
-          <i class="fas fa-chevron-right section-toggle-icon"></i>
+          <i class="fas fa-chevron-right section-toggle-icon" aria-hidden="true"></i>
         </div>
       </button>
       <div class="wiki-section-body" id="section-setup">
@@ -817,7 +819,7 @@
           </p>
 
           <div class="info-box tip">
-            <div class="info-icon"><i class="fas fa-lightbulb"></i></div>
+            <div class="info-icon"><i class="fas fa-lightbulb" aria-hidden="true"></i></div>
             <div class="info-content">
               <div class="info-label">Faustregel</div>
               <p>Wähle zu Beginn lieber einen einfachen, stabilen Ablauf als ein komplexes Setup mit vielen Extras.</p>
@@ -837,10 +839,10 @@
       <button class="section-toggle" aria-expanded="false" aria-controls="section-erste-erfolge">
         <div class="section-toggle-row">
           <div class="section-toggle-text">
-            <div class="section-kicker"><i class="fas fa-rocket"></i> Lernpfad</div>
+            <div class="section-kicker"><i class="fas fa-rocket" aria-hidden="true"></i> Lernpfad</div>
             <h2 id="erste-erfolge">3. Erste Erfolge</h2>
           </div>
-          <i class="fas fa-chevron-right section-toggle-icon"></i>
+          <i class="fas fa-chevron-right section-toggle-icon" aria-hidden="true"></i>
         </div>
       </button>
       <div class="wiki-section-body" id="section-erste-erfolge">
@@ -860,7 +862,7 @@
 
           <button class="collapsible-toggle" aria-expanded="false" aria-controls="erste-erfolge-body">
             <span>Warum klein anfangen?</span>
-            <i class="fas fa-chevron-right toggle-icon"></i>
+            <i class="fas fa-chevron-right toggle-icon" aria-hidden="true"></i>
           </button>
           <div class="collapsible-body" id="erste-erfolge-body">
             <ul>
@@ -887,10 +889,10 @@
       <button class="section-toggle" aria-expanded="false" aria-controls="section-golden-path">
         <div class="section-toggle-row">
           <div class="section-toggle-text">
-            <div class="section-kicker"><i class="fas fa-route"></i> Lernpfad</div>
+            <div class="section-kicker"><i class="fas fa-route" aria-hidden="true"></i> Lernpfad</div>
             <h2 id="golden-path">4. Golden Path</h2>
           </div>
-          <i class="fas fa-chevron-right section-toggle-icon"></i>
+          <i class="fas fa-chevron-right section-toggle-icon" aria-hidden="true"></i>
         </div>
       </button>
       <div class="wiki-section-body" id="section-golden-path">
@@ -933,10 +935,10 @@
       <button class="section-toggle" aria-expanded="false" aria-controls="section-qualitaet-risiken">
         <div class="section-toggle-row">
           <div class="section-toggle-text">
-            <div class="section-kicker"><i class="fas fa-shield-halved"></i> Lernpfad</div>
+            <div class="section-kicker"><i class="fas fa-shield-halved" aria-hidden="true"></i> Lernpfad</div>
             <h2 id="qualitaet-risiken">5. Qualität &amp; Risiken</h2>
           </div>
-          <i class="fas fa-chevron-right section-toggle-icon"></i>
+          <i class="fas fa-chevron-right section-toggle-icon" aria-hidden="true"></i>
         </div>
       </button>
       <div class="wiki-section-body" id="section-qualitaet-risiken">
@@ -958,7 +960,7 @@
 
           <button class="collapsible-toggle" aria-expanded="false" aria-controls="qualitaet-body">
             <span>Prüfung, Freigabe und sicheres Arbeiten</span>
-            <i class="fas fa-chevron-right toggle-icon"></i>
+            <i class="fas fa-chevron-right toggle-icon" aria-hidden="true"></i>
           </button>
           <div class="collapsible-body" id="qualitaet-body">
             <h3>5-Minuten-Test vor jeder Freigabe</h3>
@@ -997,7 +999,7 @@
             </ul>
 
             <div class="info-box danger">
-              <div class="info-icon"><i class="fas fa-triangle-exclamation"></i></div>
+              <div class="info-icon"><i class="fas fa-triangle-exclamation" aria-hidden="true"></i></div>
               <div class="info-content">
                 <div class="info-label">Kritisch</div>
                 <p>API-Keys gehören niemals ins Frontend oder in öffentlich zugängliche Repositories.</p>
@@ -1020,10 +1022,10 @@
       <button class="section-toggle" aria-expanded="false" aria-controls="section-prompt-bibliothek">
         <div class="section-toggle-row">
           <div class="section-toggle-text">
-            <div class="section-kicker"><i class="fas fa-keyboard"></i> Praxisbereich</div>
+            <div class="section-kicker"><i class="fas fa-keyboard" aria-hidden="true"></i> Praxisbereich</div>
             <h2 id="prompt-bibliothek">6. Prompt-Bibliothek</h2>
           </div>
-          <i class="fas fa-chevron-right section-toggle-icon"></i>
+          <i class="fas fa-chevron-right section-toggle-icon" aria-hidden="true"></i>
         </div>
       </button>
       <div class="wiki-section-body" id="section-prompt-bibliothek">
@@ -1035,7 +1037,7 @@
 
           <button class="collapsible-toggle" aria-expanded="false" aria-controls="prompt-body">
             <span>Beispiele für hilfreiche Prompts</span>
-            <i class="fas fa-chevron-right toggle-icon"></i>
+            <i class="fas fa-chevron-right toggle-icon" aria-hidden="true"></i>
           </button>
           <div class="collapsible-body" id="prompt-body">
             <h3>Für einen Start</h3>
@@ -1066,10 +1068,10 @@
       <button class="section-toggle" aria-expanded="false" aria-controls="section-common-failures">
         <div class="section-toggle-row">
           <div class="section-toggle-text">
-            <div class="section-kicker"><i class="fas fa-bug"></i> Praxisbereich</div>
+            <div class="section-kicker"><i class="fas fa-bug" aria-hidden="true"></i> Praxisbereich</div>
             <h2 id="common-failures">7. Common Failures</h2>
           </div>
-          <i class="fas fa-chevron-right section-toggle-icon"></i>
+          <i class="fas fa-chevron-right section-toggle-icon" aria-hidden="true"></i>
         </div>
       </button>
       <div class="wiki-section-body" id="section-common-failures">
@@ -1085,7 +1087,7 @@
           </ul>
 
           <div class="info-box warning">
-            <div class="info-icon"><i class="fas fa-save"></i></div>
+            <div class="info-icon"><i class="fas fa-save" aria-hidden="true"></i></div>
             <div class="info-content">
               <div class="info-label">Praktische Regel</div>
               <p>Vor jedem größeren Umbau: Commit oder Dateikopie anlegen. So kannst du auf einen funktionierenden Stand zurückgehen.</p>
@@ -1109,10 +1111,10 @@
       <button class="section-toggle" aria-expanded="false" aria-controls="section-beispielprojekte">
         <div class="section-toggle-row">
           <div class="section-toggle-text">
-            <div class="section-kicker"><i class="fas fa-diagram-project"></i> Praxisbereich</div>
+            <div class="section-kicker"><i class="fas fa-diagram-project" aria-hidden="true"></i> Praxisbereich</div>
             <h2 id="beispielprojekte">8. Beispielprojekte</h2>
           </div>
-          <i class="fas fa-chevron-right section-toggle-icon"></i>
+          <i class="fas fa-chevron-right section-toggle-icon" aria-hidden="true"></i>
         </div>
       </button>
       <div class="wiki-section-body" id="section-beispielprojekte">
@@ -1131,7 +1133,7 @@
 
           <button class="collapsible-toggle" aria-expanded="false" aria-controls="beispielprojekte-body">
             <span>Was ein gutes Beispielprojekt ausmacht</span>
-            <i class="fas fa-chevron-right toggle-icon"></i>
+            <i class="fas fa-chevron-right toggle-icon" aria-hidden="true"></i>
           </button>
           <div class="collapsible-body" id="beispielprojekte-body">
             <ul class="checklist">
@@ -1150,10 +1152,10 @@
       <button class="section-toggle" aria-expanded="false" aria-controls="section-sandbox">
         <div class="section-toggle-row">
           <div class="section-toggle-text">
-            <div class="section-kicker"><i class="fas fa-flask"></i> Praxisbereich</div>
+            <div class="section-kicker"><i class="fas fa-flask" aria-hidden="true"></i> Praxisbereich</div>
             <h2 id="sandbox">9. Sandbox</h2>
           </div>
-          <i class="fas fa-chevron-right section-toggle-icon"></i>
+          <i class="fas fa-chevron-right section-toggle-icon" aria-hidden="true"></i>
         </div>
       </button>
       <div class="wiki-section-body" id="section-sandbox">
@@ -1179,10 +1181,10 @@
       <button class="section-toggle" aria-expanded="false" aria-controls="section-vier-kernfaehigkeiten">
         <div class="section-toggle-row">
           <div class="section-toggle-text">
-            <div class="section-kicker"><i class="fas fa-compass-drafting"></i> Vertiefung</div>
+            <div class="section-kicker"><i class="fas fa-compass-drafting" aria-hidden="true"></i> Vertiefung</div>
             <h2 id="vier-kernfaehigkeiten">10. Die vier Kernfähigkeiten im Vibecoding</h2>
           </div>
-          <i class="fas fa-chevron-right section-toggle-icon"></i>
+          <i class="fas fa-chevron-right section-toggle-icon" aria-hidden="true"></i>
         </div>
       </button>
       <div class="wiki-section-body" id="section-vier-kernfaehigkeiten">
@@ -1211,10 +1213,10 @@
       <button class="section-toggle" aria-expanded="false" aria-controls="section-code-reading">
         <div class="section-toggle-row">
           <div class="section-toggle-text">
-            <div class="section-kicker"><i class="fas fa-code"></i> Vertiefung</div>
+            <div class="section-kicker"><i class="fas fa-code" aria-hidden="true"></i> Vertiefung</div>
             <h2 id="code-reading">11. Code Reading Light</h2>
           </div>
-          <i class="fas fa-chevron-right section-toggle-icon"></i>
+          <i class="fas fa-chevron-right section-toggle-icon" aria-hidden="true"></i>
         </div>
       </button>
       <div class="wiki-section-body" id="section-code-reading">
@@ -1242,10 +1244,10 @@
       <button class="section-toggle" aria-expanded="false" aria-controls="section-refactoring">
         <div class="section-toggle-row">
           <div class="section-toggle-text">
-            <div class="section-kicker"><i class="fas fa-wand-magic-sparkles"></i> Vertiefung</div>
+            <div class="section-kicker"><i class="fas fa-wand-magic-sparkles" aria-hidden="true"></i> Vertiefung</div>
             <h2 id="refactoring">12. Refactoring mit KI</h2>
           </div>
-          <i class="fas fa-chevron-right section-toggle-icon"></i>
+          <i class="fas fa-chevron-right section-toggle-icon" aria-hidden="true"></i>
         </div>
       </button>
       <div class="wiki-section-body" id="section-refactoring">
@@ -1262,7 +1264,7 @@
           </ul>
 
           <div class="info-box example">
-            <div class="info-icon"><i class="fas fa-message"></i></div>
+            <div class="info-icon"><i class="fas fa-message" aria-hidden="true"></i></div>
             <div class="info-content">
               <div class="info-label">Beispielprompt</div>
               <p>„Strukturiere den Code lesbarer. Trenne UI und Logik stärker, ohne das Verhalten zu ändern. Erkläre zuerst kurz, welche Refactoring-Schritte du vorschlägst.“</p>
@@ -1276,10 +1278,10 @@
       <button class="section-toggle" aria-expanded="false" aria-controls="section-kosten-limits">
         <div class="section-toggle-row">
           <div class="section-toggle-text">
-            <div class="section-kicker"><i class="fas fa-coins"></i> Vertiefung</div>
+            <div class="section-kicker"><i class="fas fa-coins" aria-hidden="true"></i> Vertiefung</div>
             <h2 id="kosten-limits">13. Kosten &amp; Limits</h2>
           </div>
-          <i class="fas fa-chevron-right section-toggle-icon"></i>
+          <i class="fas fa-chevron-right section-toggle-icon" aria-hidden="true"></i>
         </div>
       </button>
       <div class="wiki-section-body" id="section-kosten-limits">
@@ -1296,7 +1298,7 @@
           </ul>
 
           <div class="info-box tip">
-            <div class="info-icon"><i class="fas fa-swatchbook"></i></div>
+            <div class="info-icon"><i class="fas fa-swatchbook" aria-hidden="true"></i></div>
             <div class="info-content">
               <div class="info-label">Praktische Konsequenz</div>
               <p>Arbeite möglichst klar, klein und fokussiert. Je präziser die Aufgabe, desto besser ist meist das Ergebnis.</p>
@@ -1310,10 +1312,10 @@
       <button class="section-toggle" aria-expanded="false" aria-controls="section-playground-produkt">
         <div class="section-toggle-row">
           <div class="section-toggle-text">
-            <div class="section-kicker"><i class="fas fa-cubes"></i> Vertiefung</div>
+            <div class="section-kicker"><i class="fas fa-cubes" aria-hidden="true"></i> Vertiefung</div>
             <h2 id="playground-produkt">14. Vom Playground zum Produkt</h2>
           </div>
-          <i class="fas fa-chevron-right section-toggle-icon"></i>
+          <i class="fas fa-chevron-right section-toggle-icon" aria-hidden="true"></i>
         </div>
       </button>
       <div class="wiki-section-body" id="section-playground-produkt">
@@ -1330,7 +1332,7 @@
 
           <button class="collapsible-toggle" aria-expanded="false" aria-controls="produkt-body">
             <span>Wann reines Vibecoding nicht mehr reicht</span>
-            <i class="fas fa-chevron-right toggle-icon"></i>
+            <i class="fas fa-chevron-right toggle-icon" aria-hidden="true"></i>
           </button>
           <div class="collapsible-body" id="produkt-body">
             <ul>
@@ -1355,10 +1357,10 @@
       <button class="section-toggle" aria-expanded="false" aria-controls="section-deployment-sharing">
         <div class="section-toggle-row">
           <div class="section-toggle-text">
-            <div class="section-kicker"><i class="fas fa-share-nodes"></i> Veröffentlichen</div>
+            <div class="section-kicker"><i class="fas fa-share-nodes" aria-hidden="true"></i> Veröffentlichen</div>
             <h2 id="deployment-sharing">15. Überblick zu Deployment und Sharing</h2>
           </div>
-          <i class="fas fa-chevron-right section-toggle-icon"></i>
+          <i class="fas fa-chevron-right section-toggle-icon" aria-hidden="true"></i>
         </div>
       </button>
       <div class="wiki-section-body" id="section-deployment-sharing">
@@ -1384,10 +1386,10 @@
       <button class="section-toggle" aria-expanded="false" aria-controls="section-hosting-hinweis">
         <div class="section-toggle-row">
           <div class="section-toggle-text">
-            <div class="section-kicker"><i class="fas fa-server"></i> Veröffentlichen</div>
+            <div class="section-kicker"><i class="fas fa-server" aria-hidden="true"></i> Veröffentlichen</div>
             <h2 id="hosting-hinweis">16. Separate Hosting-Anleitung</h2>
           </div>
-          <i class="fas fa-chevron-right section-toggle-icon"></i>
+          <i class="fas fa-chevron-right section-toggle-icon" aria-hidden="true"></i>
         </div>
       </button>
       <div class="wiki-section-body" id="section-hosting-hinweis">
@@ -1399,7 +1401,7 @@
 
           <p>
             <a href="https://academy.niklasfauteck.de/hosting/index.html" class="back-link">
-              <i class="fas fa-arrow-right me-1"></i> Zur Hosting-Anleitung
+              <i class="fas fa-arrow-right me-1" aria-hidden="true"></i> Zur Hosting-Anleitung
             </a>
           </p>
         </div>
@@ -1410,10 +1412,10 @@
       <button class="section-toggle" aria-expanded="false" aria-controls="section-weiterfuehrende-inhalte">
         <div class="section-toggle-row">
           <div class="section-toggle-text">
-            <div class="section-kicker"><i class="fas fa-bookmark"></i> Abschluss</div>
+            <div class="section-kicker"><i class="fas fa-bookmark" aria-hidden="true"></i> Abschluss</div>
             <h2 id="weiterfuehrende-inhalte">Weiterführende Inhalte</h2>
           </div>
-          <i class="fas fa-chevron-right section-toggle-icon"></i>
+          <i class="fas fa-chevron-right section-toggle-icon" aria-hidden="true"></i>
         </div>
       </button>
       <div class="wiki-section-body" id="section-weiterfuehrende-inhalte">
