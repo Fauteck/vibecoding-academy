@@ -89,7 +89,12 @@ Detailed architecture and workflow documentation (LLM-optimized with absolute pa
 | [docs/architektur.md](docs/architektur.md) | Shared components, path resolution, CSS chain, design tokens |
 | [docs/arbeitsablaeufe.md](docs/arbeitsablaeufe.md) | Step-by-step guides, HTML templates, common tasks |
 | [DESIGN.md](DESIGN.md) | Design system — tokens, rationale, accessibility, components |
-| [docs/SKILL.md](docs/SKILL.md) | Skill-Definition `vibecoding-academy-design` (Design-Leitplanken für generierte Oberflächen) |
+
+> **Skill statt Doku:** Die Design-Leitplanken für generierte Oberflächen liegen
+> als Skill unter `.claude/skills/vibecoding-academy-design/SKILL.md`. Bis
+> 2026-08-26 lagen sie als `docs/SKILL.md` — dort hat Claude Code sie nie
+> geladen, erkannt wird nur `.claude/skills/<name>/SKILL.md`. Eine
+> Skill-Definition, die nicht geladen wird, ist keine Regel, sondern ein Text.
 
 > **Nicht mehr hier:** Der Vorschlagskatalog für visuelle Verbesserungen lag bis
 > 2026-08-26 als `docs/QUICK_WINS.md` im Repo. Die sieben offenen Punkte liegen
