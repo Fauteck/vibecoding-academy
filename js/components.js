@@ -13,7 +13,7 @@
     { href: 'projekte/',   label: 'Projekte',  key: 'projekte' },
     { href: 'ueber-mich/', label: 'Coach',     key: 'ueber-mich' }
   ];
-  const ctaLink = { href: 'kontakt/', label: 'Workshop anfragen' };
+  const ctaLink = { href: 'kontakt/', label: 'Workshop anfragen', key: 'kontakt' };
 
   /* Detect active section from the current path */
   const path = window.location.pathname;
@@ -36,15 +36,24 @@
     return a;
   }
 
-  function buildLinkGroup(container) {
+  /*
+   * Die Markierung haengt allein am Ziel der Seite, nicht am Container:
+   * Desktop-Leiste und Dropdown zeigen dieselbe aktive Seite. Nur eine
+   * der beiden Gruppen steht je im Baum — nav.css blendet die andere per
+   * display:none aus —, deshalb gibt es kein doppeltes aria-current.
+   */
+  function buildLinkGroup() {
     const frag = document.createDocumentFragment();
     for (const link of navLinks) {
-      frag.appendChild(createNavLink(link, container === 'desktop' && link.key === activeKey));
+      frag.appendChild(createNavLink(link, link.key === activeKey));
     }
+    /* Der CTA ist der einzige Weg nach /kontakt/ und traegt die Markierung dort. */
+    const ctaActive = activeKey === ctaLink.key;
     const cta = document.createElement('a');
-    cta.className = 'site-nav-cta';
+    cta.className = ctaActive ? 'site-nav-cta active' : 'site-nav-cta';
     cta.href = prefix + ctaLink.href;
     cta.textContent = ctaLink.label;
+    if (ctaActive) cta.setAttribute('aria-current', 'page');
     frag.appendChild(cta);
     return frag;
   }
@@ -88,7 +97,7 @@
 
     const linksDiv = document.createElement('div');
     linksDiv.className = 'site-nav-links';
-    linksDiv.appendChild(buildLinkGroup('desktop'));
+    linksDiv.appendChild(buildLinkGroup());
 
     const hamburger = document.createElement('button');
     hamburger.className = 'site-nav-hamburger';
@@ -98,7 +107,7 @@
 
     const dropdown = document.createElement('div');
     dropdown.className = 'site-nav-dropdown';
-    dropdown.appendChild(buildLinkGroup('dropdown'));
+    dropdown.appendChild(buildLinkGroup());
 
     const inner = document.createElement('div');
     inner.className = 'site-nav-inner';

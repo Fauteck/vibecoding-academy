@@ -1,0 +1,96 @@
+/* ──────────────────────────────────────────────────────────────
+   Vibecoding Academy — Hero
+   Geteilte Kopfzone von Landing, Wiki und Projekte.
+
+   Lag bis 2026-08 dreimal inline (index.html, wiki/index.html,
+   projekte/index.html); der CTA zusaetzlich zweimal komplett im
+   style-Attribut von projekte/index.html. Hier steht nur, was in
+   allen dreien gleich ist — Verlauf und Ueberschrift-Skala bleiben
+   je Seite eigen und ueberschreiben die Basis weiter inline.
+   ────────────────────────────────────────────────────────────── */
+
+.hero-section {
+  background:
+    linear-gradient(135deg, rgba(61, 90, 140, 0.3) 0%, rgba(91, 139, 214, 0.15) 100%),
+    linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  padding: 3rem 1.5rem 2.5rem;
+  text-align: center;
+  border-radius: 0 0 var(--border-radius-card) var(--border-radius-card);
+  margin-bottom: var(--space-5);
+}
+
+.hero-section h1 {
+  color: #ffffff;
+  font-weight: var(--font-weight-black);
+  font-size: clamp(2rem, 5vw, 3rem);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  margin-bottom: var(--space-2);
+}
+
+.hero-section p {
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+.hero-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ── Aktionszeile ─────────────────────────────────── */
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+  margin-top: 1.35rem;
+}
+
+/* ── Call to Action ───────────────────────────────── */
+
+.hero-cta {
+  display: inline-block;
+  padding: 0.82rem 1.45rem;
+  background: #fff;
+  color: var(--secondary-color);
+  font-weight: var(--font-weight-bold);
+  font-size: 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  will-change: transform;
+}
+
+/*
+ * Bewusste Abweichung vom geteilten Fauteck-Design-System, das flache
+ * Schatten ohne Hover-Lift vorschreibt: Auftritts-Seite statt Werkzeug.
+ * Dokumentiert in der Wiki-Notiz "Fauteck Design-System (geteilt)".
+ */
+.hero-cta:hover,
+.hero-cta:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.16);
+  color: var(--secondary-color);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-cta { transition: none; }
+  .hero-cta:hover,
+  .hero-cta:focus-visible { transform: none; }
+}
+
+/* ── Responsive ───────────────────────────────────── */
+
+@media (max-width: 991.98px) {
+  .hero-section {
+    padding: 2.5rem 1rem 2rem;
+    border-radius: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-actions { flex-direction: column; }
+}

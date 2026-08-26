@@ -164,6 +164,11 @@ body {
   white-space: nowrap;
 }
 
+/* Aktive Seite: /kontakt/ ist nur ueber den CTA erreichbar, also markiert er sich dort selbst. */
+.site-nav-cta.active {
+  background: var(--secondary-color, #3D5A8C);
+}
+
 .site-nav-cta:hover,
 .site-nav-cta:focus-visible {
   background: var(--secondary-color, #3D5A8C);

@@ -219,7 +219,7 @@ accessibility:
 The design system rests on three principles:
 
 1. **Static simplicity** — No build pipeline, no CSS preprocessor. Every token is a CSS custom property in `css/tokens.css`. A single file change propagates globally.
-2. **Self-hosted variable font** — IBM Plex Sans is loaded as a WOFF2 variable font from `/vendor/ibm-plex-sans/`. The Segoe UI system stack is kept as a fallback. The variable font covers weights 100–900 with a single file, so no extra requests for bold or italic.
+2. **Self-hosted variable font** — IBM Plex Sans is loaded as a WOFF2 variable font from `/vendor/ibm-plex-sans/`. The Segoe UI system stack is kept as a fallback. The variable font covers weights 100–700 with a single file, so no extra requests for bold or italic. IBM Plex Sans has no black cut; 700 is the ceiling (axis read from the shipped `.woff2` with fontTools, 2026-08).
 3. **Selective glassmorphism** — `backdrop-filter: blur()` is only used on elements that sit directly over the hero background image (hero badges, KPI pills, coach/intro cards). Base `.card` components use a near-opaque white background instead. The effect is disabled below 991.98 px.
 
 ---
@@ -262,7 +262,7 @@ Start every new app with the base tokens. Override only when the app's visual co
 
 **Font stack:** `'IBM Plex Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif`
 
-IBM Plex Sans is a humanist sans-serif designed by Mike Abbink for IBM. It provides optical warmth and clarity at UI sizes while remaining neutral enough for data-dense layouts. The variable font file covers weights 100–900 and normal/italic in two WOFF2 files (`latin-wght-normal.woff2`, `latin-wght-italic.woff2`), both served from `/vendor/ibm-plex-sans/`. The system font stack (Segoe UI, Tahoma, Verdana) is the fallback in case the font is unavailable.
+IBM Plex Sans is a humanist sans-serif designed by Mike Abbink for IBM. It provides optical warmth and clarity at UI sizes while remaining neutral enough for data-dense layouts. The variable font file covers weights 100–700 and normal/italic in two WOFF2 files (`latin-wght-normal.woff2`, `latin-wght-italic.woff2`), both served from `/vendor/ibm-plex-sans/`. The system font stack (Segoe UI, Tahoma, Verdana) is the fallback in case the font is unavailable.
 
 | Token | Value | Context |
 |---|---|---|
@@ -273,6 +273,8 @@ IBM Plex Sans is a humanist sans-serif designed by Mike Abbink for IBM. It provi
 | `font-size-brand` | `1.5rem` | Brand name |
 | `font-weight-medium` | `500` | Nav, subtitles |
 | `font-weight-semibold` | `600` | Brand, CTA, headings |
+| `font-weight-bold` | `700` | Headings, hero CTA |
+| `font-weight-black` | `700` | Alias for bold — the family stops at 700, so this is not a heavier step |
 
 **Letter spacing:**
 - Brand name uses `-0.02em` (tight) — improves visual cohesion at large display sizes.
