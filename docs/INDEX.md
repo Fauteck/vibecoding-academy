@@ -14,7 +14,6 @@
 | [docs/architektur.md](architektur.md) | Shared components, path resolution, CSS chain, design tokens |
 | [docs/arbeitsablaeufe.md](arbeitsablaeufe.md) | Step-by-step guides for common tasks |
 | [docs/SKILL.md](SKILL.md) | AI-skill manifest — brand quick-reference, token & helper-class entry points |
-| [docs/QUICK_WINS.md](QUICK_WINS.md) | Zeitpunkt-Dokument (Mai 2026): Vorschläge für visuelle Verbesserungen |
 | [README.md](../README.md) | Project overview, features, tech stack |
 
 ---

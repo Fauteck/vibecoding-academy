@@ -89,8 +89,13 @@ Detailed architecture and workflow documentation (LLM-optimized with absolute pa
 | [docs/architektur.md](docs/architektur.md) | Shared components, path resolution, CSS chain, design tokens |
 | [docs/arbeitsablaeufe.md](docs/arbeitsablaeufe.md) | Step-by-step guides, HTML templates, common tasks |
 | [DESIGN.md](DESIGN.md) | Design system — tokens, rationale, accessibility, components |
-| [docs/QUICK_WINS.md](docs/QUICK_WINS.md) | **Zeitpunkt-Dokument** (Stand Mai 2026): Vorschlagskatalog für visuelle Verbesserungen. Beschreibt einen Stand, wird nicht nachgepflegt — was umgesetzt werden soll, gehört als Aufgabe nach Todoteck |
 | [docs/SKILL.md](docs/SKILL.md) | Skill-Definition `vibecoding-academy-design` (Design-Leitplanken für generierte Oberflächen) |
+
+> **Nicht mehr hier:** Der Vorschlagskatalog für visuelle Verbesserungen lag bis
+> 2026-08-26 als `docs/QUICK_WINS.md` im Repo. Die sieben offenen Punkte liegen
+> jetzt als Unteraufgaben der Todoteck-Aufgabe **„vibecoding-academy: Visuelle
+> Quick Wins"** (Projekt Home Lab) — ein Backlog gehört in ein Werkzeug, das
+> abhaken kann.
 
 ### Adding a New Project
 
