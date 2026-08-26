@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>Grand Thomas Auto 6 - Vibecoding Academy</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%233D5A8C'/%3E%3Ctext x='2' y='23' font-family='monospace' font-size='20' font-weight='bold' fill='%23ffffff'%3E%26lt;%3C/text%3E%3Ctext x='18' y='23' font-family='monospace' font-size='20' font-weight='bold' fill='%23ffffff'%3E%26gt;%3C/text%3E%3Cpath d='M17 8 L13 17 L18 17 L15 26' stroke='url(%23g)' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%235B8BD6'/%3E%3Cstop offset='1' stop-color='%236BB8D4'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E">
   <meta name="description" content="GTA-Parodie als Browser-Spiel – erstellt mit KI-gestütztem Vibecoding.">
   <meta property="og:title" content="Grand Thomas Auto 6 - Vibecoding Academy">
   <meta property="og:description" content="GTA-Parodie als Browser-Spiel – erstellt mit KI-gestütztem Vibecoding.">
@@ -29,13 +30,13 @@
     @font-face { font-family: 'JetBrains Mono'; src: url('fonts/JetBrainsMono-ExtraBold.woff2') format('woff2'); font-weight: 800; font-style: normal; font-display: swap; }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: system-ui, sans-serif; background: #0a0a0a; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; min-height: 100vh; overflow: hidden; }
+    body { font-family: system-ui, sans-serif; background: #0a0a0a; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; min-height: 100vh; min-height: 100dvh; overflow: hidden; }
 
     @media (max-width: 991.98px) {
       .gta-controls { bottom: 80px; }
     }
 
-    #game { width: 100vw; height: calc(100vh - 4.5rem); display: flex; align-items: center; justify-content: center; }
+    #game { width: 100vw; height: calc(100vh - 4.5rem); height: calc(100dvh - 4.5rem); display: flex; align-items: center; justify-content: center; }
     .gta-game {
       display: flex; flex-direction: column; align-items: center; justify-content: center;
       background: #0a0a0a; width: 100%; height: 100%; position: relative;
@@ -191,6 +192,8 @@
 </head>
 <body>
   <nav id="site-nav"></nav>
+  <main id="main">
+    <h1 class="visually-hidden">Grand Thomas Auto 6</h1>
 
   <div id="game"></div>
   <script>
@@ -707,6 +710,7 @@
   <!-- Bootstrap JS Bundle -->
   <script src="../../vendor/bootstrap/bootstrap.bundle.min.js"></script>
 
+  </main>
   <footer id="site-footer"></footer>
   <script src="../../js/components.js"></script>
 </body>

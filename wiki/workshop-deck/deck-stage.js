@@ -1074,7 +1074,6 @@
 
         // (2) In-page CustomEvent on the <deck-stage> element itself.
         //     Bubbles and composes out of shadow DOM so slide code can listen:
-        //       document.querySelector('deck-stage').addEventListener('slidechange', e => {
         //         e.detail.index, e.detail.previousIndex, e.detail.total, e.detail.slide, e.detail.reason
         //       });
         const detail = {

@@ -49,6 +49,24 @@
     return frag;
   }
 
+  /* ── Skip Link ────────────────────────────────── */
+  /* Erster fokussierbarer Knoten im Dokument, vor der Navigation. */
+  const mainEl = document.querySelector('main');
+  if (mainEl) {
+    if (!mainEl.id) mainEl.id = 'main';
+    if (!mainEl.hasAttribute('tabindex')) mainEl.setAttribute('tabindex', '-1');
+    const skip = document.createElement('a');
+    skip.className = 'skip-link';
+    /*
+     * Voller Pfad statt blossem '#id': 404.html traegt ein <base>-Tag,
+     * gegen das ein reines '#id' aufloesen wuerde — der Sprung landete
+     * dann auf der Startseite statt im Inhalt derselben Seite.
+     */
+    skip.href = window.location.pathname + window.location.search + '#' + mainEl.id;
+    skip.textContent = 'Zum Inhalt springen';
+    document.body.insertBefore(skip, document.body.firstChild);
+  }
+
   /* ── Render Navigation ────────────────────────── */
   const navEl = document.getElementById('site-nav');
   if (navEl) {

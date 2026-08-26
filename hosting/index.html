@@ -140,6 +140,7 @@
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
 
   <nav class="site-nav" role="navigation" aria-label="Hauptnavigation">
     <div class="site-nav-inner">
@@ -167,6 +168,7 @@
       </div>
     </div>
   </nav>
+  <main id="main" tabindex="-1">
 
   <!-- ══════════════════════════════════════════════════════ -->
   <!--  Hauptinhalt                                          -->
@@ -174,11 +176,11 @@
   <div id="content">
 
     <div class="page-header">
-      <h1><i class="fas fa-server me-2" style="color: #5B8BD6;"></i>Hosting-Anleitung</h1>
+      <h1><i class="fas fa-server me-2" style="color: #5B8BD6;" aria-hidden="true"></i>Hosting-Anleitung</h1>
       <p class="subtitle">Die praktische Ergänzung zur Wiki: Wie du ein fertiges Ergebnis lokal startest, teilst oder veröffentlichst.</p>
 
       <div class="info-box tip">
-        <div class="info-icon"><i class="fas fa-info-circle"></i></div>
+        <div class="info-icon"><i class="fas fa-info-circle" aria-hidden="true"></i></div>
         <div class="info-content">
           <div class="info-label">Hinweis</div>
           <p>Die gezeigten Hosting-Schritte lassen sich unabhängig vom verwendeten KI-Tool umsetzen. In den Beispielen verwenden wir bei Bedarf einen exemplarischen Workflow. Die Hosting-Logik selbst ist jedoch tool-agnostisch.</p>
@@ -186,7 +188,7 @@
       </div>
 
       <div class="info-box example">
-        <div class="info-icon"><i class="fas fa-compass"></i></div>
+        <div class="info-icon"><i class="fas fa-compass" aria-hidden="true"></i></div>
         <div class="info-content">
           <div class="info-label">Noch am Anfang?</div>
           <p>Wenn du noch ganz am Anfang stehst, starte zuerst mit der <a href="../wiki/">Wiki</a>. Diese Seite ist für dich relevant, wenn dein Prototyp bereits sichtbar funktioniert.</p>
@@ -259,7 +261,7 @@
       </ul>
 
       <div class="info-box tip">
-        <div class="info-icon"><i class="fas fa-lightbulb"></i></div>
+        <div class="info-icon"><i class="fas fa-lightbulb" aria-hidden="true"></i></div>
         <div class="info-content">
           <div class="info-label">Empfehlung</div>
           <p>Nutze lokal zuerst einen einfachen, reproduzierbaren Ablauf. Dokumentiere kurz: wie das Projekt gestartet wird, welche Voraussetzungen nötig sind und welche Befehle wichtig sind.</p>
@@ -301,7 +303,7 @@
       </ol>
 
       <div class="info-box warning">
-        <div class="info-icon"><i class="fas fa-exclamation-triangle"></i></div>
+        <div class="info-icon"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i></div>
         <div class="info-content">
           <div class="info-label">Vor dem Veröffentlichen prüfen</div>
           <p>Sind sensible Daten ausgeschlossen? Sind API-Keys entfernt? Stimmen Pfade und Assets? Funktioniert die Anwendung auch auf einer Unterseite bzw. GitHub-Pages-URL?</p>
@@ -348,7 +350,7 @@
       </ul>
 
       <div class="info-box tip">
-        <div class="info-icon"><i class="fas fa-lightbulb"></i></div>
+        <div class="info-icon"><i class="fas fa-lightbulb" aria-hidden="true"></i></div>
         <div class="info-content">
           <div class="info-label">Empfehlung</div>
           <p>Docker ist oft sinnvoll, wenn du mehr Kontrolle über die Laufzeitumgebung brauchst. Für sehr einfache Frontend-Demos ist GitHub Pages meist schneller.</p>
@@ -441,9 +443,9 @@
     <div class="related-footer">
       <h3>Zurück zur Academy</h3>
       <div class="links">
-        <a href="../"><i class="fas fa-home me-1"></i>Startseite</a>
-        <a href="../wiki/"><i class="fas fa-book me-1"></i>Wiki</a>
-        <a href="../#ergebnisse"><i class="fas fa-rocket me-1"></i>Projekte</a>
+        <a href="../"><i class="fas fa-home me-1" aria-hidden="true"></i>Startseite</a>
+        <a href="../wiki/"><i class="fas fa-book me-1" aria-hidden="true"></i>Wiki</a>
+        <a href="../#ergebnisse"><i class="fas fa-rocket me-1" aria-hidden="true"></i>Projekte</a>
       </div>
     </div>
 
@@ -452,6 +454,7 @@
   <!-- ══════════════════════════════════════════════════════ -->
   <!--  Footer                                               -->
   <!-- ══════════════════════════════════════════════════════ -->
+  </main>
   <footer class="footer" style="margin-bottom: 1.5rem;">
     <a href="../kontakt/" style="font-weight: 600; font-size: 1.1rem; display: block; margin-bottom: 0.5rem;">Kontakt</a>
     <a href="../impressum.html">Impressum</a>

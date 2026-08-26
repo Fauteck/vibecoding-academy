@@ -300,7 +300,7 @@
   <!-- ══════════════════════════════════════════════════════ -->
   <!--  Page Content                                         -->
   <!-- ══════════════════════════════════════════════════════ -->
-  <div class="page-wrapper">
+  <main class="page-wrapper" id="main">
     <div class="container" style="max-width: 800px;">
 
       <p class="section-label">Kontakt</p>
@@ -315,7 +315,7 @@
       <!-- Contact Cards Grid -->
       <div class="contact-grid">
         <div class="contact-card">
-          <div class="card-icon"><i class="fab fa-linkedin-in"></i></div>
+          <div class="card-icon"><i class="fab fa-linkedin-in" aria-hidden="true"></i></div>
           <div class="card-title">LinkedIn</div>
           <div class="card-value">
             <a href="https://www.linkedin.com/in/fauteck" target="_blank" rel="noopener noreferrer">linkedin.com/in/fauteck</a>
@@ -323,7 +323,7 @@
         </div>
 
         <div class="contact-card">
-          <div class="card-icon"><i class="fab fa-github"></i></div>
+          <div class="card-icon"><i class="fab fa-github" aria-hidden="true"></i></div>
           <div class="card-title">GitHub</div>
           <div class="card-value">
             <a href="https://github.com/Fauteck" target="_blank" rel="noopener noreferrer">github.com/Fauteck</a>
@@ -331,7 +331,7 @@
         </div>
 
         <div class="contact-card">
-          <div class="card-icon"><i class="fab fa-mastodon"></i></div>
+          <div class="card-icon"><i class="fab fa-mastodon" aria-hidden="true"></i></div>
           <div class="card-title">Mastodon</div>
           <div class="card-value">
             <a href="https://bonn.social/@fauteck" target="_blank" rel="noopener noreferrer">bonn.social/@fauteck</a>
@@ -339,7 +339,7 @@
         </div>
 
         <div class="contact-card">
-          <div class="card-icon"><i class="fas fa-envelope"></i></div>
+          <div class="card-icon"><i class="fas fa-envelope" aria-hidden="true"></i></div>
           <div class="card-title">E-Mail</div>
           <div class="card-value">
             <a href="mailto:ki@fauteck.eu">ki@fauteck.eu</a>
@@ -347,7 +347,7 @@
         </div>
 
         <div class="contact-card">
-          <div class="card-icon"><i class="fas fa-globe"></i></div>
+          <div class="card-icon"><i class="fas fa-globe" aria-hidden="true"></i></div>
           <div class="card-title">Website</div>
           <div class="card-value">
             <a href="https://niklasfauteck.de" target="_blank" rel="noopener noreferrer">niklasfauteck.de</a>
@@ -357,7 +357,7 @@
 
       <!-- Contact Form -->
       <div class="contact-form-section">
-        <h2><i class="fas fa-paper-plane me-2"></i>Workshop-Fit-Check starten</h2>
+        <h2><i class="fas fa-paper-plane me-2" aria-hidden="true"></i>Workshop-Fit-Check starten</h2>
         <form class="contact-form" id="contactForm" novalidate>
           <!-- Web3Forms (öffentlicher Formular-Identifier, kein Secret) -->
           <input type="hidden" name="access_key" value="0a89d474-1e3d-432d-823b-169f47bdfa93">
@@ -379,7 +379,7 @@
           </div>
 
           <!-- Workshop-Fit-Check -->
-          <p class="fit-check-heading"><i class="fas fa-clipboard-check me-2"></i>Workshop-Fit-Check</p>
+          <p class="fit-check-heading"><i class="fas fa-clipboard-check me-2" aria-hidden="true"></i>Workshop-Fit-Check</p>
           <div class="form-row">
             <div class="form-group">
               <label for="cf-teamsize">Teamgröße</label>
@@ -443,22 +443,22 @@
             <small>Alternativ: <a href="mailto:ki@fauteck.eu">Direkt per E-Mail schreiben</a></small>
           </p>
           <div class="form-status form-submitting" id="formSubmitting" style="display:none">
-            <i class="fas fa-spinner fa-spin me-1"></i> Nachricht wird gesendet&hellip;
+            <i class="fas fa-spinner fa-spin me-1" aria-hidden="true"></i> Nachricht wird gesendet&hellip;
           </div>
           <div class="form-status form-success" id="formSuccess" style="display:none">
-            <i class="fas fa-check-circle me-1"></i> Vielen Dank! Deine Nachricht wurde erfolgreich gesendet. Wir melden uns in Kürze.
+            <i class="fas fa-check-circle me-1" aria-hidden="true"></i> Vielen Dank! Deine Nachricht wurde erfolgreich gesendet. Wir melden uns in Kürze.
           </div>
           <div class="form-status form-error" id="formError" style="display:none">
-            <i class="fas fa-exclamation-triangle me-1"></i> <span id="formErrorText">Beim Senden ist ein Fehler aufgetreten.</span>
+            <i class="fas fa-exclamation-triangle me-1" aria-hidden="true"></i> <span id="formErrorText">Beim Senden ist ein Fehler aufgetreten.</span>
           </div>
           <div class="form-status form-fallback" id="formFallback" style="display:none">
-            <i class="fas fa-envelope me-1"></i> Die automatische Übermittlung ist derzeit nicht möglich. Dein E-Mail-Programm wurde geöffnet&nbsp;&mdash; bitte sende die E-Mail manuell ab.
+            <i class="fas fa-envelope me-1" aria-hidden="true"></i> Die automatische Übermittlung ist derzeit nicht möglich. Dein E-Mail-Programm wurde geöffnet&nbsp;&mdash; bitte sende die E-Mail manuell ab.
           </div>
         </form>
       </div>
 
     </div>
-  </div>
+  </main>
 
   <!-- ══════════════════════════════════════════════════════ -->
   <!--  Footer                                               -->
@@ -492,7 +492,7 @@
       function setSubmitting(active) {
         btnSubmit.disabled = active;
         if (active) {
-          btnSubmit.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i> Senden\u2026';
+          btnSubmit.innerHTML = '<i class="fas fa-spinner fa-spin me-1" aria-hidden="true"></i> Senden\u2026';
           hideAllStatus();
           elSubmitting.style.display = 'block';
         } else {

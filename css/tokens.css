@@ -70,6 +70,7 @@
   --transition-medium: 0.3s ease;
 
   /* ── Z-Index Scale ───────────────────────────────── */
+  --z-subnav:   1025;   /* fixierte Leisten, die bewusst unter der Navbar liegen */
   --z-nav:      1030;
   --z-dropdown: 1040;
   --z-modal:    1050;
@@ -132,6 +133,7 @@ body {
   font-family: 'IBM Plex Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: var(--text-primary);
   min-height: 100vh;
+  min-height: 100dvh;
 }
 
 /* ── Focus Visible ───────────────────────────────── */
@@ -140,6 +142,59 @@ body {
   outline: 2px solid var(--primary-color);
   outline-offset: 3px;
   border-radius: 3px;
+}
+
+/* ── Skip Link ───────────────────────────────────── */
+
+/*
+ * Sichtbar erst bei Tastaturfokus. Liegt ueber der Navigation
+ * (--z-nav), damit er die sticky Navbar nicht unterlaeuft.
+ */
+.skip-link {
+  position: absolute;
+  left: var(--space-4);
+  top: -100%;
+  z-index: calc(var(--z-nav) + 1);
+  padding: var(--space-3) var(--space-4);
+  background: var(--secondary-color);
+  color: var(--bg-white);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  border-radius: var(--border-radius-button);
+  box-shadow: var(--shadow-md);
+}
+
+.skip-link:focus-visible {
+  top: var(--space-2);
+}
+
+main:focus { outline: none; }
+
+/* ── Text Wrapping ───────────────────────────────── */
+
+h1, h2, h3,
+.section-title-lg { text-wrap: balance; }
+
+p, li { text-wrap: pretty; }
+
+/* ── Pressed State ───────────────────────────────── */
+
+/*
+ * Erhoehte Spezifitaet (Element + Klasse), weil die seiteneigenen
+ * :hover-Regeln in den Inline-<style>-Bloecken der Seiten spaeter
+ * geladen werden und sonst gewinnen wuerden.
+ */
+a.hero-cta:active,
+a.hero-link:active,
+a.hero-cta-inverse:active,
+a.site-nav-cta:active,
+a.site-nav-link:active,
+a.cta-btn:active,
+button.cta-btn:active,
+button:active,
+.btn:active {
+  transform: translateY(1px);
+  transition-duration: 0.05s;
 }
 
 /* ── Common Card ─────────────────────────────────── */
@@ -231,6 +286,8 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+
   *,
   *::before,
   *::after {

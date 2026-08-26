@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>KI-Blog – Vibecoding Academy</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%233D5A8C'/%3E%3Ctext x='2' y='23' font-family='monospace' font-size='20' font-weight='bold' fill='%23ffffff'%3E%26lt;%3C/text%3E%3Ctext x='18' y='23' font-family='monospace' font-size='20' font-weight='bold' fill='%23ffffff'%3E%26gt;%3C/text%3E%3Cpath d='M17 8 L13 17 L18 17 L15 26' stroke='url(%23g)' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%235B8BD6'/%3E%3Cstop offset='1' stop-color='%236BB8D4'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E">
   <meta name="description" content="Gedanken, Projekte und Erkenntnisse rund um KI-gestützte Webentwicklung.">
   <meta property="og:title" content="KI-Blog – Vibecoding Academy">
   <meta property="og:description" content="Gedanken, Projekte und Erkenntnisse rund um KI-gestützte Webentwicklung.">
@@ -192,7 +193,7 @@
   <!--  Page Header                                           -->
   <!-- ═══════════════════════════════════════════════════════ -->
   <div class="page-header">
-    <h1><i class="fas fa-newspaper me-2"></i>KI-Blog</h1>
+    <h1><i class="fas fa-newspaper me-2" aria-hidden="true"></i>KI-Blog</h1>
     <p>Gedanken, Projekte &amp; Erkenntnisse rund um KI-gestützte Entwicklung</p>
   </div>
 
@@ -220,7 +221,7 @@
 
         <!-- Empty State -->
         <div class="empty-state d-none" id="empty-state">
-          <i class="fas fa-pen-nib fa-3x"></i>
+          <i class="fas fa-pen-nib fa-3x" aria-hidden="true"></i>
           <h5>Noch keine Artikel vorhanden</h5>
           <p class="small">Wechsle zum <a href="admin.html" style="color: var(--primary-color);">Admin-Bereich</a>, um den ersten Artikel zu veröffentlichen.</p>
         </div>
@@ -234,13 +235,13 @@
         <div class="sidebar-widget">
           <a href="admin.html" class="btn w-100 fw-semibold"
              style="background: var(--primary-color); color: #fff; border: none;">
-            <i class="fas fa-pen-nib me-2"></i>Artikel schreiben
+            <i class="fas fa-pen-nib me-2" aria-hidden="true"></i>Artikel schreiben
           </a>
         </div>
 
         <!-- Events Widget -->
         <div class="sidebar-widget">
-          <div class="sidebar-widget-title"><i class="fas fa-calendar-days me-2"></i>Veranstaltungen</div>
+          <div class="sidebar-widget-title"><i class="fas fa-calendar-days me-2" aria-hidden="true"></i>Veranstaltungen</div>
           <div id="events-list">
             <p class="text-muted small mb-0">Keine bevorstehenden Termine.</p>
           </div>
@@ -248,12 +249,12 @@
 
         <!-- RSS Widget -->
         <div class="sidebar-widget">
-          <div class="sidebar-widget-title"><i class="fas fa-rss me-2"></i>RSS-Feed</div>
+          <div class="sidebar-widget-title"><i class="fas fa-rss me-2" aria-hidden="true"></i>RSS-Feed</div>
           <p class="small mb-2" style="color: var(--text-muted);">
             Abonniere den Blog und erhalte neue Artikel automatisch.
           </p>
           <a href="admin.html#rss" class="btn btn-outline-secondary btn-sm w-100">
-            <i class="fas fa-download me-1"></i> feed.xml herunterladen
+            <i class="fas fa-download me-1" aria-hidden="true"></i> feed.xml herunterladen
           </a>
         </div>
 
@@ -368,7 +369,7 @@
 
       var imgHtml = post.heroImage
         ? '<img class="blog-hero-img" src="' + escAttr(post.heroImage) + '" alt="' + escAttr(post.title) + '">'
-        : '<div class="blog-hero-placeholder"><i class="fas fa-newspaper"></i></div>';
+        : '<div class="blog-hero-placeholder"><i class="fas fa-newspaper" aria-hidden="true"></i></div>';
 
       var a = document.createElement('a');
       a.href = href;
