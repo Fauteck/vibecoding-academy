@@ -101,6 +101,7 @@
 │   ├── fontawesome/                    #   Font Awesome 6.4.2 (woff2 only)
 │   │   └── css/all.min.css
 │   ├── ibm-plex-sans/                  #   Variable font, wght 100-700
+│   ├── ibm-plex-mono/                  #   Static cuts 400/500/700 (family has no VF)
 │   ├── marked/                         #   Markdown parser
 │   └── dompurify/                      #   HTML sanitiser
 │

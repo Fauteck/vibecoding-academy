@@ -54,6 +54,20 @@ Vendor-Pfad: `/vendor/ibm-plex-sans/`
 
 ---
 
+## IBM Plex Mono
+
+Copyright 2017 IBM Corp. — https://github.com/IBM/plex
+
+Licensed under the SIL Open Font License 1.1.
+https://scripts.sil.org/OFL
+
+Bezogen über: https://fontsource.org/fonts/ibm-plex-mono
+Statische Schnitte 400, 500 und 700 (Latin) — die Familie hat keinen
+Variable Font.
+Vendor-Pfad: `/vendor/ibm-plex-mono/`
+
+---
+
 ## JetBrains Mono
 
 Copyright 2020 The JetBrains Mono Project Authors

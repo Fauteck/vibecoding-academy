@@ -67,6 +67,7 @@ vibecoding-academy/
 │   ├── bootstrap/          # Bootstrap 5.3.2
 │   ├── fontawesome/        # Font Awesome 6.4.2 (woff2 only)
 │   ├── ibm-plex-sans/      # Variable font, wght 100–700
+│   ├── ibm-plex-mono/      # Static cuts 400/500/700 (no variable font)
 │   ├── marked/             # Markdown parser (projekte/viewer.html)
 │   └── dompurify/          # HTML sanitiser (projekte/viewer.html)
 ├── apps/                   # Finished projects

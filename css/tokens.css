@@ -16,6 +16,39 @@
   font-display: swap;
 }
 
+/* ── IBM Plex Mono ───────────────────────────────── */
+
+/*
+ * Static cuts, not a variable font — IBM Plex Mono has none.
+ * Three weights, because that is what the pages actually ask for:
+ * 400 (code chips, hero texture), 500 (deck cover line), 700 (deck
+ * chapter numbers and kickers). Latin subset, ~15 KB each.
+ */
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('../vendor/ibm-plex-mono/latin-400-normal.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('../vendor/ibm-plex-mono/latin-500-normal.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('../vendor/ibm-plex-mono/latin-700-normal.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ── Design Tokens & Base Styles ─────────────────── */
 
 :root {
