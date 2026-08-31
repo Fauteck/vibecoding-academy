@@ -56,8 +56,7 @@ vibecoding-academy/
 ├── README.md               # Project README
 ├── NOTICE.md               # Third-party licences
 ├── css/                    # Shared stylesheets
-│   ├── tokens.css          # Design tokens, reset, base styles
-│   ├── typography.css      # Opt-in .t-* type helpers — currently loaded by no page
+│   ├── tokens.css          # Design tokens, reset, base styles, .t-* type helpers
 │   ├── hero.css            # Shared hero section, action row and CTA
 │   ├── nav.css             # Navigation styles
 │   └── footer.css          # Footer styles

@@ -4,7 +4,7 @@ description: Use this skill to generate well-branded interfaces and assets for V
 user-invocable: true
 ---
 
-Read `DESIGN.md` (full design system spec), `css/tokens.css` (CSS variables), `css/typography.css` (`.t-*` semantic type helpers), and the existing pages under `apps/`, `wiki/`, `kontakt/`, `ueber-mich/`, `projekte/` for usage examples.
+Read `DESIGN.md` (full design system spec), `css/tokens.css` (CSS variables and the `.t-*` semantic type helpers), and the existing pages under `apps/`, `wiki/`, `kontakt/`, `ueber-mich/`, `projekte/` for usage examples.
 
 When making **production code** changes, follow `CLAUDE.md` strictly: vanilla HTML/CSS/JS only, no build tools, no CDNs, vendored assets in `/vendor`, the canonical CSP meta-tag on every new page, and the design tokens from `css/tokens.css`.
 
@@ -33,7 +33,7 @@ Token entry points (from `css/tokens.css`):
 - Gradients: `--gradient-nav`, `--gradient-hero`, `--gradient-cta-soft`.
 - Spacing: `--space-1` … `--space-7` (4 px grid).
 
-Type-helper classes (from `css/typography.css`, opt-in per page via `<link rel="stylesheet" href=".../css/typography.css">`):
+Type-helper classes (also in `css/tokens.css`, so they work on every page that loads it — no extra `<link>`):
 
 - `.t-display`, `.t-h1`, `.t-h2`, `.t-h3`, `.t-section-title`, `.t-section-label`, `.t-brand-name`, `.t-brand-subtitle`, `.t-lead`, `.t-body`, `.t-muted`, `.t-mono`.
 

@@ -282,6 +282,27 @@ IBM Plex Sans is a humanist sans-serif designed by Mike Abbink for IBM. It provi
 
 **Fluid typography** (app-level, not a shared token): Hero headings use `clamp(2rem, 4.2vw, 3rem)` for smooth scaling between viewport sizes. Apply this pattern in new apps for display-size headings.
 
+### Type helper classes
+
+`css/tokens.css` ships twelve semantic helpers so a new page does not restyle
+every heading from scratch. They are part of the base stylesheet, so any page
+that loads `css/tokens.css` can use them — no extra `<link>`.
+
+| Class | Role |
+|---|---|
+| `.t-display` | Hero display heading on a dark ground (white, `--tracking-display`) |
+| `.t-h1` `.t-h2` `.t-h3` | Heading steps — `--font-size-xl`, `1.4rem`, `--font-size-md` |
+| `.t-section-title` | Section title with icon slot (flex row, `--space-2` gap) |
+| `.t-section-label` | Uppercase eyebrow label in `--fg-accent` |
+| `.t-brand-name` `.t-brand-subtitle` | Brand lockup — name plus uppercase subtitle |
+| `.t-lead` `.t-body` `.t-muted` | Body copy steps — lead paragraph, running text, secondary text |
+| `.t-mono` | Inline code chip on a tinted brand-blue ground |
+
+They lived in a separate `css/typography.css` until 2026-08-31, opt-in per page —
+and no page ever opted in, which made every one of them inert. A helper that
+needs a per-page `<link>` is a helper that gets forgotten, so they moved into the
+stylesheet every page already loads.
+
 ---
 
 ## Spacing
