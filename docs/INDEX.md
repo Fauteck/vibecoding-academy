@@ -22,8 +22,7 @@
 | Absolute Path | Purpose | Lines |
 |---------------|---------|-------|
 | `/home/user/vibecoding-academy/js/components.js` | Navigation, footer & skip link injection (all pages) | 96 |
-| `/home/user/vibecoding-academy/css/tokens.css` | Design tokens, CSS reset, base styles | 317 |
-| `/home/user/vibecoding-academy/css/typography.css` | Semantic `.t-*` type helpers — **loaded by no page**, see ARC-2-103 | 79 |
+| `/home/user/vibecoding-academy/css/tokens.css` | Design tokens, CSS reset, base styles, `.t-*` type helpers | 397 |
 | `/home/user/vibecoding-academy/css/hero.css` | Shared hero section, action row and CTA | 96 |
 | `/home/user/vibecoding-academy/css/nav.css` | Navigation styles (desktop + mobile) | 207 |
 | `/home/user/vibecoding-academy/css/footer.css` | Footer styles | 19 |
@@ -48,8 +47,7 @@
 ├── agb.html                            # Terms of service (depth=0)
 │
 ├── css/                                # Shared stylesheets
-│   ├── tokens.css                      #   Design tokens + reset
-│   ├── typography.css                  #   Opt-in .t-* type helpers (loaded by no page)
+│   ├── tokens.css                      #   Design tokens + reset + .t-* type helpers
 │   ├── hero.css                        #   Hero section, action row, CTA
 │   ├── nav.css                         #   Navigation (desktop + mobile)
 │   └── footer.css                      #   Footer
