@@ -21,6 +21,7 @@
 
 .hero-section h1 {
   color: #ffffff;
+  font-family: var(--font-display);
   font-weight: var(--font-weight-black);
   font-size: clamp(2rem, 5vw, 3rem);
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);

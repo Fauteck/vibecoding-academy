@@ -46,6 +46,18 @@
   font-display: swap;
 }
 
+/* ── IBM Plex Sans Condensed (Display, self-hosted) ────────── */
+/* Traegt die Editorial-Headlines des Decks. Nur 700 — die Familie hat
+   keinen schwereren Schnitt, und genau das war der Grund fuer die
+   schmale Form: Kontrast ueber die Breite statt ueber das Gewicht. */
+@font-face {
+  font-family: 'IBM Plex Sans Condensed';
+  src: url('../../vendor/ibm-plex-sans-condensed/latin-700-normal.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   /* ── BASE COLOR TOKENS ──────────────────────────────────── */
   --primary-color:   #5B8BD6;   /* accent, links, borders, CTA bg */
@@ -78,6 +90,7 @@
 
   /* ── TYPOGRAPHY: BASE ──────────────────────────────────── */
   --font-sans: 'IBM Plex Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-display: 'IBM Plex Sans Condensed', 'IBM Plex Sans', 'Segoe UI', Tahoma, sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
   --font-size-xs:    0.75rem;   /* 12px — nav subtitle */

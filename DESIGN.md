@@ -264,11 +264,26 @@ Start every new app with the base tokens. Override only when the app's visual co
 
 **Mono stack** (`--font-mono`): `'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace`
 
+**Display stack** (`--font-display`): `'IBM Plex Sans Condensed', 'IBM Plex Sans', 'Segoe UI', Tahoma, sans-serif`
+
 IBM Plex Sans is a humanist sans-serif designed by Mike Abbink for IBM. It provides optical warmth and clarity at UI sizes while remaining neutral enough for data-dense layouts. The variable font file covers weights 100–700 and normal/italic in two WOFF2 files (`latin-wght-normal.woff2`, `latin-wght-italic.woff2`), both served from `/vendor/ibm-plex-sans/`. The system font stack (Segoe UI, Tahoma, Verdana) is the fallback in case the font is unavailable.
 
 **IBM Plex Mono** is the code face — same family, so code sets next to running text without a second typographic voice. Unlike Plex Sans it has **no variable font**, so it ships as three static latin cuts in `/vendor/ibm-plex-mono/`: `latin-400-normal.woff2` (code chips, hero texture), `latin-500-normal.woff2` (deck cover line), `latin-700-normal.woff2` (deck chapter numbers and kickers), about 15 KB each. Those are the weights the pages actually request — a page asking for a weight that is not shipped gets the nearest one, silently.
 
 Until 2026-08-31 `--font-mono` named `'IBM Plex Mono'` without any file behind it, so every mono surface — the whole terminal look of the workshop deck included — fell through to whatever mono the viewing machine had. **A font name in a stack is a claim about a file, and CSS never checks it.** Anything that renames or removes a `@font-face` block belongs in the same commit as the stack that names it.
+
+### The headline layer runs on IBM Plex Sans Condensed
+
+**IBM Plex Sans Condensed**, weight 700, latin, ~19 KB in `/vendor/ibm-plex-sans-condensed/`, carries `h1`, `h2`, `.t-display`, `.t-h1`, `.t-h2` and `.section-title-lg`. Body copy stays IBM Plex Sans. **The hierarchy is built from width, not weight**, because weight runs out: the family stops at 700, so a heading cannot be made heavier than a bold sentence next to it. The narrow face gives the top of the scale a shape of its own instead.
+
+`h3` and below stay IBM Plex Sans on purpose. That close to body size the condensed face reads as tighter, not as more important.
+
+Two measurements shaped this, both taken on the rendered pages rather than read off the CSS:
+
+- **32 headings were running at Bootstrap's default `font-weight: 500`** — they never got a weight of their own, and vendor CSS filled the gap. That, not a missing black cut, was the biggest single cause of a flat hierarchy. `css/tokens.css` now sets the system weight on `h1`/`h2`/`.section-title-lg`.
+- **Nine hard-coded `font-weight: 800`/`900` declarations** asked for cuts no shipped file has (five in the workshop deck, two in the blog, one each in `404.html` and `wiki/index.html`). The browser caps silently, so the strongest step rendered identically to the second strongest. They now reference `--font-weight-black`. The `--font-weight-black: 700` correction of 2026-08-26 fixed the token and left these literals behind — **a token is only the single source of truth for the places that actually reference it.**
+
+The one remaining `font-weight: 800` outside a `@font-face` block, in `apps/gta/index.html`, is real: that page vendors JetBrains Mono ExtraBold itself.
 
 | Token | Value | Context |
 |---|---|---|
