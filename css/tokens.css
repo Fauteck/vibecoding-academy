@@ -100,9 +100,6 @@
   --tracking-tight:      -0.02em;
   --tracking-label:       0.15em;
 
-  /* ── Glassmorphism ───────────────────────────────── */
-  --card-blur:          blur(16px) saturate(1.4);
-
   /* ── Border Radii ────────────────────────────────── */
   --border-radius-card:   10px;
   --border-radius-button: 6px;
@@ -287,8 +284,6 @@ button:active,
 
 .card {
   background: var(--bg-card);
-  backdrop-filter: var(--card-blur);
-  -webkit-backdrop-filter: var(--card-blur);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-card);
 }
@@ -322,8 +317,6 @@ button:active,
   border-left: none;
   padding: 0;
   background: transparent;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
   border-radius: 0;
   margin-bottom: var(--space-5);
 }
@@ -366,8 +359,6 @@ button:active,
   body { background-attachment: scroll; }
   .card {
     background: rgba(255, 255, 255, 0.96);
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
   }
 }
 

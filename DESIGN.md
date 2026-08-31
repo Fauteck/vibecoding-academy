@@ -30,10 +30,10 @@ tokens:
       usage: "page background"
     bg-card:
       value: "rgba(255, 255, 255, 0.78)"
-      usage: "card background on desktop — semi-transparent for glassmorphism"
+      usage: "card background on desktop — slightly translucent so the page ground shows through"
     bg-card-mobile:
       value: "rgba(255, 255, 255, 0.88)"
-      usage: "card background on mobile — solid fallback when backdrop-filter is disabled"
+      usage: "card background on mobile — denser, because the decorative ground is busier at small widths"
     text-primary:
       value: "#2D3748"
       usage: "body text, headings — warm dark blue-gray"
@@ -168,7 +168,7 @@ tokens:
       usage: "navigation breakpoint — hamburger replaces desktop links"
     tablet:
       value: "991.98px"
-      usage: "glassmorphism breakpoint — backdrop-filter disabled, card becomes solid"
+      usage: "card-density breakpoint — card background becomes denser"
 accessibility:
   wcag-target: "AA"
   focus-style: "2px solid {colors.primary}, offset 3px"
@@ -220,7 +220,7 @@ The design system rests on three principles:
 
 1. **Static simplicity** — No build pipeline, no CSS preprocessor. Every token is a CSS custom property in `css/tokens.css`. A single file change propagates globally.
 2. **Self-hosted variable font** — IBM Plex Sans is loaded as a WOFF2 variable font from `/vendor/ibm-plex-sans/`. The Segoe UI system stack is kept as a fallback. The variable font covers weights 100–700 with a single file, so no extra requests for bold or italic. IBM Plex Sans has no black cut; 700 is the ceiling (axis read from the shipped `.woff2` with fontTools, 2026-08).
-3. **Selective glassmorphism** — `backdrop-filter: blur()` is only used on elements that sit directly over the hero background image (hero badges, KPI pills, coach/intro cards). Base `.card` components use a near-opaque white background instead. The effect is disabled below 991.98 px.
+3. **No backdrop-filter** — the site carried 43 `backdrop-filter: blur()` declarations across eleven files until 2026-08-31. Removed after measuring what they were worth: on the hero badges the effect was named for, switching it off moved no pixel by more than **2 of 255**, and 0 % of pixels by more than 2. Only the three legal pages, where a `.card` lies over the decorative wave ground, showed any difference at all — mean 1.2–1.9 of 255. A compositing layer per card is a real cost; that was not a real effect. Cards keep their slightly translucent background, so the ground still shows through, just unblurred.
 
 ---
 
@@ -354,7 +354,7 @@ Three shadow levels map to three distinct UI layers:
 | `--shadow-md` | `0 4px 12px rgba(0,0,0,.06)` | Dropdowns — overlay |
 | `--shadow-lg` | `0 8px 24px rgba(0,0,0,.08)` | Hero cards — featured |
 
-Opacity values are deliberately low (0.04–0.08) because the blue-tinted palette and light page background already provide depth cues. Heavier shadows would fight the glassmorphism aesthetic.
+Opacity values are deliberately low (0.04–0.08) because the blue-tinted palette and light page background already provide depth cues.
 
 ---
 
@@ -399,7 +399,7 @@ The base value `1030` matches Bootstrap's navbar z-index for compatibility. Each
 | `--border-radius-button` | `6px` | CTA buttons |
 | `--border-radius-pill` | `999px` | Badges, KPI chips |
 
-Cards use a `1px solid var(--border-color)` border in addition to the glassmorphism background. The border provides a crisp edge that `backdrop-filter` alone cannot guarantee across all rendering engines.
+Cards use a `1px solid var(--border-color)` border in addition to the translucent background. On a light ground a translucent panel has no edge of its own; the border supplies it.
 
 ---
 
@@ -420,7 +420,7 @@ Both gradients run at 135° (diagonal, top-left → bottom-right), matching the 
 |---|---|---|
 | `--bp-mobile-sm` | `600px` | Tighter nav inner padding on small phones |
 | `--bp-mobile` | `968px` | Hamburger replaces desktop links |
-| `--bp-tablet` | `991.98px` | Glassmorphism disabled; card background becomes solid |
+| `--bp-tablet` | `991.98px` | Card background becomes denser |
 
 `991.98px` (Bootstrap's `lg` threshold − 0.02 px) is used instead of `992px` to prevent a 1 px flash on exactly-992 px viewports where both conditions would be briefly true simultaneously.
 
