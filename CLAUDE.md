@@ -67,6 +67,8 @@ vibecoding-academy/
 │   ├── bootstrap/          # Bootstrap 5.3.2
 │   ├── fontawesome/        # Font Awesome 6.4.2 (woff2 only)
 │   ├── ibm-plex-sans/      # Variable font, wght 100–700
+│   ├── ibm-plex-sans-condensed/  # Display face, static cut 700
+│   ├── ibm-plex-mono/      # Static cuts 400/500/700 (no variable font)
 │   ├── marked/             # Markdown parser (projekte/viewer.html)
 │   └── dompurify/          # HTML sanitiser (projekte/viewer.html)
 ├── apps/                   # Finished projects
@@ -478,7 +480,7 @@ font-family: 'IBM Plex Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 | Desktop | > 968 px | Desktop navbar visible; hamburger hidden |
 | Mobile | ≤ 968 px | Hamburger menu; dropdown navigation |
 | Small mobile | ≤ 600 px | Tighter nav inner padding |
-| Glassmorphism off | ≤ 992 px | backdrop-filter disabled; card background becomes solid |
+| Denser cards | ≤ 992 px | Card background becomes denser (no backdrop-filter anywhere since 2026-08-31) |
 
 ### Navigation
 
@@ -490,7 +492,7 @@ font-family: 'IBM Plex Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
 | Class | Usage |
 |---|---|
-| `.card` | Standard card (glassmorphism on desktop, solid on mobile) |
+| `.card` | Standard card (translucent on desktop, denser on mobile) |
 | `.section-header` | Section heading with primary-color left border |
 | `.site-nav` | Sticky top navigation bar |
 | `.site-nav-cta` | Call-to-action button in navbar |

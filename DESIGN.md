@@ -30,10 +30,10 @@ tokens:
       usage: "page background"
     bg-card:
       value: "rgba(255, 255, 255, 0.78)"
-      usage: "card background on desktop — semi-transparent for glassmorphism"
+      usage: "card background on desktop — slightly translucent so the page ground shows through"
     bg-card-mobile:
       value: "rgba(255, 255, 255, 0.88)"
-      usage: "card background on mobile — solid fallback when backdrop-filter is disabled"
+      usage: "card background on mobile — denser, because the decorative ground is busier at small widths"
     text-primary:
       value: "#2D3748"
       usage: "body text, headings — warm dark blue-gray"
@@ -168,7 +168,7 @@ tokens:
       usage: "navigation breakpoint — hamburger replaces desktop links"
     tablet:
       value: "991.98px"
-      usage: "glassmorphism breakpoint — backdrop-filter disabled, card becomes solid"
+      usage: "card-density breakpoint — card background becomes denser"
 accessibility:
   wcag-target: "AA"
   focus-style: "2px solid {colors.primary}, offset 3px"
@@ -220,7 +220,7 @@ The design system rests on three principles:
 
 1. **Static simplicity** — No build pipeline, no CSS preprocessor. Every token is a CSS custom property in `css/tokens.css`. A single file change propagates globally.
 2. **Self-hosted variable font** — IBM Plex Sans is loaded as a WOFF2 variable font from `/vendor/ibm-plex-sans/`. The Segoe UI system stack is kept as a fallback. The variable font covers weights 100–700 with a single file, so no extra requests for bold or italic. IBM Plex Sans has no black cut; 700 is the ceiling (axis read from the shipped `.woff2` with fontTools, 2026-08).
-3. **Selective glassmorphism** — `backdrop-filter: blur()` is only used on elements that sit directly over the hero background image (hero badges, KPI pills, coach/intro cards). Base `.card` components use a near-opaque white background instead. The effect is disabled below 991.98 px.
+3. **No backdrop-filter** — the site carried 43 `backdrop-filter: blur()` declarations across eleven files until 2026-08-31. Removed after measuring what they were worth: on the hero badges the effect was named for, switching it off moved no pixel by more than **2 of 255**, and 0 % of pixels by more than 2. Only the three legal pages, where a `.card` lies over the decorative wave ground, showed any difference at all — mean 1.2–1.9 of 255. A compositing layer per card is a real cost; that was not a real effect. Cards keep their slightly translucent background, so the ground still shows through, just unblurred.
 
 ---
 
@@ -262,7 +262,28 @@ Start every new app with the base tokens. Override only when the app's visual co
 
 **Font stack:** `'IBM Plex Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif`
 
+**Mono stack** (`--font-mono`): `'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace`
+
+**Display stack** (`--font-display`): `'IBM Plex Sans Condensed', 'IBM Plex Sans', 'Segoe UI', Tahoma, sans-serif`
+
 IBM Plex Sans is a humanist sans-serif designed by Mike Abbink for IBM. It provides optical warmth and clarity at UI sizes while remaining neutral enough for data-dense layouts. The variable font file covers weights 100–700 and normal/italic in two WOFF2 files (`latin-wght-normal.woff2`, `latin-wght-italic.woff2`), both served from `/vendor/ibm-plex-sans/`. The system font stack (Segoe UI, Tahoma, Verdana) is the fallback in case the font is unavailable.
+
+**IBM Plex Mono** is the code face — same family, so code sets next to running text without a second typographic voice. Unlike Plex Sans it has **no variable font**, so it ships as three static latin cuts in `/vendor/ibm-plex-mono/`: `latin-400-normal.woff2` (code chips, hero texture), `latin-500-normal.woff2` (deck cover line), `latin-700-normal.woff2` (deck chapter numbers and kickers), about 15 KB each. Those are the weights the pages actually request — a page asking for a weight that is not shipped gets the nearest one, silently.
+
+Until 2026-08-31 `--font-mono` named `'IBM Plex Mono'` without any file behind it, so every mono surface — the whole terminal look of the workshop deck included — fell through to whatever mono the viewing machine had. **A font name in a stack is a claim about a file, and CSS never checks it.** Anything that renames or removes a `@font-face` block belongs in the same commit as the stack that names it.
+
+### The headline layer runs on IBM Plex Sans Condensed
+
+**IBM Plex Sans Condensed**, weight 700, latin, ~19 KB in `/vendor/ibm-plex-sans-condensed/`, carries `h1`, `h2`, `.t-display`, `.t-h1`, `.t-h2` and `.section-title-lg`. Body copy stays IBM Plex Sans. **The hierarchy is built from width, not weight**, because weight runs out: the family stops at 700, so a heading cannot be made heavier than a bold sentence next to it. The narrow face gives the top of the scale a shape of its own instead.
+
+`h3` and below stay IBM Plex Sans on purpose. That close to body size the condensed face reads as tighter, not as more important.
+
+Two measurements shaped this, both taken on the rendered pages rather than read off the CSS:
+
+- **32 headings were running at Bootstrap's default `font-weight: 500`** — they never got a weight of their own, and vendor CSS filled the gap. That, not a missing black cut, was the biggest single cause of a flat hierarchy. `css/tokens.css` now sets the system weight on `h1`/`h2`/`.section-title-lg`.
+- **Nine hard-coded `font-weight: 800`/`900` declarations** asked for cuts no shipped file has (five in the workshop deck, two in the blog, one each in `404.html` and `wiki/index.html`). The browser caps silently, so the strongest step rendered identically to the second strongest. They now reference `--font-weight-black`. The `--font-weight-black: 700` correction of 2026-08-26 fixed the token and left these literals behind — **a token is only the single source of truth for the places that actually reference it.**
+
+The one remaining `font-weight: 800` outside a `@font-face` block, in `apps/gta/index.html`, is real: that page vendors JetBrains Mono ExtraBold itself.
 
 | Token | Value | Context |
 |---|---|---|
@@ -333,7 +354,7 @@ Three shadow levels map to three distinct UI layers:
 | `--shadow-md` | `0 4px 12px rgba(0,0,0,.06)` | Dropdowns — overlay |
 | `--shadow-lg` | `0 8px 24px rgba(0,0,0,.08)` | Hero cards — featured |
 
-Opacity values are deliberately low (0.04–0.08) because the blue-tinted palette and light page background already provide depth cues. Heavier shadows would fight the glassmorphism aesthetic.
+Opacity values are deliberately low (0.04–0.08) because the blue-tinted palette and light page background already provide depth cues.
 
 ---
 
@@ -378,7 +399,7 @@ The base value `1030` matches Bootstrap's navbar z-index for compatibility. Each
 | `--border-radius-button` | `6px` | CTA buttons |
 | `--border-radius-pill` | `999px` | Badges, KPI chips |
 
-Cards use a `1px solid var(--border-color)` border in addition to the glassmorphism background. The border provides a crisp edge that `backdrop-filter` alone cannot guarantee across all rendering engines.
+Cards use a `1px solid var(--border-color)` border in addition to the translucent background. On a light ground a translucent panel has no edge of its own; the border supplies it.
 
 ---
 
@@ -399,7 +420,7 @@ Both gradients run at 135° (diagonal, top-left → bottom-right), matching the 
 |---|---|---|
 | `--bp-mobile-sm` | `600px` | Tighter nav inner padding on small phones |
 | `--bp-mobile` | `968px` | Hamburger replaces desktop links |
-| `--bp-tablet` | `991.98px` | Glassmorphism disabled; card background becomes solid |
+| `--bp-tablet` | `991.98px` | Card background becomes denser |
 
 `991.98px` (Bootstrap's `lg` threshold − 0.02 px) is used instead of `992px` to prevent a 1 px flash on exactly-992 px viewports where both conditions would be briefly true simultaneously.
 

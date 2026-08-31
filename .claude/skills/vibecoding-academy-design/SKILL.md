@@ -18,7 +18,7 @@ Brand quick-reference:
 - Mantra: „Idee rein. Prototyp raus."
 - H1: „Erst bauen. Dann wissen, was wirklich geht."
 - No emoji in chrome; emoji only as project-tile markers on `projekte/index.html`.
-- Cards: `border-radius: 10px`, 1px `--border-color`, glassmorphism on desktop only (mobile breakpoint `991.98px` disables `backdrop-filter`).
+- Cards: `border-radius: 10px`, 1px `--border-color`, slightly translucent background (`--bg-card`), denser below `991.98px`. **No `backdrop-filter`** — measured as invisible and removed on 2026-08-31; do not reintroduce it.
 - CTA hover: `translateY(-1px)` + soft brand-blue shadow, NOT `opacity: 0.85`.
 - Section headers (numbered): use `.numbered-sections` + `.section-header.numbered` with `.section-eyebrow` + `.section-title-lg` for the auto-generated `01 — ` prefix.
 

@@ -57,7 +57,6 @@
     /* ── Section Header ────────────────────────────────────── */
     .section-header {
       background: rgba(238, 242, 247, 0.85);
-      backdrop-filter: blur(6px);
       padding: 0.75rem 1rem;
       margin-bottom: 1.25rem;
       border-radius: 0 6px 6px 0;
@@ -71,7 +70,6 @@
 
     /* ── Card Overrides ────────────────────────────────────── */
     .card {
-      backdrop-filter: blur(8px);
       box-shadow: 0 1px 3px rgba(0,0,0,0.04);
       transition: transform var(--transition-fast), box-shadow var(--transition-fast);
     }
@@ -112,8 +110,6 @@
     @media (max-width: 991.98px) {
       body { background-attachment: scroll; }
       .section-header {
-        backdrop-filter: none;
-        -webkit-backdrop-filter: none;
         background: rgba(238, 242, 247, 0.95);
       }
     }

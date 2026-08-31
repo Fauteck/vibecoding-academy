@@ -16,6 +16,56 @@
   font-display: swap;
 }
 
+/* ── IBM Plex Mono ───────────────────────────────── */
+
+/*
+ * Static cuts, not a variable font — IBM Plex Mono has none.
+ * Three weights, because that is what the pages actually ask for:
+ * 400 (code chips, hero texture), 500 (deck cover line), 700 (deck
+ * chapter numbers and kickers). Latin subset, ~15 KB each.
+ */
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('../vendor/ibm-plex-mono/latin-400-normal.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('../vendor/ibm-plex-mono/latin-500-normal.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('../vendor/ibm-plex-mono/latin-700-normal.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── IBM Plex Sans Condensed (Display) ───────────── */
+
+/*
+ * Die schmale Schwester, nur 700, nur latin (~19 KB). Sie traegt die
+ * Ueberschriften-Ebene: Der Kontrast zum Fliesstext entsteht ueber die
+ * BREITE, weil die Familie ihn ueber das Gewicht nicht hergibt — bei 700
+ * ist Schluss. Fliesstext bleibt IBM Plex Sans.
+ */
+
+@font-face {
+  font-family: 'IBM Plex Sans Condensed';
+  src: url('../vendor/ibm-plex-sans-condensed/latin-700-normal.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ── Design Tokens & Base Styles ─────────────────── */
 
 :root {
@@ -49,9 +99,6 @@
   --tracking-display:    -0.04em;
   --tracking-tight:      -0.02em;
   --tracking-label:       0.15em;
-
-  /* ── Glassmorphism ───────────────────────────────── */
-  --card-blur:          blur(16px) saturate(1.4);
 
   /* ── Border Radii ────────────────────────────────── */
   --border-radius-card:   10px;
@@ -89,6 +136,7 @@
 
   /* ── Typography Scale (added from design system) ─── */
   --font-sans:         'IBM Plex Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-display:      'IBM Plex Sans Condensed', 'IBM Plex Sans', 'Segoe UI', Tahoma, sans-serif;
   --font-mono:         'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
   --font-size-xs:      0.75rem;   /* 12px   — nav subtitle, labels */
@@ -177,6 +225,34 @@ body {
 
 main:focus { outline: none; }
 
+/* ── Headline Layer ──────────────────────────────── */
+
+/*
+ * Zwei Dinge, die vorher nicht galten:
+ *
+ * 1. Ueberschriften laufen in der schmalen Schwester (--font-display).
+ *    Hierarchie ueber die Breite, weil das Gewicht bei 700 endet.
+ * 2. Sie tragen das Gewicht des Systems. Ohne diese Zeile erben h1/h2
+ *    Bootstraps Werksgewicht 500 — gemessen an 32 Ueberschriften quer
+ *    ueber die Seiten, die nie ein eigenes font-weight bekommen hatten.
+ *    Die schwache Typo-Hierarchie kam von dort, nicht von einem
+ *    fehlenden Black-Schnitt.
+ *
+ * h3 und darunter bleiben bewusst IBM Plex Sans: dort sitzt die Schrift
+ * so nah am Fliesstext, dass die schmale Form nur enger wirkt, nicht
+ * hierarchischer.
+ */
+
+h1, h2,
+.t-display, .t-h1, .t-h2,
+.section-title-lg {
+  font-family: var(--font-display);
+  letter-spacing: var(--tracking-tight);
+}
+
+h1, h2,
+.section-title-lg { font-weight: var(--font-weight-bold); }
+
 /* ── Text Wrapping ───────────────────────────────── */
 
 h1, h2, h3,
@@ -208,8 +284,6 @@ button:active,
 
 .card {
   background: var(--bg-card);
-  backdrop-filter: var(--card-blur);
-  -webkit-backdrop-filter: var(--card-blur);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-card);
 }
@@ -243,8 +317,6 @@ button:active,
   border-left: none;
   padding: 0;
   background: transparent;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
   border-radius: 0;
   margin-bottom: var(--space-5);
 }
@@ -287,8 +359,6 @@ button:active,
   body { background-attachment: scroll; }
   .card {
     background: rgba(255, 255, 255, 0.96);
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
   }
 }
 
