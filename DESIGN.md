@@ -128,10 +128,25 @@ tokens:
       usage: "navbar — subtle lift, anchors nav without heaviness"
     md:
       value: "0 4px 12px rgba(0, 0, 0, 0.06)"
-      usage: "dropdown menus — clear layer separation from page"
+      usage: "cards, panels, sections at rest — and dropdown menus"
     lg:
       value: "0 8px 24px rgba(0, 0, 0, 0.08)"
-      usage: "hero cards — stronger elevation for featured content"
+      usage: "the same surfaces on hover — one step up, never a new value"
+    xl:
+      value: "0 12px 32px rgba(0, 0, 0, 0.14)"
+      usage: "elements floating over content — back-to-top button, image hover"
+    focus-ring:
+      value: "0 0 0 3px rgba(91, 139, 214, 0.15)"
+      usage: "focused form controls — brand-tinted, replaces the browser ring"
+    cta:
+      value: "0 4px 20px rgba(91, 139, 214, 0.25)"
+      usage: "brand-tinted glow under a resting accent element"
+    cta-hover:
+      value: "0 6px 20px rgba(91, 139, 214, 0.35)"
+      usage: "the same glow on hover — CTA buttons in nav and contact page"
+    polaroid:
+      value: "0 18px 40px rgba(61, 90, 140, 0.22), 0 2px 6px rgba(0, 0, 0, 0.08)"
+      usage: "the tilted portrait card on ueber-mich — two layers, one token"
   transitions:
     fast:
       value: "0.2s ease"
@@ -324,6 +339,19 @@ and no page ever opted in, which made every one of them inert. A helper that
 needs a per-page `<link>` is a helper that gets forgotten, so they moved into the
 stylesheet every page already loads.
 
+### Measure (line length)
+
+`--measure: 65ch` caps body copy in the two prose containers — `.page-wrapper`
+(legal pages, contact, about) and `#content` (wiki handout, hosting comparison,
+Markdown viewer). Past roughly 65 characters the eye stops finding the start of
+the next line reliably; before 2026-09-02 the repo held no `ch` value at all and
+paragraphs ran to the full container width — about 1320 px on the wide
+`.page-wrapper` pages.
+
+`max-width` only caps, so short paragraphs inside cards are unaffected. The one
+exception is centred text: a narrower block inside `.text-center` would visibly
+shift left, so those paragraphs opt out.
+
 ---
 
 ## Spacing
@@ -346,15 +374,30 @@ When choosing spacing in a new component, pick the nearest step. Avoid arbitrary
 
 ## Elevation (Shadows)
 
-Three shadow levels map to three distinct UI layers:
+Four neutral levels map to four distinct UI layers:
 
 | Token | Value | Layer |
 |---|---|---|
 | `--shadow-sm` | `0 1px 8px rgba(0,0,0,.04)` | Navbar — base chrome |
-| `--shadow-md` | `0 4px 12px rgba(0,0,0,.06)` | Dropdowns — overlay |
-| `--shadow-lg` | `0 8px 24px rgba(0,0,0,.08)` | Hero cards — featured |
+| `--shadow-md` | `0 4px 12px rgba(0,0,0,.06)` | Cards, panels, sections at rest; dropdowns |
+| `--shadow-lg` | `0 8px 24px rgba(0,0,0,.08)` | The same surfaces on hover |
+| `--shadow-xl` | `0 12px 32px rgba(0,0,0,.14)` | Floating over content — back-to-top, image hover |
 
-Opacity values are deliberately low (0.04–0.08) because the blue-tinted palette and light page background already provide depth cues.
+Opacity values are deliberately low because the blue-tinted palette and light page background already provide depth cues; only `xl`, which has to read against a photo, goes past 0.08.
+
+Three shadows sit outside the neutral scale because they carry meaning, not height:
+
+| Token | Value | Meaning |
+|---|---|---|
+| `--shadow-focus-ring` | `0 0 0 3px rgba(91,139,214,.15)` | Focused form control |
+| `--shadow-cta` | `0 4px 20px rgba(91,139,214,.25)` | Brand glow, resting accent |
+| `--shadow-cta-hover` | `0 6px 20px rgba(91,139,214,.35)` | Brand glow, hovered CTA |
+| `--shadow-polaroid` | two layers, see `css/tokens.css` | The tilted portrait card |
+
+**Rule:** a `box-shadow` declaration takes one of these tokens. A hand-written
+`rgba()` value is how the repo ended up with five strengths for the same
+hierarchy level. A surface that needs a shadow the scale does not have needs a
+new token, not a local value.
 
 ---
 
@@ -464,6 +507,39 @@ White text on `--primary-color` (`#5B8BD6`) yields 3.4:1 — below WCAG AA (4.5:
 **a11y-002 — text-muted in body context**
 `--text-muted` (`#7A8599`) achieves only 3.3:1 on `--bg-page`. It passes for UI chrome (nav links, large touch targets) but fails for inline body copy.
 → Restrict `text-muted` to decorative labels and nav states. Use `text-primary` for readable body paragraphs.
+
+---
+
+## Iconography
+
+Font Awesome 6.4.2 Solid, loaded from `/vendor`. Every icon is decorative and
+carries `aria-hidden="true"` — the label next to it is the accessible name.
+
+**One meaning, one icon.** An icon that stands for two things teaches the reader
+nothing; a label that shows two icons teaches them wrong. The wiki handout ran on
+five different icons for the kicker "Lernpfad" until 2026-09-02.
+
+Kicker icons in `wiki/index.html` — the kicker names the *category*, so the icon
+belongs to the category, not to the individual section:
+
+| Kicker | Icon |
+|---|---|
+| Lernpfad | `fa-route` |
+| Praxisbereich | `fa-keyboard` |
+| Vertiefung | `fa-magnifying-glass-plus` |
+| Veröffentlichen | `fa-share-nodes` |
+| Abschluss | `fa-bookmark` |
+
+Reserved elsewhere:
+
+| Icon | Reserved for |
+|---|---|
+| `fa-lightbulb` | Hint boxes (`.info-icon`) — nothing else |
+| `fa-rocket` | "Start your own project" — the CTA and the open-ended project tile |
+| `fa-chevron-right` | Collapsible section toggles |
+
+Avoid the stock AI-assistant clichés (`fa-wand-magic-sparkles`, `fa-robot` as a
+generic decoration). Name what the thing does instead.
 
 ---
 

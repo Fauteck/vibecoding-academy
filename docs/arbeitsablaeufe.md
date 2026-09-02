@@ -163,7 +163,7 @@ For rationale and accessibility implications of each token, see [DESIGN.md](../D
 
 **File:** `/home/user/vibecoding-academy/index.html`
 
-Insert a new card in the "Ergebnisse" section. Use existing cards as a template — structure with Bootstrap grid (`.col-md-6` or `.col-lg-4`), `.card` class, and link to the app.
+Insert a new card in the "Ergebnisse" section. Use existing cards as a template — structure with Bootstrap grid (`.col-md-6` or `.col-lg-4`), `.card` class, and link to the app. On `projekte/index.html` the tile size follows what the entry *is*: `.tile-app` for a finished application, `.tile-concept` for a Markdown concept template, `.tile-invite` for the call to action.
 
 ---
 

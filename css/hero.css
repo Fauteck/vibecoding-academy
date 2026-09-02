@@ -60,7 +60,7 @@
   font-size: 1rem;
   border-radius: 8px;
   text-decoration: none;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+  box-shadow: var(--shadow-lg);
   transition: transform var(--transition-fast), box-shadow var(--transition-fast);
   will-change: transform;
 }
@@ -73,7 +73,7 @@
 .hero-cta:hover,
 .hero-cta:focus-visible {
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.16);
+  box-shadow: var(--shadow-xl);
   color: var(--secondary-color);
 }
 
