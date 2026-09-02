@@ -70,13 +70,13 @@
 
     /* ── Card Overrides ────────────────────────────────────── */
     .card {
-      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      box-shadow: var(--shadow-md);
       transition: transform var(--transition-fast), box-shadow var(--transition-fast);
     }
 
     a.card:hover {
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      box-shadow: var(--shadow-lg);
     }
 
     /* ── Project Tile Icon ─────────────────────────────────── */
@@ -136,13 +136,75 @@
       margin: 0 auto;
     }
 
+    /* ── Kachelgroessen ────────────────────────────────────── */
+    /*
+     * Die Groesse folgt der Art des Eintrags, nicht seiner Position:
+     *
+     *   .tile-app      halbe Breite — fertige Anwendungen, die man oeffnet
+     *   .tile-invite   volle Breite, eine Zeile — kein Projekt, ein Angebot
+     *   .tile-concept  halbe Breite, flache Zeile — Lesestoff, kein Programm
+     *
+     * Vorher trugen alle drei Sorten dieselbe Drittel-Kachel; zehn davon
+     * untereinander lasen sich als eine Wand ohne Rangfolge.
+     */
+
+    .tile-app .card-body { padding: 1.75rem 1.5rem; }
+    .tile-app .tile-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 18px;
+      font-size: 2.1rem;
+      margin-bottom: var(--space-4);
+    }
+    .tile-app .card-title { font-size: 1.15rem; }
+
     /* Einladungs-Kachel: gestrichelter Rahmen statt Vorschau, weil es sie noch nicht gibt */
     .tile-invite { border: 2px dashed var(--primary-color); }
-    .tile-invite-text { color: var(--text-muted); }
+    .tile-invite-text { color: var(--text-muted); margin-bottom: 0; }
+    .tile-invite .card-body {
+      display: flex;
+      align-items: center;
+      gap: var(--space-5);
+      padding: 1.35rem 1.5rem;
+    }
+    .tile-invite .tile-icon { margin: 0; flex-shrink: 0; }
+    .tile-invite-body { flex: 1 1 auto; }
+    .tile-invite .card-title { margin-bottom: var(--space-1); }
     .tile-invite-link {
       color: var(--primary-color);
       font-weight: var(--font-weight-semibold);
       font-size: 0.9rem;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    /* Konzeptvorlagen: Zeile statt Kachel, gut halb so hoch wie .tile-app */
+    .tile-concept .card-body {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      padding: 0.9rem 1.1rem;
+    }
+    .tile-concept .tile-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      font-size: 1.15rem;
+      margin: 0;
+      flex-shrink: 0;
+    }
+    .tile-concept-text { min-width: 0; }
+    .tile-concept .card-title { margin-bottom: 0.15rem; font-size: 1rem; }
+    .tile-concept .card-text { margin-bottom: 0; }
+
+    /* Unter 576 px bleibt fuer die Einladung keine Zeile mehr uebrig */
+    @media (max-width: 575.98px) {
+      .tile-invite .card-body {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--space-3);
+      }
+      .tile-invite .tile-icon { margin: 0 auto; }
     }
 
     .invite-box {
@@ -190,8 +252,8 @@
     </div>
 
     <div class="row g-3 mb-4">
-      <div class="col-md-4 col-sm-6">
-        <a class="card text-decoration-none h-100" href="../apps/pong/">
+      <div class="col-md-6">
+        <a class="card tile-app text-decoration-none h-100" href="../apps/pong/">
           <div class="card-body text-center">
             <div class="tile-icon"><i class="fas fa-table-tennis-paddle-ball" aria-hidden="true"></i></div>
             <h6 class="card-title">Pong</h6>
@@ -199,8 +261,8 @@
           </div>
         </a>
       </div>
-      <div class="col-md-4 col-sm-6">
-        <a class="card text-decoration-none h-100" href="../apps/gta/">
+      <div class="col-md-6">
+        <a class="card tile-app text-decoration-none h-100" href="../apps/gta/">
           <div class="card-body text-center">
             <div class="tile-icon"><i class="fas fa-car-side" aria-hidden="true"></i></div>
             <h6 class="card-title">Grand Thomas Auto 6</h6>
@@ -208,8 +270,8 @@
           </div>
         </a>
       </div>
-      <div class="col-md-4 col-sm-6">
-        <a class="card text-decoration-none h-100" href="../apps/wochenendplanung/">
+      <div class="col-md-6">
+        <a class="card tile-app text-decoration-none h-100" href="../apps/wochenendplanung/">
           <div class="card-body text-center">
             <div class="tile-icon"><i class="fas fa-calendar-week" aria-hidden="true"></i></div>
             <h6 class="card-title">Wochenendplanung</h6>
@@ -217,8 +279,8 @@
           </div>
         </a>
       </div>
-      <div class="col-md-4 col-sm-6">
-        <a class="card text-decoration-none h-100" href="../apps/blog/">
+      <div class="col-md-6">
+        <a class="card tile-app text-decoration-none h-100" href="../apps/blog/">
           <div class="card-body text-center">
             <div class="tile-icon"><i class="fas fa-newspaper" aria-hidden="true"></i></div>
             <h6 class="card-title">KI-Blog</h6>
@@ -226,13 +288,15 @@
           </div>
         </a>
       </div>
-      <div class="col-md-4 col-sm-6">
-        <a class="card text-decoration-none h-100 tile-invite" href="../kontakt/">
-          <div class="card-body text-center d-flex flex-column justify-content-center">
+      <div class="col-12">
+        <a class="card tile-invite text-decoration-none" href="../kontakt/">
+          <div class="card-body">
             <div class="tile-icon"><i class="fas fa-rocket" aria-hidden="true"></i></div>
-            <h6 class="card-title">Dein Anwendungsfall</h6>
-            <p class="card-text small tile-invite-text">Im Workshop entsteht ein erster Prototyp für euren echten Use Case</p>
-            <span class="mt-auto tile-invite-link">
+            <div class="tile-invite-body">
+              <h6 class="card-title">Dein Anwendungsfall</h6>
+              <p class="card-text small tile-invite-text">Im Workshop entsteht ein erster Prototyp für euren echten Use Case</p>
+            </div>
+            <span class="tile-invite-link">
               Pilot anfragen <i class="fas fa-arrow-right ms-1" aria-hidden="true"></i>
             </span>
           </div>
@@ -248,93 +312,113 @@
     </div>
 
     <div class="row g-3 mb-4">
-      <div class="col-md-4 col-sm-6">
-        <a class="card text-decoration-none h-100" href="viewer.html?file=flappybird.md">
-          <div class="card-body text-center">
+      <div class="col-md-6">
+        <a class="card tile-concept text-decoration-none h-100" href="viewer.html?file=flappybird.md">
+          <div class="card-body">
             <div class="tile-icon"><i class="fas fa-feather" aria-hidden="true"></i></div>
-            <h6 class="card-title">Flappy Bird</h6>
-            <p class="card-text text-muted small">Fliege durch die Lücken zwischen den Röhren</p>
+            <div class="tile-concept-text">
+              <h6 class="card-title">Flappy Bird</h6>
+              <p class="card-text text-muted small">Fliege durch die Lücken zwischen den Röhren</p>
+            </div>
           </div>
         </a>
       </div>
-      <div class="col-md-4 col-sm-6">
-        <a class="card text-decoration-none h-100" href="viewer.html?file=memory.md">
-          <div class="card-body text-center">
+      <div class="col-md-6">
+        <a class="card tile-concept text-decoration-none h-100" href="viewer.html?file=memory.md">
+          <div class="card-body">
             <div class="tile-icon"><i class="fas fa-clone" aria-hidden="true"></i></div>
-            <h6 class="card-title">Memory</h6>
-            <p class="card-text text-muted small">Finde alle passenden Kartenpaare</p>
+            <div class="tile-concept-text">
+              <h6 class="card-title">Memory</h6>
+              <p class="card-text text-muted small">Finde alle passenden Kartenpaare</p>
+            </div>
           </div>
         </a>
       </div>
-      <div class="col-md-4 col-sm-6">
-        <a class="card text-decoration-none h-100" href="viewer.html?file=minesweeper.md">
-          <div class="card-body text-center">
+      <div class="col-md-6">
+        <a class="card tile-concept text-decoration-none h-100" href="viewer.html?file=minesweeper.md">
+          <div class="card-body">
             <div class="tile-icon"><i class="fas fa-bomb" aria-hidden="true"></i></div>
-            <h6 class="card-title">Minesweeper</h6>
-            <p class="card-text text-muted small">Decke das Feld auf, ohne eine Mine zu treffen</p>
+            <div class="tile-concept-text">
+              <h6 class="card-title">Minesweeper</h6>
+              <p class="card-text text-muted small">Decke das Feld auf, ohne eine Mine zu treffen</p>
+            </div>
           </div>
         </a>
       </div>
-      <div class="col-md-4 col-sm-6">
-        <a class="card text-decoration-none h-100" href="viewer.html?file=pong.md">
-          <div class="card-body text-center">
+      <div class="col-md-6">
+        <a class="card tile-concept text-decoration-none h-100" href="viewer.html?file=pong.md">
+          <div class="card-body">
             <div class="tile-icon"><i class="fas fa-table-tennis-paddle-ball" aria-hidden="true"></i></div>
-            <h6 class="card-title">Pong</h6>
-            <p class="card-text text-muted small">Klassisches Pong-Spiel: Spieler gegen KI</p>
+            <div class="tile-concept-text">
+              <h6 class="card-title">Pong</h6>
+              <p class="card-text text-muted small">Klassisches Pong-Spiel: Spieler gegen KI</p>
+            </div>
           </div>
         </a>
       </div>
-      <div class="col-md-4 col-sm-6">
-        <a class="card text-decoration-none h-100" href="viewer.html?file=snake.md">
-          <div class="card-body text-center">
+      <div class="col-md-6">
+        <a class="card tile-concept text-decoration-none h-100" href="viewer.html?file=snake.md">
+          <div class="card-body">
             <div class="tile-icon"><i class="fas fa-staff-snake" aria-hidden="true"></i></div>
-            <h6 class="card-title">Snake</h6>
-            <p class="card-text text-muted small">Sammle Futter und werde immer länger</p>
+            <div class="tile-concept-text">
+              <h6 class="card-title">Snake</h6>
+              <p class="card-text text-muted small">Sammle Futter und werde immer länger</p>
+            </div>
           </div>
         </a>
       </div>
-      <div class="col-md-4 col-sm-6">
-        <a class="card text-decoration-none h-100" href="viewer.html?file=solitaire.md">
-          <div class="card-body text-center">
-            <div class="tile-icon"><i class="fas fa-spade" aria-hidden="true"></i></div>
-            <h6 class="card-title">Solitär</h6>
-            <p class="card-text text-muted small">Klassisches Klondike-Kartenspiel</p>
+      <div class="col-md-6">
+        <a class="card tile-concept text-decoration-none h-100" href="viewer.html?file=solitaire.md">
+          <div class="card-body">
+            <div class="tile-icon"><i class="fas fa-diamond" aria-hidden="true"></i></div>
+            <div class="tile-concept-text">
+              <h6 class="card-title">Solitär</h6>
+              <p class="card-text text-muted small">Klassisches Klondike-Kartenspiel</p>
+            </div>
           </div>
         </a>
       </div>
-      <div class="col-md-4 col-sm-6">
-        <a class="card text-decoration-none h-100" href="viewer.html?file=sudoku.md">
-          <div class="card-body text-center">
+      <div class="col-md-6">
+        <a class="card tile-concept text-decoration-none h-100" href="viewer.html?file=sudoku.md">
+          <div class="card-body">
             <div class="tile-icon"><i class="fas fa-table-cells" aria-hidden="true"></i></div>
-            <h6 class="card-title">Sudoku</h6>
-            <p class="card-text text-muted small">Fülle das 9x9-Gitter mit den richtigen Zahlen</p>
+            <div class="tile-concept-text">
+              <h6 class="card-title">Sudoku</h6>
+              <p class="card-text text-muted small">Fülle das 9x9-Gitter mit den richtigen Zahlen</p>
+            </div>
           </div>
         </a>
       </div>
-      <div class="col-md-4 col-sm-6">
-        <a class="card text-decoration-none h-100" href="viewer.html?file=tetris.md">
-          <div class="card-body text-center">
+      <div class="col-md-6">
+        <a class="card tile-concept text-decoration-none h-100" href="viewer.html?file=tetris.md">
+          <div class="card-body">
             <div class="tile-icon"><i class="fas fa-shapes" aria-hidden="true"></i></div>
-            <h6 class="card-title">Tetris</h6>
-            <p class="card-text text-muted small">Stapele fallende Blöcke zu vollen Reihen</p>
+            <div class="tile-concept-text">
+              <h6 class="card-title">Tetris</h6>
+              <p class="card-text text-muted small">Stapele fallende Blöcke zu vollen Reihen</p>
+            </div>
           </div>
         </a>
       </div>
-      <div class="col-md-4 col-sm-6">
-        <a class="card text-decoration-none h-100" href="viewer.html?file=tictactoe.md">
-          <div class="card-body text-center">
+      <div class="col-md-6">
+        <a class="card tile-concept text-decoration-none h-100" href="viewer.html?file=tictactoe.md">
+          <div class="card-body">
             <div class="tile-icon"><i class="fas fa-xmark" aria-hidden="true"></i></div>
-            <h6 class="card-title">Tic-Tac-Toe</h6>
-            <p class="card-text text-muted small">Drei in einer Reihe gewinnt</p>
+            <div class="tile-concept-text">
+              <h6 class="card-title">Tic-Tac-Toe</h6>
+              <p class="card-text text-muted small">Drei in einer Reihe gewinnt</p>
+            </div>
           </div>
         </a>
       </div>
-      <div class="col-md-4 col-sm-6">
-        <a class="card text-decoration-none h-100" href="viewer.html?file=haushaltsbuch.md">
-          <div class="card-body text-center">
+      <div class="col-md-6">
+        <a class="card tile-concept text-decoration-none h-100" href="viewer.html?file=haushaltsbuch.md">
+          <div class="card-body">
             <div class="tile-icon"><i class="fas fa-book" aria-hidden="true"></i></div>
-            <h6 class="card-title">Haushaltsbuch</h6>
-            <p class="card-text text-muted small">Einfache Eingaben-/Ausgaben-App für den Haushalt</p>
+            <div class="tile-concept-text">
+              <h6 class="card-title">Haushaltsbuch</h6>
+              <p class="card-text text-muted small">Einfache Eingaben-/Ausgaben-App für den Haushalt</p>
+            </div>
           </div>
         </a>
       </div>

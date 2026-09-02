@@ -115,9 +115,21 @@
   --space-7: 3rem;     /* 48px */
 
   /* ── Shadow Scale ────────────────────────────────── */
+  /*
+   * Vier neutrale Hoehenstufen. Jede box-shadow-Deklaration im Repo greift
+   * auf einen dieser Werte zu — handgeschriebene rgba-Werte driften sonst
+   * auseinander (fuenf Staerken fuer dieselbe Hierarchieebene war der Stand
+   * vor 2026-09-02).
+   *
+   *   sm  flache, fixierte Leisten — Navbar
+   *   md  Karten, Panels, Sektionen im Ruhezustand
+   *   lg  dieselben Flaechen im Hover, Dropdowns
+   *   xl  Elemente, die ueber dem Inhalt schweben — Back-to-Top, Bild-Hover
+   */
   --shadow-sm: 0 1px 8px rgba(0, 0, 0, 0.04);
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.14);
 
   /* ── Transitions ─────────────────────────────────── */
   --transition-fast:   0.2s ease;
@@ -154,6 +166,15 @@
 
   --tracking-wide:     0.05em;    /* uppercase nav subtitles */
 
+  /* ── Measure (Zeilenlaenge) ──────────────────────── */
+  /*
+   * Jenseits von etwa 65 Zeichen findet das Auge den Anfang der naechsten
+   * Zeile nicht mehr zuverlaessig. Bis 2026-09-02 gab es im Repo keinen
+   * einzigen ch-Wert: Fliesstext lief bis zur Containerbreite — ~1320 px auf
+   * den .page-wrapper-Seiten, 800 bzw. 860 px in hosting/ und wiki/.
+   */
+  --measure: 65ch;
+
   /* ── Semantic Foreground / Background Aliases ────── */
   --fg1:        var(--text-primary);
   --fg2:        var(--text-muted);
@@ -169,7 +190,16 @@
   --text-on-dark-strong:  rgba(255, 255, 255, 0.95);
 
   /* ── Extra Shadow / Gradient ─────────────────────── */
+  /*
+   * Sonderfaelle ausserhalb der neutralen Skala: markengetoente Schatten
+   * unter Call-to-Actions und der zweilagige Polaroid-Schatten der
+   * Portraet-Karte. Auch sie sind Token, damit sie eine Heimat haben.
+   */
   --shadow-focus-ring: 0 0 0 3px rgba(91, 139, 214, 0.15);
+  --shadow-cta:        0 4px 20px rgba(91, 139, 214, 0.25);
+  --shadow-cta-hover:  0 6px 20px rgba(91, 139, 214, 0.35);
+  --shadow-polaroid:   0 18px 40px rgba(61, 90, 140, 0.22),
+                       0 2px 6px rgba(0, 0, 0, 0.08);
   --gradient-cta-soft: linear-gradient(135deg, rgba(91, 139, 214, 0.12), rgba(92, 198, 167, 0.12));
 
   /* ── Radius Aliases (shorter names from design system) ── */
@@ -259,6 +289,27 @@ h1, h2, h3,
 .section-title-lg { text-wrap: balance; }
 
 p, li { text-wrap: pretty; }
+
+/*
+ * Zeilenlaenge fuer Fliesstext. Greift in den beiden Prosa-Containern des
+ * Repos: .page-wrapper (Rechtstexte, Kontakt, Ueber mich) und #content
+ * (Wiki-Handout, Hosting-Vergleich, Markdown-Viewer).
+ *
+ * max-width kappt nur — kurze Absaetze in Karten bleiben unveraendert. Die
+ * eine Ausnahme ist zentrierter Text: dort wuerde der schmalere Block
+ * sichtbar nach links rutschen, waehrend die Zeilen darin zentriert bleiben.
+ */
+.page-wrapper p,
+#content p {
+  max-width: var(--measure);
+}
+
+.page-wrapper .text-center p,
+#content .text-center p,
+.page-wrapper td p,
+#content td p {
+  max-width: none;
+}
 
 /* ── Pressed State ───────────────────────────────── */
 

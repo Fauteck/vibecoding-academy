@@ -92,7 +92,9 @@ Complete variable reference — see [DESIGN.md](../DESIGN.md) for rationale and 
 | `--border-radius-button` | `6px` | Button corners |
 | `--border-radius-pill` | `999px` | Badge/chip corners |
 | `--space-1 … --space-7` | `0.25rem … 3rem` | Spacing scale (4 px grid) |
-| `--shadow-sm/md/lg` | see DESIGN.md | Shadow scale (3 levels) |
+| `--shadow-sm/md/lg/xl` | see DESIGN.md | Neutral elevation scale (4 levels) |
+| `--shadow-focus-ring`, `--shadow-cta`, `--shadow-cta-hover`, `--shadow-polaroid` | see DESIGN.md | Shadows that carry meaning, not height |
+| `--measure` | `65ch` | Line length for body copy in `.page-wrapper` / `#content` |
 | `--transition-fast/medium` | `0.2s / 0.3s ease` | Transition durations |
 | `--z-nav … --z-toast` | `1030 … 1060` | Z-index scale |
 | `--gradient-nav/hero` | see DESIGN.md | Gradient presets |

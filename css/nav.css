@@ -175,7 +175,7 @@ body {
   color: #fff !important;
   text-decoration: none;
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(91, 139, 214, 0.35);
+  box-shadow: var(--shadow-cta-hover);
 }
 
 @media (prefers-reduced-motion: reduce) {
