@@ -19,15 +19,15 @@
 
 ## Key Files
 
-| Absolute Path | Purpose | Lines |
-|---------------|---------|-------|
-| `/home/user/vibecoding-academy/js/components.js` | Navigation, footer & skip link injection (all pages) | 96 |
-| `/home/user/vibecoding-academy/css/tokens.css` | Design tokens, CSS reset, base styles, `.t-*` type helpers | 397 |
-| `/home/user/vibecoding-academy/css/hero.css` | Shared hero section, action row and CTA | 96 |
-| `/home/user/vibecoding-academy/css/nav.css` | Navigation styles (desktop + mobile) | 207 |
-| `/home/user/vibecoding-academy/css/footer.css` | Footer styles | 19 |
-| `/home/user/vibecoding-academy/DESIGN.md` | Design system specification | — |
-| `/home/user/vibecoding-academy/index.html` | Landing page | 959 |
+| Absolute Path | Purpose |
+|---------------|---------|
+| `/home/user/vibecoding-academy/js/components.js` | Navigation, footer & skip link injection (all pages) |
+| `/home/user/vibecoding-academy/css/tokens.css` | Design tokens, CSS reset, base styles, `.t-*` type helpers |
+| `/home/user/vibecoding-academy/css/hero.css` | Shared hero section, action row and CTA |
+| `/home/user/vibecoding-academy/css/nav.css` | Navigation styles (desktop + mobile) |
+| `/home/user/vibecoding-academy/css/footer.css` | Footer styles |
+| `/home/user/vibecoding-academy/DESIGN.md` | Design system specification |
+| `/home/user/vibecoding-academy/index.html` | Landing page |
 
 ---
 
