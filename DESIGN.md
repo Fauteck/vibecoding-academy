@@ -569,11 +569,10 @@ Standard card pattern:
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-card);
-  backdrop-filter: blur(6px);
 }
 ```
 
-On mobile (≤ 991.98 px), `backdrop-filter` is removed and background shifts to `rgba(255,255,255,0.88)` for performance.
+No `backdrop-filter` (see Philosophy, point 3). On mobile (≤ 991.98 px) the background shifts to `rgba(255, 255, 255, 0.96)` so text stays readable over the decorative ground.
 
 ### Section headers
 
