@@ -1,0 +1,8 @@
+
+# Secrets (repo-hinzufuegen.ps1)
+.env
+.env.*
+!.env.example
+
+# Claude Code lokale Einstellungen
+.claude/settings.local.json
