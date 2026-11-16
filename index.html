@@ -80,10 +80,10 @@
       background:
         linear-gradient(135deg, rgba(61, 90, 140, 0.22) 0%, rgba(91, 139, 214, 0.12) 100%),
         linear-gradient(135deg, #5B8BD6 0%, #6BB8D4 45%, #8fbfd8 100%);
-      padding: 3.2rem 1.5rem 2.8rem;
+      padding: var(--space-7) 1.5rem var(--space-7);
       text-align: center;
       border-radius: 0 0 var(--border-radius-card) var(--border-radius-card);
-      margin-bottom: 1.25rem;
+      margin-bottom: var(--space-5);
       position: relative;
       overflow: hidden;
     }
@@ -116,12 +116,6 @@
       z-index: 1;
     }
 
-    .hero-badge {
-      background-color: rgba(255, 255, 255, 0.18) !important;
-      border: 1px solid rgba(255, 255, 255, 0.28);
-      color: #fff;
-      font-weight: 600;
-    }
 
     .hero-section h1 {
       color: #ffffff;
@@ -142,23 +136,6 @@
       max-width: 720px;
     }
 
-    .hero-kpis {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.7rem;
-      margin-top: 1.4rem;
-    }
-
-    .hero-kpi {
-      background: rgba(255,255,255,0.14);
-      border: 1px solid rgba(255,255,255,0.2);
-      color: #fff;
-      padding: 0.62rem 0.95rem;
-      border-radius: var(--border-radius-pill);
-      font-size: 0.9rem;
-      font-weight: 600;
-    }
 
 
 
@@ -184,21 +161,21 @@
       border: 1px solid var(--border-color);
       border-radius: var(--border-radius-card);
       box-shadow: var(--shadow-md);
-      padding: 1rem 1.1rem;
-      margin-bottom: 1.2rem;
+      padding: 1rem var(--space-4);
+      margin-bottom: var(--space-4);
     }
 
     .overview-box h2 {
       font-size: 1.05rem;
       font-weight: 700;
-      margin-bottom: 0.7rem;
+      margin-bottom: var(--space-3);
       color: var(--secondary-color);
     }
 
 
     .highlight-list li,
     .plain-list li {
-      margin-bottom: 0.55rem;
+      margin-bottom: var(--space-2);
     }
 
     .subtle-note {
@@ -206,58 +183,159 @@
       font-size: 0.92rem;
     }
 
-    .audience-grid .card,
-    .benefit-grid .card,
-    .overview-grid .card {
-      height: 100%;
+    /* Workshop-Fakten: Begriff + Erklärung, ohne Kartenrahmen */
+    .fact-list {
+      display: grid;
+      gap: var(--space-3) var(--space-5);
     }
 
-    .audience-icon,
-    .benefit-icon,
-    .takeaway-icon {
+    .fact-list dt {
+      font-weight: 700;
+    }
+
+    .fact-list dd {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+
+    /* Zielgruppen: schlichte Liste mit Icon */
+    .role-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: var(--space-4);
+    }
+
+    .role-list li {
+      display: flex;
+      gap: var(--space-3);
+      align-items: baseline;
+    }
+
+    .role-icon {
       color: var(--primary-color);
       font-size: 1.1rem;
-      margin-right: 0.45rem;
-    }
-
-    .step-card {
+      width: 1.25rem;
+      flex-shrink: 0;
       text-align: center;
-      padding: 1.1rem 0.7rem;
     }
 
-    .step-card h6 {
+    .role-list div {
+      color: var(--text-muted);
+    }
+
+    .role-list strong {
+      color: var(--text-primary);
+      display: block;
+    }
+
+    /* Ablauf: nummerierte Liste, ab 768 px als Zeitleiste */
+    .step-list {
+      list-style: none;
+      counter-reset: step;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: var(--space-4);
+    }
+
+    .step-list li {
+      counter-increment: step;
+      position: relative;
+      padding-left: var(--space-7);
+    }
+
+    .step-list li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      background: var(--primary-color);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.875rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .step-list h3 {
       font-weight: 700;
       font-size: 0.95rem;
-      margin-bottom: 0.35rem;
+      line-height: 1.2;
+      margin: var(--space-2) 0 var(--space-1);
     }
 
-    .step-card p {
-      font-size: 0.84rem;
+    .step-list p {
+      font-size: 0.875rem;
       color: var(--text-muted);
       margin: 0;
     }
 
+    @media (min-width: 768px) {
+      .fact-list {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .role-list {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-5);
+      }
+    }
+
+    @media (min-width: 992px) {
+      .step-list {
+        grid-template-columns: repeat(5, 1fr);
+        gap: var(--space-4);
+      }
+
+      .step-list li {
+        padding-left: 0;
+        padding-top: var(--space-7);
+      }
+
+      /* Verbindungslinie zwischen den Nummern */
+      .step-list li::after {
+        content: '';
+        position: absolute;
+        top: 1rem;
+        left: 2.5rem;
+        right: calc(-1 * var(--space-4) + var(--space-2));
+        height: 1px;
+        background: var(--border-color);
+      }
+
+      .step-list li:last-child::after {
+        display: none;
+      }
+    }
+
     .cta-box {
-      background: linear-gradient(135deg, rgba(91,139,214,0.12), rgba(92,198,167,0.12));
+      background: var(--gradient-cta-soft);
       border: 1px solid var(--border-color);
       border-radius: var(--border-radius-card);
-      padding: 1.35rem;
+      padding: var(--space-5);
       text-align: center;
+    }
+
+    .cta-box-title {
+      font-size: 1.25rem;
+      font-weight: 700;
     }
 
     .section-header {
       border-left: 4px solid var(--primary-color);
       background: rgba(238, 242, 247, 0.95);
-      padding: 0.8rem 1rem;
+      padding: var(--space-3) 1rem;
       margin-bottom: 1rem;
       border-radius: 0 8px 8px 0;
     }
 
-    .section-header h5 {
-      margin: 0;
-      font-weight: 700;
-      color: var(--text-primary);
-    }
 
     .accordion.custom-accordion {
       --bs-accordion-bg: rgba(255,255,255,0.72);
@@ -266,7 +344,7 @@
       --bs-accordion-btn-icon-width: 1rem;
       display: flex;
       flex-direction: column;
-      gap: 0.8rem;
+      gap: var(--space-3);
     }
 
     .custom-accordion .accordion-item {
@@ -281,7 +359,7 @@
       font-weight: 700;
       color: var(--text-primary);
       background: rgba(255,255,255,0.4);
-      padding: 0.95rem 1.1rem;
+      padding: var(--space-4) var(--space-4);
     }
 
     .custom-accordion .accordion-button:not(.collapsed) {
@@ -295,7 +373,7 @@
     }
 
     .custom-accordion .accordion-body {
-      padding: 1.15rem;
+      padding: var(--space-4);
       background: transparent;
     }
 
@@ -316,14 +394,14 @@
       background: var(--bg-card);
       border: 1px solid var(--border-color);
       border-radius: var(--border-radius-card);
-      padding: 1.35rem;
+      padding: var(--space-5);
       box-shadow: var(--shadow-md);
     }
 
     .coach-layout {
       display: grid;
       grid-template-columns: 150px 1fr;
-      gap: 1.2rem;
+      gap: var(--space-4);
       align-items: center;
     }
 
@@ -357,33 +435,15 @@
 
     .coach-tagline {
       color: var(--text-muted);
-      margin-bottom: 0.9rem;
+      margin-bottom: var(--space-4);
     }
 
-    .coach-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-2);
-      margin-bottom: 0.95rem;
-    }
 
-    .coach-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      padding: 0.42rem 0.72rem;
-      border-radius: var(--border-radius-pill);
-      background: rgba(91,139,214,0.1);
-      border: 1px solid rgba(91,139,214,0.15);
-      color: var(--secondary-color);
-      font-size: 0.86rem;
-      font-weight: 600;
-    }
 
     .coach-more {
       display: inline-flex;
       align-items: center;
-      gap: 0.45rem;
+      gap: var(--space-2);
       color: var(--primary-color);
       font-weight: 700;
       text-decoration: none;
@@ -415,7 +475,7 @@
       align-items: center;
       justify-content: center;
       font-size: 0.85rem;
-      margin-top: 0.15rem;
+      margin-top: var(--space-1);
     }
 
     .cta-box {
@@ -425,7 +485,7 @@
 
     @media (max-width: 991.98px) {
       .hero-section {
-        padding: 2.5rem 1rem 2.2rem;
+        padding: var(--space-7) 1rem var(--space-6);
         border-radius: 0;
       }
 
@@ -465,7 +525,7 @@
 
 
       .hero-link {
-        padding-top: 0;
+        min-height: 44px;
       }
     }
 
@@ -474,17 +534,9 @@
       h3 { font-size: 1rem; }
 
       .hero-section {
-        padding: 2.25rem 1rem 2rem;
+        padding: var(--space-6) 1rem 2rem;
       }
 
-      .hero-kpis {
-        gap: 0.55rem;
-      }
-
-      .hero-kpi {
-        width: 100%;
-        max-width: 320px;
-      }
 
       .coach-avatar-wrapper {
         width: 128px;
@@ -493,39 +545,6 @@
 
     }
 
-    /* Excluded / "Not this" card variant */
-    .excluded-card {
-      border: 2px solid rgba(212, 107, 107, 0.4);
-      background: rgba(212, 107, 107, 0.06);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .excluded-card::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 150%;
-      height: 2px;
-      background: rgba(212, 107, 107, 0.25);
-      transform-origin: top left;
-      transform: rotate(25deg);
-      pointer-events: none;
-    }
-
-    .excluded-card .excluded-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: rgba(212, 107, 107, 0.12);
-      color: var(--danger-color);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.25rem;
-      margin: 0 auto 0.75rem;
-    }
 
   </style>
 
@@ -578,12 +597,10 @@
 
   <div class="hero-section">
     <div class="hero-inner">
-      <span class="badge hero-badge mb-3">Praxisworkshop · Remote oder vor Ort</span>
-
-      <h1>Erst bauen. Dann wissen, was wirklich geht.</h1>
+      <h1>KI-Workshop: In 4 Stunden zum eigenen Prototyp.</h1>
 
       <p class="hero-lead mx-auto mt-3 mb-0">
-        Der KI-Workshop, nach dem du nicht nur verstehst, was möglich ist — sondern es auf deinem Bildschirm siehst. Gebaut von dir. Ohne eine Zeile Code.
+        Erst bauen, dann wissen, was wirklich geht. Praxisworkshop für Teams und Einzelne, remote oder vor Ort. Am Ende läuft dein Prototyp auf deinem Bildschirm, gebaut von dir, ohne eine Zeile Code.
       </p>
 
       <div class="hero-actions">
@@ -609,40 +626,24 @@
 
     <div class="overview-box" id="angebot">
       <h2><i class="fas fa-binoculars me-2" aria-hidden="true"></i>Dein Workshop auf einen Blick</h2>
-      <div class="row g-3 overview-grid">
-        <div class="col-md-6">
-          <div class="card h-100">
-            <div class="card-body">
-              <strong>Format</strong><br>
-              <small class="text-muted">Kompakt-Session, Halbtagsformat oder Tagesworkshop. Remote oder vor Ort.</small>
-            </div>
-          </div>
+      <dl class="fact-list mb-0">
+        <div>
+          <dt>Format</dt>
+          <dd>Kompakt-Session, Halbtagsformat oder Tagesworkshop. Remote oder vor Ort.</dd>
         </div>
-        <div class="col-md-6">
-          <div class="card h-100">
-            <div class="card-body">
-              <strong>Teilnehmer</strong><br>
-              <small class="text-muted">4–12 Personen · Einzeln, als Team oder bereichsübergreifend</small>
-            </div>
-          </div>
+        <div>
+          <dt>Teilnehmer</dt>
+          <dd>4–12 Personen · Einzeln, als Team oder bereichsübergreifend</dd>
         </div>
-        <div class="col-md-6">
-          <div class="card h-100">
-            <div class="card-body">
-              <strong>Voraussetzung</strong><br>
-              <small class="text-muted">Ein Laptop, Neugierde und eine Idee. Programmierkenntnisse: nicht nötig.</small>
-            </div>
-          </div>
+        <div>
+          <dt>Voraussetzung</dt>
+          <dd>Ein Laptop, Neugierde und eine Idee. Programmierkenntnisse: nicht nötig.</dd>
         </div>
-        <div class="col-md-6">
-          <div class="card h-100">
-            <div class="card-body">
-              <strong>Ergebnis</strong><br>
-              <small class="text-muted">Ein Prototyp, ein valider erster Entwurf oder ein klar definierter nächster Schritt.</small>
-            </div>
-          </div>
+        <div>
+          <dt>Ergebnis</dt>
+          <dd>Ein Prototyp, ein valider erster Entwurf oder ein klar definierter nächster Schritt.</dd>
         </div>
-      </div>
+      </dl>
     </div>
 
     <div id="workshop"></div>
@@ -656,91 +657,24 @@
         </h2>
         <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#workshopAccordion">
           <div class="accordion-body">
-            <div class="row g-3 audience-grid">
-              <div class="col-md-6">
-                <div class="card">
-                  <div class="card-body">
-                    <strong><i class="fas fa-layer-group audience-icon" aria-hidden="true"></i>Produktmanagement</strong><br>
-                    <small class="text-muted">Teste deine Hypothese, bevor du Entwicklungsressourcen bindest. Baue in 4 Stunden, was sonst 4 Wochen Abstimmung braucht — und hol dir Feedback am selben Tag.</small>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="card">
-                  <div class="card-body">
-                    <strong><i class="fas fa-comments audience-icon" aria-hidden="true"></i>Content und Redaktion</strong><br>
-                    <small class="text-muted">Zeig deinem Team nicht, was du beschreiben kannst — zeig, was du gebaut hast. Ein klickbarer Entwurf sagt mehr als ein 10-seitiges Briefing.</small>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="card">
-                  <div class="card-body">
-                    <strong><i class="fas fa-chess-knight audience-icon" aria-hidden="true"></i>Innovation und Strategie</strong><br>
-                    <small class="text-muted">Schluss mit „Das könnte man mal ausprobieren." Nach diesem Workshop weißt du, was KI kann — weil du es selbst getestet hast.</small>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="card">
-                  <div class="card-body">
-                    <strong><i class="fas fa-diagram-project audience-icon" aria-hidden="true"></i>Fachbereiche</strong><br>
-                    <small class="text-muted">Dein nächstes Meeting beginnt nicht mit „Stellt euch vor..." sondern mit „Klickt mal hier." Überzeuge mit einem Prototyp statt mit Worten.</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="text-center mt-3">
-              <a href="./kontakt/" class="hero-cta">
-                <i class="fas fa-envelope me-2" aria-hidden="true"></i>Passt das zu deinem Team? Jetzt anfragen
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingTwo">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-            <i class="fas fa-box-open me-2" aria-hidden="true"></i>Was du konkret mitnimmst
-          </button>
-        </h2>
-        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#workshopAccordion">
-          <div class="accordion-body">
-            <div class="row g-3">
-              <div class="col-md-6">
-                <div class="card h-100">
-                  <div class="card-body">
-                    <strong><i class="fas fa-laptop-code takeaway-icon" aria-hidden="true"></i>Einen präsentierbaren Prototyp</strong><br>
-                    <small class="text-muted">Gebaut von dir, basierend auf deiner Idee. Kein Template, kein Screenshot. Etwas, das du am nächsten Tag zeigen kannst.</small>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="card h-100">
-                  <div class="card-body">
-                    <strong><i class="fas fa-brain takeaway-icon" aria-hidden="true"></i>Echtes KI-Verständnis</strong><br>
-                    <small class="text-muted">Nicht aus einem Vortrag, sondern aus 4 Stunden eigener Erfahrung. Du weißt, welche Prompts funktionieren und welche nicht.</small>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="card h-100">
-                  <div class="card-body">
-                    <strong><i class="fas fa-compass takeaway-icon" aria-hidden="true"></i>Klarheit über Grenzen</strong><br>
-                    <small class="text-muted">Du weißt, was heute realistisch ist und wo KI (noch) versagt. Das verhindert teure Fehleinschätzungen.</small>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="card h-100">
-                  <div class="card-body">
-                    <strong><i class="fas fa-map takeaway-icon" aria-hidden="true"></i>Einen konkreten Plan</strong><br>
-                    <small class="text-muted">Nächste Schritte für dein Projekt, priorisiert und realistisch. Kein vages „man könnte mal...".</small>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <ul class="role-list">
+              <li>
+                <i class="fas fa-layer-group role-icon" aria-hidden="true"></i>
+                <div><strong>Produktmanagement</strong> Teste deine Hypothese, bevor du Entwicklungsressourcen bindest. Baue in 4 Stunden einen klickbaren Prototyp — und hol dir Feedback am selben Tag.</div>
+              </li>
+              <li>
+                <i class="fas fa-comments role-icon" aria-hidden="true"></i>
+                <div><strong>Content und Redaktion</strong> Zeig deinem Team nicht, was du beschreiben kannst — zeig, was du gebaut hast. Ein klickbarer Entwurf sagt mehr als ein 10-seitiges Briefing.</div>
+              </li>
+              <li>
+                <i class="fas fa-chess-knight role-icon" aria-hidden="true"></i>
+                <div><strong>Innovation und Strategie</strong> Schluss mit „Das könnte man mal ausprobieren." Nach diesem Workshop weißt du, was KI kann — weil du es selbst getestet hast.</div>
+              </li>
+              <li>
+                <i class="fas fa-diagram-project role-icon" aria-hidden="true"></i>
+                <div><strong>Fachbereiche</strong> Dein nächstes Meeting beginnt nicht mit „Stellt euch vor..." sondern mit „Klickt mal hier." Überzeuge mit einem Prototyp statt mit Worten.</div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -753,57 +687,31 @@
         </h2>
         <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#workshopAccordion">
           <div class="accordion-body">
-            <div class="row g-3">
-              <div class="col-6 col-md">
-                <div class="card h-100">
-                  <div class="card-body step-card">
-                    <h6>Verstehen</h6>
-                    <p>Wir schauen gemeinsam darauf, wo KI-Prototyping hilfreich ist, wo typische Missverständnisse liegen und worauf es in der Praxis ankommt.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-6 col-md">
-                <div class="card h-100">
-                  <div class="card-body step-card">
-                    <h6>Erstes Bauen</h6>
-                    <p>Kein reines Zuschauen, keine Theorie-Folien als Endpunkt: Du arbeitest selbst mit den Tools und setzt erste Ideen direkt um.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-6 col-md">
-                <div class="card h-100">
-                  <div class="card-body step-card">
-                    <h6>Fehler nutzen</h6>
-                    <p>Wenn etwas nicht funktioniert, ist das kein Rückschritt, sondern Teil des Lernens. Du verstehst, wie du Probleme einordnest, anpasst und daraus bessere Ergebnisse machst.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-6 col-md">
-                <div class="card h-100">
-                  <div class="card-body step-card">
-                    <h6>Eigene Idee entwickeln</h6>
-                    <p>Du bringst einen eigenen Anwendungsfall mit oder entwickelst ein Beispiel so weiter, dass daraus ein relevanter Prototyp für deinen Kontext entsteht.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-md">
-                <div class="card h-100">
-                  <div class="card-body step-card">
-                    <h6>Ergebnis einordnen</h6>
-                    <p>Am Ende bewertest du, was entstanden ist, wo der Nutzen liegt und welche nächsten Schritte sinnvoll sind.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="text-center mt-3">
-              <a href="./kontakt/" class="hero-cta">
-                <i class="fas fa-calendar-check me-2" aria-hidden="true"></i>Ablauf für dich oder dein Team abstimmen
-              </a>
-            </div>
+            <ol class="step-list">
+              <li>
+                <h3>Verstehen</h3>
+                <p>Wir schauen gemeinsam darauf, wo KI-Prototyping hilfreich ist, wo typische Missverständnisse liegen und worauf es in der Praxis ankommt.</p>
+              </li>
+              <li>
+                <h3>Erstes Bauen</h3>
+                <p>Kein reines Zuschauen, keine Theorie-Folien als Endpunkt: Du arbeitest selbst mit den Tools und setzt erste Ideen direkt um.</p>
+              </li>
+              <li>
+                <h3>Fehler nutzen</h3>
+                <p>Wenn etwas nicht funktioniert, ist das kein Rückschritt, sondern Teil des Lernens. Du verstehst, wie du Probleme einordnest, anpasst und daraus bessere Ergebnisse machst.</p>
+              </li>
+              <li>
+                <h3>Eigene Idee entwickeln</h3>
+                <p>Du bringst einen eigenen Anwendungsfall mit oder entwickelst ein Beispiel so weiter, dass daraus ein relevanter Prototyp für deinen Kontext entsteht.</p>
+              </li>
+              <li>
+                <h3>Ergebnis einordnen</h3>
+                <p>Am Ende bewertest du, was entstanden ist, wo der Nutzen liegt und welche nächsten Schritte sinnvoll sind.</p>
+              </li>
+            </ol>
           </div>
         </div>
       </div>
-
 
     </div>
 
@@ -903,12 +811,12 @@
     </div>
 
     <div class="cta-box mb-4">
-      <h5 class="mb-3" style="font-weight: 700;">Bereit? Schreib mir deine Idee in 2 Sätzen.</h5>
+      <h3 class="cta-box-title mb-3">Bereit? Schreib mir deine Idee in 2 Sätzen.</h3>
       <p class="mb-2">
         Ich antworte innerhalb von 24 Stunden mit einer Einschätzung: Passt der Workshop für dein Vorhaben? Welches Format empfehle ich? Was ist realistisch?
       </p>
       <p class="mb-3">
-        Nächster offener Termin: Mai 2026 — Remote oder vor Ort bei euch.
+        Termine nach Absprache — Remote oder vor Ort bei euch.
       </p>
       <a href="./kontakt/" class="hero-cta">
         <i class="fas fa-arrow-right me-2" aria-hidden="true"></i>Jetzt unverbindlich anfragen

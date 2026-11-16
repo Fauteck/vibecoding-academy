@@ -13,7 +13,7 @@
   background:
     linear-gradient(135deg, rgba(61, 90, 140, 0.3) 0%, rgba(91, 139, 214, 0.15) 100%),
     linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-  padding: 3rem 1.5rem 2.5rem;
+  padding: 3rem 1.5rem var(--space-7);
   text-align: center;
   border-radius: 0 0 var(--border-radius-card) var(--border-radius-card);
   margin-bottom: var(--space-5);
@@ -44,16 +44,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 0.9rem;
+  gap: var(--space-4);
   flex-wrap: wrap;
-  margin-top: 1.35rem;
+  margin-top: var(--space-5);
 }
 
 /* ── Call to Action ───────────────────────────────── */
 
 .hero-cta {
   display: inline-block;
-  padding: 0.82rem 1.45rem;
+  padding: var(--space-3) var(--space-5);
   background: #fff;
   color: var(--secondary-color);
   font-weight: var(--font-weight-bold);
@@ -87,7 +87,7 @@
 
 @media (max-width: 991.98px) {
   .hero-section {
-    padding: 2.5rem 1rem 2rem;
+    padding: var(--space-7) 1rem 2rem;
     border-radius: 0;
   }
 }

@@ -16,7 +16,7 @@ Brand quick-reference:
 
 - German-language ("du" form), single typeface (IBM Plex Sans), single blue family.
 - Mantra: „Idee rein. Prototyp raus."
-- H1: „Erst bauen. Dann wissen, was wirklich geht."
+- H1: „KI-Workshop: In 4 Stunden zum eigenen Prototyp." Claim „Erst bauen, dann wissen, was wirklich geht." eröffnet den Lead.
 - No emoji in chrome; emoji only as project-tile markers on `projekte/index.html`.
 - Cards: `border-radius: 10px`, 1px `--border-color`, slightly translucent background (`--bg-card`), denser below `991.98px`. **No `backdrop-filter`** — measured as invisible and removed on 2026-08-31; do not reintroduce it.
 - CTA hover: `translateY(-1px)` + soft brand-blue shadow, NOT `opacity: 0.85`.
