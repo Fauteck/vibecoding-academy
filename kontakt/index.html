@@ -74,15 +74,15 @@
       color: var(--text-muted);
       line-height: 1.7;
       max-width: 600px;
-      margin-bottom: 2.5rem;
+      margin-bottom: var(--space-7);
     }
 
     /* ── Contact Cards ──────────────────────────────── */
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1.25rem;
-      margin-bottom: 2.5rem;
+      gap: var(--space-5);
+      margin-bottom: var(--space-7);
     }
     @media (max-width: 575.98px) {
       .contact-grid { grid-template-columns: 1fr; }
@@ -128,7 +128,7 @@
     /* ── CTA Button ─────────────────────────────────── */
     .cta-btn {
       display: inline-block;
-      padding: 0.7rem 1.5rem;
+      padding: var(--space-3) 1.5rem;
       background: var(--primary-color);
       color: #fff;
       border-radius: 8px;
@@ -159,30 +159,30 @@
       font-size: 1.4rem;
       font-weight: 700;
       color: var(--text-primary);
-      margin-bottom: 1.25rem;
+      margin-bottom: var(--space-5);
     }
     .contact-form {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
       border-radius: var(--border-radius-card);
-      padding: 1.75rem;
+      padding: var(--space-6);
       box-shadow: var(--shadow-md);
     }
     .form-group {
-      margin-bottom: 1.25rem;
+      margin-bottom: var(--space-5);
     }
     .form-group label {
       display: block;
       font-size: 0.85rem;
       font-weight: 600;
       color: var(--text-primary);
-      margin-bottom: 0.4rem;
+      margin-bottom: var(--space-2);
     }
     .form-group input,
     .form-group textarea,
     .form-group select {
       width: 100%;
-      padding: 0.6rem 0.85rem;
+      padding: var(--space-2) var(--space-3);
       font-family: inherit;
       font-size: 0.9rem;
       color: var(--text-primary);
@@ -196,7 +196,7 @@
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%237A8599' d='M2 4l4 4 4-4'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
       background-position: right 0.85rem center;
-      padding-right: 2.2rem;
+      padding-right: var(--space-6);
       cursor: pointer;
     }
     .form-group input:focus,
@@ -224,7 +224,7 @@
     .form-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1.25rem;
+      gap: var(--space-5);
     }
     @media (max-width: 575.98px) {
       .form-row { grid-template-columns: 1fr; gap: 0; }
@@ -269,7 +269,7 @@
     }
     .privacy-label input[type="checkbox"] {
       width: auto;
-      margin-top: 0.2rem;
+      margin-top: var(--space-1);
       flex-shrink: 0;
     }
     .privacy-label a {

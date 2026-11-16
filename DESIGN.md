@@ -595,9 +595,16 @@ The 4 px left border acts as a visual anchor. Apply to `<h2>` or `<h3>` elements
   padding: 0.45rem 1rem;
   font-size: 0.85rem;
   font-weight: 600;
-  transition: opacity var(--transition-fast);
+  transition: transform var(--transition-fast),
+              box-shadow var(--transition-fast),
+              background-color var(--transition-fast);
 }
-.site-nav-cta:hover { opacity: 0.85; }
+.site-nav-cta:hover,
+.site-nav-cta:focus-visible {
+  background: var(--secondary-color);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-cta-hover);
+}
 ```
 
 Hover reduces opacity rather than darkening the background — avoids runtime color computation and keeps the animation smooth.
